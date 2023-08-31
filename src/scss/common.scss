@@ -1,0 +1,442 @@
+//====================блоки на страницазх======================
+.page {
+	&__first-screen,
+	&__advantages,
+	&__services,
+	&__how,
+	&__clients {
+		@include adaptiveValue("margin-bottom", 144, 56);
+	}
+	&__about {
+		@include adaptiveValue("margin-bottom", 95, 30);
+	}
+}
+
+//====================текст======================
+p {
+	text-wrap: balance;
+
+	&:not(:last-child) {
+		@include adaptiveValue("margin-bottom", 26, 20);
+	}
+}
+
+h1,
+.h1 {
+	@include adaptiveValue("font-size", 64, 28);
+	font-weight: 500;
+	line-height: 150%;
+	text-transform: uppercase;
+	text-wrap: balance;
+}
+
+h2,
+.h2 {
+	@include adaptiveValue("font-size", 48, 24);
+	font-weight: 500;
+	line-height: 133.33%;
+	text-wrap: balance;
+	&:not(:last-child) {
+		@include adaptiveValue("margin-bottom", 24, 16);
+	}
+}
+
+h3,
+.h3 {
+	@include adaptiveValue("font-size", 20, 18);
+	font-weight: 500;
+	@include adaptiveValue("line-height", 160%, 156%);
+	text-transform: uppercase;
+	text-wrap: balance;
+}
+
+h4,
+.h4 {
+	@include adaptiveValue("font-size", 16, 14);
+	font-weight: 500;
+	@include adaptiveValue("line-height", 150%, 142%);
+	text-transform: uppercase;
+	text-wrap: balance;
+}
+
+[class*="_text-s"] {
+	@include adaptiveValue("font-size", 14, 13);
+	@include adaptiveValue("line-height", 143%, 139%);
+}
+
+[class*="_text-xs"] {
+	font-size: rem(12);
+}
+
+[class*="_text-bright"] {
+	color: white;
+}
+
+[class*="__sub-title"] {
+	@include adaptiveValue("font-size", 20, 16);
+	// @include adaptiveValue("line-height", 160%, 150%);
+	line-height: 160%;
+	font-weight: 300;
+	text-wrap: balance;
+}
+
+[class*="_icon"] {
+	display: inline-block;
+	transform: translateY(-2px);
+	font-size: inherit;
+	line-height: inherit;
+}
+
+//====================ссылки======================
+
+nav a,
+[class*="__link"] {
+	position: relative;
+	overflow: hidden;
+	display: inline-flex;
+	justify-content: center;
+	align-items: center;
+	column-gap: 5px;
+	padding: rem(8) rem(7);
+	font-size: 14px;
+	font-weight: 400;
+
+	text-transform: uppercase;
+	color: white;
+	&:before {
+		content: "";
+		position: absolute;
+		width: calc(100% - 14px);
+		height: 1.4px;
+		border-radius: 100px;
+		top: calc(100% - 2px);
+		background-color: white;
+		transform: translate3d(-120%, 0, 0);
+		transition: transform $tm ease;
+		will-change: transform;
+	}
+	&:hover:before {
+		transform: translate3d(0, 0, 0);
+	}
+}
+
+[class*="__link"] {
+	color: $primary1;
+	font-size: rem(16);
+}
+
+//====================кнопки======================
+
+.btn {
+	cursor: pointer;
+	display: inline-flex;
+	white-space: nowrap;
+	justify-content: center;
+	align-items: center;
+	font-size: 14px;
+	font-weight: 500;
+	line-height: 1;
+	text-transform: uppercase;
+	border-radius: 100px;
+	padding: rem(18) rem(28) rem(16);
+	height: fit-content;
+	background-color: $primary1;
+	color: white;
+	transition:
+		border-color $tm ease,
+		color $tm ease,
+		background-color $tm ease;
+
+	&:hover {
+		background-color: $primary1-hover;
+	}
+	&:disabled {
+		background-color: $primary1-disable;
+		color: $primary1-disable-text;
+	}
+}
+
+.btn[class*="_light"]:hover {
+	background-color: white;
+	color: $primary1;
+}
+
+.btn[class*="_light"]:disabled {
+	background-color: $add2;
+	color: $add4;
+}
+
+.btn[class*="_bordered"] {
+	background-color: transparent;
+	border: 2px solid;
+	border-color: $primary1;
+	color: $primary1;
+	@include adaptiveValue("font-size", 14, 10, 992, 360, 1);
+	@include adaptiveValue("padding-inline", 28, 20, 992, 360, 1);
+	@include adaptiveValue("padding-top", 16, 12, 992, 360, 1);
+	@include adaptiveValue("padding-bottom", 14, 10, 992, 360, 1);
+	@media (width< $mobileSmall) {
+		& {
+			letter-spacing: 0.4px;
+		}
+	}
+	&:hover {
+		background-color: $primary1;
+		border-color: $primary1;
+		color: white;
+	}
+	&:disabled {
+		background-color: transparent;
+		border-color: $primary1-disable;
+		color: $primary1-disable-text;
+	}
+}
+
+.btn[class*="_bordered-2"] {
+	background-color: transparent;
+	border: 2px solid;
+	border-color: $primary1-hover;
+	color: $primary1-hover;
+	&:hover {
+		background-color: $primary1-hover;
+		border-color: $primary1-hover;
+		color: white;
+	}
+	&:disabled {
+		background-color: transparent;
+		border-color: $primary1-disable;
+		color: $primary1-disable-text;
+	}
+}
+
+.btn[class*="_bordered-2"][class*="light"] {
+	border: 2px solid;
+	border-color: white;
+	color: white;
+	&:hover {
+		background-color: white;
+		border-color: white;
+		color: $primary1-hover;
+	}
+	&:disabled {
+		background-color: transparent;
+		border-color: $add2;
+		color: $add4;
+	}
+}
+
+.btn[class*="_bordered-3"] {
+	border: 2px solid;
+	border-color: $gray5;
+	color: $mainColor;
+	&:hover,
+	&:active {
+		background-color: $primary1-disable;
+		border-color: $primary1;
+		color: $primary1-hover;
+	}
+	&:disabled {
+		background-color: transparent;
+		border-color: $gray5;
+		color: $gray4;
+	}
+}
+
+.btn_xl {
+	height: rem(64);
+}
+
+.btn_l {
+	height: rem(56);
+}
+
+.btn_s {
+	height: rem(40);
+	font-size: rem(13);
+}
+
+.btn_xs {
+	font-size: rem(10);
+	height: rem(32);
+	letter-spacing: 2%;
+}
+
+//====================виджеты======================
+
+//====================виджет сервисы======================
+.card-services {
+	position: relative;
+	overflow: hidden;
+	@include adaptiveValue("min-height", 328, 248);
+	background-color: $primary1-disable;
+	@include adaptiveValue("padding-inline", 24, 20);
+	@include adaptiveValue("padding-block", 40, 24);
+	@include adaptiveValue("border-radius", 20, 16);
+
+	&_color {
+		background-color: $primary1-disable-color;
+	}
+
+	&_dark {
+		background-color: $add3;
+	}
+
+	&_xl {
+		grid-row: span 2;
+		grid-column: span 2;
+
+		@media (max-width: $burgerMenu) {
+			grid-row: span 1;
+		}
+
+		@media (max-width: 606px) {
+			grid-column: span 1;
+		}
+
+		.card-services__image {
+			@include adaptiveValue("height", 340, 300);
+			@include adaptiveValue("right", 40, 10);
+			@include adaptiveValue("bottom", 45, 35);
+
+			@media (max-width: $burgerMenu) {
+				@include adaptiveValue("height", 220, 180);
+				@include adaptiveValue("right", 40, 10);
+				@include adaptiveValue("bottom", 10, 0);
+			}
+		}
+	}
+	&_l {
+		grid-column: span 2;
+
+		@media (max-width: 606px) {
+			grid-column: span 1;
+		}
+
+		.card-services__image {
+			@include adaptiveValue("height", 240, 190);
+		}
+	}
+
+	&__head {
+		@include adaptiveValue("margin-bottom", 12, 16);
+		position: relative;
+		z-index: 10;
+	}
+
+	&__title {
+		@include adaptiveValue("margin-bottom", 8, 4);
+	}
+
+	&__discription {
+	}
+
+	&__button {
+		position: relative;
+		z-index: 2;
+		@media (hover: hover) and (pointer: fine) {
+			opacity: 0;
+			pointer-events: none;
+			transition: all $tm ease;
+		}
+	}
+	&:hover &__button {
+		opacity: 1;
+		pointer-events: all;
+	}
+
+	&__image {
+		position: absolute;
+		z-index: 1;
+		pointer-events: none;
+		width: 80%;
+		@include adaptiveValue("height", 150, 153);
+		right: 0;
+		bottom: 0;
+		will-change: transform;
+		transition: all $tm ease;
+		transform: scale(1) translate3d(-7px, 18px, 0);
+
+		&_big {
+			width: 200%;
+			@include adaptiveValue("height", 220, 185);
+		}
+
+		img {
+			height: 100%;
+			width: 100%;
+			object-fit: contain;
+			object-position: right bottom;
+		}
+	}
+
+	&:hover &__image {
+		transform: translate3d(-25px, 0px, 0) scale(1.1);
+	}
+	@media (max-width: 606px) {
+		&:hover &__image_big {
+			transform: translate3d(-70px, 0px, 0) scale(1.1);
+		}
+	}
+}
+
+//====================виджет how======================
+
+.card-how {
+	display: flex;
+	flex-direction: column;
+	align-items: start;
+	@include adaptiveValue("min-height", 242, 180);
+	@include adaptiveValue("padding-block", 24, 16);
+	@include adaptiveValue("padding-inline", 32, 28);
+	@include adaptiveValue("border-radius", 20, 16);
+	border: 1px solid #4c4ca8;
+	background: rgba(255, 255, 255, 0.05);
+	backdrop-filter: blur(2px);
+	&__image {
+		@include adaptiveValue("margin-bottom", 36, 28);
+		@include adaptiveValue("width", 56, 35);
+		img {
+			width: 100%;
+		}
+	}
+
+	&__discription {
+		flex: 1 1 auto;
+		// align-self: end;
+		display: flex;
+		align-items: end;
+		font-weight: 300;
+	}
+	//TODO сделать перенос из флекс-контейнера на мобилке
+	&_last,
+	&__dinamic {
+		border: none;
+		background-color: unset;
+		border-radius: 0;
+		align-items: center;
+		padding: 0;
+		@media (max-width: $burgerMenu) {
+			align-items: start;
+		}
+
+		@media (max-width: $mobile) {
+			align-items: center;
+		}
+
+		@media (max-width: $mobileSmall) {
+			max-width: 182px;
+			margin-inline: auto;
+		}
+
+		a {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			text-align: center;
+			height: 100%;
+			aspect-ratio: 1;
+			background-color: $primary1;
+			border-radius: 500px;
+		}
+	}
+}

@@ -1,0 +1,191 @@
+.header {
+	position: absolute;
+	width: 100%;
+	z-index: 100;
+	@include adaptiveValue("padding-block", 30, 10);
+	// height: 172px;
+	@include adaptiveValue("height", 172, 88);
+	transition:
+		background-color $tm ease,
+		height $tm ease;
+
+	.menu-open & {
+		background-color: white;
+		height: 100vh;
+	}
+
+	&__container {
+		position: relative;
+		// display: flex;
+
+		@media (max-width: $burgerMenu) {
+			// flex-direction: column;
+			height: 100%;
+		}
+	}
+
+	&__row {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		@media (max-width: $burgerMenu) {
+			position: relative;
+			flex-direction: column;
+			align-items: start;
+			justify-content: space-between;
+			height: 100%;
+		}
+	}
+
+	&__logo {
+		@include adaptiveValue("width", 120, 72);
+		// max-width: 120px;
+		margin-right: 20px;
+		// min-width: rem(72);
+		a {
+			display: block;
+		}
+		svg {
+			width: 100%;
+			// height: calc(108 / 120 * 100%);
+			height: 100%;
+			#contrast path {
+				fill: white;
+				transition: fill $tm ease;
+			}
+		}
+		.menu-open & {
+			svg #contrast path {
+				fill: $mainColor;
+			}
+		}
+	}
+
+	&__burger {
+		display: none;
+		@media (max-width: $burgerMenu) {
+			display: block;
+			position: absolute;
+			right: 15px;
+			top: 30px;
+		}
+	}
+
+	&__menu {
+	}
+}
+.menu {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	@include adaptiveValue("gap", 64, 50);
+	@media (max-width: $burgerMenu) {
+		flex-direction: column;
+		align-items: start;
+		position: absolute;
+		bottom: 1000px;
+		opacity: 0 !important;
+		transition: opacity $tm ease;
+		.menu-open & {
+			bottom: 0;
+			opacity: 1 !important;
+			width: 100%;
+		}
+	}
+	&__icon {
+	}
+
+	&__body {
+		@media (max-width: $burgerMenu) {
+		}
+	}
+
+	&__list {
+		display: flex;
+		@include adaptiveValue("gap", 40, 25, 1372, 1024, 1);
+		@media (max-width: $burgerMenu) {
+			flex-direction: column;
+		}
+	}
+
+	&__item {
+		a {
+			white-space: nowrap;
+			.menu-open & {
+				color: $mainColor;
+			}
+		}
+	}
+
+	&__cta {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		column-gap: 16px;
+		button.btn {
+			flex: 1 0 auto;
+		}
+		@media (max-width: 500px) {
+			width: 100%;
+		}
+		span {
+			font-size: rem(18);
+			padding: rem(15);
+		}
+		.menu-open & {
+			margin-bottom: 16px;
+		}
+	}
+}
+
+//Burger
+.icon-menu {
+	display: none;
+	@media (max-width: $burgerMenu) {
+		display: block;
+		position: relative;
+		@include adaptiveValue("width", 45, 25);
+		@include adaptiveValue("height", 30, 16);
+		cursor: pointer;
+		z-index: 5;
+		span,
+		&::before,
+		&::after {
+			content: "";
+			transition: all 0.3s ease 0s;
+			right: 0;
+			position: absolute;
+			width: 100%;
+			height: rem(2);
+			background-color: white;
+			border-radius: 100px;
+		}
+		&::before {
+			top: 0;
+		}
+		&::after {
+			bottom: 0;
+		}
+		span {
+			top: calc(50% - rem(1));
+		}
+		.menu-open & {
+			span {
+				width: 0;
+				background-color: $mainColor;
+			}
+			&::before,
+			&::after {
+				background-color: $mainColor;
+			}
+			&::before {
+				top: calc(50% - rem(1));
+				transform: rotate(-45deg);
+			}
+			&::after {
+				bottom: calc(50% - rem(1));
+				transform: rotate(45deg);
+			}
+		}
+	}
+}
