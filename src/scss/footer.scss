@@ -1,3 +1,75 @@
-//====================================================================================================
+.footer {
+	// padding-block: rem(64) rem(24);
+	&__container {
+	}
 
-//====================================================================================================
+	&__content,
+	&__copyrite {
+		display: flex;
+		justify-content: space-between;
+		align-items: start;
+	}
+
+	&__content {
+		@include adaptiveValue("padding-block", 64, 40);
+	}
+
+	&__copyrite {
+		@include adaptiveValue("padding-block", 24, 20);
+		border-top: 1px solid $gray6;
+	}
+
+	&__contacts {
+	}
+
+	&__services {
+	}
+
+	&__title {
+		@include adaptiveValue("margin-bottom", 20, 15);
+	}
+
+	&__list {
+		display: flex;
+		flex-direction: column;
+		flex-wrap: wrap;
+		column-gap: 96px;
+		row-gap: 12px;
+		max-height: 216px;
+	}
+
+	&__item {
+		transition: color $tm ease;
+		&:hover {
+			color: $gray4;
+		}
+		a {
+			padding-block: rem(5);
+		}
+	}
+
+	&__navigate {
+	}
+
+	&__copirite {
+	}
+
+	&__creditionals {
+	}
+}
+.contacts {
+	&__logo {
+	}
+
+	&__item {
+	}
+
+	&__link {
+		display: block;
+		color: $mainColor;
+		font-weight: 500;
+	}
+
+	&__title {
+	}
+}
