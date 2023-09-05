@@ -51,7 +51,7 @@
 	&__title {
 		@include adaptiveValue("margin-bottom", 20, 15);
 	}
-
+	//TODO уйти от max-height для более надежного футера
 	&__list {
 		display: flex;
 		flex-direction: column;
