@@ -1,10 +1,11 @@
-//====================блоки на страницазх======================
+//====================отступы блоков на страницазх======================
 .page {
 	&__first-screen,
 	&__advantages,
 	&__services,
 	&__how,
-	&__clients {
+	&__clients,
+	&__callback-form {
 		@include adaptiveValue("margin-bottom", 144, 56);
 	}
 	&__about {
@@ -12,6 +13,57 @@
 	}
 }
 
+//====================фоны блоков======================
+.page {
+	&__first-screen,
+	&__how,
+	&__callback-form {
+		position: relative;
+		// overflow: hidden;
+		background-color: $primary-bg;
+		background-image: url("@img/first-screen/stars-background_low-contrast.webp");
+		background-repeat: no-repeat;
+		background-blend-mode: lighten;
+		background-size: 2259px 1506px;
+		background-attachment: fixed;
+		background-position: center 85%;
+
+		@media (max-width: $burgerMenu) {
+			background-position: right bottom;
+		}
+
+		&::after,
+		&::before {
+			pointer-events: none;
+			content: "";
+			position: absolute;
+			width: 100%;
+			height: 100%;
+			left: 0;
+			top: 0;
+			z-index: 2;
+		}
+
+		&::after {
+			background-image: url("@img/first-screen/gradient-bottom.svg");
+			background-repeat: no-repeat;
+			// background-blend-mode: screen;
+			background-size: cover;
+			@include adaptiveValue("background-position-x", 230, -200);
+			background-position-y: bottom;
+			opacity: 0.5;
+		}
+
+		&::before {
+			background-image: url("@img/first-screen/gradient-top.svg");
+			background-repeat: no-repeat;
+			background-blend-mode: screen;
+			background-size: cover;
+			background-position: left -80px;
+			opacity: 0.3;
+		}
+	}
+}
 //====================текст======================
 p {
 	text-wrap: balance;
@@ -244,7 +296,7 @@ nav a,
 }
 
 .btn_xl {
-	height: rem(64);
+	@include adaptiveValue("height", 64, 48);
 }
 
 .btn_l {
