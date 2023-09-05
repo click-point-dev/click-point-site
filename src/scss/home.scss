@@ -1,51 +1,6 @@
 //====================первый экран======================
 //TODO анимация загрузки
 .first-screen {
-	position: relative;
-	// overflow: hidden;
-	background-color: $primary-bg;
-	background-image: url("@img/first-screen/stars-background_low-contrast.png");
-	background-repeat: no-repeat;
-	background-blend-mode: lighten;
-	background-size: 2259px 1506px;
-	background-attachment: fixed;
-	background-position: center 85%;
-
-	@media (max-width: $burgerMenu) {
-		background-position: right bottom;
-	}
-
-	&::after,
-	&::before {
-		pointer-events: none;
-		content: "";
-		position: absolute;
-		width: 100%;
-		height: 100%;
-		left: 0;
-		top: 0;
-		z-index: 2;
-	}
-
-	&::after {
-		background-image: url("@img/first-screen/gradient-bottom.svg");
-		background-repeat: no-repeat;
-		background-blend-mode: screen;
-		background-size: cover;
-		@include adaptiveValue("background-position-x", 230, -200);
-		background-position-y: bottom;
-		opacity: 0.5;
-	}
-
-	&::before {
-		background-image: url("@img/first-screen/gradient-top.svg");
-		background-repeat: no-repeat;
-		background-blend-mode: screen;
-		background-size: cover;
-		background-position: left -80px;
-		opacity: 0.3;
-	}
-
 	&__decor {
 		width: 100%;
 		height: 100%;
@@ -287,13 +242,24 @@
 
 //====================how======================
 
-.page {
-	&__how {
-	}
-}
-.how {
+.how,
+.callback-form {
 	background-color: $primary-bg;
 	@include adaptiveValue("padding-block", 144, 56);
+	background-size: unset;
+	background-position: center bottom;
+	&::after {
+		width: 100%;
+		height: 90%;
+		background-image: url("@img/how/bg-gradient.svg");
+		background-position: left center;
+		background-size: contain;
+		opacity: 0.15;
+	}
+	&::before {
+		display: none;
+	}
+
 	&__container {
 	}
 
@@ -309,7 +275,6 @@
 	}
 
 	&__body {
-		// margin-inline: -10px;
 	}
 
 	&__list {
@@ -391,6 +356,123 @@
 	}
 }
 
+///====================form-callback======================
+
+.callback-form {
+	overflow: hidden;
+	position: relative;
+	&__decor {
+		position: absolute;
+		pointer-events: none;
+		width: 100%;
+		height: 100%;
+		top: 0;
+		left: 0;
+		.decor__image {
+			max-width: fit-content;
+			mix-blend-mode: lighten;
+			position: absolute;
+
+			img {
+				width: 100%;
+			}
+
+			&:nth-child(1) {
+				@include adaptiveValue("width", 437, 210);
+				@include adaptiveValue("top", -236, -110);
+				@include adaptiveValue("left", -150, -80);
+
+				filter: blur(8px);
+			}
+
+			&:nth-child(2) {
+				@include adaptiveValue("width", 142, 105);
+				@include adaptiveValue("top", 715, 455);
+				@include adaptiveValue("left", 100, 24);
+
+				@media (max-width: $mobileSmall) {
+					@include adaptiveValue("top", 470, 350, 479, 360, 1);
+				}
+			}
+
+			&:nth-child(3) {
+				@include adaptiveValue("width", 79, 25);
+				@include adaptiveValue("top", 200, 72);
+				@include adaptiveValue("right", 1270, 620, 2580, 1280, 1);
+				@media (max-width: $burgerMenu) {
+					@include adaptiveValue("right", 200, 24);
+				}
+			}
+		}
+	}
+	&__container {
+	}
+
+	&__content {
+		display: flex;
+		@include adaptiveValue("gap", 73, 63);
+		align-items: center;
+		justify-content: space-between;
+		@media (max-width: $burgerMenu) {
+			flex-direction: column;
+		}
+	}
+
+	&__image {
+		position: relative;
+		z-index: 5;
+		flex: 0 1 559px;
+		@media (max-width: $burgerMenu) {
+			flex: 0 1 auto;
+		}
+		img {
+			width: 100%;
+		}
+	}
+
+	&__body {
+		flex: 0 1 560px;
+		max-width: 700px;
+	}
+
+	&__head {
+		text-align: left;
+		p {
+			margin-bottom: 0 !important;
+			a {
+				color: $primary1 !important;
+			}
+		}
+	}
+
+	&__title {
+	}
+
+	&__sub-title {
+	}
+}
+
+.callback {
+	&__form {
+		display: flex;
+		flex-direction: column;
+		@include adaptiveValue("gap", 20, 16);
+		.form__row {
+			display: flex;
+			@include adaptiveValue("gap", 20, 16);
+
+			@media (max-width: 606px) {
+				flex-direction: column;
+			}
+
+			button {
+				// flex: 1 0 234px;
+				min-width: 234px;
+			}
+		}
+	}
+}
+
 //====================система======================
 
 .first-screen__text {
@@ -430,70 +512,71 @@ nav ~ main {
 	background-color: $primary1-hover;
 }
 
-.form {
-	display: flex;
-	flex-direction: column;
-	// align-items: center;
-	max-width: 500px;
-	margin-inline: auto;
-	@include adaptiveValue("row-gap", 24, 16);
-	&__row {
-		display: flex;
-		column-gap: 20px;
-		justify-content: center;
-	}
-	.input[type="text"],
-	textarea {
-		display: block;
-		width: 100%;
-		@include adaptiveValue("padding-block", 20, 14);
-		@include adaptiveValue("padding-inline", 24, 16);
-		border-radius: 12px;
-		border: 2px solid;
-		border-color: $gray4;
-		background-color: transparent;
-		outline: 0;
-		transition: border-color $tm ease;
-		&::placeholder {
-			color: $gray4;
-		}
-		&:hover,
-		&:focus {
-			border-color: $gray3;
-		}
+// .form {
+// 	// display: flex;
+// 	// flex-direction: column;
+// 	// align-items: center;
+// 	max-width: 500px;
+// 	margin-inline: auto;
+// 	// @include adaptiveValue("row-gap", 24, 16);
+// 	&__row {
+// 	}
+// 	.input[type="text"],
+// 	.input[type="tel"],
+// 	.input[type="email"],
+// 	textarea {
+// 		// display: block;
+// 		// width: 100%;
+// 		// @include adaptiveValue("padding-block", 20, 14);
+// 		// @include adaptiveValue("padding-inline", 24, 16);
+// 		// border-radius: 12px;
+// 		// border: 2px solid;
+// 		// border-color: $gray4;
+// 		// background-color: transparent;
+// 		// outline: 0;
+// 		// transition: border-color $tm ease;
+// 		// &::placeholder {
+// 		// 	color: $gray4;
+// 		// }
+// 		// &:hover,
+// 		// &:focus {
+// 		// 	border-color: $gray3;
+// 		// }
 
-		&:disabled {
-			border-color: $gray6;
-			&::placeholder {
-				color: $gray6;
-			}
-		}
-	}
+// 		// &:disabled {
+// 		// 	border-color: $gray6;
+// 		// 	&::placeholder {
+// 		// 		color: $gray6;
+// 		// 	}
+// 		// }
+// 	}
 
-	&.form_light {
-		.input[type="text"],
-		textarea {
-			border-color: $add7;
-			color: white;
+// 	// &.form_light {
+// 	// 	.input[type="text"],
+// 	// 	.input[type="tel"],
+// 	// 	.input[type="email"],
+// 	// 	textarea {
+// 	// 		border-color: $add7;
+// 	// 		color: white;
 
-			&::placeholder {
-				color: $add7;
-				transition: color $tm ease;
-			}
-			&:hover,
-			&:focus {
-				border-color: $add8;
-				&::placeholder {
-					color: $add8;
-				}
-			}
+// 	// 		&::placeholder {
+// 	// 			color: $add7;
+// 	// 			transition: color $tm ease;
+// 	// 		}
+// 	// 		&:hover,
+// 	// 		&:focus {
+// 	// 			border-color: $add8;
+// 	// 			&::placeholder {
+// 	// 				color: $add8;
+// 	// 			}
+// 	// 		}
 
-			&:disabled {
-				border-color: $add8;
-				&::placeholder {
-					color: $add8;
-				}
-			}
-		}
-	}
-}
+// 	// 		&:disabled {
+// 	// 			border-color: $add8;
+// 	// 			&::placeholder {
+// 	// 				color: $add8;
+// 	// 			}
+// 	// 		}
+// 	// 	}
+// 	// }
+// }

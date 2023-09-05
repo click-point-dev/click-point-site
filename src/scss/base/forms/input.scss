@@ -7,13 +7,62 @@ textarea {
 	-webkit-appearance: none;
 	-moz-appearance: none;
 	appearance: none;
-}
-.input {
-	border-radius: 0 !important;
-	width: 100%;
+	outline: 0;
 	display: block;
-	padding: 0px 20px;
-	border: 1px solid #eee;
+	width: 100%;
+	@include adaptiveValue("padding-block", 20, 14);
+	@include adaptiveValue("padding-inline", 24, 16);
+	border-radius: 12px;
+	border: 2px solid;
+	border-color: $gray4;
+	background-color: transparent;
+	transition: border-color $tm ease;
+	&::placeholder {
+		color: $gray4;
+	}
+	&:hover,
+	&:focus {
+		border-color: $gray3;
+	}
+
+	&:disabled {
+		border-color: $gray6;
+		&::placeholder {
+			color: $gray6;
+		}
+	}
+}
+
+.form_light {
+	.input[type="text"],
+	.input[type="tel"],
+	.input[type="email"],
+	textarea {
+		border-color: $add7;
+		color: white;
+
+		&::placeholder {
+			color: $add7;
+			transition: color $tm ease;
+		}
+		&:hover,
+		&:focus {
+			border-color: $add8;
+			&::placeholder {
+				color: $add8;
+			}
+		}
+
+		&:disabled {
+			border-color: $add8;
+			&::placeholder {
+				color: $add8;
+			}
+		}
+	}
+}
+
+.input {
 	&._form-focus {
 	}
 	&._form-error {
@@ -21,5 +70,5 @@ textarea {
 }
 textarea.input {
 	resize: none;
-	padding: 0px 0px;
+	// padding: 0px 0px;
 }
