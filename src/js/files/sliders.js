@@ -85,14 +85,14 @@ function initSliders() {
 				disableOnInteraction: false,
 				// pauseOnMouseEnter: false,
 			},
-			speed: 3000,
+			speed: 3500,
 			loop: true,
 			// Responsive breakpoints: when window width is >= 320px (mobile first)
 			breakpoints: {
 				320: {
 					slidesPerView: 4,
 					spaceBetween: 35,
-					speed: 1000,
+					speed: 2500,
 					// autoplay: false,
 					// freeMode: {
 					// 	enabled: true,
@@ -101,6 +101,14 @@ function initSliders() {
 					// },
 				},
 				600: {
+					slidesPerView: 7,
+					spaceBetween: 40,
+					// freeMode: {
+					// 	enabled: true,
+					// 	momentum: true,
+					// },
+				},
+				1024: {
 					slidesPerView: 9,
 					spaceBetween: 40,
 					// freeMode: {
@@ -109,6 +117,14 @@ function initSliders() {
 					// },
 				},
 				1280: {
+					slidesPerView: 10,
+					spaceBetween: 50,
+					// freeMode: {
+					// 	enabled: true,
+					// 	momentum: true,
+					// },
+				},
+				1372: {
 					slidesPerView: 11,
 					spaceBetween: 60,
 					// freeMode: {
