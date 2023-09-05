@@ -62,6 +62,7 @@ h4,
 [class*="_text-s"] {
 	@include adaptiveValue("font-size", 14, 13);
 	@include adaptiveValue("line-height", 143%, 139%);
+	font-weight: 300;
 }
 
 [class*="_text-xs"] {
