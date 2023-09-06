@@ -219,7 +219,6 @@
 	&__list {
 		display: grid;
 		grid-template-columns: repeat(4, 1fr);
-		// grid-template-rows: repeat(4, 1fr);
 		grid-column-gap: 20px;
 		grid-row-gap: 20px;
 		@media (max-width: $burgerMenu) {
@@ -232,7 +231,7 @@
 
 		@media (max-width: 606px) {
 			grid-template-columns: 1fr;
-			grid-auto-flow: row;
+			// grid-auto-flow: row;
 		}
 	}
 
@@ -348,7 +347,6 @@
 	}
 
 	&__wrapper {
-		// -webkit-transition-timing-function: linear !important;
 		transition-timing-function: linear !important;
 		will-change: transform;
 	}
@@ -358,7 +356,6 @@
 		justify-content: center;
 		align-items: end;
 		will-change: transform;
-		//FIX хз надо проверить очистить кэш
 		filter: grayscale(100);
 	}
 
@@ -464,111 +461,3 @@
 		}
 	}
 }
-
-//====================система======================
-
-.first-screen__text {
-	display: flex;
-	flex-direction: column;
-	gap: 15px;
-	margin-bottom: rem(40);
-}
-
-nav:has(~ main) {
-	margin-bottom: rem(40);
-	padding: 50px 20px;
-	border-radius: 12px;
-	ul {
-		display: flex;
-		flex-wrap: wrap;
-		column-gap: 15px;
-
-		li a {
-			white-space: nowrap;
-		}
-	}
-}
-
-.block:has(> .btn),
-.block__form {
-	margin-bottom: rem(40);
-	padding: 50px 20px;
-	border-radius: 12px;
-	display: flex;
-	column-gap: 10px;
-	background-color: white;
-}
-
-.block:has(> [class*="light"]),
-nav ~ main {
-	background-color: $primary1-hover;
-}
-
-// .form {
-// 	// display: flex;
-// 	// flex-direction: column;
-// 	// align-items: center;
-// 	max-width: 500px;
-// 	margin-inline: auto;
-// 	// @include adaptiveValue("row-gap", 24, 16);
-// 	&__row {
-// 	}
-// 	.input[type="text"],
-// 	.input[type="tel"],
-// 	.input[type="email"],
-// 	textarea {
-// 		// display: block;
-// 		// width: 100%;
-// 		// @include adaptiveValue("padding-block", 20, 14);
-// 		// @include adaptiveValue("padding-inline", 24, 16);
-// 		// border-radius: 12px;
-// 		// border: 2px solid;
-// 		// border-color: $gray4;
-// 		// background-color: transparent;
-// 		// outline: 0;
-// 		// transition: border-color $tm ease;
-// 		// &::placeholder {
-// 		// 	color: $gray4;
-// 		// }
-// 		// &:hover,
-// 		// &:focus {
-// 		// 	border-color: $gray3;
-// 		// }
-
-// 		// &:disabled {
-// 		// 	border-color: $gray6;
-// 		// 	&::placeholder {
-// 		// 		color: $gray6;
-// 		// 	}
-// 		// }
-// 	}
-
-// 	// &.form_light {
-// 	// 	.input[type="text"],
-// 	// 	.input[type="tel"],
-// 	// 	.input[type="email"],
-// 	// 	textarea {
-// 	// 		border-color: $add7;
-// 	// 		color: white;
-
-// 	// 		&::placeholder {
-// 	// 			color: $add7;
-// 	// 			transition: color $tm ease;
-// 	// 		}
-// 	// 		&:hover,
-// 	// 		&:focus {
-// 	// 			border-color: $add8;
-// 	// 			&::placeholder {
-// 	// 				color: $add8;
-// 	// 			}
-// 	// 		}
-
-// 	// 		&:disabled {
-// 	// 			border-color: $add8;
-// 	// 			&::placeholder {
-// 	// 				color: $add8;
-// 	// 			}
-// 	// 		}
-// 	// 	}
-// 	// }
-// }
