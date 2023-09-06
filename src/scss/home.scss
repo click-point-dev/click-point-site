@@ -260,6 +260,20 @@
 		display: none;
 	}
 
+	background-size: unset;
+	background-position: center bottom;
+	&::after {
+		width: 100%;
+		height: 90%;
+		background-image: url("@img/how/bg-gradient.svg");
+		background-position: left center;
+		background-size: contain;
+		opacity: 0.15;
+	}
+	&::before {
+		display: none;
+	}
+
 	&__container {
 	}
 
