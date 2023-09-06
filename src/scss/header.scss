@@ -7,8 +7,8 @@
 	@include adaptiveValue("height", 172, 88);
 	transition:
 		background-color $tm ease,
+		top $tm ease,
 		height $tm ease;
-	scrollbar-gutter: stable;
 
 	.menu-open & {
 		background-color: white;
@@ -55,7 +55,8 @@
 				transition: fill $tm ease;
 			}
 		}
-		.menu-open & {
+		.menu-open &,
+		._header-scroll & {
 			svg #contrast path {
 				fill: $mainColor;
 			}
@@ -160,6 +161,10 @@
 			height: rem(2);
 			background-color: white;
 			border-radius: 100px;
+
+			._header-scroll & {
+				background-color: $mainColor;
+			}
 		}
 		&::before {
 			top: 0;
@@ -187,6 +192,35 @@
 				bottom: calc(50% - rem(1));
 				transform: rotate(45deg);
 			}
+		}
+	}
+}
+
+._header-scroll.header {
+	position: fixed;
+	left: 0;
+	top: -200px;
+	background-color: white;
+	height: rem(88);
+	padding-block: rem(8);
+	box-shadow: 0 3px 20px rgba(0, 0, 0, 0.089);
+	animation: scroll-down 1s ease forwards;
+
+	@keyframes scroll-down {
+		to {
+			top: 0;
+		}
+	}
+
+	.header__logo {
+		max-width: rem(72);
+	}
+
+	a {
+		color: $mainColor;
+		&:before {
+			background-color: $mainColor;
+			top: calc(100% - 10px);
 		}
 	}
 }
