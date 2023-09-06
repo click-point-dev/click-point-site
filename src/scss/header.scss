@@ -71,6 +71,12 @@
 			right: 15px;
 			top: 30px;
 		}
+
+		._header-scroll & {
+			@media (max-width: $tablet) {
+				top: 15px;
+			}
+		}
 	}
 
 	&__menu {
@@ -154,13 +160,13 @@
 		&::before,
 		&::after {
 			content: "";
-			transition: all 0.3s ease 0s;
 			right: 0;
 			position: absolute;
 			width: 100%;
 			height: rem(2);
 			background-color: white;
 			border-radius: 100px;
+			transition: all 0.3s ease 0s;
 
 			._header-scroll & {
 				background-color: $mainColor;
@@ -200,11 +206,15 @@
 	position: fixed;
 	left: 0;
 	top: -200px;
-	background-color: white;
+	background-color: rgba(255, 255, 255, 0.96);
 	height: rem(88);
 	padding-block: rem(8);
-	box-shadow: 0 3px 20px rgba(0, 0, 0, 0.089);
+	box-shadow: 0 3px 20px rgba(0, 0, 0, 0.067);
 	animation: scroll-down 1s ease forwards;
+
+	@media (max-width: $tablet) {
+		max-height: rem(64);
+	}
 
 	@keyframes scroll-down {
 		to {
@@ -214,6 +224,10 @@
 
 	.header__logo {
 		max-width: rem(72);
+
+		@media (max-width: $tablet) {
+			max-width: rem(48);
+		}
 	}
 
 	a {
