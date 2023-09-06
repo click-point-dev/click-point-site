@@ -1,8 +1,8 @@
 <!doctype html>
 <html lang="ru">
-	@@include('html/_head.htm',{ "title":"Главная" })
+	@@include('html/_head.htm',{ "title":"Главная" }) @@include('html/_loader.htm',{})
 	<body>
-		<div class="wrapper">
+		<div class="wrapper" style="opacity: 0; pointer-events: none">
 			@@include('html/_header.htm',{})
 			<main class="page">
 				<section class="page__first-screen first-screen">
@@ -251,7 +251,7 @@
 									<p class="card-how__discription _text-bright">анализируем результаты на каждом этапе воронки</p>
 								</li>
 								<li class="how__card card-how card-how_last">
-									<a data-da=".card-how__dinamic,479.98" class="_text-bright" href="#">
+									<a data-da=".card-how__dinamic,479.98" data-popup="#popup" class="_text-bright" href="#">
 										Смотреть
 										<br />
 										кейсы
@@ -367,7 +367,58 @@
 						</div>
 					</div>
 				</section>
-				<div class="__container block">
+				<section class="page__main-form main-form">
+					<div class="main-form__decor decor">
+						<div class="decor__image">
+							<img src="@img/main-form/decor-1.png" alt="декоративный цилиндрический элемент" />
+						</div>
+						<div class="decor__image">
+							<img src="@img/main-form/decor-2.png" alt="декоративный цилиндрический элемент" />
+						</div>
+						<div class="decor__image">
+							<img src="@img/main-form/decor-3.png" alt="декоративный цилиндрический элемент" />
+						</div>
+					</div>
+					<div class="main-form__container">
+						<div class="main-form__content">
+							<div class="main-form__image">
+								<img src="@img/main-form/rectangle-main.png" alt="стеклянный куб" />
+							</div>
+							<div class="main-form__body">
+								<div class="main-form__head">
+									<h2 class="main-form__title _text-bright">Поработаем вместе?</h2>
+									<p id="p" class="main-form__sub-title _text-bright">
+										Оставьте заявку, чтобы узнать подробнее об услугах. Сориентируем вас по стоимости и подготовим
+										персональное коммерческое предложение
+									</p>
+								</div>
+
+								<form class="main-form__form form form_light" action="#" method="post">
+									<div class="form__row">
+										<input class="input" type="text" placeholder="Имя" />
+									</div>
+									<div class="form__row">
+										<input class="input" type="tel" placeholder="Телефон" />
+										<input class="input" type="email" placeholder="E-mail" />
+									</div>
+									<div class="form__row">
+										<textarea name="" id="" rows="4" placeholder="Текст"></textarea>
+									</div>
+									<div class="form__row">
+										<p class="_text-xs _text-bright">
+											Нажимая на кнопку «Отправить», я принимаю условия
+											<a href="#">Политики конфиденциальности</a>
+											, и даю
+											<a href="#">согласие на обработку персональных данных</a>
+										</p>
+										<button href="#" class="form__button btn btn_light btn_xl">Отправить</button>
+									</div>
+								</form>
+							</div>
+						</div>
+					</div>
+				</section>
+				<!-- <div class="__container block">
 					<div class="first-screen__text">
 						<h1>Lorem, ipsum dolor sit amet consectetur adipisicing.</h1>
 						<h2>Lorem, ipsum dolor sit amet consectetur adipisicing.</h2>
@@ -452,7 +503,7 @@
 							<div class="form__row"><textarea name="" id="" rows="4" placeholder="Текст"></textarea></div>
 						</form>
 					</div>
-				</div>
+				</div> -->
 			</main>
 			@@include('html/_footer.htm',{})
 		</div>

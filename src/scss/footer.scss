@@ -12,14 +12,37 @@
 
 	&__content {
 		@include adaptiveValue("padding-block", 64, 40);
+		@media (max-width: $burgerMenu) {
+			flex-wrap: wrap;
+			justify-content: space-evenly;
+			gap: rem(28);
+		}
+
+		@media (max-width: 606px) {
+			flex-direction: column;
+		}
 	}
 
 	&__copyrite {
 		@include adaptiveValue("padding-block", 24, 20);
 		border-top: 1px solid $gray6;
+		flex-wrap: wrap;
+		column-gap: rem(30);
+		p {
+			margin-bottom: 0 !important;
+		}
 	}
 
 	&__contacts {
+		@media (max-width: $burgerMenu) {
+			flex: 1 0 100%;
+			align-content: center;
+			text-align: center;
+		}
+
+		@media (max-width: 606px) {
+			text-align: left;
+		}
 	}
 
 	&__services {
@@ -28,27 +51,42 @@
 	&__title {
 		@include adaptiveValue("margin-bottom", 20, 15);
 	}
-
+	//TODO уйти от max-height для более надежного футера
 	&__list {
 		display: flex;
 		flex-direction: column;
 		flex-wrap: wrap;
-		column-gap: 96px;
+		// column-gap: 96px;
+		@include adaptiveValue("column-gap", 96, 24);
 		row-gap: 12px;
 		max-height: 216px;
+		@include adaptiveValue("max-height", 216, 190);
 	}
 
 	&__item {
 		transition: color $tm ease;
+
 		&:hover {
 			color: $gray4;
 		}
+		//FIX пернос слов на smallMobile .
 		a {
 			padding-block: rem(5);
 		}
 	}
 
 	&__navigate {
+		.footer__list {
+			@media (max-width: 606px) {
+				// flex-direction: row;
+				// flex-wrap: wrap;
+				// justify-content: start;
+				// .footer__item {
+				// 	flex: 0 1 30%;
+				// }
+				max-height: 55px;
+			}
+		}
 	}
 
 	&__copirite {

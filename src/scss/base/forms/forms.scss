@@ -1,7 +1,17 @@
 //<FORM>
 // Снипет (HTML):
 .form {
+	display: flex;
+	flex-direction: column;
+	@include adaptiveValue("gap", 20, 16);
+
 	&__row {
+		display: flex;
+		@include adaptiveValue("gap", 20, 16);
+
+		@media (max-width: 606px) {
+			flex-direction: column;
+		}
 	}
 	&__column {
 	}
@@ -10,6 +20,7 @@
 	&__input {
 	}
 	&__button {
+		min-width: 234px;
 	}
 	&__error {
 	}
@@ -22,7 +33,7 @@
 
 // <INPUTS>
 // Снипет (HTML): inp
-// @import "input";
+@import "input";
 
 // <CHECK>
 // Снипет (HTML): chk

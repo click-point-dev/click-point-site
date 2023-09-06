@@ -8,6 +8,7 @@
 	transition:
 		background-color $tm ease,
 		height $tm ease;
+	scrollbar-gutter: stable;
 
 	.menu-open & {
 		background-color: white;
