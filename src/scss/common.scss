@@ -402,6 +402,7 @@ nav a,
 		}
 
 		@media (max-width: 606px) {
+			grid-row: span 1;
 			grid-column: span 1;
 		}
 

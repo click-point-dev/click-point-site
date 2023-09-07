@@ -3,7 +3,6 @@
 	width: 100%;
 	z-index: 100;
 	@include adaptiveValue("padding-block", 30, 10);
-	// height: 172px;
 	@include adaptiveValue("height", 172, 88);
 	transition:
 		background-color $tm ease,
@@ -210,6 +209,7 @@
 	height: rem(88);
 	padding-block: rem(8);
 	box-shadow: 0 3px 20px rgba(0, 0, 0, 0.067);
+	will-change: transform;
 	animation: scroll-down 1s ease forwards;
 
 	@media (max-width: $tablet) {
