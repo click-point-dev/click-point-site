@@ -3,20 +3,8 @@
 .first-screen {
 	position: relative;
 	overflow: hidden;
-	&__background {
-		position: absolute;
-		width: 100%;
-		height: 100%;
-		left: 0;
-		top: 0;
-		background-color: $primary-bg;
 
-		img {
-			width: 110%;
-			height: 110%;
-			object-fit: cover;
-			mix-blend-mode: screen;
-		}
+	&__background {
 	}
 
 	&__container {
@@ -27,11 +15,11 @@
 		position: absolute;
 		width: 100%;
 		height: 100%;
+		pointer-events: none;
 
 		&_top,
 		&_center,
 		&_bottom {
-			pointer-events: none;
 			mix-blend-mode: screen;
 			will-change: transform;
 			img {
@@ -96,59 +84,6 @@
 				@include adaptiveValue("top", 590, 450);
 			}
 		}
-
-		// &::before,
-		// &::after {
-		// 	content: "";
-		// 	position: absolute;
-		// 	// width: 128px;
-		// 	// height: 135px;
-		// 	@include adaptiveValue("width", 128, 75);
-		// 	@include adaptiveValue("height", 135, 78);
-		// 	z-index: 3;
-		// 	pointer-events: none;
-		// 	mix-blend-mode: screen;
-		// 	will-change: transform;
-		// }
-
-		// &::before {
-		// 	background-image: url("@img/first-screen/glass-geometries-top.png");
-		// 	background-repeat: no-repeat;
-		// 	right: 33%;
-		// 	top: 15%;
-		// 	background-size: 100%;
-		// 	transform: scale(0.5) rotateZ(180deg);
-		// 	filter: blur(6px);
-		// 	opacity: 0.5;
-
-		// 	@media (max-width: $burgerMenu) {
-		// 		@include adaptiveValue("left", 350, 10);
-		// 		@include adaptiveValue("top", 120, 100);
-		// 		transform: scale(0.6) rotateZ(180deg);
-		// 		filter: blur(3px);
-		// 	}
-		// }
-
-		// &::after {
-		// 	background-image: url("@img/first-screen/glass-geometries-bottom.png");
-		// 	background-repeat: no-repeat;
-		// 	right: -8%;
-		// 	bottom: 14%;
-		// 	background-size: contain;
-		// 	opacity: 1;
-		// 	@media (max-width: 1600px) {
-		// 		right: 1%;
-		// 	}
-
-		// 	@media (max-width: 709px) {
-		// 		@include adaptiveValue("top", 540, 350, 709, 360, 1);
-		// 		@include adaptiveValue("right", 250, -10);
-		// 	}
-		// 	@media (min-width: 710px) and (max-width: $burgerMenu) {
-		// 		@include adaptiveValue("right", 280, 70);
-		// 		@include adaptiveValue("top", 590, 450);
-		// 	}
-		// }
 	}
 
 	&__body {
@@ -169,6 +104,7 @@
 			// padding-top: 76px;
 			// justify-content: space-between;
 		}
+
 		@media (orientation: landscape) {
 			@include adaptiveValue("padding-block", 152, 68);
 			row-gap: 60px;
@@ -330,36 +266,20 @@
 
 //====================how======================
 
-.how,
-.main-form {
-	background-color: $primary-bg;
-	@include adaptiveValue("padding-block", 144, 56);
-	background-size: unset;
-	background-position: center bottom;
-	&::after {
-		width: 100%;
-		height: 90%;
-		background-image: url("@img/how/bg-gradient.svg");
-		background-position: left center;
-		background-size: contain;
-		opacity: 0.15;
-	}
-	&::before {
-		display: none;
-	}
+.how {
+	&__background {
+		&::before {
+			display: none;
+		}
 
-	background-size: unset;
-	background-position: center bottom;
-	&::after {
-		width: 100%;
-		height: 90%;
-		background-image: url("@img/how/bg-gradient.svg");
-		background-position: left center;
-		background-size: contain;
-		opacity: 0.15;
-	}
-	&::before {
-		display: none;
+		&::after {
+			background-image: url("@img/how/bg-gradient-1.svg");
+			background-position: left center;
+			background-size: contain;
+			@include adaptiveValue("background-position-y", 0, 100);
+			@include adaptiveValue("background-position-x", -150, 0);
+			opacity: 0.5;
+		}
 	}
 
 	&__container {
@@ -459,8 +379,6 @@
 ///====================form-main======================
 
 .main-form {
-	overflow: hidden;
-	position: relative;
 	&__decor {
 		position: absolute;
 		pointer-events: none;
@@ -537,6 +455,7 @@
 
 	&__head {
 		text-align: left;
+		margin-bottom: rem(28);
 	}
 
 	&__title {
