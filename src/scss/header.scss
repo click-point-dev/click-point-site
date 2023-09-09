@@ -151,7 +151,7 @@
 	@media (max-width: $burgerMenu) {
 		display: block;
 		position: relative;
-		@include adaptiveValue("width", 45, 25);
+		@include adaptiveValue("width", 42, 25);
 		@include adaptiveValue("height", 30, 16);
 		cursor: pointer;
 		z-index: 5;
@@ -162,10 +162,10 @@
 			right: 0;
 			position: absolute;
 			width: 100%;
-			height: rem(2);
+			height: 2px;
 			background-color: white;
 			border-radius: 100px;
-			transition: all 0.3s ease 0s;
+			transition: all $tm ease 0s;
 
 			._header-scroll & {
 				background-color: $mainColor;
@@ -204,21 +204,28 @@
 ._header-scroll.header {
 	position: fixed;
 	left: 0;
-	top: -200px;
+	top: 0;
+	transform: translate3d(0, -300px, 0);
 	background-color: rgba(255, 255, 255, 0.96);
 	height: rem(88);
+
+	.menu-open & {
+		height: 100vh;
+	}
+
 	padding-block: rem(8);
 	box-shadow: 0 3px 20px rgba(0, 0, 0, 0.067);
 	will-change: transform;
 	animation: scroll-down 1s ease forwards;
+	// transition: unset;
 
 	@media (max-width: $tablet) {
-		max-height: rem(64);
+		height: rem(64);
 	}
 
 	@keyframes scroll-down {
 		to {
-			top: 0;
+			transform: translate3d(0, 0px, 0);
 		}
 	}
 
