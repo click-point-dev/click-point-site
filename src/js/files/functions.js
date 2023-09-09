@@ -156,6 +156,9 @@ export let _slideToggle = (target, duration = 500) => {
 	}
 };
 // Вспомогательные модули блокировки прокрутки и скочка ====================================================================================================================================================================================================================================================================================
+
+//BUG блокировка при попапе из бургер-меню
+
 export let bodyLockStatus = true;
 export let bodyLockToggle = (delay = 500) => {
 	if (document.documentElement.classList.contains('lock')) {
@@ -437,7 +440,8 @@ export function tabs() {
 		}
 	}
 }
-// Модуль работы с меню (бургер) =======================================================================================================================================================================================================================
+
+//THIS Модуль работы с меню (бургер)
 /*
 Документация по работе в шаблоне: https://template.fls.guru/template-docs/menu-burger.html
 Сниппет (HTML): menu
@@ -447,6 +451,7 @@ export function menuInit() {
 		document.addEventListener('click', function (e) {
 			if (bodyLockStatus && e.target.closest('.icon-menu')) {
 				bodyLockToggle();
+				console.log('перключение из бургера');
 				document.documentElement.classList.toggle('menu-open');
 			}
 		});
@@ -454,10 +459,12 @@ export function menuInit() {
 }
 export function menuOpen() {
 	bodyLock();
+	console.log('заблокировано из бургера');
 	document.documentElement.classList.add('menu-open');
 }
 export function menuClose() {
 	bodyUnlock();
+	console.log('разблокировано из бургера');
 	document.documentElement.classList.remove('menu-open');
 }
 // Модуль "показать еще" =======================================================================================================================================================================================================================

@@ -1,0 +1,225 @@
+.vacancies {
+	&__first-screen {
+		overflow: hidden;
+		height: 100vh;
+		min-height: 700px;
+	}
+
+	.first-screen {
+		&__background {
+		}
+
+		&__container {
+			position: relative;
+		}
+
+		&__image {
+			pointer-events: none;
+			position: absolute;
+			// width: 1183px;
+			max-width: unset;
+			@include adaptiveValue("width", 1183, 470);
+			@include adaptiveValue("right", -250, -30);
+			@include adaptiveValue("bottom", -40, -150);
+			img {
+				width: 100%;
+			}
+		}
+
+		&__body {
+			&:not(:last-child) {
+				@include adaptiveValue("margin-bottom", 32, 20);
+			}
+
+			@media (max-width: $burgerMenu) {
+				@include adaptiveValue("padding-top", 150, 109, 1024, 360, 1);
+			}
+		}
+
+		&__content {
+			max-width: 990px;
+		}
+
+		&__title {
+			@include adaptiveValue("font-size", 56, 32);
+			@include adaptiveValue("margin-bottom", 56, 8);
+		}
+
+		&__sub-title {
+		}
+
+		&__scroll {
+			display: flex;
+			max-width: 211px;
+			gap: 10px;
+			align-items: center;
+
+			@media (max-width: $burgerMenu) {
+				display: none;
+			}
+		}
+	}
+	.backgrount-stars {
+	}
+}
+
+//====================vacancies======================
+.vacancies-list {
+	&__container {
+	}
+
+	&__head {
+		@include adaptiveValue("margin-bottom", 48, 28);
+	}
+
+	&__title {
+	}
+
+	&__body {
+	}
+
+	&__spollers {
+	}
+}
+
+.spollers__title {
+	transition: color $tm ease;
+}
+
+.spollers__item:hover .spollers__title {
+	color: $primary1;
+}
+
+.spollers-body {
+	&__row {
+		display: flex;
+		@include adaptiveValue("gap", 50, 32);
+
+		@include adaptiveValue("padding-block", 32, 28);
+		border-bottom: 1px solid $gray7;
+
+		@media (max-width: $tablet) {
+			flex-direction: column;
+			align-items: center;
+		}
+	}
+
+	&__content {
+	}
+
+	&__section {
+		display: flex;
+		@include adaptiveValue("gap", 16, 12);
+		align-items: start;
+		&:not(:last-child) {
+			@include adaptiveValue("margin-bottom", 32, 20);
+		}
+
+		@media (max-width: $tablet) {
+			flex-direction: column;
+		}
+	}
+
+	&__title {
+		text-transform: none;
+		flex: 0 1 26%;
+	}
+
+	&__list {
+		flex: 1 1 52%;
+		ul {
+			li {
+				position: relative;
+				@include adaptiveValue("font-size", 18, 14);
+				font-weight: 300;
+				padding-left: 20px;
+				&:not(:last-child) {
+					@include adaptiveValue("margin-bottom", 18, 12);
+				}
+
+				&:before {
+					content: "";
+					position: absolute;
+					top: 6px;
+					left: 0;
+					width: 0;
+					height: 0;
+					border-bottom: 4px solid transparent;
+					border-top: 4px solid transparent;
+					border-left: 8px solid $primary1;
+				}
+			}
+		}
+	}
+
+	&__action {
+		display: flex;
+		align-items: end;
+
+		a {
+			height: 192px;
+		}
+		// align-self: flex-end;
+	}
+}
+
+///====================response======================
+
+.response-vacancies {
+	background-image: url("@img/vacancies/bg-cosmonaut.webp");
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: 60% center;
+	@media (max-width: 606px) {
+		min-height: 650px;
+		background-position: 75% bottom;
+	}
+
+	.backgrount-stars {
+		background-color: unset;
+		z-index: 0;
+		&::before {
+			background-image: url("@img/vacancies/bg-gradient-cosmonaut_top.svg");
+			background-repeat: no-repeat;
+			@include adaptiveValue("background-size", 832, 600);
+			@include adaptiveValue("background-position-y", -400, 0);
+			@include adaptiveValue("background-position-x", -150, -200);
+			// filter: blur(70px);
+			// opacity: 0.3;
+		}
+
+		&::after {
+			background-image: url("@img/vacancies/bg-gradient-cosmonaut_bottom.svg");
+			background-repeat: no-repeat;
+			@include adaptiveValue("background-size", 870, 500);
+			@include adaptiveValue("background-position-y", 200, 300);
+			@include adaptiveValue("background-position-x", 1280, 0);
+			filter: blur(70px);
+			// opacity: 0.3;
+		}
+	}
+
+	&__container {
+		position: relative;
+		z-index: 10;
+	}
+
+	&__content {
+		@include adaptiveValue("max-width", 560, 400);
+		@media (max-width: 606px) {
+			max-width: 100%;
+		}
+
+		button {
+			@media (max-width: 606px) {
+				width: 100%;
+			}
+		}
+	}
+
+	&__title {
+	}
+
+	&__text {
+	}
+}
