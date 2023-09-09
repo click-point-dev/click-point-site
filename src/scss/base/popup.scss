@@ -86,6 +86,14 @@ body::after {
 .callback-popup {
 	.form__row {
 		flex-direction: column-reverse;
+
+		&:last-child {
+			margin-top: 4px;
+		}
+	}
+
+	.popup__title {
+		margin-bottom: 28px;
 	}
 }
 
