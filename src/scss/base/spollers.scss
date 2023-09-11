@@ -24,10 +24,11 @@
 		&::after {
 			content: "\e900";
 			font-family: "icons";
-			font-size: 25px;
+			@include adaptiveValue("font-size", 24, 17);
 			position: absolute;
 			right: 10px;
 			top: 50%;
+			transform: translateY(-50%) rotate(0);
 			will-change: transform;
 			transition:
 				transform $tm ease 0s,
@@ -35,7 +36,7 @@
 		}
 		&._spoller-active {
 			&::after {
-				transform: rotate(90deg);
+				transform: translateY(-50%) rotate(90deg);
 				color: $primary1;
 			}
 		}
