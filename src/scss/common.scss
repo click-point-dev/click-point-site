@@ -400,7 +400,7 @@ nav a,
 
 //====================loader======================
 
-.lock .loader {
+.loading .loader {
 	overflow: hidden;
 	background-color: white;
 	position: fixed;
@@ -434,7 +434,7 @@ nav a,
 	overflow: hidden;
 }
 
-.isLoad .loader {
+.loader.isLoad {
 	visibility: hidden;
 	display: none;
 	overflow: hidden;

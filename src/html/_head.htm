@@ -7,6 +7,7 @@
 
 	<script>
 		document.documentElement.classList.add('lock');
+		document.documentElement.classList.add('loading');
 		window.onload = function () {
 			const wrapper = document.querySelector('.wrapper');
 
@@ -14,13 +15,14 @@
 				document.body.classList.add('loader_hiding');
 				wrapper.style.pointerEvents = 'all';
 				wrapper.style.opacity = 1;
-			}, 1000);
+			}, 700);
 
 			window.setTimeout(function () {
 				document.documentElement.classList.remove('lock');
-				document.body.classList.add('isLoad');
+				document.documentElement.classList.remove('loading');
+				document.querySelector('.loader').classList.add('isload');
 				document.body.classList.remove('loader_hiding');
-			}, 2000);
+			}, 1800);
 		};
 	</script>
 	<!-- <style>body{opacity: 0;}</style> -->

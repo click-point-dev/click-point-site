@@ -221,7 +221,7 @@
 	padding-block: rem(8);
 	box-shadow: 0 3px 20px rgba(0, 0, 0, 0.067);
 	will-change: transform;
-	animation: scroll-down 1s ease forwards;
+	animation: scroll-down 1s 1s ease forwards;
 	// transition: unset;
 
 	@media (max-width: $tablet) {
@@ -246,7 +246,7 @@
 		color: $mainColor;
 		&:before {
 			background-color: $mainColor;
-			top: calc(100% - 10px);
+			top: calc(100% - 2px);
 		}
 	}
 }
