@@ -120,6 +120,11 @@
 			white-space: nowrap;
 			.menu-open & {
 				color: $mainColor;
+				@include adaptiveValue("font-size", 32, 14);
+				@include adaptiveValue("letter-spacing", 2, 0);
+				&:before {
+					background-color: $mainColor;
+				}
 			}
 		}
 	}
