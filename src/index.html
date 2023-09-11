@@ -3,7 +3,7 @@
 	@@include('html/_head.htm',{ "title":"Главная" }) @@include('html/_loader.htm',{})
 	<body>
 		<div class="wrapper" style="opacity: 0; pointer-events: none">
-			@@include('html/_header.htm',{})
+			@@include('html/_header-index.htm',{})
 			<main class="page">
 				<section class="page__first-screen first-screen">
 					<div class="first-screen__background backgrount-stars">
@@ -96,7 +96,7 @@
 						</ul>
 					</div>
 				</section>
-				<section class="page__services services">
+				<section class="page__services services" name="servicies" id="servicies">
 					<div class="services__container">
 						<div class="services__body">
 							<ul class="services__list">

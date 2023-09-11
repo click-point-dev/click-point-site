@@ -343,12 +343,9 @@
 	}
 
 	&__slider {
+		pointer-events: none;
 		&_reverse {
-			@media (max-width: $mobileSmall) {
-				display: none;
-				pointer-events: none;
-				opacity: 0;
-			}
+			pointer-events: none;
 		}
 		&:not(:last-child) {
 			margin-bottom: rem(30);
