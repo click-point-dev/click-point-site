@@ -83,7 +83,8 @@ body::after {
 }
 
 //====================callback-popup======================
-.callback-popup {
+.callback-popup,
+.resume-popup {
 	.form__row {
 		flex-direction: column-reverse;
 
@@ -111,3 +112,5 @@ body::after {
 		color: white;
 	}
 }
+
+//====================resume-popup======================

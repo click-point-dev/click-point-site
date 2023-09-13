@@ -33,6 +33,100 @@ textarea {
 	}
 }
 
+.form {
+	// .form__row
+
+	&__row {
+	}
+
+	// .form__input-file
+
+	&__input-file {
+	}
+}
+.input-file {
+	position: relative;
+	// .input-file__input
+
+	&__input {
+		display: flex;
+		gap: 10px;
+
+		&:hover .input-file__btn span:before {
+			background-color: $primary1-hover;
+		}
+
+		input {
+			position: absolute;
+			inset: 0;
+			opacity: 0;
+			font-size: 0;
+			cursor: pointer;
+		}
+
+		.input-file__btn {
+			pointer-events: none;
+
+			span:before {
+				background-color: $primary1;
+				color: white;
+			}
+		}
+	}
+
+	// .input-file__btn
+
+	&__btn {
+		span {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			cursor: pointer;
+			gap: 10px;
+
+			&::before {
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				width: 40px;
+				height: 40px;
+				border-radius: 100px;
+				color: $primary1;
+				background-color: $primary1-disable;
+				transition:
+					background-color $tm ease,
+					color $tm ease;
+			}
+		}
+	}
+
+	// .input-file__description
+
+	&__description {
+		text-align: left;
+		p {
+			margin-bottom: 0 !important;
+		}
+	}
+
+	// .input-file__files
+
+	&__files {
+		display: flex;
+		flex-direction: column;
+		gap: 10px;
+		align-items: start;
+		text-align: left;
+
+		.input-file__btn:hover {
+			span:before {
+				background-color: $primary2-hover;
+				color: white;
+			}
+		}
+	}
+}
+
 .form_light {
 	.input[type="text"],
 	.input[type="tel"],

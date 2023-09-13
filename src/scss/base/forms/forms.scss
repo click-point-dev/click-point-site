@@ -13,6 +13,10 @@
 			flex-direction: column;
 		}
 	}
+
+	&__input-file {
+	}
+
 	&__column {
 	}
 	&__line {
@@ -45,7 +49,7 @@
 
 // <SELECT>
 // Снипет (HTML): sel
-// @import "select";
+@import "select";
 
 // <RATING>
 // Снипет (HTML): rating

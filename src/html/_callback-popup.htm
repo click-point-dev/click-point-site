@@ -19,10 +19,24 @@
 								, и даю
 								<a href="#">согласие на обработку персональных данных</a>
 							</p>
-							<button data-popup="#accept-popup" href="#" class="form__button btn btn_xl">Отправить</button>
+							<button data-popup="#popup-accept" href="#" class="form__button btn btn_xl">Отправить</button>
 						</div>
 					</form>
 				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div id="popup-accept" aria-hidden="true" class="accept-popup popup">
+	<div class="popup__wrapper">
+		<div class="popup__content">
+			<button data-close type="button" class="popup__close"><span class="_icon-close"></span></button>
+			<div class="popup__body">
+				<div class="_icon-check"></div>
+				<h6 class="popup__title">Ваша заявка отправлена</h6>
+				<p>Наш менеджер свяжется с вами в ближайшее время</p>
+				<button data-close class="btn" type="button">Закрыть</button>
 			</div>
 		</div>
 	</div>
