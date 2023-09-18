@@ -212,7 +212,7 @@
 	top: 0;
 	transform: translate3d(0, -300px, 0);
 	background-color: rgba(255, 255, 255, 0.96);
-	height: rem(88);
+	height: rem(80);
 
 	.menu-open & {
 		height: 100vh;
@@ -225,7 +225,7 @@
 	// transition: unset;
 
 	@media (max-width: $tablet) {
-		height: rem(64);
+		@include adaptiveValue("height", 64, 54);
 	}
 
 	@keyframes scroll-down {
