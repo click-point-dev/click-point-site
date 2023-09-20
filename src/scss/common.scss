@@ -1,5 +1,4 @@
 //====================отступы блоков на страницазх======================
-//====================отступы блоков на страницазх======================
 .page,
 .vacancies {
 	&__first-screen,
@@ -21,8 +20,7 @@
 .page,
 .vacancies {
 	&__how,
-	&__main-form,
-	&__response {
+	&__main-form {
 		position: relative;
 		overflow: hidden;
 
@@ -131,7 +129,7 @@ h5,
 	@include adaptiveValue("font-size", 32, 24);
 	font-weight: 500;
 	&:not(:last-child) {
-		margin-bottom: rem(12);
+		margin-bottom: 12px;
 	}
 }
 
@@ -140,7 +138,7 @@ h6,
 	@include adaptiveValue("font-size", 28, 18);
 	font-weight: 500;
 	&:not(:last-child) {
-		margin-bottom: rem(12);
+		margin-bottom: 12px;
 	}
 }
 
@@ -161,11 +159,20 @@ h6,
 	}
 }
 
+[class~="_text-l"] {
+	@include adaptiveValue("font-size", 18, 14);
+}
+
+[class~="_text-xl"] {
+	@include adaptiveValue("font-size", 20, 18);
+	font-weight: 500;
+}
+
 [class*="_text-bright"] {
 	color: white;
 }
 
-[class*="__sub-title"] {
+[class~="_sub-title"] {
 	@include adaptiveValue("font-size", 20, 16);
 	// @include adaptiveValue("line-height", 160%, 150%);
 	line-height: 160%;
@@ -604,5 +611,43 @@ nav a,
 			max-width: 182px;
 			margin-inline: auto;
 		}
+	}
+}
+
+//====================виджет user-card======================
+
+.user-card {
+	display: flex;
+	align-items: center;
+	@include adaptiveValue("gap", 24, 12);
+	// .user-card__avatar
+
+	&__avatar {
+		@include adaptiveValue("width", 96, 64);
+		aspect-ratio: 1;
+		border-radius: 100px;
+		overflow: hidden;
+
+		img {
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+		}
+	}
+
+	// .user-card__description
+
+	&__description {
+	}
+
+	// .user-card__title
+
+	&__title {
+	}
+
+	// .user-card__text
+
+	&__text {
+		font-weight: 300;
 	}
 }
