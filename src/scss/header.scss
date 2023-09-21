@@ -3,7 +3,7 @@
 	width: 100%;
 	z-index: 100;
 	@include adaptiveValue("padding-block", 30, 10);
-	@include adaptiveValue("height", 172, 88);
+	@include adaptiveValue("height", 172, 120);
 	transition:
 		background-color $tm ease,
 		top $tm ease,
@@ -33,7 +33,17 @@
 			flex-direction: column;
 			align-items: start;
 			justify-content: space-between;
-			height: 100%;
+			transition:
+				background-color $tm ease,
+				top $tm ease,
+				height $tm ease;
+			.menu-open & {
+				height: 100%;
+			}
+		}
+
+		.page-navigation__body {
+			display: none;
 		}
 	}
 
@@ -72,7 +82,7 @@
 		}
 
 		._header-scroll & {
-			@media (max-width: $tablet) {
+			@media (max-width: $burgerMenu) {
 				top: 15px;
 			}
 		}
@@ -206,27 +216,20 @@
 	}
 }
 
+//====================header-scroll======================
+
 ._header-scroll.header {
 	position: fixed;
 	left: 0;
 	top: 0;
 	transform: translate3d(0, -300px, 0);
 	background-color: rgba(255, 255, 255, 0.96);
-	height: rem(80);
-
-	.menu-open & {
-		height: 100vh;
-	}
-
 	padding-block: rem(8);
+	@include adaptiveValue("height", 90, 56);
 	box-shadow: 0 3px 20px rgba(0, 0, 0, 0.067);
 	will-change: transform;
 	animation: scroll-down 1s 1s ease forwards;
-	// transition: unset;
-
-	@media (max-width: $tablet) {
-		@include adaptiveValue("height", 64, 54);
-	}
+	z-index: 150;
 
 	@keyframes scroll-down {
 		to {
@@ -234,10 +237,43 @@
 		}
 	}
 
+	@media (max-width: $burgerMenu) {
+		@include adaptiveValue("height", 66, 56);
+	}
+
+	.menu-open & {
+		height: 100vh;
+	}
+
+	&:has(.page-navigation__body) {
+		@include adaptiveValue("height", 157, 153, 1920, 1024, 1);
+		@media (max-width: $burgerMenu) {
+			@include adaptiveValue("height", 132, 114, 1024, 360, 1);
+		}
+
+		.menu-open & {
+			height: 100vh;
+		}
+	}
+
+	.header__row {
+		&:has(> .page-navigation__body) {
+			border-top: 1px solid $gray4;
+		}
+
+		.page-navigation__body {
+			display: block;
+			position: relative;
+			z-index: 100;
+
+			@include adaptiveValue("padding-top", 20, 12);
+			// padding-bottom: 15px;
+		}
+	}
+
 	.header__logo {
 		max-width: rem(72);
-
-		@media (max-width: $tablet) {
+		@media (max-width: $burgerMenu) {
 			max-width: rem(48);
 		}
 	}
