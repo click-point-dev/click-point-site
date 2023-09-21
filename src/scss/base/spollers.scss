@@ -35,6 +35,7 @@
 				color $tm ease;
 		}
 		&._spoller-active {
+			color: $primary1;
 			&::after {
 				transform: translateY(-50%) rotate(90deg);
 				color: $primary1;

@@ -231,7 +231,6 @@
 }
 
 //====================services======================
-//TODO декор для больших карточек
 .services {
 	&__container {
 	}
@@ -308,7 +307,7 @@
 		}
 
 		@media (max-width: $burgerMenu) {
-			flex-wrap: wrap;
+			// flex-wrap: wrap;
 			justify-content: start;
 		}
 

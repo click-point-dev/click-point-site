@@ -216,7 +216,8 @@ nav a,
 		transition: transform $tm ease;
 		will-change: transform;
 	}
-	&:hover:before {
+	&:hover:before,
+	&._navigator-active:before {
 		transform: translate3d(0, 0, 0);
 	}
 }
@@ -331,7 +332,8 @@ nav a,
 	border-color: $gray5;
 	color: $mainColor;
 	&:hover,
-	&:active {
+	&:active,
+	&._navigator-active {
 		background-color: $primary1-disable;
 		border-color: $primary1;
 		color: $primary1-hover;
@@ -526,7 +528,7 @@ nav a,
 	}
 	&:hover &__button {
 		opacity: 1;
-		pointer-events: all;
+		pointer-events: all !important;
 	}
 
 	&__image {
@@ -608,8 +610,12 @@ nav a,
 		}
 
 		@media (max-width: $mobileSmall) {
-			max-width: 182px;
+			max-width: 196px;
 			margin-inline: auto;
+			text-align: center;
+			a {
+				width: 100%;
+			}
 		}
 	}
 }

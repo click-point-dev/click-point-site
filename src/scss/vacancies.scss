@@ -20,7 +20,6 @@
 		&__image {
 			pointer-events: none;
 			position: absolute;
-			// width: 1183px;
 			max-width: unset;
 			@include adaptiveValue("width", 1183, 470);
 			@include adaptiveValue("right", -270, -30);
@@ -182,6 +181,7 @@
 		background: linear-gradient(0deg, #010135 0%, rgba(1, 1, 53, 0) 100%);
 		left: 0;
 		bottom: 0;
+		pointer-events: none;
 	}
 
 	&__container {
