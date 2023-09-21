@@ -397,26 +397,16 @@
 						</div>
 					</div>
 				</div>
-				<section class="page__main-form main-form" id="start-work" data-watch="navigator" data-watch-threshold="0.3">
+				<section
+					class="services__main-form main-form"
+					id="start-work"
+					data-watch="navigator"
+					data-watch-threshold="0.3">
 					<div class="main-form__background backgrount-stars">
 						<img src="@img/first-screen/stars-background_low-contrast.webp" alt="звездное небо" />
 					</div>
-					<div class="main-form__decor decor">
-						<div class="decor__image">
-							<img src="@img/main-form/decor-1.png" alt="декоративный цилиндрический элемент" />
-						</div>
-						<div class="decor__image">
-							<img src="@img/main-form/decor-2.png" alt="декоративный цилиндрический элемент" />
-						</div>
-						<div class="decor__image">
-							<img src="@img/main-form/decor-3.png" alt="декоративный цилиндрический элемент" />
-						</div>
-					</div>
 					<div class="main-form__container">
 						<div class="main-form__content">
-							<div class="main-form__image">
-								<img src="@img/main-form/rectangle-main.png" alt="стеклянный куб" />
-							</div>
 							<div class="main-form__body">
 								<div class="main-form__head">
 									<h2 class="main-form__title _text-bright">Поработаем вместе?</h2>
@@ -438,6 +428,30 @@
 										<textarea name="" id="" rows="4" placeholder="Текст"></textarea>
 									</div>
 									<div class="form__row">
+										<div class="form__input-file input-file">
+											<div class="input-file__input">
+												<input
+													accept=".jpg, .png, .svg, .pdf, .jpeg"
+													type="file"
+													name="form[resume-vacancies]"
+													class="input"
+													multiple />
+												<div class="input-file__btn"><span class="_icon-plus"></span></div>
+												<div class="input-file__description">
+													<p class="_text-s _text-bright">Прикрепить файл</p>
+													<p class="_text-xs _text-bright">Максимальный размер файла 10 Мб</p>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="form__row">
+										<div class="input-file__files">
+											<div class="input-file__btn _text-bright"><span class="_icon-trash">file.pdf</span></div>
+											<div class="input-file__btn _text-bright"><span class="_icon-trash">file.pdf</span></div>
+											<div class="input-file__btn _text-bright"><span class="_icon-trash">file.pdf</span></div>
+										</div>
+									</div>
+									<div class="form__row">
 										<p class="_text-xs _text-bright">
 											Нажимая на кнопку «Отправить», я принимаю условия
 											<a href="#">Политики конфиденциальности</a>
@@ -447,6 +461,11 @@
 										<button href="#" class="form__button btn btn_light btn_xl">Отправить</button>
 									</div>
 								</form>
+							</div>
+						</div>
+						<div class="main-form__images">
+							<div class="main-form__image">
+								<img src="@img/services/glass-cube-1.png" alt="стеклянный куб" />
 							</div>
 						</div>
 					</div>

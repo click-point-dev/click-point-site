@@ -18,9 +18,9 @@
 
 //====================фоны блоков======================
 .page,
-.vacancies {
-	&__how,
-	&__main-form {
+.vacancies,
+.services {
+	&__how {
 		position: relative;
 		overflow: hidden;
 
