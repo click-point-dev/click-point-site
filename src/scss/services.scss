@@ -17,6 +17,10 @@
 		overflow: hidden;
 		@include adaptiveValue("margin-bottom", 144, 56);
 	}
+
+	&__main-form {
+		padding-block: 0;
+	}
 }
 
 .why-needed__body,
@@ -508,157 +512,128 @@
 	}
 }
 
+//====================main-form======================
+
 .services {
 	// .services__main-form
 
-	&__main-form {
-	}
-}
-.main-form {
-	position: relative;
-	overflow: hidden;
-	// .main-form__background
-
-	&__background {
-	}
-
-	// .main-form__container
-
-	&__container {
-		display: flex;
-		justify-content: space-between;
-		@media (max-width: $burgerMenu) {
-			min-height: 650px;
-			flex-wrap: wrap;
-			justify-content: center;
-		}
-	}
-
-	// .main-form__content
-
-	&__content {
-		gap: unset;
-		// display: block;
+	.main-form {
 		position: relative;
-		z-index: 100 !important;
-		flex: 0 0 50%;
-		@include adaptiveValue("padding-block", 104, 56);
-		max-width: 560px;
+		overflow: hidden;
+		// .main-form__background
 
-		@media (max-width: $burgerMenu) {
-			flex: 0 0 100%;
-			// @include adaptiveValue("padding-top", 144, 56);
-			padding-bottom: 15px;
+		&__background {
 		}
 
-		button {
-			@media (max-width: 606px) {
-				width: 100%;
+		// .main-form__container
+
+		&__container {
+			display: flex;
+			justify-content: space-between;
+			@media (max-width: $burgerMenu) {
+				min-height: 650px;
+				flex-wrap: wrap;
+				justify-content: center;
 			}
 		}
 
-		&:before {
-			content: "";
+		// .main-form__content
+
+		&__content {
+			gap: unset;
+			// display: block;
+			position: relative;
+			z-index: 100 !important;
+			flex: 0 0 50%;
+			@include adaptiveValue("padding-block", 104, 56);
+			max-width: 560px;
+
+			@media (max-width: $burgerMenu) {
+				flex: 0 0 100%;
+				// @include adaptiveValue("padding-top", 144, 56);
+				padding-bottom: 15px;
+			}
+
+			button {
+				@media (max-width: 606px) {
+					width: 100%;
+				}
+			}
+
+			&:before {
+				content: "";
+				position: absolute;
+				width: 100%;
+				height: 100%;
+				right: 50%;
+				bottom: 40%;
+				z-index: -1;
+				background: url("@img/vacancies/bg-gradient-cosmonaut_top.svg") center/contain no-repeat;
+				pointer-events: none;
+				opacity: 0.5;
+				filter: blur(75px);
+			}
+		}
+
+		// .main-form__images
+		&__images {
+			position: relative;
+			flex: 0 1 100%;
+			@media (max-width: $burgerMenu) {
+				flex: 0 0 100%;
+				height: 400px;
+			}
+		}
+
+		// .main-form__image
+
+		&__image {
+			mix-blend-mode: screen;
 			position: absolute;
-			width: 100%;
-			height: 100%;
-			right: 50%;
-			bottom: 40%;
-			z-index: -1;
-			background: url("@img/vacancies/bg-gradient-cosmonaut_top.svg") center/contain no-repeat;
-			pointer-events: none;
-			opacity: 0.5;
-			filter: blur(75px);
-		}
-	}
+			z-index: 5;
+			@include adaptiveValue("width", 1900, 1300, $maxWidthContainer, 1024, 1);
+			@include adaptiveValue("height", 1600, 1200, $maxWidthContainer, 1024, 1);
+			@include adaptiveValue("right", -800, -600, $maxWidthContainer, 1024, 1);
+			@include adaptiveValue("bottom", -500, -250, $maxWidthContainer, 1024, 1);
 
-	// .main-form__images
-	&__images {
-		position: relative;
-		flex: 0 1 100%;
-		@media (max-width: $burgerMenu) {
-			flex: 0 0 100%;
-			height: 400px;
-		}
-	}
+			@media (max-width: $burgerMenu) {
+				width: 1255px;
+				height: 1236px;
+				left: 50%;
+				bottom: -600px;
+				transform: translateX(-50%);
+			}
 
-	// .main-form__image
-
-	&__image {
-		mix-blend-mode: screen;
-		position: absolute;
-		z-index: 5;
-		@include adaptiveValue("width", 1900, 1300, $maxWidthContainer, 1024, 1);
-		@include adaptiveValue("height", 1600, 1200, $maxWidthContainer, 1024, 1);
-		@include adaptiveValue("right", -800, -600, $maxWidthContainer, 1024, 1);
-		@include adaptiveValue("bottom", -500, -250, $maxWidthContainer, 1024, 1);
-
-		@media (max-width: $burgerMenu) {
-			width: 1255px;
-			height: 1236px;
-			left: 50%;
-			bottom: -600px;
-			transform: translateX(-50%);
+			img {
+				height: 100%;
+				width: 100%;
+				object-fit: contain;
+			}
 		}
 
-		img {
-			height: 100%;
-			width: 100%;
-			object-fit: contain;
+		// .main-form__body
+
+		&__body {
 		}
-	}
 
-	// .main-form__body
+		// .main-form__head
 
-	&__body {
-	}
+		&__head {
+		}
 
-	// .main-form__head
+		// .main-form__title
 
-	&__head {
-	}
+		&__title {
+		}
 
-	// .main-form__title
+		// .main-form__sub-title
 
-	&__title {
-	}
+		&__sub-title {
+		}
 
-	// .main-form__sub-title
+		// .main-form__form
 
-	&__sub-title {
-	}
-
-	// .main-form__form
-
-	&__form {
-	}
-}
-.backgrount-stars {
-}
-.decor {
-	// .decor__image
-
-	&__image {
-	}
-}
-.form {
-	// .form_light
-
-	&_light {
-	}
-
-	// .form__row
-
-	&__row {
-	}
-
-	// .form__input-file
-
-	&__input-file {
-	}
-
-	// .form__button
-
-	&__button {
+		&__form {
+		}
 	}
 }
