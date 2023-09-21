@@ -228,7 +228,7 @@
 	@include adaptiveValue("height", 90, 56);
 	box-shadow: 0 3px 20px rgba(0, 0, 0, 0.067);
 	will-change: transform;
-	animation: scroll-down 1s 1s ease forwards;
+	animation: scroll-down 0.7s 0.7s ease forwards;
 	z-index: 150;
 
 	@keyframes scroll-down {
