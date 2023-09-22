@@ -14,7 +14,7 @@
 			position: absolute;
 			mix-blend-mode: screen;
 			will-change: transform;
-			transition: all 7s 1s cubic-bezier(0.14, 0.995, 0.465, 1);
+
 			img {
 				width: 100%;
 			}
@@ -83,6 +83,7 @@
 			.first-screen__decor_top,
 			.first-screen__decor_center,
 			.first-screen__decor_bottom {
+				transition: all 7s 1s cubic-bezier(0, 0.415, 0.34, 1.005);
 				img {
 				}
 			}
@@ -111,7 +112,7 @@
 				@include adaptiveValue("width", 128, 75);
 				right: 33%;
 				top: 15%;
-				filter: blur(6px);
+				filter: blur(4px);
 				opacity: 0.5;
 
 				@media (max-width: $burgerMenu) {
