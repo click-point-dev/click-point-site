@@ -5,7 +5,7 @@ phpmailer/
 version.json
 .gitignore
 undefined
-# dist/
+dist/
 **/*.zip
 **/*.rar
 Source/
