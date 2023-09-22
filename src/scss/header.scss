@@ -113,8 +113,37 @@
 	&__icon {
 	}
 
+	//TODO сделать все первые потомки 100% ширины, чтобы нормально оформить телефон
 	&__body {
 		@media (max-width: $burgerMenu) {
+			width: 100%;
+		}
+	}
+
+	&__contacts {
+		width: 100%;
+		display: flex;
+		justify-content: end;
+		a {
+			padding-block: 0px;
+			color: $add8;
+
+			&::before {
+				height: 0;
+				width: 0;
+			}
+		}
+
+		.menu-open & {
+			justify-content: start;
+
+			a {
+				color: inherit;
+				@include adaptiveValue("font-size", 32, 14);
+				@include adaptiveValue("letter-spacing", 2, 0);
+				padding-bottom: 15px;
+				border-bottom: 1px solid;
+			}
 		}
 	}
 
