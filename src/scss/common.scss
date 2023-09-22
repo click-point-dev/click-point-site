@@ -20,6 +20,7 @@
 .page,
 .vacancies,
 .services {
+	&__main-form,
 	&__how {
 		position: relative;
 		overflow: hidden;
@@ -76,6 +77,21 @@
 		filter: blur(70px);
 		opacity: 0.3;
 	}
+}
+
+.loaded {
+	.page__first-screen {
+		.first-screen__background {
+			img {
+				transform: rotate(180deg) !important;
+				transition: transform 7s 1s cubic-bezier(0.395, 1.65, 0.445, 1);
+			}
+		}
+	}
+}
+
+.first-screen__image {
+	mix-blend-mode: lighten;
 }
 //====================текст======================
 p {

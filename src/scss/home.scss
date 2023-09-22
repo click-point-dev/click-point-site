@@ -1,5 +1,183 @@
 //====================первый экран======================
+
+// анимация декоративных элементов
+.page__first-screen {
+	.first-screen__decor {
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		pointer-events: none;
+
+		.first-screen__decor_top,
+		.first-screen__decor_center,
+		.first-screen__decor_bottom {
+			position: absolute;
+			mix-blend-mode: screen;
+			will-change: transform;
+			transition: all 7s 1s cubic-bezier(0.14, 0.995, 0.465, 1);
+			img {
+				width: 100%;
+			}
+		}
+
+		.first-screen__decor_top {
+			width: 0;
+			right: 45%;
+			top: 45%;
+			opacity: 0;
+			filter: blur(0px);
+
+			@media (max-width: calc(#{$maxWidth}px)) {
+				right: 45%;
+			}
+
+			@media (max-width: $burgerMenu) {
+				right: 45%;
+			}
+
+			@media (max-width: $mobile) {
+				filter: blur(0px);
+			}
+		}
+
+		.first-screen__decor_center {
+			width: 0;
+			right: 45%;
+			top: 45%;
+			filter: blur(0px);
+			opacity: 0;
+
+			@media (max-width: $burgerMenu) {
+				width: 0;
+				right: 45%;
+				top: 45%;
+				filter: blur(0px);
+			}
+		}
+
+		.first-screen__decor_bottom {
+			width: 0;
+			right: 45%;
+			bottom: 45%;
+			opacity: 0;
+
+			@media (max-width: 1600px) {
+				right: 0;
+			}
+
+			@media (max-width: 709px) {
+				top: 0;
+				right: 0;
+			}
+			@media (min-width: 710px) and (max-width: $burgerMenu) {
+				top: 0;
+				right: 0;
+			}
+		}
+	}
+}
+
+.loaded {
+	.page__first-screen {
+		.first-screen__decor {
+			.first-screen__decor_top,
+			.first-screen__decor_center,
+			.first-screen__decor_bottom {
+				img {
+				}
+			}
+
+			.first-screen__decor_top {
+				@include adaptiveValue("width", 380, 110);
+				@include adaptiveValue("right", -200, 80);
+				@include adaptiveValue("top", -240, -60);
+				opacity: 0.5;
+				filter: blur(6px);
+
+				@media (max-width: calc(#{$maxWidth}px)) {
+					right: 0;
+				}
+
+				@media (max-width: $burgerMenu) {
+					right: 70px;
+				}
+
+				@media (max-width: $mobile) {
+					filter: blur(4px);
+				}
+			}
+
+			.first-screen__decor_center {
+				@include adaptiveValue("width", 128, 75);
+				right: 33%;
+				top: 15%;
+				filter: blur(6px);
+				opacity: 0.5;
+
+				@media (max-width: $burgerMenu) {
+					@include adaptiveValue("left", 350, -10);
+					@include adaptiveValue("top", 120, 100);
+					filter: blur(3px);
+				}
+			}
+
+			.first-screen__decor_bottom {
+				@include adaptiveValue("width", 158, 85);
+				right: -8%;
+				bottom: 14%;
+				opacity: 1;
+				@media (max-width: 1600px) {
+					right: 1%;
+				}
+
+				@media (max-width: 709px) {
+					@include adaptiveValue("top", 540, 350, 709, 360, 1);
+					@include adaptiveValue("right", 250, 20);
+				}
+				@media (min-width: 710px) and (max-width: $burgerMenu) {
+					@include adaptiveValue("right", 280, 70);
+					@include adaptiveValue("top", 590, 450);
+				}
+			}
+		}
+	}
+}
+
 //TODO анимация загрузки
+// анимация главного изображения
+.page__first-screen {
+	.first-screen__image {
+		position: relative;
+		z-index: 10;
+		flex: 1 1 740px;
+		transform: scale(0);
+		opacity: 0;
+		transition: all 7s 1s cubic-bezier(0.14, 0.995, 0.465, 1);
+
+		@media (max-width: $burgerMenu) {
+			flex-basis: unset;
+			flex-grow: 0;
+			width: 95%;
+			max-width: 470px;
+		}
+		img {
+			width: 100%;
+		}
+	}
+}
+
+.loaded {
+	.page__first-screen {
+		.first-screen__image {
+			transform: scale(1);
+			opacity: 1;
+			transform: rotate(1turn);
+		}
+	}
+}
+
+//====================first-screen======================
+
 .first-screen {
 	position: relative;
 	overflow: hidden;
@@ -9,79 +187,6 @@
 
 	&__container {
 		position: relative;
-	}
-
-	&__decor {
-		position: absolute;
-		width: 100%;
-		height: 100%;
-		pointer-events: none;
-
-		&_top,
-		&_center,
-		&_bottom {
-			mix-blend-mode: screen;
-			will-change: transform;
-			img {
-				width: 100%;
-			}
-		}
-
-		&_top {
-			position: absolute;
-			@include adaptiveValue("width", 380, 110);
-			@include adaptiveValue("right", -200, 80);
-			@include adaptiveValue("top", -240, -60);
-			opacity: 0.5;
-			filter: blur(4px);
-
-			@media (max-width: calc(#{$maxWidth}px)) {
-				right: 0;
-			}
-
-			@media (max-width: $burgerMenu) {
-				right: 70px;
-			}
-
-			@media (max-width: $mobile) {
-				filter: blur(2px);
-			}
-		}
-
-		&_center {
-			position: absolute;
-			@include adaptiveValue("width", 128, 75);
-			right: 33%;
-			top: 15%;
-			filter: blur(6px);
-			opacity: 0.5;
-
-			@media (max-width: $burgerMenu) {
-				@include adaptiveValue("left", 350, -10);
-				@include adaptiveValue("top", 120, 100);
-				filter: blur(3px);
-			}
-		}
-
-		&_bottom {
-			position: absolute;
-			@include adaptiveValue("width", 158, 85);
-			right: -8%;
-			bottom: 14%;
-			opacity: 1;
-			@media (max-width: 1600px) {
-				right: 1%;
-			}
-
-			@media (max-width: 709px) {
-				@include adaptiveValue("top", 540, 350, 709, 360, 1);
-				@include adaptiveValue("right", 250, 20);
-			}
-			@media (min-width: 710px) and (max-width: $burgerMenu) {
-				@include adaptiveValue("right", 280, 70);
-				@include adaptiveValue("top", 590, 450);
-			}
-		}
 	}
 
 	&__body {
@@ -131,19 +236,6 @@
 	}
 
 	&__image {
-		position: relative;
-		z-index: 10;
-		mix-blend-mode: lighten;
-		flex: 1 1 740px;
-		@media (max-width: $burgerMenu) {
-			flex-basis: unset;
-			flex-grow: 0;
-			width: 95%;
-			max-width: 470px;
-		}
-		img {
-			width: 100%;
-		}
 	}
 }
 
