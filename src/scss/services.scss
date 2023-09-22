@@ -466,6 +466,9 @@
 		display: flex;
 		overflow-x: scroll !important;
 		@include adaptiveValue("gap", 20, 12);
+		&::-webkit-scrollbar {
+			width: 0;
+		}
 	}
 
 	// .companion-services__card
