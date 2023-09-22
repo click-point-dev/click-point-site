@@ -28,7 +28,7 @@ flsFunctions.isWebp();
 /* Добавление класса touch для HTML если браузер мобильный */
 // flsFunctions.addTouchClass();
 /* Добавление loaded для HTML после полной загрузки страницы */
-// flsFunctions.addLoadedClass();
+flsFunctions.addLoadedClass();
 /* Модуль для работы с меню (Бургер) */
 flsFunctions.menuInit();
 /* Учет плавающей панели на мобильных устройствах при 100vh */
@@ -39,7 +39,7 @@ flsFunctions.menuInit();
 Документация: https://template.fls.guru/template-docs/modul-spojlery.html
 Сниппет (HTML): spollers
 */
-// flsFunctions.spollers();
+flsFunctions.spollers();
 
 /*
 Модуль работы с табами
@@ -66,7 +66,7 @@ import './libs/popup.js';
 Модуль параллакса мышью
 Документация: https://template.fls.guru/template-docs/modul-animacii-parallaks-obektov-pri-dvizhenii-myshi.html
 */
-// import './libs/parallax-mouse.js'
+import './libs/parallax-mouse.js';
 
 // ========================================================================================================================================================================================================================================================
 // Работа с формами ========================================================================================================================================================================================================================================================
@@ -93,7 +93,7 @@ flsForms.formFieldsInit({
 // flsForms.formRating();
 
 /* Модуль работы с select. */
-// import './libs/select.js'
+import './libs/select.js';
 
 /* Модуль работы с календарем */
 // import './files/forms/datepicker.js'
@@ -157,18 +157,18 @@ import './files/sliders.js';
 // Наблюдатель за объектами c атрибутом data-watch
 // Документация: https://template.fls.guru/template-docs/modul-nabljudatel-za-poyavleniem-elementa-pri-skrolle.html
 // Сниппет(HTML):
-// import './libs/watcher.js'
+import './libs/watcher.js';
 
 // Функции работы скроллом
 import * as flsScroll from './files/scroll/scroll.js';
 
 // Плавная навигация по странице
 // Документация: https://template.fls.guru/template-docs/modul-plavnoj-navigacii-po-stranice.html
-// flsScroll.pageNavigation();
+flsScroll.pageNavigation();
 
 // Функционал добавления классов к хедеру при прокрутке
 // Документация: https://template.fls.guru/template-docs/modul-dobavleniya-klassov-k-shapke-pri-prokrutke-stranicy.html
-// flsScroll.headerScroll();
+flsScroll.headerScroll();
 
 // Функционал липкого блока
 // flsScroll.stickyBlock();

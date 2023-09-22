@@ -1,0 +1,804 @@
+<!doctype html>
+<html lang="ru">
+	@@include('html/_head.htm',{ "title":"Вакансии" }) @@include('html/_loader.htm',{})
+	<body>
+		<div class="wrapper" style="opacity: 0; pointer-events: none">
+			@@include('html/_header.htm',{})
+			<main class="page vacancies" id="vacancies" data-watch="navigator">
+				<section class="vacancies__first-screen first-screen">
+					<div class="first-screen__background backgrount-stars">
+						<img
+							data-prlx-mouse
+							data-prlx-dxr
+							data-prlx-dyr
+							data-prlx-a="15"
+							data-prlx-cx="1000"
+							data-prlx-cy="1000"
+							src="@img/first-screen/stars-background_low-contrast.webp"
+							alt="звездное небо" />
+					</div>
+					<div class="first-screen__container">
+						<div class="first-screen__image" data-prlx-mouse data-prlx-a="5" data-prlx-cx="800" data-prlx-cy="1000">
+							<img src="@img/vacancies/glass-geometries-blocks.png" alt="стеклянные прямоугольные блоки" />
+						</div>
+
+						<div class="first-screen__body">
+							<div class="first-screen__content">
+								<h1 class="first-screen__title">
+									ищем людей, которые хотят создавать крутые проекты и развиваться вместе с нами
+								</h1>
+								<p class="first-screen__sub-title">
+									Наша компания растёт с арифметической прогрессией, поэтому мы ищем амбициозных ребят, которые любят
+									своё дело и делают его хорошо
+								</p>
+								<div class="first-screen__scroll">
+									<img src="@img/vacancies/mouse.svg" alt="символ компьютерной мышки" />
+									<p>Скроль, чтобы посмотреть вакансии</p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</section>
+				<section class="vacancies__list vacancies-list">
+					<div class="vacancies-list__container">
+						<div class="vacancies-list__head">
+							<h2 class="vacancies-list__title">10 открытых вакансий</h2>
+						</div>
+						<div class="vacancies-list__body">
+							<div data-spollers class="vacancies-list__spollers spollers">
+								<div class="spollers__item">
+									<button type="button" data-spoller class="spollers__title h6">Ассистент менеджера</button>
+									<div class="spollers__body spollers-body">
+										<div class="spollers-body__row">
+											<div class="spollers-body__content">
+												<div class="spollers-body__section">
+													<div class="spollers-body__title h3">Чем ты будешь заниматься</div>
+													<div class="spollers-body__list">
+														<ul>
+															<li>Составление медиапланов;</li>
+															<li>Ведение деловой переписки и переговоров с подрядчиками;</li>
+															<li>Выполнение задач, поставленных менеджером;</li>
+															<li>Ведение документооборота-договора, акты и т.п;</li>
+															<li>Работа в офисе с действующей базой менеджера;</li>
+														</ul>
+													</div>
+												</div>
+												<div class="spollers-body__section">
+													<div class="spollers-body__title h3">Что мы ждем от тебя</div>
+													<div class="spollers-body__list">
+														<ul>
+															<li>Ответственность;</li>
+															<li>Активность, многозадачность и стремление выполнять задачи на 100%;</li>
+															<li>Умение работать с большим объемом информации;</li>
+															<li>Уверенный пользователь ПК: Word, Excel, интернет, эл.почта, работа с оргтехникой;</li>
+														</ul>
+													</div>
+												</div>
+												<div class="spollers-body__section">
+													<div class="spollers-body__title h3">Мы предлагаем</div>
+													<div class="spollers-body__list">
+														<ul>
+															<li>Удобный график работы с 10:00 до 19:00, пн-пт;</li>
+															<li>Офис рядом с метро пл.Маркса;</li>
+															<li>Оклад от 28000 руб. на испытательном сроке;</li>
+															<li>Обучение за счет компании;</li>
+															<li>Бонусы и скидки от компании;</li>
+														</ul>
+													</div>
+												</div>
+											</div>
+											<div class="spollers-body__action">
+												<a data-popup="#resume-popup" class="btn_round _text-bright" href="#">
+													Откликнуться
+													<br />
+													на вакансию
+												</a>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="spollers__item">
+									<button type="button" data-spoller class="spollers__title h6">Веб-разработчик</button>
+									<div class="spollers__body spollers-body">
+										<div class="spollers-body__row">
+											<div class="spollers-body__content">
+												<div class="spollers-body__section">
+													<div class="spollers-body__title h3">Чем ты будешь заниматься</div>
+													<div class="spollers-body__list">
+														<ul>
+															<li>Создание сайтов, доработка, верстка;</li>
+															<li>Html-верстка макетов из Figma;</li>
+															<li>Интеграция в CMS (Wordpress, Bitrix);</li>
+															<li>Настройка отправки конверсий по ТЗ;</li>
+															<li>Внесение правок на готовые сайты по требованиям клиента;</li>
+															<li>Внесение изменений в бизнес-логику сайтов (функционал);</li>
+															<li>
+																Кроссбраузерная адаптивная вёрстка сайтов и отдельных web-страниц по предоставленным
+																макетам (ps, figma);
+															</li>
+															<li>
+																Кроссбраузерная адаптивная вёрстка сайтов и отдельных web-страниц по предоставленным
+																макетам;
+															</li>
+															<li>Поддержка и доработка frontend-части действующих сайтов;</li>
+														</ul>
+													</div>
+												</div>
+												<div class="spollers-body__section">
+													<div class="spollers-body__title h3">Что мы ждем от тебя</div>
+													<div class="spollers-body__list">
+														<ul>
+															<li>Опыт работы в веб-разработке не менее 1 года (фриланс тоже считаем);</li>
+															<li>Опыт работы с популярными CMS;</li>
+															<li>
+																Опыт работы с Bootstrap, Foundation, Materialize и т.д., а также с системами контроля
+																версий, такими как Git, SVN и т.д.;
+															</li>
+															<li>Опыт работы с препроцессорами CSS, такими как Sass, Less и т.д.;</li>
+															<li>Владение и опыт управления базой данных, php, phpMyAdmin, JavaScript, SQL;</li>
+															<li>Экспертное владение CSS3, HTML5;</li>
+															<li>Знание Photoshop достаточное для верстки макетов;</li>
+															<li>Навыки кроссбраузерной, адаптивной верстки;</li>
+															<li>Отличные знания JS, технологий Ajax, JSON;</li>
+															<li>Знание методологии BEM;</li>
+															<li>Опыт работы с препроцессорами SCSS/LESS;</li>
+															<li>Опыт использования gulp/grunt.</li>
+														</ul>
+													</div>
+												</div>
+												<div class="spollers-body__section">
+													<div class="spollers-body__title h3">Мы предлагаем</div>
+													<div class="spollers-body__list">
+														<ul>
+															<li>
+																Работа в офисе, но возможен вариант работы с полной занятостью с присутствием в офисе
+																несколько дней в неделю
+															</li>
+															<li>График работы 5/2, с 10.00 до 19.00 или с 9.00 до 18.00</li>
+															<li>Стабильный оклад на руки + бонусы по результатам работы (обсуждаем индивидуально)</li>
+															<li>Официальное трудоустройство</li>
+															<li>Работа в центре левого берега ( 5-7 минут от площади К. Маркса)</li>
+															<li>
+																Бонусы от компании — скидки до 50% на развлечения, салоны красоты, кафе, рестораны и
+																театры
+															</li>
+														</ul>
+													</div>
+												</div>
+											</div>
+											<div class="spollers-body__action">
+												<a data-popup="#resume-popup" class="btn_round _text-bright" href="#">
+													Откликнуться
+													<br />
+													на вакансию
+												</a>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="spollers__item">
+									<button type="button" data-spoller class="spollers__title h6">UX/UI-дизайнер (Веб-дизайнер)</button>
+									<div class="spollers__body spollers-body">
+										<div class="spollers-body__row">
+											<div class="spollers-body__content">
+												<div class="spollers-body__section">
+													<div class="spollers-body__title h3">Требования</div>
+													<div class="spollers-body__list">
+														<ul>
+															<li>Знание основ веб-дизайна, UX и UI;</li>
+															<li>Портфолио с примерами выполненных работ;</li>
+															<li>Умение описывать работу интерфейса;</li>
+															<li>Умение прототипировать работу интерфейса;</li>
+															<li>Умение работать с UI Kit;</li>
+															<li>Понимание принципов верстки интерфейсов с HTML и CSS;</li>
+															<li>
+																Умение работать с Figma, Sketch и другими графическими редакторами (Photoshop,
+																Illustrator);
+															</li>
+															<li>Умение работать с UXPin, Principle, InVision/Notion;</li>
+															<li>Навыки проектирования пользовательских интерфейсов;</li>
+															<li>
+																Готовность нести ответственность за дизайн продукта на всех этапах его создания, от
+																анализа целевой аудитории до запуска продукта;
+															</li>
+															<li>Знание принципов юзабилити и эргономики;</li>
+															<li>
+																Умение анализировать и составлять портреты пользователей, пользовательские сценарии и
+																потребности;
+															</li>
+															<li>Способность презентовать сервис и аргументировать свои решения;</li>
+															<li>
+																Умение эффективно взаимодействовать с разными людьми, избегая конфликтов и достигая
+																договоренностей;
+															</li>
+															<li>Стремление к саморазвитию и совершенствованию профессиональных умений и навыков;</li>
+															<li>Опыт работы в команде.</li>
+														</ul>
+													</div>
+												</div>
+												<div class="spollers-body__section">
+													<div class="spollers-body__title h3">Мы предлагаем</div>
+													<div class="spollers-body__list">
+														<ul>
+															<li>
+																Работа в офисе, но возможен вариант работы с полной занятостью с присутствием в офисе
+																несколько дней в неделю
+															</li>
+															<li>График работы 5/2, с 10.00 до 19.00 или с 9.00 до 18.00</li>
+															<li>Стабильный оклад на руки + бонусы по результатам работы (обсуждаем индивидуально)</li>
+															<li>Официальное трудоустройство</li>
+															<li>Работа в центре левого берега ( 5-7 минут от площади К. Маркса)</li>
+															<li>
+																Бонусы от компании — скидки до 50% на развлечения, салоны красоты, кафе, рестораны и
+																театры
+															</li>
+														</ul>
+													</div>
+												</div>
+											</div>
+											<div class="spollers-body__action">
+												<a data-popup="#resume-popup" class="btn_round _text-bright" href="#">
+													Откликнуться
+													<br />
+													на вакансию
+												</a>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="spollers__item">
+									<button type="button" data-spoller class="spollers__title h6">Интернет-маркетолог</button>
+									<div class="spollers__body spollers-body">
+										<div class="spollers-body__row">
+											<div class="spollers-body__content">
+												<div class="spollers-body__section">
+													<div class="spollers-body__title h3">Чем ты будешь заниматься</div>
+													<div class="spollers-body__list">
+														<ul>
+															<li>Оценка эффективности текущих рекламных каналов и предложения по оптимизации;</li>
+															<li>Анализ и подбор оптимальных рекламных каналов для клиентов;</li>
+															<li>Исследование ЦА, составление mind map по сегментам ЦА, разработка CJM;</li>
+															<li>
+																Исследование конкурентов: позиционирование, каналы продвижения, сильные/слабые стороны,
+																маркетинговая проработка сайтов;
+															</li>
+															<li>
+																Исследование рынка: объем, ключевые игроки, распределение долей, карта рынка, тренды,
+																прогнозы;
+															</li>
+															<li>
+																Проведение маркетингового аудита сайта: web-аналитика, юзабилити, коммерческая
+																составляющая;
+															</li>
+															<li>
+																Анализ систем web-аналитики, в том числе сквозной аналитики, составление на основе
+																анализа выводов и рекомендаций;
+															</li>
+															<li>Анализ эффективности рекламных кампаний (желательно);</li>
+															<li>Прототипирование, разработка ТЗ для дизайнеров;</li>
+															<li>Разработка комплексной маркетинговой стратегии развития;</li>
+															<li>Участие во встречах с действующими и новыми клиентами;</li>
+															<li>Формирование конечных рекомендаций, составление ТЗ на интеграцию;</li>
+															<li>Контроль и внедрение необходимых доработок вместе с проектной командой;</li>
+															<li>Контроль эффективности работы и подготовка отчетности.</li>
+														</ul>
+													</div>
+												</div>
+												<div class="spollers-body__section">
+													<div class="spollers-body__title h3">Что мы ждем от тебя</div>
+													<div class="spollers-body__list">
+														<ul>
+															<li>Релевантный опыт работы в сфере интернет-маркетинга обязателен;</li>
+															<li>
+																Четкое понимание основ интернет-маркетинга (какие существуют, и как работают, те или
+																иные каналы рекламы). Прямой опыт работы с каким-то из каналов приветствуется;
+															</li>
+															<li>Знание и понимание путей принятия решения о покупке;</li>
+															<li>Умение выявлять потребности целевой аудитории бизнеса;</li>
+															<li>Свободное владение системами статистики Я.Метрика и GA;</li>
+															<li>
+																Умение анализировать их данные, делать выводы и на их основе предлагать решения (если
+																есть опыт работы с системами сквозной аналитики, это будет плюс);
+															</li>
+															<li>Понимание основных маркетинговых показателей CPC, CPA, CPL, CPO, ROI;</li>
+															<li>Понимание отличий УТП от оффера;</li>
+															<li>
+																Умение выделить и составить УТП (в том числе, умение правильно понять позиционирование
+																продукта или компании, и грамотно это упаковать в контенте);
+															</li>
+															<li>
+																Умение анализировать конкурентов, выявлять и адаптировать только те решения, которые
+																будут полезны для конкретного клиентского бизнеса;
+															</li>
+															<li>
+																Умение работать с данными. Сводить данные в Excel, строить графики, вычислять
+																статистические коэффициенты. Делать выводы на основе полученных данных;
+															</li>
+															<li>
+																Умение подстраиваться под новые нетиповые задачи, "гуглить" информацию, структурировать
+																ее и использовать в работе;
+															</li>
+															<li>
+																Навыки планирования, как своего времени, так и процесса работы с заказчиком, т.е. всегда
+																иметь четкий план, что нужно делать для получения результата;
+															</li>
+															<li>
+																Грамотное составление ТЗ разработчикам и дизайнерам на реализацию макетов и доработок;
+															</li>
+															<li>Умение работать в режиме многозадачности, самоорганизованность, пунктуальность;</li>
+															<li>Грамотная письменная и разговорная речь</li>
+														</ul>
+													</div>
+												</div>
+												<div class="spollers-body__section">
+													<div class="spollers-body__title h3">Мы предлагаем</div>
+													<div class="spollers-body__list">
+														<ul>
+															<li>
+																Работа в офисе, но возможен вариант работы с полной занятостью с присутствием в офисе
+																несколько дней в неделю
+															</li>
+															<li>График работы 5/2, с 10.00 до 19.00 или с 9.00 до 18.00</li>
+															<li>Стабильный оклад на руки + бонусы по результатам работы (обсуждаем индивидуально)</li>
+															<li>Официальное трудоустройство</li>
+															<li>Работа в центре левого берега ( 5-7 минут от площади К. Маркса)</li>
+															<li>
+																Бонусы от компании — скидки до 50% на развлечения, салоны красоты, кафе, рестораны и
+																театры
+															</li>
+														</ul>
+													</div>
+												</div>
+											</div>
+											<div class="spollers-body__action">
+												<a data-popup="#resume-popup" class="btn_round _text-bright" href="#">
+													Откликнуться
+													<br />
+													на вакансию
+												</a>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="spollers__item">
+									<button type="button" data-spoller class="spollers__title h6">Контекстолог</button>
+									<div class="spollers__body spollers-body">
+										<div class="spollers-body__row">
+											<div class="spollers-body__content">
+												<div class="spollers-body__section">
+													<div class="spollers-body__title h3">Чем ты будешь заниматься</div>
+													<div class="spollers-body__list">
+														<ul>
+															<li>настройка кампаний Яндекс.директ, Google AD;</li>
+															<li>оптимизация и вывод рекламных кампаний в положительный ROI;</li>
+															<li>веб-аналитика, анализ эффективности;</li>
+															<li>составление медиа-планов по контекстной рекламе;</li>
+															<li>составлять для рекламодателей объявления и подбирать ключевые фразы;</li>
+															<li>оптимизировать и актуализировать уже существующие кампании;</li>
+															<li>анализировать целевую аудиторию и составлять портрет конкурентов;</li>
+															<li>выстраивать и реализовывать стратегию продвижения товарных позиций;</li>
+															<li>собирать портреты целевой аудитории;</li>
+															<li>постоянный контакт с отделом продаж.</li>
+														</ul>
+													</div>
+												</div>
+												<div class="spollers-body__section">
+													<div class="spollers-body__title h3">Что мы ждем от тебя</div>
+													<div class="spollers-body__list">
+														<ul>
+															<li>Опыт ведения рекламных кампаний в Интернете;</li>
+															<li>
+																Знания возможностей систем Яндекс Директ и Google Ads, автоматизированных сервисов по
+																подбору ключевых фраз, оптимизации ставок;
+															</li>
+															<li>Знание Google ads editor и Директ Коммандер;</li>
+														</ul>
+													</div>
+												</div>
+												<div class="spollers-body__section">
+													<div class="spollers-body__title h3">Мы предлагаем</div>
+													<div class="spollers-body__list">
+														<ul>
+															<li>
+																Работа в офисе, но возможен вариант работы с полной занятостью с присутствием в офисе
+																несколько дней в неделю
+															</li>
+															<li>График работы 5/2, с 10.00 до 19.00 или с 9.00 до 18.00</li>
+															<li>Стабильный оклад на руки + бонусы по результатам работы (обсуждаем индивидуально)</li>
+															<li>Официальное трудоустройство</li>
+															<li>Работа в центре левого берега ( 5-7 минут от площади К. Маркса)</li>
+															<li>
+																Бонусы от компании — скидки до 50% на развлечения, салоны красоты, кафе, рестораны и
+																театры
+															</li>
+														</ul>
+													</div>
+												</div>
+											</div>
+											<div class="spollers-body__action">
+												<a data-popup="#resume-popup" class="btn_round _text-bright" href="#">
+													Откликнуться
+													<br />
+													на вакансию
+												</a>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="spollers__item">
+									<button type="button" data-spoller class="spollers__title h6">Копирайтер</button>
+									<div class="spollers__body spollers-body">
+										<div class="spollers-body__row">
+											<div class="spollers-body__content">
+												<div class="spollers-body__section">
+													<div class="spollers-body__title h3">Чем ты будешь заниматься</div>
+													<div class="spollers-body__list">
+														<ul>
+															<li>Писать рекламные и информационные тексты;</li>
+															<li>Генерировать грамотные SEO-тексты;</li>
+															<li>Рерайт текстов;</li>
+															<li>Работа с ключевыми запросами;</li>
+															<li>
+																Участвовать в разработке и реализации PR-стратегии компаний (совместно с другими
+																специалистами);
+															</li>
+														</ul>
+													</div>
+												</div>
+												<div class="spollers-body__section">
+													<div class="spollers-body__title h3">Что мы ждем от тебя</div>
+													<div class="spollers-body__list">
+														<ul>
+															<li>Опыт работы копирайтером обязателен!</li>
+															<li>Опытный пользователь ПК;</li>
+															<li>Хорошее знание русского языка;</li>
+															<li>Умение писать оригинальные, интересные, творческие тексты;</li>
+															<li>Умение работать с большими объемами информации;</li>
+															<li>Внимание к деталям.</li>
+														</ul>
+													</div>
+												</div>
+												<div class="spollers-body__section">
+													<div class="spollers-body__title h3">Мы предлагаем</div>
+													<div class="spollers-body__list">
+														<ul>
+															<li>
+																Работа в офисе, но возможен вариант работы с полной занятостью с присутствием в офисе
+																несколько дней в неделю
+															</li>
+															<li>График работы 5/2, с 10.00 до 19.00 или с 9.00 до 18.00</li>
+															<li>Стабильный оклад на руки + бонусы по результатам работы (обсуждаем индивидуально)</li>
+															<li>Официальное трудоустройство</li>
+															<li>Работа в центре левого берега ( 5-7 минут от площади К. Маркса)</li>
+															<li>
+																Бонусы от компании — скидки до 50% на развлечения, салоны красоты, кафе, рестораны и
+																театры
+															</li>
+														</ul>
+													</div>
+												</div>
+											</div>
+											<div class="spollers-body__action">
+												<a data-popup="#resume-popup" class="btn_round _text-bright" href="#">
+													Откликнуться
+													<br />
+													на вакансию
+												</a>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="spollers__item">
+									<button type="button" data-spoller class="spollers__title h6">Менеджер</button>
+									<div class="spollers__body spollers-body">
+										<div class="spollers-body__row">
+											<div class="spollers-body__content">
+												<div class="spollers-body__section">
+													<div class="spollers-body__title h3">Чем ты будешь заниматься</div>
+													<div class="spollers-body__list">
+														<ul>
+															<li>Продажи рекламных услуг в интернете;</li>
+															<li>Ведение переговоров с клиентами от первого контакта до закрытия сделки;</li>
+															<li>
+																Сопровождение клиентов: отслеживание эффективности размещения, уточнение потребностей;
+															</li>
+															<li>продление размещения и допродажа услуг;</li>
+															<li>Работа с базой клиентов;</li>
+															<li>Участие в тендерах.</li>
+														</ul>
+													</div>
+												</div>
+												<div class="spollers-body__section">
+													<div class="spollers-body__title h3">Что мы ждем от тебя</div>
+													<div class="spollers-body__list">
+														<ul>
+															<li>Знание инструментов интернет рекламы будет преимуществом;</li>
+															<li>Успешный опыт в продажах от 1 года (желательно);</li>
+															<li>Опыт работы с большим объемом информации;</li>
+															<li>Грамотная устная и письменная речь;</li>
+															<li>
+																Стрессоустойчивость, активность, доброжелательность, внимательность, ответственность;
+															</li>
+															<li>Опытный пользователь ПК (Office, Интернет);</li>
+														</ul>
+													</div>
+												</div>
+												<div class="spollers-body__section">
+													<div class="spollers-body__title h3">Мы предлагаем</div>
+													<div class="spollers-body__list">
+														<ul>
+															<li>Работа в офисе, 5 дней в неделю пн - пт с 10-00 до 19-00;</li>
+															<li>ЗП от 35000 (оклад + %);</li>
+															<li>Уютный офис рядом с метро пл.Маркса;</li>
+															<li>Обучение за счет компании;</li>
+															<li>Бонусы и скидки от компании.</li>
+														</ul>
+													</div>
+												</div>
+											</div>
+											<div class="spollers-body__action">
+												<a data-popup="#resume-popup" class="btn_round _text-bright" href="#">
+													Откликнуться
+													<br />
+													на вакансию
+												</a>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="spollers__item">
+									<button type="button" data-spoller class="spollers__title h6">Programmatic менеджер</button>
+									<div class="spollers__body spollers-body">
+										<div class="spollers-body__row">
+											<div class="spollers-body__content">
+												<div class="spollers-body__section">
+													<div class="spollers-body__title h3">Чем ты будешь заниматься</div>
+													<div class="spollers-body__list">
+														<ul>
+															<li>
+																планирование Programmatic инструментов с учётом заданных KPI для текущих и новых
+																клиентов;
+															</li>
+															<li>общение с площадками по вопросам планирования и размещения;</li>
+															<li>
+																комплексное ведение и оптимизация текущих размещений с опорой на данные веб-аналитики;
+															</li>
+															<li>заведение рекламных кампаний в DV360 и Campaign Manager;</li>
+															<li>участие в разработке стратегий в части подбора каналов продвижения;</li>
+															<li>подготовка предложений для текущих и новых клиентов;</li>
+															<li>подготовка промежуточной и итоговой отчётности по рекламной кампании.</li>
+														</ul>
+													</div>
+												</div>
+												<div class="spollers-body__section">
+													<div class="spollers-body__title h3">Что мы ждем от тебя</div>
+													<div class="spollers-body__list">
+														<ul>
+															<li>опыт и знание инструментов DV360 и Campaign Manager;</li>
+															<li>понимание возможных путей отслеживания эффективности медийной рекламы;</li>
+															<li>хороший уровень знания Excel;</li>
+															<li>владение инструментами аналитики;</li>
+															<li>математические и аналитические способности;</li>
+															<li>повышенный уровень ответственности;</li>
+															<li>любовь к цифрам и к Digital.</li>
+														</ul>
+													</div>
+												</div>
+												<div class="spollers-body__section">
+													<div class="spollers-body__title h3">Мы предлагаем</div>
+													<div class="spollers-body__list">
+														<ul>
+															<li>
+																Работа в офисе, но возможен вариант работы с полной занятостью с присутствием в офисе
+																несколько дней в неделю
+															</li>
+															<li>График работы 5/2, с 10.00 до 19.00 или с 9.00 до 18.00</li>
+															<li>Стабильный оклад на руки + бонусы по результатам работы (обсуждаем индивидуально)</li>
+															<li>Официальное трудоустройство</li>
+															<li>Работа в центре левого берега ( 5-7 минут от площади К. Маркса)</li>
+															<li>
+																Бонусы от компании — скидки до 50% на развлечения, салоны красоты, кафе, рестораны и
+																театры
+															</li>
+														</ul>
+													</div>
+												</div>
+											</div>
+											<div class="spollers-body__action">
+												<a data-popup="#resume-popup" class="btn_round _text-bright" href="#">
+													Откликнуться
+													<br />
+													на вакансию
+												</a>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="spollers__item">
+									<button type="button" data-spoller class="spollers__title h6">SEO</button>
+									<div class="spollers__body spollers-body">
+										<div class="spollers-body__row">
+											<div class="spollers-body__content">
+												<div class="spollers-body__section">
+													<div class="spollers-body__title h3">Чем ты будешь заниматься</div>
+													<div class="spollers-body__list">
+														<ul>
+															<li>Подбор поисковых фраз для новых проектов;</li>
+															<li>Продвижение в ТОП поисковых систем клиентских сайтов с соблюдением всех этапов;</li>
+															<li>Разработка стратегий продвижения и развития сайтов;</li>
+															<li>Проведение экспериментов, внедрение новых подходов к SEO-продвижению;</li>
+															<li>Выявление ошибок сайта;</li>
+															<li>
+																Составление тех.заданий: для программистов – на доработку сайтов, для копирайтеров – на
+																написание текстов;
+															</li>
+															<li>Контроль над KPI проекта (позиции, трафик);</li>
+															<li>Подготовка отчетности о проделанных работах;</li>
+															<li>
+																Инициирование и участие в проектах по оптимизации и автоматизации внутренних бизнес-
+																процессов;
+															</li>
+															<li>Участие в мозговых штурмах и исследованиях;</li>
+															<li>Консультирование.</li>
+														</ul>
+													</div>
+												</div>
+												<div class="spollers-body__section">
+													<div class="spollers-body__title h3">Что мы ждем от тебя</div>
+													<div class="spollers-body__list">
+														<ul>
+															<li>
+																Знание сервисов «Яндекс. Вордстат», Планировщик ключевых слов Google, arsenkin.ru,
+																click.ru, serpstat.com, Keys.so, «Мегаиндекс», «Топвизор», «Яндекс. Метрика», Google
+																Analytics;
+															</li>
+															<li>Умение выявлять ошибки на сайте: «Яндекс.Вебмастер» и Google Search Console;</li>
+															<li>Опыт работы в SEO от 1 года (наличие портфолио успешных проектов);</li>
+															<li>Опыт ведения одновременно от 3 проектов;</li>
+															<li>
+																Понимание современных методов продвижения (поведенческие факторы, юзабилити сайта,
+																работа с контентом, ссылочное продвижение);
+															</li>
+															<li>
+																Умение проводить аудит: технический‚ SЕО, конкурентов‚ ссылочной массы; -Ответственный
+																подход к работе, внимательность, коммуникативные навыки, высокий уровень грамотности,
+																инициативность.
+															</li>
+														</ul>
+													</div>
+												</div>
+												<div class="spollers-body__section">
+													<div class="spollers-body__title h3">Мы предлагаем</div>
+													<div class="spollers-body__list">
+														<ul>
+															<li>
+																Работа в офисе, но возможен вариант работы с полной занятостью с присутствием в офисе
+																несколько дней в неделю
+															</li>
+															<li>График работы 5/2, с 10.00 до 19.00 или с 9.00 до 18.00</li>
+															<li>Стабильный оклад на руки + бонусы по результатам работы (обсуждаем индивидуально)</li>
+															<li>Официальное трудоустройство</li>
+															<li>Работа в центре левого берега ( 5-7 минут от площади К. Маркса)</li>
+															<li>
+																Бонусы от компании — скидки до 50% на развлечения, салоны красоты, кафе, рестораны и
+																театры
+															</li>
+														</ul>
+													</div>
+												</div>
+											</div>
+											<div class="spollers-body__action">
+												<a data-popup="#resume-popup" class="btn_round _text-bright" href="#">
+													Откликнуться
+													<br />
+													на вакансию
+												</a>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="spollers__item">
+									<button type="button" data-spoller class="spollers__title h6">SMM</button>
+									<div class="spollers__body spollers-body">
+										<div class="spollers-body__row">
+											<div class="spollers-body__content">
+												<div class="spollers-body__section">
+													<div class="spollers-body__title h3">Чем ты будешь заниматься</div>
+													<div class="spollers-body__list">
+														<ul>
+															<li>
+																Созданием контента для внутренних проектов агентства, а так же для наших соц.сетей;
+															</li>
+															<li>Составлять контент-план для соцсетей;</li>
+															<li>Писать рекламные и информационные тексты ( вместе с копирайтером);</li>
+															<li>Взаимодействовать с дизайнерами;</li>
+															<li>Участие в разработке и реализации PR-стратегии компаний;</li>
+														</ul>
+													</div>
+												</div>
+												<div class="spollers-body__section">
+													<div class="spollers-body__title h3">Что мы ждем от тебя</div>
+													<div class="spollers-body__list">
+														<ul>
+															<li>Опыт работы в SMM минимум от 1 года !</li>
+															<li>Грамотная устная и письменная речь, умение четко излагать свои мысли;</li>
+															<li>Умение работать в режиме многозадачности;</li>
+															<li>Преимуществом будет наличие хороших кейсов;</li>
+															<li>Понимание алгоритмов социальных сетей;</li>
+															<li>Понимание основ рекламы и таргетинга;</li>
+															<li>Аудит отзывов о компании, ответы на вопросы, сбор обратной связи;</li>
+															<li>Ведение аналитики по проектам;</li>
+														</ul>
+													</div>
+												</div>
+												<div class="spollers-body__section">
+													<div class="spollers-body__title h3">Мы предлагаем</div>
+													<div class="spollers-body__list">
+														<ul>
+															<li>
+																Работа в офисе, но возможен вариант работы с полной занятостью с присутствием в офисе
+																несколько дней в неделю
+															</li>
+															<li>График работы 5/2, с 10.00 до 19.00 или с 9.00 до 18.00</li>
+															<li>Стабильный оклад на руки + бонусы по результатам работы (обсуждаем индивидуально)</li>
+															<li>Официальное трудоустройство</li>
+															<li>Работа в центре левого берега ( 5-7 минут от площади К. Маркса)</li>
+															<li>
+																Бонусы от компании — скидки до 50% на развлечения, салоны красоты, кафе, рестораны и
+																театры
+															</li>
+														</ul>
+													</div>
+												</div>
+											</div>
+											<div class="spollers-body__action">
+												<a data-popup="#resume-popup" class="btn_round _text-bright" href="#">
+													Откликнуться
+													<br />
+													на вакансию
+												</a>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</section>
+				<div class="vacancies__response response-vacancies">
+					<div class="response-vacancies__background backgrount-stars">
+						<img src="@img/first-screen/stars-background_low-contrast.webp" alt="звездное небо" />
+					</div>
+					<div class="response-vacancies__container">
+						<div class="response-vacancies__content">
+							<h2 class="response-vacancies__title _text-bright">Не нашли подходящую вакансию?</h2>
+							<p class="response-vacancies__text _text-bright">
+								Отправьте нам свое резюме и мы рассмотрим возможность сотрудничества с вами
+							</p>
+							<button data-popup="#resume-popup" class="btn btn_light btn_xl" type="button">Отправить резюме</button>
+						</div>
+						<div class="response-vacancies__images">
+							<div class="response-vacancies__image">
+								<img src="@img/vacancies/cosmonaut.png" alt="космонавт в скафандре" />
+
+								<div class="response-vacancies__decor decor">
+									<div class="decor__top">
+										<img src="@img/first-screen/glass-geometries-top.png" alt="стеклянный треугольник" />
+									</div>
+									<div class="decor__center">
+										<img src="@img/first-screen/glass-geometries-bottom.png" alt="стеклянный треугольник" />
+									</div>
+									<div class="decor__bottom">
+										<img src="@img/first-screen/glass-geometries-bottom.png" alt="стеклянный треугольник" />
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</main>
+			@@include('html/_footer.htm',{})
+		</div>
+		@@include('html/_callback-popup.htm',{}) @@include('html/_resume-popup.htm',{}) @@include('html/_js.htm',{})
+	</body>
+</html>

@@ -1,11 +1,14 @@
 //====================отступы блоков на страницазх======================
-.page {
+.page,
+.vacancies {
 	&__first-screen,
 	&__advantages,
 	&__services,
 	&__how,
 	&__clients,
-	&__callback-form {
+	&__main-form,
+	&__list,
+	&__response {
 		@include adaptiveValue("margin-bottom", 144, 56);
 	}
 	&__about {
@@ -14,55 +17,89 @@
 }
 
 //====================фоны блоков======================
-.page {
-	&__first-screen,
-	&__how,
-	&__callback-form {
+.page,
+.vacancies,
+.services {
+	&__main-form,
+	&__how {
 		position: relative;
-		// overflow: hidden;
-		background-color: $primary-bg;
-		background-image: url("@img/first-screen/stars-background_low-contrast.webp");
-		background-repeat: no-repeat;
+		overflow: hidden;
+
+		@include adaptiveValue("padding-block", 144, 56);
+	}
+}
+
+.backgrount-stars {
+	position: absolute;
+	z-index: -1;
+	width: 100%;
+	height: 100%;
+	left: 0;
+	top: 0;
+	background-color: $primary-bg;
+
+	img {
+		width: 110%;
+		height: 110%;
+		object-fit: cover;
+		mix-blend-mode: screen;
+	}
+
+	&::after,
+	&::before {
+		content: "";
+		width: 100%;
+		height: 100%;
+		top: 0;
+		left: 0;
+		pointer-events: none;
+		position: absolute;
+		z-index: 2;
 		background-blend-mode: lighten;
-		background-size: 2259px 1506px;
-		background-attachment: fixed;
-		background-position: center 85%;
+	}
 
-		@media (max-width: $burgerMenu) {
-			background-position: right bottom;
-		}
+	&::before {
+		background-image: url("@img/how/bg-gradient.svg");
+		background-repeat: no-repeat;
+		@include adaptiveValue("background-size", 970, 600);
+		@include adaptiveValue("background-position-y", -510, -200);
+		@include adaptiveValue("background-position-x", -350, -200);
+		filter: blur(70px);
+		opacity: 0.3;
+	}
 
-		&::after,
-		&::before {
-			pointer-events: none;
-			content: "";
-			position: absolute;
-			width: 100%;
-			height: 100%;
-			left: 0;
-			top: 0;
-			z-index: 2;
-		}
+	&::after {
+		background-image: url("@img/bg-gradient_bottom.svg");
+		background-repeat: no-repeat;
+		@include adaptiveValue("background-size", 1700, 500);
+		@include adaptiveValue("background-position-y", 200, 300);
+		@include adaptiveValue("background-position-x", 650, 0);
+		filter: blur(70px);
+		opacity: 0.3;
+	}
+}
 
-		&::after {
-			background-image: url("@img/first-screen/gradient-bottom.svg");
-			background-repeat: no-repeat;
-			// background-blend-mode: screen;
-			background-size: cover;
-			@include adaptiveValue("background-position-x", 230, -200);
-			background-position-y: bottom;
-			opacity: 0.5;
-		}
-
-		&::before {
-			background-image: url("@img/first-screen/gradient-top.svg");
-			background-repeat: no-repeat;
-			background-blend-mode: screen;
-			background-size: cover;
-			background-position: left -80px;
-			opacity: 0.3;
+.loaded {
+	.page__first-screen {
+		.first-screen__background {
+			img {
+				transform: rotate(180deg) !important;
+				transition: transform 7s 1s cubic-bezier(0.395, 1.65, 0.445, 1);
+			}
 		}
 	}
+}
+
+//====================decor and main-images======================
+
+.first-screen__decor_top,
+.first-screen__decor_center,
+.first-screen__decor_bottom {
+	mix-blend-mode: screen;
+}
+
+.first-screen__image {
+	mix-blend-mode: lighten;
 }
 //====================текст======================
 p {
@@ -111,6 +148,24 @@ h4,
 	text-wrap: balance;
 }
 
+h5,
+.h5 {
+	@include adaptiveValue("font-size", 32, 24);
+	font-weight: 500;
+	&:not(:last-child) {
+		margin-bottom: 12px;
+	}
+}
+
+h6,
+.h6 {
+	@include adaptiveValue("font-size", 28, 18);
+	font-weight: 500;
+	&:not(:last-child) {
+		margin-bottom: 12px;
+	}
+}
+
 [class*="_text-s"] {
 	@include adaptiveValue("font-size", 14, 13);
 	@include adaptiveValue("line-height", 143%, 139%);
@@ -119,13 +174,29 @@ h4,
 
 [class*="_text-xs"] {
 	font-size: rem(12);
+	a {
+		color: $primary1;
+	}
+
+	&:not(:last-child) {
+		margin-bottom: 0;
+	}
+}
+
+[class~="_text-l"] {
+	@include adaptiveValue("font-size", 18, 14);
+}
+
+[class~="_text-xl"] {
+	@include adaptiveValue("font-size", 20, 18);
+	font-weight: 500;
 }
 
 [class*="_text-bright"] {
 	color: white;
 }
 
-[class*="__sub-title"] {
+[class~="_sub-title"] {
 	@include adaptiveValue("font-size", 20, 16);
 	// @include adaptiveValue("line-height", 160%, 150%);
 	line-height: 160%;
@@ -156,6 +227,7 @@ nav a,
 
 	text-transform: uppercase;
 	color: white;
+	cursor: pointer;
 	&:before {
 		content: "";
 		position: absolute;
@@ -168,7 +240,8 @@ nav a,
 		transition: transform $tm ease;
 		will-change: transform;
 	}
-	&:hover:before {
+	&:hover:before,
+	&._navigator-active:before {
 		transform: translate3d(0, 0, 0);
 	}
 }
@@ -283,7 +356,8 @@ nav a,
 	border-color: $gray5;
 	color: $mainColor;
 	&:hover,
-	&:active {
+	&:active,
+	&._navigator-active {
 		background-color: $primary1-disable;
 		border-color: $primary1;
 		color: $primary1-hover;
@@ -314,7 +388,90 @@ nav a,
 	letter-spacing: 2%;
 }
 
+.btn_round {
+	position: relative;
+	display: inline-flex;
+	justify-content: center;
+	align-items: center;
+	text-align: center;
+	height: 100%;
+	aspect-ratio: 1;
+	background-color: $primary1;
+	border-radius: 500px;
+
+	&:after {
+		content: "";
+		pointer-events: none;
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		left: 0;
+		top: 0;
+		background-image: url("@img/button-bg-gradient.svg");
+		background-repeat: no-repeat;
+		transform: rotate(180deg);
+		background-size: 100%;
+		@media (hover: hover) and (pointer: fine) {
+			opacity: 0;
+		}
+		transition:
+			opacity $tm ease,
+			background-size $tm ease,
+			transform 3s ease;
+	}
+
+	&:hover {
+		&:after {
+			transform: rotate(0);
+			background-size: 100%;
+			opacity: 1;
+		}
+	}
+}
+
 //====================виджеты======================
+
+//====================loader======================
+
+.loading .loader {
+	overflow: hidden;
+	background-color: white;
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100vw;
+	height: 100vh;
+	z-index: 150;
+	pointer-events: none;
+	opacity: 1;
+	visibility: visible;
+	transition: opacity 1s ease;
+
+	&__body {
+		height: 100vh;
+		width: 100vw;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+	&__image {
+		width: 120px;
+		aspect-ratio: 1;
+		min-width: 120px;
+	}
+}
+
+.loader_hiding .loader {
+	opacity: 0;
+	// transition: opacity 1s ease;
+	overflow: hidden;
+}
+
+.loader.isLoad {
+	visibility: hidden;
+	display: none;
+	overflow: hidden;
+}
 
 //====================виджет сервисы======================
 .card-services {
@@ -343,6 +500,7 @@ nav a,
 		}
 
 		@media (max-width: 606px) {
+			grid-row: span 1;
 			grid-column: span 1;
 		}
 
@@ -394,7 +552,7 @@ nav a,
 	}
 	&:hover &__button {
 		opacity: 1;
-		pointer-events: all;
+		pointer-events: all !important;
 	}
 
 	&__image {
@@ -476,49 +634,50 @@ nav a,
 		}
 
 		@media (max-width: $mobileSmall) {
-			max-width: 182px;
+			max-width: 196px;
 			margin-inline: auto;
-		}
-
-		a {
-			position: relative;
-			display: flex;
-			justify-content: center;
-			align-items: center;
 			text-align: center;
-			height: 100%;
-			aspect-ratio: 1;
-			background-color: $primary1;
-			border-radius: 500px;
-
-			&:after {
-				content: "";
-				pointer-events: none;
-				position: absolute;
+			a {
 				width: 100%;
-				height: 100%;
-				left: 0;
-				top: 0;
-				background-image: url("@img/button-bg-gradient.svg");
-				background-repeat: no-repeat;
-				transform: rotate(180deg);
-				background-size: 100%;
-				@media (hover: hover) and (pointer: fine) {
-					opacity: 0;
-				}
-				transition:
-					opacity $tm ease,
-					background-size $tm ease,
-					transform 3s ease;
-			}
-
-			&:hover {
-				&:after {
-					transform: rotate(0);
-					background-size: 100%;
-					opacity: 1;
-				}
 			}
 		}
+	}
+}
+
+//====================виджет user-card======================
+
+.user-card {
+	display: flex;
+	align-items: center;
+	@include adaptiveValue("gap", 24, 12);
+	// .user-card__avatar
+
+	&__avatar {
+		@include adaptiveValue("width", 96, 64);
+		aspect-ratio: 1;
+		border-radius: 100px;
+		overflow: hidden;
+
+		img {
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+		}
+	}
+
+	// .user-card__description
+
+	&__description {
+	}
+
+	// .user-card__title
+
+	&__title {
+	}
+
+	// .user-card__text
+
+	&__text {
+		font-weight: 300;
 	}
 }

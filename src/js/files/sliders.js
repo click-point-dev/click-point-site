@@ -27,57 +27,7 @@ import '../../scss/base/swiper.scss';
 
 // Инициализация слайдеров
 function initSliders() {
-	//FIX разобраться че за хня: то ли кэшируется, то ли свайпер глючит
-	//TODO попробовать этот варик https://codepen.io/fe-nix/pen/eYMPwQp
 	if (document.querySelector('.clients__slider')) {
-		// Указываем скласс нужного слайдера
-		// new Swiper('.clients__slider', {
-		// 	// observer: true,
-		// 	modules: [Autoplay],
-		// 	watchOverflow: true,
-		// 	centeredSlides: true,
-		// 	allowTouchMove: false,
-		// 	loop: true,
-		// 	autoplay: {
-		// 		delay: 0,
-		// 		disableOnInteraction: false,
-		// 		stopOnLastSlide: false,
-		// 	},
-
-		// 	// Брейкпоинты
-
-		// 	breakpoints: {
-		// 		320: {
-		// 			slidesPerView: 4,
-		// 			loopedSlides: 4,
-		// 			spaceBetween: 35,
-		// 			// autoHeight: true,
-		// 			speed: 1000,
-		// 		},
-		// 		479.98: {
-		// 			slidesPerView: 5,
-		// 			loopedSlides: 5,
-		// 			spaceBetween: 40,
-		// 		},
-		// 		768: {
-		// 			slidesPerView: 8,
-		// 			loopedSlides: 8,
-		// 			spaceBetween: 50,
-		// 			speed: 2000,
-		// 		},
-
-		// 		1268: {
-		// 			slidesPerView: 11,
-		// 			loopedSlides: 11,
-		// 			spaceBetween: 60,
-		// 			speed: 2000,
-		// 		},
-		// 	},
-
-		// 	// События
-		// 	// on: {},
-		// });
-
 		new Swiper('.clients__slider', {
 			modules: [Autoplay],
 			autoplay: {

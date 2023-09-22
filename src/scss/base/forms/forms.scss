@@ -1,8 +1,22 @@
 //<FORM>
 // Снипет (HTML):
 .form {
+	display: flex;
+	flex-direction: column;
+	@include adaptiveValue("gap", 20, 16);
+
 	&__row {
+		display: flex;
+		@include adaptiveValue("gap", 20, 16);
+
+		@media (max-width: 606px) {
+			flex-direction: column;
+		}
 	}
+
+	&__input-file {
+	}
+
 	&__column {
 	}
 	&__line {
@@ -10,6 +24,7 @@
 	&__input {
 	}
 	&__button {
+		min-width: 234px;
 	}
 	&__error {
 	}
@@ -34,7 +49,7 @@
 
 // <SELECT>
 // Снипет (HTML): sel
-// @import "select";
+@import "select";
 
 // <RATING>
 // Снипет (HTML): rating

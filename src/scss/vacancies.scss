@@ -1,0 +1,324 @@
+.vacancies {
+	&__first-screen {
+		overflow: hidden;
+		height: 100vh;
+		min-height: 700px;
+
+		@media (max-width: $burgerMenu) {
+			height: fit-content;
+		}
+	}
+
+	.first-screen {
+		&__background {
+		}
+
+		&__container {
+			position: relative;
+		}
+
+		&__image {
+			pointer-events: none;
+			position: absolute;
+			max-width: unset;
+			@include adaptiveValue("width", 1183, 470);
+			@include adaptiveValue("right", -270, -30);
+			@include adaptiveValue("bottom", -220, -200);
+			img {
+				width: 100%;
+			}
+		}
+
+		&__body {
+			&:not(:last-child) {
+				@include adaptiveValue("margin-bottom", 32, 20);
+			}
+
+			@media (max-width: $burgerMenu) {
+				@include adaptiveValue("padding-top", 150, 109, 1024, 360, 1);
+			}
+		}
+
+		&__content {
+			max-width: 990px;
+		}
+
+		&__title {
+			@include adaptiveValue("font-size", 56, 32);
+			@include adaptiveValue("margin-bottom", 56, 8);
+		}
+
+		&__sub-title {
+		}
+
+		&__scroll {
+			display: flex;
+			max-width: 211px;
+			gap: 10px;
+			align-items: center;
+
+			@media (max-width: $burgerMenu) {
+				display: none;
+			}
+		}
+	}
+	.backgrount-stars {
+	}
+}
+
+//====================vacancies======================
+.vacancies-list {
+	&__container {
+	}
+
+	&__head {
+		@include adaptiveValue("margin-bottom", 48, 28);
+	}
+
+	&__title {
+	}
+
+	&__body {
+	}
+
+	&__spollers {
+	}
+}
+
+.spollers__title {
+	transition: color $tm ease;
+}
+
+.spollers__item:hover .spollers__title {
+	color: $primary1;
+}
+
+.spollers-body {
+	&__row {
+		display: flex;
+		@include adaptiveValue("gap", 50, 32);
+
+		@include adaptiveValue("padding-block", 32, 28);
+		border-bottom: 1px solid $gray7;
+
+		@media (max-width: $tablet) {
+			flex-direction: column;
+			align-items: center;
+		}
+	}
+
+	&__content {
+	}
+
+	&__section {
+		display: flex;
+		@include adaptiveValue("gap", 16, 12);
+		align-items: start;
+		&:not(:last-child) {
+			@include adaptiveValue("margin-bottom", 32, 20);
+		}
+
+		@media (max-width: $tablet) {
+			flex-direction: column;
+		}
+	}
+
+	&__title {
+		text-transform: none;
+		flex: 0 1 26%;
+	}
+
+	&__list {
+		flex: 1 1 52%;
+		ul {
+			li {
+				position: relative;
+				@include adaptiveValue("font-size", 18, 14);
+				font-weight: 300;
+				padding-left: 20px;
+				&:not(:last-child) {
+					@include adaptiveValue("margin-bottom", 18, 12);
+				}
+
+				&:before {
+					content: "";
+					position: absolute;
+					top: 6px;
+					left: 0;
+					width: 0;
+					height: 0;
+					border-bottom: 4px solid transparent;
+					border-top: 4px solid transparent;
+					border-left: 8px solid $primary1;
+				}
+			}
+		}
+	}
+
+	&__action {
+		display: flex;
+		align-items: end;
+
+		a {
+			height: 192px;
+		}
+		// align-self: flex-end;
+	}
+}
+
+///====================response======================
+
+.response-vacancies {
+	position: relative;
+	overflow: hidden;
+
+	&:after {
+		content: "";
+		position: absolute;
+		z-index: 100;
+		width: 100%;
+		height: 38%;
+		background: linear-gradient(0deg, #010135 0%, rgba(1, 1, 53, 0) 100%);
+		left: 0;
+		bottom: 0;
+		pointer-events: none;
+	}
+
+	&__container {
+		display: flex;
+		justify-content: space-between;
+		@media (max-width: 606px) {
+			min-height: 650px;
+			flex-wrap: wrap;
+			justify-content: center;
+		}
+	}
+
+	&__content {
+		position: relative;
+		z-index: 100 !important;
+		flex: 0 0 50%;
+		@include adaptiveValue("padding-block", 144, 56);
+		max-width: 560px;
+
+		@media (max-width: 606px) {
+			flex: 0 0 100%;
+			@include adaptiveValue("padding-top", 144, 56);
+			padding-bottom: 15px;
+		}
+
+		button {
+			@media (max-width: 606px) {
+				width: 100%;
+			}
+		}
+
+		&:before {
+			content: "";
+			position: absolute;
+			width: 100%;
+			height: 100%;
+			right: 50%;
+			bottom: 40%;
+			z-index: -1;
+			background: url("@img/vacancies/bg-gradient-cosmonaut_top.svg") center/contain no-repeat;
+			pointer-events: none;
+			opacity: 0.5;
+			filter: blur(75px);
+		}
+	}
+
+	&__images {
+		position: relative;
+		flex: 1 1 auto;
+		@media (max-width: 606px) {
+			flex: 0 0 100%;
+			height: 400px;
+		}
+
+		.response-vacancies__image {
+			position: absolute;
+			z-index: 5;
+			@include adaptiveValue("width", 750, 600, $maxWidthContainer, 606, 1);
+			@include adaptiveValue("height", 725, 590, $maxWidthContainer, 606, 1);
+			@include adaptiveValue("right", 0, -150, $maxWidthContainer, 606, 1);
+			top: -15px;
+
+			@media (max-width: 606px) {
+				width: 555px;
+				height: 536px;
+				left: 50%;
+				transform: translateX(-50%);
+			}
+
+			img {
+				height: 100%;
+				width: 100%;
+				object-fit: contain;
+			}
+
+			.response-vacancies__decor {
+				position: absolute;
+				width: 100%;
+				height: 100%;
+				top: 0;
+				left: 0;
+
+				> * {
+					position: absolute;
+					mix-blend-mode: screen !important;
+					img {
+						width: 100%;
+					}
+				}
+
+				.decor__top {
+					@include adaptiveValue("width", 52, 25);
+					@include adaptiveValue("right", 110, 160);
+					top: 60px;
+					filter: blur(2px);
+					z-index: 3;
+					opacity: 0.3;
+				}
+
+				.decor__center {
+					@include adaptiveValue("width", 70, 100);
+					@include adaptiveValue("left", 90, 90);
+					transform: rotate(125deg) scale(-1, -1) !important;
+					bottom: 66%;
+					z-index: 3;
+					filter: blur(1px) brightness(150%);
+					opacity: 0.3;
+				}
+
+				.decor__bottom {
+					@include adaptiveValue("width", 137, 100);
+					@include adaptiveValue("right", 90, 80);
+					bottom: 200px;
+					z-index: 3;
+					transform: rotate(10deg) !important;
+					filter: brightness(150%);
+					opacity: 0.5;
+				}
+			}
+
+			&::after {
+				content: "";
+				position: absolute;
+				width: 100%;
+				height: 130%;
+				left: 45%;
+				top: 30%;
+				z-index: 2;
+				background: url("@img/vacancies/bg-gradient-cosmonaut_bottom.svg") center/contain no-repeat;
+				opacity: 0.6;
+			}
+		}
+	}
+
+	&__title {
+	}
+
+	&__text {
+	}
+}

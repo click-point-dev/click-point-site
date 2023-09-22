@@ -1,61 +1,188 @@
 //====================первый экран======================
-//TODO анимация загрузки
-.first-screen {
-	&__decor {
+
+// анимация декоративных элементов
+.page__first-screen {
+	.first-screen__decor {
+		position: absolute;
 		width: 100%;
 		height: 100%;
-		&::before,
-		&::after {
-			content: "";
+		pointer-events: none;
+
+		.first-screen__decor_top,
+		.first-screen__decor_center,
+		.first-screen__decor_bottom {
 			position: absolute;
-			// width: 128px;
-			// height: 135px;
-			@include adaptiveValue("width", 128, 75);
-			@include adaptiveValue("height", 135, 78);
-			z-index: 3;
-			pointer-events: none;
-			mix-blend-mode: screen;
+			// mix-blend-mode: screen;
 			will-change: transform;
-		}
-
-		&::before {
-			background-image: url("@img/first-screen/glass-geometries-top.png");
-			background-repeat: no-repeat;
-			right: 33%;
-			top: 15%;
-			background-size: 100%;
-			transform: scale(0.5) rotateZ(180deg);
-			filter: blur(6px);
-			opacity: 0.5;
-
-			@media (max-width: $burgerMenu) {
-				@include adaptiveValue("left", 350, 10);
-				@include adaptiveValue("top", 120, 100);
-				transform: scale(0.6) rotateZ(180deg);
-				filter: blur(3px);
+			transition: all 7s 1s cubic-bezier(0.14, 0.995, 0.465, 1);
+			img {
+				width: 100%;
 			}
 		}
 
-		&::after {
-			background-image: url("@img/first-screen/glass-geometries-bottom.png");
-			background-repeat: no-repeat;
-			right: -8%;
-			bottom: 14%;
-			background-size: contain;
-			opacity: 1;
+		.first-screen__decor_top {
+			width: 0;
+			right: 45%;
+			top: 45%;
+			opacity: 0;
+			filter: blur(0px);
+
+			@media (max-width: calc(#{$maxWidth}px)) {
+				right: 45%;
+			}
+
+			@media (max-width: $burgerMenu) {
+				right: 45%;
+			}
+
+			@media (max-width: $mobile) {
+				filter: blur(0px);
+			}
+		}
+
+		.first-screen__decor_center {
+			width: 0;
+			right: 45%;
+			top: 45%;
+			filter: blur(0px);
+			opacity: 0;
+
+			@media (max-width: $burgerMenu) {
+				width: 0;
+				right: 45%;
+				top: 45%;
+				filter: blur(0px);
+			}
+		}
+
+		.first-screen__decor_bottom {
+			width: 0;
+			right: 45%;
+			bottom: 45%;
+			opacity: 0;
+
 			@media (max-width: 1600px) {
-				right: 1%;
+				right: 0;
 			}
 
 			@media (max-width: 709px) {
-				@include adaptiveValue("top", 540, 350, 709, 360, 1);
-				@include adaptiveValue("right", 250, -10);
+				top: 0;
+				right: 0;
 			}
 			@media (min-width: 710px) and (max-width: $burgerMenu) {
-				@include adaptiveValue("right", 280, 70);
-				@include adaptiveValue("top", 590, 450);
+				top: 0;
+				right: 0;
 			}
 		}
+	}
+}
+
+.loaded {
+	.page__first-screen {
+		.first-screen__decor {
+			.first-screen__decor_top,
+			.first-screen__decor_center,
+			.first-screen__decor_bottom {
+				img {
+				}
+			}
+
+			.first-screen__decor_top {
+				@include adaptiveValue("width", 380, 110);
+				@include adaptiveValue("right", -200, 80);
+				@include adaptiveValue("top", -240, -60);
+				opacity: 0.5;
+				filter: blur(6px);
+
+				@media (max-width: calc(#{$maxWidth}px)) {
+					right: 0;
+				}
+
+				@media (max-width: $burgerMenu) {
+					right: 70px;
+				}
+
+				@media (max-width: $mobile) {
+					filter: blur(4px);
+				}
+			}
+
+			.first-screen__decor_center {
+				@include adaptiveValue("width", 128, 75);
+				right: 33%;
+				top: 15%;
+				filter: blur(6px);
+				opacity: 0.5;
+
+				@media (max-width: $burgerMenu) {
+					@include adaptiveValue("left", 350, -10);
+					@include adaptiveValue("top", 120, 100);
+					filter: blur(3px);
+				}
+			}
+
+			.first-screen__decor_bottom {
+				@include adaptiveValue("width", 158, 85);
+				right: -8%;
+				bottom: 14%;
+				opacity: 1;
+				@media (max-width: 1600px) {
+					right: 1%;
+				}
+
+				@media (max-width: 709px) {
+					@include adaptiveValue("top", 540, 350, 709, 360, 1);
+					@include adaptiveValue("right", 250, 20);
+				}
+				@media (min-width: 710px) and (max-width: $burgerMenu) {
+					@include adaptiveValue("right", 280, 70);
+					@include adaptiveValue("top", 590, 450);
+				}
+			}
+		}
+	}
+}
+
+//TODO анимация загрузки
+
+// анимация главного изображения
+
+.page__first-screen {
+	.first-screen__image {
+		// position: relative;
+		z-index: 10;
+		// mix-blend-mode: lighten;
+		flex: 1 1 740px;
+		opacity: 0;
+		transition: opacity 3s 3s ease;
+
+		@media (max-width: $burgerMenu) {
+			flex-basis: unset;
+			flex-grow: 0;
+			width: 95%;
+			max-width: 470px;
+		}
+		img {
+			width: 100%;
+		}
+	}
+}
+
+.loaded {
+	.page__first-screen {
+		.first-screen__image {
+			opacity: 1;
+		}
+	}
+}
+
+//====================first-screen======================
+
+.first-screen {
+	position: relative;
+	overflow: hidden;
+
+	&__background {
 	}
 
 	&__container {
@@ -80,6 +207,7 @@
 			// padding-top: 76px;
 			// justify-content: space-between;
 		}
+
 		@media (orientation: landscape) {
 			@include adaptiveValue("padding-block", 152, 68);
 			row-gap: 60px;
@@ -108,19 +236,6 @@
 	}
 
 	&__image {
-		position: relative;
-		z-index: 10;
-		mix-blend-mode: lighten;
-		flex: 1 1 740px;
-		@media (max-width: $burgerMenu) {
-			flex-basis: unset;
-			flex-grow: 0;
-			width: 95%;
-			max-width: 470px;
-		}
-		img {
-			width: 100%;
-		}
 	}
 }
 
@@ -208,7 +323,6 @@
 }
 
 //====================services======================
-//TODO декор для больших карточек
 .services {
 	&__container {
 	}
@@ -219,7 +333,6 @@
 	&__list {
 		display: grid;
 		grid-template-columns: repeat(4, 1fr);
-		// grid-template-rows: repeat(4, 1fr);
 		grid-column-gap: 20px;
 		grid-row-gap: 20px;
 		@media (max-width: $burgerMenu) {
@@ -232,7 +345,7 @@
 
 		@media (max-width: 606px) {
 			grid-template-columns: 1fr;
-			grid-auto-flow: row;
+			// grid-auto-flow: row;
 		}
 	}
 
@@ -242,22 +355,20 @@
 
 //====================how======================
 
-.how,
-.callback-form {
-	background-color: $primary-bg;
-	@include adaptiveValue("padding-block", 144, 56);
-	background-size: unset;
-	background-position: center bottom;
-	&::after {
-		width: 100%;
-		height: 90%;
-		background-image: url("@img/how/bg-gradient.svg");
-		background-position: left center;
-		background-size: contain;
-		opacity: 0.15;
-	}
-	&::before {
-		display: none;
+.how {
+	&__background {
+		&::before {
+			display: none;
+		}
+
+		&::after {
+			background-image: url("@img/how/bg-gradient-1.svg");
+			background-position: left center;
+			background-size: contain;
+			@include adaptiveValue("background-position-y", 0, 100);
+			@include adaptiveValue("background-position-x", -150, 0);
+			opacity: 0.5;
+		}
 	}
 
 	&__container {
@@ -288,7 +399,7 @@
 		}
 
 		@media (max-width: $burgerMenu) {
-			flex-wrap: wrap;
+			// flex-wrap: wrap;
 			justify-content: start;
 		}
 
@@ -321,12 +432,9 @@
 	}
 
 	&__slider {
+		pointer-events: none;
 		&_reverse {
-			@media (max-width: $mobileSmall) {
-				display: none;
-				pointer-events: none;
-				opacity: 0;
-			}
+			pointer-events: none;
 		}
 		&:not(:last-child) {
 			margin-bottom: rem(30);
@@ -334,7 +442,6 @@
 	}
 
 	&__wrapper {
-		// -webkit-transition-timing-function: linear !important;
 		transition-timing-function: linear !important;
 		will-change: transform;
 	}
@@ -344,7 +451,6 @@
 		justify-content: center;
 		align-items: end;
 		will-change: transform;
-		//FIX хз надо проверить очистить кэш
 		filter: grayscale(100);
 	}
 
@@ -356,11 +462,9 @@
 	}
 }
 
-///====================form-callback======================
+///====================form-main======================
 
-.callback-form {
-	overflow: hidden;
-	position: relative;
+.main-form {
 	&__decor {
 		position: absolute;
 		pointer-events: none;
@@ -437,12 +541,7 @@
 
 	&__head {
 		text-align: left;
-		p {
-			margin-bottom: 0 !important;
-			a {
-				color: $primary1 !important;
-			}
-		}
+		margin-bottom: rem(28);
 	}
 
 	&__title {
@@ -450,133 +549,9 @@
 
 	&__sub-title {
 	}
-}
 
-.callback {
 	&__form {
-		display: flex;
-		flex-direction: column;
-		@include adaptiveValue("gap", 20, 16);
 		.form__row {
-			display: flex;
-			@include adaptiveValue("gap", 20, 16);
-
-			@media (max-width: 606px) {
-				flex-direction: column;
-			}
-
-			button {
-				// flex: 1 0 234px;
-				min-width: 234px;
-			}
 		}
 	}
 }
-
-//====================система======================
-
-.first-screen__text {
-	display: flex;
-	flex-direction: column;
-	gap: 15px;
-	margin-bottom: rem(40);
-}
-
-nav:has(~ main) {
-	margin-bottom: rem(40);
-	padding: 50px 20px;
-	border-radius: 12px;
-	ul {
-		display: flex;
-		flex-wrap: wrap;
-		column-gap: 15px;
-
-		li a {
-			white-space: nowrap;
-		}
-	}
-}
-
-.block:has(> .btn),
-.block__form {
-	margin-bottom: rem(40);
-	padding: 50px 20px;
-	border-radius: 12px;
-	display: flex;
-	column-gap: 10px;
-	background-color: white;
-}
-
-.block:has(> [class*="light"]),
-nav ~ main {
-	background-color: $primary1-hover;
-}
-
-// .form {
-// 	// display: flex;
-// 	// flex-direction: column;
-// 	// align-items: center;
-// 	max-width: 500px;
-// 	margin-inline: auto;
-// 	// @include adaptiveValue("row-gap", 24, 16);
-// 	&__row {
-// 	}
-// 	.input[type="text"],
-// 	.input[type="tel"],
-// 	.input[type="email"],
-// 	textarea {
-// 		// display: block;
-// 		// width: 100%;
-// 		// @include adaptiveValue("padding-block", 20, 14);
-// 		// @include adaptiveValue("padding-inline", 24, 16);
-// 		// border-radius: 12px;
-// 		// border: 2px solid;
-// 		// border-color: $gray4;
-// 		// background-color: transparent;
-// 		// outline: 0;
-// 		// transition: border-color $tm ease;
-// 		// &::placeholder {
-// 		// 	color: $gray4;
-// 		// }
-// 		// &:hover,
-// 		// &:focus {
-// 		// 	border-color: $gray3;
-// 		// }
-
-// 		// &:disabled {
-// 		// 	border-color: $gray6;
-// 		// 	&::placeholder {
-// 		// 		color: $gray6;
-// 		// 	}
-// 		// }
-// 	}
-
-// 	// &.form_light {
-// 	// 	.input[type="text"],
-// 	// 	.input[type="tel"],
-// 	// 	.input[type="email"],
-// 	// 	textarea {
-// 	// 		border-color: $add7;
-// 	// 		color: white;
-
-// 	// 		&::placeholder {
-// 	// 			color: $add7;
-// 	// 			transition: color $tm ease;
-// 	// 		}
-// 	// 		&:hover,
-// 	// 		&:focus {
-// 	// 			border-color: $add8;
-// 	// 			&::placeholder {
-// 	// 				color: $add8;
-// 	// 			}
-// 	// 		}
-
-// 	// 		&:disabled {
-// 	// 			border-color: $add8;
-// 	// 			&::placeholder {
-// 	// 				color: $add8;
-// 	// 			}
-// 	// 		}
-// 	// 	}
-// 	// }
-// }

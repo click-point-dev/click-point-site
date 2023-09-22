@@ -56,10 +56,8 @@
 		display: flex;
 		flex-direction: column;
 		flex-wrap: wrap;
-		// column-gap: 96px;
 		@include adaptiveValue("column-gap", 96, 24);
 		row-gap: 12px;
-		max-height: 216px;
 		@include adaptiveValue("max-height", 216, 190);
 	}
 
@@ -78,21 +76,15 @@
 	&__navigate {
 		.footer__list {
 			@media (max-width: 606px) {
-				// flex-direction: row;
-				// flex-wrap: wrap;
-				// justify-content: start;
-				// .footer__item {
-				// 	flex: 0 1 30%;
-				// }
 				max-height: 55px;
 			}
 		}
 	}
 
-	&__copirite {
-	}
-
-	&__creditionals {
+	&__copyrite {
+		a {
+			color: $mainColor !important;
+		}
 	}
 }
 .contacts {
