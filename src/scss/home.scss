@@ -143,18 +143,13 @@
 	}
 }
 
-//TODO анимация загрузки
+//TODO разобраться с анимацией загрузки
 
 // анимация главного изображения
 
 .page__first-screen {
 	.first-screen__image {
-		// position: relative;
-		z-index: 10;
-		// mix-blend-mode: lighten;
 		flex: 1 1 740px;
-		opacity: 0;
-		transition: opacity 3s 3s ease;
 
 		@media (max-width: $burgerMenu) {
 			flex-basis: unset;
@@ -162,8 +157,10 @@
 			width: 95%;
 			max-width: 470px;
 		}
+
 		img {
-			width: 100%;
+			width: 0%;
+			transition: all 4s 1s cubic-bezier(0.14, 0.995, 0.465, 1);
 		}
 	}
 }
@@ -171,7 +168,9 @@
 .loaded {
 	.page__first-screen {
 		.first-screen__image {
-			opacity: 1;
+			img {
+				width: 100%;
+			}
 		}
 	}
 }
