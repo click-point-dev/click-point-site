@@ -3,7 +3,7 @@ flsStartTemplate/
 node_modules/
 phpmailer/
 version.json
-# .gitignore
+.gitignore
 undefined
 dist/
 **/*.zip
