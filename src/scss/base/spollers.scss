@@ -11,14 +11,18 @@
 }
 // Заголовок спойлера
 .spollers__title {
+	display: flex;
 	width: 100%;
 	cursor: default;
 	text-align: left;
 	border-bottom: 1px solid $gray7;
 	@include adaptiveValue("padding-block", 24, 16);
+	@include adaptiveValue("padding-right", 30, 25);
 	margin-bottom: 0px !important;
 	border-radius: rem(5);
 	position: relative;
+	overflow-wrap: break-word;
+
 	._spoller-init & {
 		cursor: pointer;
 		&::after {
@@ -27,17 +31,17 @@
 			@include adaptiveValue("font-size", 24, 17);
 			position: absolute;
 			right: 10px;
-			top: 50%;
-			transform: translateY(-50%) rotate(0);
+			@include adaptiveValue("top", 24, 16);
+			// transform: translateY(-50%) rotate(0);
 			will-change: transform;
 			transition:
-				transform $tm ease 0s,
+				transform $tm ease 0.2s,
 				color $tm ease;
 		}
 		&._spoller-active {
 			color: $primary1;
 			&::after {
-				transform: translateY(-50%) rotate(90deg);
+				transform: rotate(90deg);
 				color: $primary1;
 			}
 		}
