@@ -114,23 +114,36 @@
 	}
 
 	//TODO сделать все первые потомки 100% ширины, чтобы нормально оформить телефон
-	&__body {
+
+	& > * {
 		@media (max-width: $burgerMenu) {
 			width: 100%;
 		}
 	}
 
+	&__body {
+	}
+
 	&__contacts {
 		width: 100%;
 		display: flex;
-		justify-content: end;
+
 		a {
+			justify-content: end;
 			padding-block: 0px;
 			color: $add8;
+			width: 100%;
 
 			&::before {
 				height: 0;
 				width: 0;
+			}
+		}
+
+		&_dinamic {
+			width: 50%;
+			@media (min-width: 1025px) {
+				display: none;
 			}
 		}
 
@@ -172,7 +185,7 @@
 	&__cta {
 		display: flex;
 		align-items: center;
-		justify-content: space-between;
+		// justify-content: space-between;
 		column-gap: 16px;
 		button.btn {
 			// flex: 1 0 auto;
