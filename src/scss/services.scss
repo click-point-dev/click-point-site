@@ -2,13 +2,10 @@
 	&__page-navigation {
 		@include adaptiveValue("padding-top", 80, 16);
 		@include adaptiveValue("padding-bottom", 40, 16);
-	}
-
-	&__why-needed {
-		@include adaptiveValue("margin-top", 104, 56);
 		@include adaptiveValue("margin-bottom", 144, 56);
 	}
 
+	&__why-needed,
 	&__profit,
 	&__stages,
 	&__quote,
@@ -29,6 +26,7 @@
 .quote__body {
 	display: flex;
 	@include adaptiveValue("gap", 130, 10, $maxWidthContainer, 767.98, 1);
+	max-width: 100%;
 
 	@media screen and (max-width: $mobile) {
 		flex-wrap: wrap;
@@ -37,9 +35,10 @@
 	}
 }
 
+.why-needed__text,
 .profit__content,
 .stages__content {
-	flex: 0 0 50%;
+	flex: 0 1 50%;
 
 	> :not(:last-child) {
 		@include adaptiveValue("margin-bottom", 28, 24);
@@ -51,9 +50,12 @@
 	}
 }
 
+.why-needed__title,
 .profit__title,
 .stages__title {
-	flex: 1 0 auto;
+	flex: 0 1 50%;
+	// overflow-wrap: break-word;
+	text-wrap: balance;
 }
 
 //====================first-screen======================
@@ -293,11 +295,11 @@
 	// .why-needed__text
 
 	&__text {
-		flex: 0 0 50%;
+		// flex: 0 0 50%;
 		@include adaptiveValue("padding-top", 26, 0);
 
 		@media screen and (max-width: $mobile) {
-			flex: 0 0 100%;
+			// flex: 0 0 100%;
 			padding-top: 0;
 		}
 	}
