@@ -17,7 +17,7 @@
 	text-align: left;
 	border-bottom: 1px solid $gray7;
 	@include adaptiveValue("padding-block", 24, 16);
-	@include adaptiveValue("padding-right", 30, 25);
+	@include adaptiveValue("padding-right", 35, 35);
 	margin-bottom: 0px !important;
 	border-radius: rem(5);
 	position: relative;
