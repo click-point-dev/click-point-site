@@ -349,7 +349,8 @@ nav a,
 	color: $mainColor;
 	&:hover,
 	&:active,
-	&._navigator-active {
+	&._navigator-active,
+	._tab-active & {
 		background-color: $primary1-disable;
 		border-color: $primary1;
 		color: $primary1-hover;
