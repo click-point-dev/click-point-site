@@ -10,13 +10,22 @@
 	&__stages,
 	&__quote,
 	&__companion-services,
-	&__main-form {
+	&__main-form,
+	&__introduction {
 		overflow: hidden;
 		@include adaptiveValue("margin-bottom", 144, 56);
 	}
 
 	&__main-form {
 		padding-block: 0;
+	}
+
+	&__tabs {
+		@include adaptiveValue("margin-block", 144, 56);
+
+		.tabs__navigation {
+			@include adaptiveValue("padding-bottom", 40, 16);
+		}
 	}
 }
 
@@ -56,6 +65,9 @@
 	flex: 0 1 50%;
 	// overflow-wrap: break-word;
 	text-wrap: balance;
+	@media screen and (max-width: $mobile) {
+		flex: 0 0 100%;
+	}
 }
 
 //====================first-screen======================
