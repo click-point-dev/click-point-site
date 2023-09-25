@@ -58,7 +58,7 @@
 		.first-screen__decor_bottom {
 			width: 0;
 			right: -45%;
-			bottom: -45%;
+			bottom: -15%;
 			opacity: 0;
 
 			@media (max-width: 1600px) {
@@ -83,7 +83,7 @@
 			.first-screen__decor_top,
 			.first-screen__decor_center,
 			.first-screen__decor_bottom {
-				transition: all 7s 1s cubic-bezier(0, 0.415, 0.34, 1.005);
+				transition: all 6s 1s cubic-bezier(0, 0.415, 0.34, 1.005);
 				img {
 				}
 			}
@@ -476,7 +476,6 @@
 		top: 0;
 		left: 0;
 		.decor__image {
-			max-width: fit-content;
 			mix-blend-mode: lighten;
 			position: absolute;
 
@@ -486,15 +485,16 @@
 
 			&:nth-child(1) {
 				@include adaptiveValue("width", 437, 210);
-				@include adaptiveValue("top", -236, -110);
-				@include adaptiveValue("left", -150, -80);
+				@include adaptiveValue("top", -286, -170);
+				@include adaptiveValue("left", -190, -100);
 
-				filter: blur(8px);
+				filter: blur(9px);
+				opacity: 0.8;
 			}
 
 			&:nth-child(2) {
-				@include adaptiveValue("width", 142, 105);
-				@include adaptiveValue("top", 715, 455);
+				@include adaptiveValue("width", 190, 90);
+				@include adaptiveValue("top", 675, 475);
 				@include adaptiveValue("left", 100, 24);
 
 				@media (max-width: $mobileSmall) {
@@ -503,7 +503,7 @@
 			}
 
 			&:nth-child(3) {
-				@include adaptiveValue("width", 79, 25);
+				@include adaptiveValue("width", 79, 35);
 				@include adaptiveValue("top", 200, 72);
 				@include adaptiveValue("right", 1270, 620, 2580, 1280, 1);
 				@media (max-width: $burgerMenu) {
