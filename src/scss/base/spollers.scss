@@ -17,7 +17,7 @@
 	text-align: left;
 	border-bottom: 1px solid $gray7;
 	@include adaptiveValue("padding-block", 24, 16);
-	@include adaptiveValue("padding-right", 35, 35);
+	padding-right: 40px;
 	margin-bottom: 0px !important;
 	border-radius: rem(5);
 	position: relative;
@@ -31,7 +31,7 @@
 			@include adaptiveValue("font-size", 24, 17);
 			position: absolute;
 			right: 10px;
-			@include adaptiveValue("top", 24, 16);
+			@include adaptiveValue("top", 27, 19);
 			// transform: translateY(-50%) rotate(0);
 			will-change: transform;
 			transition:
