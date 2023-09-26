@@ -153,14 +153,14 @@
 				@include adaptiveValue("font-size", 32, 14);
 				@include adaptiveValue("letter-spacing", 2, 0);
 				padding-bottom: 15px;
-				border-bottom: 1px solid;
+				border-bottom: 1px solid $gray4;
 			}
 		}
 	}
 
 	&__list {
 		display: flex;
-		@include adaptiveValue("gap", 40, 25, 1372, 1024, 1);
+		@include adaptiveValue("gap", 40, 15, 1372, 1024, 1);
 		@media (max-width: $burgerMenu) {
 			flex-direction: column;
 		}
@@ -171,7 +171,7 @@
 			white-space: nowrap;
 			.menu-open & {
 				color: $mainColor;
-				@include adaptiveValue("font-size", 32, 14);
+				@include adaptiveValue("font-size", 26, 14);
 				@include adaptiveValue("letter-spacing", 2, 0);
 				&:before {
 					background-color: $mainColor;
