@@ -176,6 +176,7 @@
 		@media (max-width: $burgerMenu) {
 			margin-top: 0;
 			@include adaptiveValue("margin-bottom", 60, 45);
+			width: 100%;
 			max-width: 400px;
 		}
 
