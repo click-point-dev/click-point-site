@@ -152,8 +152,6 @@
 				color: inherit;
 				@include adaptiveValue("font-size", 32, 14);
 				@include adaptiveValue("letter-spacing", 2, 0);
-				padding-bottom: 15px;
-				border-bottom: 1px solid $gray4;
 			}
 		}
 	}
