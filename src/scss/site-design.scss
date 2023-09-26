@@ -1,0 +1,49 @@
+.site-design {
+	.decor-services {
+		> * {
+			img {
+			}
+		}
+
+		.decor__top {
+			top: -5%;
+			left: 60%;
+			@include adaptiveValue("width", 52, 30);
+			filter: blur(2px);
+		}
+
+		// .decor__center
+
+		.decor__center {
+			top: 27%;
+			right: unset;
+			@include adaptiveValue("left", -50, -10);
+			@include adaptiveValue("width", 118, 70);
+		}
+
+		// .decor__bottom
+
+		.decor__bottom {
+			bottom: 10px;
+			left: unset;
+			right: 0;
+			@include adaptiveValue("width", 120, 90);
+			opacity: 1;
+		}
+
+		// .decor__top
+
+		&__top {
+		}
+
+		// .decor__center
+
+		&__center {
+		}
+
+		// .decor__bottom
+
+		&__bottom {
+		}
+	}
+}
