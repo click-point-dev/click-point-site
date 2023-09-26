@@ -71,207 +71,6 @@
 }
 
 //====================first-screen======================
-// .services {
-// 	// .services__first-screen
-
-// 	&__first-screen {
-// 		// .first-screen__background
-// 		.first-screen {
-// 			&__background {
-// 			}
-
-// 			// .first-screen__container
-
-// 			&__container {
-// 			}
-
-// 			// .first-screen__body
-
-// 			&__body {
-// 				min-height: 850px;
-// 				flex-wrap: wrap;
-// 				row-gap: 0;
-// 				align-items: start;
-// 				padding-block: unset;
-// 				@include adaptiveValue("padding-top", 180, 100);
-// 				@include adaptiveValue("padding-bottom", 152, 68);
-// 				@media (max-width: $burgerMenu) {
-// 					flex-direction: column;
-// 					align-items: center;
-// 					justify-content: end;
-// 					// row-gap: 70px;
-// 				}
-// 			}
-
-// 			// .first-screen__content
-
-// 			&__content {
-// 				flex: 0 0 40%;
-// 				@media (max-width: $burgerMenu) {
-// 					margin-bottom: rem(70);
-// 				}
-// 			}
-
-// 			// .first-screen__link
-
-// 			&__item-link {
-// 				@include adaptiveValue("margin-bottom", 40, 12);
-// 				flex: 0 0 100%;
-// 				justify-content: start;
-// 				align-self: end;
-
-// 				@media (max-width: $burgerMenu) {
-// 					align-self: start;
-// 				}
-
-// 				a {
-// 					color: $add8;
-// 					&:before {
-// 						background-color: $add8;
-// 					}
-// 				}
-// 			}
-
-// 			// .first-screen__title
-
-// 			&__title {
-// 				text-transform: uppercase;
-// 			}
-
-// 			// .first-screen__text
-
-// 			&__text {
-// 			}
-
-// 			// .first-screen__images
-
-// 			&__images {
-// 				position: relative;
-// 				z-index: 10;
-// 				mix-blend-mode: lighten;
-// 				flex: 0 0 50%;
-// 				@media (max-width: $burgerMenu) {
-// 					// flex-basis: unset;
-// 					// flex-grow: 0;
-// 					width: 95%;
-// 					max-width: 450px;
-// 					display: flex;
-// 					justify-content: center;
-// 					flex-grow: 100% !important;
-// 				}
-// 			}
-
-// 			// .first-screen__image
-
-// 			&__image {
-// 				position: relative;
-// 				@include adaptiveValue("width", 662, 500, $maxWidthContainer, 606, 1);
-// 				max-width: 100%;
-// 				flex-grow: 1;
-// 				flex-basis: 100%;
-
-// 				@media (max-width: 606px) {
-// 				}
-
-// 				img {
-// 					width: 100%;
-// 				}
-
-// 				&::before {
-// 					content: "";
-// 					background: url("@img/services/item-bg-gradient.png") center/contain no-repeat;
-// 					position: absolute;
-// 					width: 300%;
-// 					height: 300%;
-// 					left: -100%;
-// 					top: -100%;
-// 					z-index: -2;
-// 					opacity: 0.5;
-// 					pointer-events: none;
-// 				}
-// 			}
-
-// 			// .first-screen__decor
-
-// 			&__decor {
-// 			}
-// 		}
-// 	}
-
-// 	.backgrount-stars {
-// 	}
-
-// 	.decor {
-// 		position: absolute;
-// 		width: 100%;
-// 		height: 100%;
-// 		left: 0;
-// 		top: 0;
-// 		// .decor__top
-// 		> * {
-// 			position: absolute;
-// 			mix-blend-mode: screen;
-// 		}
-
-// 		&__top {
-// 			top: -20px;
-// 			left: 40%;
-// 			z-index: -1;
-// 			@include adaptiveValue("width", 52, 30);
-// 		}
-
-// 		// .decor__center
-
-// 		&__center {
-// 			top: 50%;
-// 			@include adaptiveValue("right", -10, 10);
-// 			@include adaptiveValue("width", 48, 42);
-// 		}
-
-// 		// .decor__bottom
-
-// 		&__bottom {
-// 			bottom: -20%;
-// 			@include adaptiveValue("bottom", -50, -60);
-// 			@include adaptiveValue("width", 177, 100);
-// 			@include adaptiveValue("left", -60, 30, $maxWidthContainer, 1024, 1);
-// 		}
-// 	}
-
-// 	// .first-screen_social {
-// 	// 	min-height: 100vh;
-// 	// 	overflow: hidden;
-// 	// 	.first-screen__body {
-// 	// 		padding-block: 0px;
-// 	// 		align-items: center;
-// 	// 	}
-
-// 	// 	.first-screen__content {
-// 	// 		@include adaptiveValue("padding-top", 180, 100);
-// 	// 		@include adaptiveValue("padding-bottom", 152, 68);
-// 	// 	}
-
-// 	// 	.first-screen__images {
-// 	// 		// flex: 0 0 40%;
-// 	// 		aspect-ratio: 1;
-// 	// 	}
-
-// 	// 	.first-screen__image {
-// 	// 		position: relative;
-// 	// 		@include adaptiveValue("width", 500, 30);
-// 	// 		// height: 100%;
-// 	// 		@include adaptiveValue("top", 50, 70);
-// 	// 		transform: translate(0, -50%);
-
-// 	// 		@media (max-width: 606px) {
-// 	// 		}
-
-// 	// 		& > img {
-// 	// 			width: 100%;
-// 	// 		}
-// 	// 	}
-// 	// }
-// }
 
 .services {
 	// .services__first-screen-services
@@ -304,7 +103,7 @@
 	&__body {
 		flex: 1 1 auto;
 		display: flex;
-		@include adaptiveValue("gap", 60, 40);
+		@include adaptiveValue("gap", 100, 50);
 		// align-items: center;
 		height: 100%;
 
@@ -320,6 +119,7 @@
 		color: white;
 		@include adaptiveValue("padding-top", 210, 150);
 		@include adaptiveValue("padding-bottom", 144, 56);
+
 		flex: 0 0 40%;
 		align-self: center;
 
@@ -371,6 +171,7 @@
 		position: relative;
 		z-index: 0;
 		@include adaptiveValue("margin-top", 220, 0);
+		width: 100%;
 
 		@media (max-width: $burgerMenu) {
 			margin-top: 0;
