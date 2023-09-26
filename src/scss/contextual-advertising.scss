@@ -1,0 +1,45 @@
+.contextual-advertising {
+	.decor-services {
+		> * {
+			img {
+			}
+		}
+
+		.decor__top {
+			top: -15%;
+			left: 40%;
+			@include adaptiveValue("width", 52, 30);
+		}
+
+		// .decor__center
+
+		.decor__center {
+			top: 37%;
+			@include adaptiveValue("right", -50, -10);
+			@include adaptiveValue("width", 48, 42);
+		}
+
+		// .decor__bottom
+
+		.decor__bottom {
+			bottom: -30px;
+			left: -15%;
+			@include adaptiveValue("width", 160, 100);
+		}
+
+		// .decor__top
+
+		&__top {
+		}
+
+		// .decor__center
+
+		&__center {
+		}
+
+		// .decor__bottom
+
+		&__bottom {
+		}
+	}
+}
