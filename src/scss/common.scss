@@ -475,6 +475,80 @@ nav a,
 	overflow: hidden;
 }
 
+//====================виджет кнопки телефона======================
+
+.page {
+	// .page__phone-button
+
+	&__phone-button {
+		position: fixed;
+		z-index: 100;
+		bottom: 20px;
+		right: 20px;
+	}
+}
+.phone-button {
+	@include adaptiveValue("padding", 25, 15);
+	opacity: 0;
+	transform: translateY(500px);
+	transition:
+		transform 1s ease,
+		opacity $tm 0.8s ease;
+	// gap: 20px;
+	// .phone-button__phone
+
+	&__body {
+		display: flex;
+		align-items: center;
+		justify-content: end;
+	}
+
+	&__phone {
+		width: 0px;
+		opacity: 0;
+		transform: scale(0, 1);
+		transition:
+			width 0.5s ease,
+			transform 0.3s ease,
+			opacity 0.5s 0.6s ease;
+
+		.phone-button:hover & {
+			@include adaptiveValue("width", 250, 190);
+			opacity: 1;
+			transform: scale(1, 1);
+		}
+
+		&::before {
+			display: none;
+		}
+		a {
+			@include adaptiveValue("font-size", 24, 16);
+			color: white;
+			transition: color $tm ease;
+			padding-right: 30px;
+
+			&:hover {
+				color: $add8;
+			}
+		}
+	}
+
+	// .phone-button__button
+
+	&__button {
+		@include adaptiveValue("font-size", 24, 16);
+		aspect-ratio: 1;
+	}
+}
+
+.phone-button._appearing {
+	opacity: 1;
+	transform: translateY(0px);
+}
+
+.btn {
+}
+
 //====================виджет сервисы======================
 .card-services {
 	position: relative;
