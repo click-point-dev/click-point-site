@@ -32,7 +32,6 @@
 			position: absolute;
 			right: 10px;
 			@include adaptiveValue("top", 27, 19);
-			// transform: translateY(-50%) rotate(0);
 			will-change: transform;
 			transition:
 				transform $tm ease 0.2s,
@@ -45,39 +44,6 @@
 				color: $primary1;
 			}
 		}
-		/*
-		._spoller-init & {
-			position: relative;
-			width: 100%;
-			text-align: left;
-			&::before,
-			&::after {
-				content: "";
-				position: absolute;
-				right: 0;
-				top: rem(12);
-				height: rem(1);
-				transition: all 0.3s ease 0s;
-				width: rem(10);
-				background-color: #000;
-			}
-			&::before {
-				transform: rotate(40deg);
-				right: rem(7);
-			}
-			&::after {
-				transform: rotate(-40deg);
-			}
-		}
-		&._spoller-active {
-			&::before {
-				transform: rotate(-40deg);
-			}
-			&::after {
-				transform: rotate(40deg);
-			}
-		}
-		*/
 	}
 }
 // Контент спойлера
