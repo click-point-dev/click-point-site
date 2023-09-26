@@ -509,6 +509,24 @@
 		flex: 1 0 30%;
 		min-width: 288px;
 	}
+
+	.first-screen-services__item-link {
+		display: flex;
+		justify-content: end;
+
+		&:hover a {
+			color: $primary1-hover;
+		}
+
+		a {
+			padding-right: 0;
+			transition: color $tm ease;
+
+			&::before {
+				display: none;
+			}
+		}
+	}
 }
 
 .card-services {
