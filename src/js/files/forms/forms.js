@@ -1,10 +1,10 @@
 // Подключение функционала "Чертогов Фрилансера"
 // Подключение списка активных модулей
-import { flsModules } from "../modules.js";
+import { flsModules } from '../modules.js';
 // Вспомогательные функции
-import { isMobile, _slideUp, _slideDown, _slideToggle, FLS } from "../functions.js";
+import { isMobile, _slideUp, _slideDown, _slideToggle, FLS } from '../functions.js';
 // Модуль прокрутки к блоку
-import { gotoBlock } from "../scroll/gotoblock.js";
+import { gotoBlock } from '../scroll/gotoblock.js';
 //================================================================================================================================================================================================================================================================================================================================
 
 /*
@@ -16,15 +16,15 @@ export function formFieldsInit(options = { viewPass: false, autoHeight: false })
 	// Если включено, добавляем функционал "скрыть плейсходлер при фокусе"
 	const formFields = document.querySelectorAll('input[placeholder],textarea[placeholder]');
 	if (formFields.length) {
-		formFields.forEach(formField => {
+		formFields.forEach((formField) => {
 			if (!formField.hasAttribute('data-placeholder-nohide')) {
 				formField.dataset.placeholder = formField.placeholder;
 			}
 		});
 	}
-	document.body.addEventListener("focusin", function (e) {
+	document.body.addEventListener('focusin', function (e) {
 		const targetElement = e.target;
-		if ((targetElement.tagName === 'INPUT' || targetElement.tagName === 'TEXTAREA')) {
+		if (targetElement.tagName === 'INPUT' || targetElement.tagName === 'TEXTAREA') {
 			if (targetElement.dataset.placeholder) {
 				targetElement.placeholder = '';
 			}
@@ -35,9 +35,9 @@ export function formFieldsInit(options = { viewPass: false, autoHeight: false })
 			formValidate.removeError(targetElement);
 		}
 	});
-	document.body.addEventListener("focusout", function (e) {
+	document.body.addEventListener('focusout', function (e) {
 		const targetElement = e.target;
-		if ((targetElement.tagName === 'INPUT' || targetElement.tagName === 'TEXTAREA')) {
+		if (targetElement.tagName === 'INPUT' || targetElement.tagName === 'TEXTAREA') {
 			if (targetElement.dataset.placeholder) {
 				targetElement.placeholder = targetElement.dataset.placeholder;
 			}
@@ -53,11 +53,11 @@ export function formFieldsInit(options = { viewPass: false, autoHeight: false })
 	});
 	// Если включено, добавляем функционал "Показать пароль"
 	if (options.viewPass) {
-		document.addEventListener("click", function (e) {
+		document.addEventListener('click', function (e) {
 			let targetElement = e.target;
 			if (targetElement.closest('[class*="__viewpass"]')) {
-				let inputType = targetElement.classList.contains('_viewpass-active') ? "password" : "text";
-				targetElement.parentElement.querySelector('input').setAttribute("type", inputType);
+				let inputType = targetElement.classList.contains('_viewpass-active') ? 'password' : 'text';
+				targetElement.parentElement.querySelector('input').setAttribute('type', inputType);
 				targetElement.classList.toggle('_viewpass-active');
 			}
 		});
@@ -66,12 +66,14 @@ export function formFieldsInit(options = { viewPass: false, autoHeight: false })
 	if (options.autoHeight) {
 		const textareas = document.querySelectorAll('textarea[data-autoheight]');
 		if (textareas.length) {
-			textareas.forEach(textarea => {
-				const startHeight = textarea.hasAttribute('data-autoheight-min') ?
-					Number(textarea.dataset.autoheightMin) : Number(textarea.offsetHeight);
-				const maxHeight = textarea.hasAttribute('data-autoheight-max') ?
-					Number(textarea.dataset.autoheightMax) : Infinity;
-				setHeight(textarea, Math.min(startHeight, maxHeight))
+			textareas.forEach((textarea) => {
+				const startHeight = textarea.hasAttribute('data-autoheight-min')
+					? Number(textarea.dataset.autoheightMin)
+					: Number(textarea.offsetHeight);
+				const maxHeight = textarea.hasAttribute('data-autoheight-max')
+					? Number(textarea.dataset.autoheightMax)
+					: Infinity;
+				setHeight(textarea, Math.min(startHeight, maxHeight));
 				textarea.addEventListener('input', () => {
 					if (textarea.scrollHeight > startHeight) {
 						textarea.style.height = `auto`;
@@ -91,8 +93,11 @@ export let formValidate = {
 		let error = 0;
 		let formRequiredItems = form.querySelectorAll('*[data-required]');
 		if (formRequiredItems.length) {
-			formRequiredItems.forEach(formRequiredItem => {
-				if ((formRequiredItem.offsetParent !== null || formRequiredItem.tagName === "SELECT") && !formRequiredItem.disabled) {
+			formRequiredItems.forEach((formRequiredItem) => {
+				if (
+					(formRequiredItem.offsetParent !== null || formRequiredItem.tagName === 'SELECT') &&
+					!formRequiredItem.disabled
+				) {
 					error += this.validateInput(formRequiredItem);
 				}
 			});
@@ -101,15 +106,15 @@ export let formValidate = {
 	},
 	validateInput(formRequiredItem) {
 		let error = 0;
-		if (formRequiredItem.dataset.required === "email") {
-			formRequiredItem.value = formRequiredItem.value.replace(" ", "");
+		if (formRequiredItem.dataset.required === 'email') {
+			formRequiredItem.value = formRequiredItem.value.replace(' ', '');
 			if (this.emailTest(formRequiredItem)) {
 				this.addError(formRequiredItem);
 				error++;
 			} else {
 				this.removeError(formRequiredItem);
 			}
-		} else if (formRequiredItem.type === "checkbox" && !formRequiredItem.checked) {
+		} else if (formRequiredItem.type === 'checkbox' && !formRequiredItem.checked) {
 			this.addError(formRequiredItem);
 			error++;
 		} else {
@@ -128,7 +133,10 @@ export let formValidate = {
 		let inputError = formRequiredItem.parentElement.querySelector('.form__error');
 		if (inputError) formRequiredItem.parentElement.removeChild(inputError);
 		if (formRequiredItem.dataset.error) {
-			formRequiredItem.parentElement.insertAdjacentHTML('beforeend', `<div class="form__error">${formRequiredItem.dataset.error}</div>`);
+			formRequiredItem.parentElement.insertAdjacentHTML(
+				'beforeend',
+				`<div class="form__error">${formRequiredItem.dataset.error}</div>`
+			);
 		}
 	},
 	removeError(formRequiredItem) {
@@ -168,8 +176,8 @@ export let formValidate = {
 	},
 	emailTest(formRequiredItem) {
 		return !/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,8})+$/.test(formRequiredItem.value);
-	}
-}
+	},
+};
 /* Отправка форм */
 export function formSubmit() {
 	const forms = document.forms;
@@ -189,7 +197,8 @@ export function formSubmit() {
 		const error = !form.hasAttribute('data-no-validate') ? formValidate.getErrors(form) : 0;
 		if (error === 0) {
 			const ajax = form.hasAttribute('data-ajax');
-			if (ajax) { // Если режим ajax
+			if (ajax) {
+				// Если режим ajax
 				e.preventDefault();
 				const formAction = form.getAttribute('action') ? form.getAttribute('action').trim() : '#';
 				const formMethod = form.getAttribute('method') ? form.getAttribute('method').trim() : 'GET';
@@ -198,17 +207,18 @@ export function formSubmit() {
 				form.classList.add('_sending');
 				const response = await fetch(formAction, {
 					method: formMethod,
-					body: formData
+					body: formData,
 				});
 				if (response.ok) {
 					let responseResult = await response.json();
 					form.classList.remove('_sending');
 					formSent(form, responseResult);
 				} else {
-					alert("Ошибка");
+					alert('Ошибка');
 					form.classList.remove('_sending');
 				}
-			} else if (form.hasAttribute('data-dev')) {	// Если режим разработки
+			} else if (form.hasAttribute('data-dev')) {
+				// Если режим разработки
 				e.preventDefault();
 				formSent(form);
 			}
@@ -216,19 +226,21 @@ export function formSubmit() {
 			e.preventDefault();
 			if (form.querySelector('._form-error') && form.hasAttribute('data-goto-error')) {
 				const formGoToErrorClass = form.dataset.gotoError ? form.dataset.gotoError : '._form-error';
-				gotoBlock(formGoToErrorClass, true, 1000);
+				gotoBlock(null, formGoToErrorClass, true, 1000);
 			}
 		}
 	}
 	// Действия после отправки формы
 	function formSent(form, responseResult = ``) {
 		// Создаем событие отправки формы
-		document.dispatchEvent(new CustomEvent("formSent", {
-			detail: {
-				form: form
-			}
-		}));
-		// Показываем попап, если подключен модуль попапов 
+		document.dispatchEvent(
+			new CustomEvent('formSent', {
+				detail: {
+					form: form,
+				},
+			})
+		);
+		// Показываем попап, если подключен модуль попапов
 		// и для формы указана настройка
 		setTimeout(() => {
 			if (flsModules.popup) {
@@ -247,7 +259,7 @@ export function formSubmit() {
 }
 /* Модуь формы "колличество" */
 export function formQuantity() {
-	document.addEventListener("click", function (e) {
+	document.addEventListener('click', function (e) {
 		let targetElement = e.target;
 		if (targetElement.closest('[data-quantity-plus]') || targetElement.closest('[data-quantity-minus]')) {
 			const valueElement = targetElement.closest('[data-quantity]').querySelector('[data-quantity-value]');
@@ -305,22 +317,22 @@ export function formRating() {
 			const ratingActiveWidth = index / 0.05;
 			ratingActive.style.width = `${ratingActiveWidth}%`;
 		}
-		// Возможность указать оценку 
+		// Возможность указать оценку
 		function setRating(rating) {
 			const ratingItems = rating.querySelectorAll('.rating__item');
 			for (let index = 0; index < ratingItems.length; index++) {
 				const ratingItem = ratingItems[index];
-				ratingItem.addEventListener("mouseenter", function (e) {
+				ratingItem.addEventListener('mouseenter', function (e) {
 					// Обновление переменных
 					initRatingVars(rating);
 					// Обновление активных звезд
 					setRatingActiveWidth(ratingItem.value);
 				});
-				ratingItem.addEventListener("mouseleave", function (e) {
+				ratingItem.addEventListener('mouseleave', function (e) {
 					// Обновление активных звезд
 					setRatingActiveWidth();
 				});
-				ratingItem.addEventListener("click", function (e) {
+				ratingItem.addEventListener('click', function (e) {
 					// Обновление переменных
 					initRatingVars(rating);
 
@@ -349,7 +361,6 @@ export function formRating() {
 					//headers: {
 					//	'content-type': 'application/json'
 					//}
-
 				});
 				if (response.ok) {
 					const result = await response.json();
@@ -365,7 +376,7 @@ export function formRating() {
 
 					rating.classList.remove('rating_sending');
 				} else {
-					alert("Ошибка");
+					alert('Ошибка');
 
 					rating.classList.remove('rating_sending');
 				}

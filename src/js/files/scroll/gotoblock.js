@@ -6,7 +6,7 @@ import SmoothScroll from 'smooth-scroll';
 //==============================================================================================================================================================================================================================================================================================================================
 
 // Модуль плавной проктутки к блоку
-export let gotoBlock = (targetBlock, noHeader = false, speed = 500, offsetTop = 0) => {
+export let gotoBlock = (targetElement, targetBlock, noHeader = false, speed = 500, offsetTop = 0) => {
 	const targetBlockElement = document.querySelector(targetBlock);
 	if (targetBlockElement) {
 		let headerItem = '';
@@ -54,5 +54,6 @@ export let gotoBlock = (targetBlock, noHeader = false, speed = 500, offsetTop = 
 		FLS(`[gotoBlock]: Юхуу...едем к ${targetBlock}`);
 	} else {
 		FLS(`[gotoBlock]: Ой ой..Такого блока нет на странице: ${targetBlock}`);
+		document.location.href = targetElement.getAttribute('href') || '#';
 	}
 };
