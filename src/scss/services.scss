@@ -135,6 +135,15 @@
 		@include adaptiveValue("margin-bottom", 20, 10);
 		a {
 			color: $add8;
+			transition: color $tm ease;
+
+			&::before {
+				display: none;
+			}
+
+			&:hover {
+				color: $primary1-disable-text;
+			}
 		}
 	}
 
