@@ -1,0 +1,76 @@
+.influence-marketing {
+	.services {
+		// .services__first-screen-services
+
+		&__first-screen-services {
+		}
+	}
+	.first-screen-services {
+		// .first-screen-services__background
+
+		&__background {
+		}
+
+		// .first-screen-services__container
+
+		&__container {
+		}
+
+		// .first-screen-services__body
+
+		&__body {
+		}
+
+		// .first-screen-services__content
+
+		&__content {
+			flex: 0 0 50%;
+
+			@media (max-width: $burgerMenu) {
+				flex: 0 0 100%;
+			}
+		}
+
+		// .first-screen-services__item-link
+
+		&__item-link {
+		}
+
+		// .first-screen-services__title
+
+		&__title {
+		}
+
+		// .first-screen-services__text
+
+		&__text {
+		}
+
+		// .first-screen-services__images
+
+		&__images {
+			justify-content: end;
+			// height: 100%;
+		}
+
+		// .first-screen-services__image
+
+		&__image {
+			margin-top: 0;
+			margin-bottom: 0;
+			max-height: 730px;
+			width: 90%;
+			img {
+				height: 100%;
+				width: 100%;
+				object-fit: contain;
+				object-position: center bottom;
+			}
+		}
+
+		// .first-screen-services__decor
+
+		&__decor {
+		}
+	}
+}
