@@ -160,6 +160,7 @@ h5,
 h6,
 .h6 {
 	@include adaptiveValue("font-size", 28, 18);
+	line-height: 120%;
 	font-weight: 500;
 	&:not(:last-child) {
 		margin-bottom: 12px;
