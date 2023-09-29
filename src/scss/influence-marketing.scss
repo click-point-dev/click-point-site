@@ -61,16 +61,55 @@
 			max-height: 730px;
 			width: 90%;
 			img {
+				transform: scale(100%);
 				height: 100%;
 				width: 100%;
 				object-fit: contain;
 				object-position: center bottom;
+			}
+
+			&:before {
+				content: "";
+				position: absolute;
+				z-index: -10;
+				background: url("@img/services/decor-heart.png") center / contain no-repeat;
+				@include adaptiveValue("width", 200, 100);
+				aspect-ratio: 1;
+				@include adaptiveValue("left", -50, -50);
+				top: 34%;
+			}
+			&:after {
+				content: "";
+				position: absolute;
+				z-index: -10;
+				background: url("@img/services/decor-heart.png") center / contain no-repeat;
+				@include adaptiveValue("width", 110, 45);
+				aspect-ratio: 1;
+				@include adaptiveValue("right", -20, -20);
+				top: 19%;
+				transform: rotate(45deg);
 			}
 		}
 
 		// .first-screen-services__decor
 
 		&__decor {
+			opacity: 0.6;
+			.decor__top {
+				top: -3%;
+				left: 30%;
+			}
+
+			// .decor__center
+
+			.decor__center {
+			}
+
+			// .decor__bottom
+
+			.decor__bottom {
+				left: -18%;
+			}
 		}
 	}
 }

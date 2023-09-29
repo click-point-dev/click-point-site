@@ -21,7 +21,7 @@
 		// .first-screen__image
 
 		&__image {
-			@include adaptiveValue("width", 1403, 870, $maxWidthContainer, 1024, 1);
+			@include adaptiveValue("width", 1333, 870, $maxWidthContainer, 1024, 1);
 
 			@media (max-width: $burgerMenu) {
 				@include adaptiveValue("width", 870, 550, 1024, 360, 1);

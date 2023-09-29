@@ -79,8 +79,9 @@
 	}
 }
 
-.page__first-screen {
-	.first-screen__background {
+.page__first-screen,
+.first-screen-services {
+	.backgrount-stars {
 		img {
 			transform: rotate(70deg) !important;
 		}
@@ -88,8 +89,9 @@
 }
 
 .loaded {
-	.page__first-screen {
-		.first-screen__background {
+	.page__first-screen,
+	.first-screen-services {
+		.backgrount-stars {
 			img {
 				transform: rotate(180deg) !important;
 				transition: transform 8s 1s cubic-bezier(0.26, 1.32, 0.68, 1);

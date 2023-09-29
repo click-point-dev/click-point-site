@@ -73,11 +73,158 @@
 //====================first-screen======================
 
 .services {
-	// .services__first-screen-services
+	.decor-services {
+		position: absolute;
+		inset: 0;
+		z-index: -1;
+		pointer-events: none;
 
-	&__first-screen-services {
+		> * {
+			position: absolute;
+			aspect-ratio: 1;
+			mix-blend-mode: lighten;
+			opacity: 0.8;
+			will-change: transform;
+
+			img {
+				width: 100%;
+			}
+		}
+
+		.decor__top {
+			width: 0;
+			right: -45%;
+			top: 45%;
+			opacity: 0;
+		}
+
+		// .decor__center
+
+		.decor__center {
+			width: 0;
+			right: -45%;
+			top: 45%;
+			opacity: 0;
+		}
+
+		// .decor__bottom
+
+		.decor__bottom {
+			width: 0;
+			right: -45%;
+			bottom: -15%;
+			opacity: 0;
+		}
+
+		// .decor__top
+
+		&__top {
+		}
+
+		// .decor__center
+
+		&__center {
+		}
+
+		// .decor__bottom
+
+		&__bottom {
+		}
+	}
+
+	.first-screen-services__image {
+		position: relative;
+		z-index: 0;
+		@include adaptiveValue("margin-top", 180, 0);
+		width: 100%;
+
+		@media (max-width: $burgerMenu) {
+			margin-top: 0;
+			@include adaptiveValue("margin-bottom", 60, 45);
+			max-width: 400px;
+		}
+
+		img {
+			transform: scale(0%);
+			width: 100%;
+			opacity: 0;
+			will-change: transform;
+		}
 	}
 }
+
+.loaded {
+	.decor-services {
+		opacity: 0.5;
+		img {
+		}
+
+		.decor__top {
+			top: -10%;
+			left: 40%;
+			@include adaptiveValue("width", 52, 30);
+			opacity: 1;
+			transition: all 5s 1s cubic-bezier(0, 0.415, 0.34, 1.005);
+		}
+
+		// .decor__center
+
+		.decor__center {
+			top: 47%;
+			@include adaptiveValue("right", -50, -10);
+			@include adaptiveValue("width", 48, 42);
+			filter: blur(2px);
+			opacity: 1;
+			transition: all 4s 1s cubic-bezier(0, 0.415, 0.34, 1.005);
+		}
+
+		// .decor__bottom
+
+		.decor__bottom {
+			bottom: -30px;
+			left: -5%;
+			@include adaptiveValue("width", 160, 100);
+			opacity: 0.6;
+			transition: all 4s 1s cubic-bezier(0, 0.415, 0.34, 1.005);
+		}
+
+		// .decor__top
+
+		&__top {
+		}
+
+		// .decor__center
+
+		&__center {
+		}
+
+		// .decor__bottom
+
+		&__bottom {
+		}
+	}
+
+	.first-screen-services__image {
+		img {
+			transform: scale(100%);
+			width: 100%;
+			opacity: 1;
+			transition: all 4s 1s cubic-bezier(0.14, 0.995, 0.465, 1);
+		}
+
+		// &::before {
+		// 	content: "";
+		// 	background: url("@img/services/item-bg-gradient.png") center/contain no-repeat;
+		// 	position: absolute;
+		// 	z-index: -1;
+		// 	opacity: 0.5;
+		// 	pointer-events: none;
+		// 	inset: -100%;
+		// 	transform: translate(3%, -6%);
+		// }
+	}
+}
+
 .first-screen-services {
 	display: flex;
 	flex-direction: column;
@@ -120,7 +267,7 @@
 		@include adaptiveValue("padding-top", 210, 150);
 		@include adaptiveValue("padding-bottom", 144, 56);
 
-		flex: 0 0 40%;
+		flex: 0 0 45%;
 		align-self: center;
 
 		@media (max-width: $burgerMenu) {
@@ -161,6 +308,7 @@
 	// .first-screen-services__images
 
 	&__images {
+		position: relative;
 		flex: 0 1 45%;
 		min-height: 100%;
 		display: flex;
@@ -172,97 +320,22 @@
 			flex: 0 1 100%;
 			// justify-content: start;
 		}
-	}
-
-	// .first-screen-services__image
-
-	&__image {
-		position: relative;
-		z-index: 0;
-		@include adaptiveValue("margin-top", 220, 0);
-		width: 100%;
-
-		@media (max-width: $burgerMenu) {
-			margin-top: 0;
-			@include adaptiveValue("margin-bottom", 60, 45);
-			max-width: 400px;
-		}
-
-		img {
-			width: 100%;
-		}
 
 		&::before {
 			content: "";
 			background: url("@img/services/item-bg-gradient.png") center/contain no-repeat;
 			position: absolute;
-			z-index: -1;
+			// z-index: -1;
 			opacity: 0.5;
 			pointer-events: none;
-			inset: -100%;
-			transform: translate(3%, -6%);
+			inset: -45%;
+			transform: translateX(1%);
 		}
 	}
 
 	// .first-screen-services__decor
 
 	&__decor {
-	}
-}
-
-.decor-services {
-	position: absolute;
-	inset: 0;
-	// z-index: 1;
-	pointer-events: none;
-
-	> * {
-		position: absolute;
-		aspect-ratio: 1;
-		mix-blend-mode: lighten;
-		opacity: 0.8;
-
-		img {
-			width: 100%;
-		}
-	}
-
-	.decor__top {
-		top: -5%;
-		left: 40%;
-		@include adaptiveValue("width", 52, 30);
-	}
-
-	// .decor__center
-
-	.decor__center {
-		top: 47%;
-		@include adaptiveValue("right", -50, -10);
-		@include adaptiveValue("width", 48, 42);
-	}
-
-	// .decor__bottom
-
-	.decor__bottom {
-		bottom: -30px;
-		left: -5%;
-		@include adaptiveValue("width", 160, 100);
-		opacity: 0.6;
-	}
-
-	// .decor__top
-
-	&__top {
-	}
-
-	// .decor__center
-
-	&__center {
-	}
-
-	// .decor__bottom
-
-	&__bottom {
 	}
 }
 
