@@ -84,13 +84,18 @@ body::after {
 
 //====================callback-popup======================
 .callback-popup,
-.resume-popup {
+.resume-popup,
+.connect-with-us-popup {
 	.form__row {
 		flex-direction: column-reverse;
 
 		&:last-child {
 			margin-top: 4px;
 		}
+	}
+
+	.popup__head {
+		margin-bottom: 20px;
 	}
 
 	.popup__title {

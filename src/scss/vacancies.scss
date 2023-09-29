@@ -1,29 +1,36 @@
-.vacancies {
+.vacancies,
+.contacts {
 	&__first-screen {
+	}
+
+	.first-screen {
 		overflow: hidden;
-		height: 100vh;
-		min-height: 700px;
+		// height: 100vh !important;
 
 		@media (max-width: $burgerMenu) {
 			height: fit-content;
 		}
-	}
 
-	.first-screen {
 		&__background {
 		}
 
 		&__container {
 			position: relative;
+			min-height: 720px;
 		}
 
 		&__image {
 			pointer-events: none;
 			position: absolute;
 			max-width: unset;
-			@include adaptiveValue("width", 1183, 470);
+			@include adaptiveValue("width", 1183, 490);
 			@include adaptiveValue("right", -270, -30);
-			@include adaptiveValue("bottom", -220, -200);
+			@include adaptiveValue("bottom", -240, -200, $maxWidthContainer, 1024, 1);
+
+			@media (max-width: $burgerMenu) {
+				@include adaptiveValue("bottom", -250, -100, 1024, 360, 1);
+			}
+
 			img {
 				width: 100%;
 			}
@@ -46,6 +53,11 @@
 		&__title {
 			@include adaptiveValue("font-size", 56, 32);
 			@include adaptiveValue("margin-bottom", 56, 8);
+
+			a {
+				word-break: keep-all;
+				overflow-wrap: normal;
+			}
 		}
 
 		&__sub-title {
