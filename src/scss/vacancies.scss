@@ -28,7 +28,7 @@
 			@include adaptiveValue("bottom", -240, -200, $maxWidthContainer, 1024, 1);
 
 			@media (max-width: $burgerMenu) {
-				@include adaptiveValue("bottom", -250, -100, 1024, 360, 1);
+				@include adaptiveValue("bottom", -150, -50, 1024, 360, 1);
 			}
 
 			img {
