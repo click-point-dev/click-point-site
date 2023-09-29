@@ -1,0 +1,49 @@
+.programmatic-advertising {
+	.decor-services {
+		> * {
+			img {
+			}
+		}
+
+		.decor__top {
+			top: -5%;
+			left: 60%;
+			@include adaptiveValue("width", 52, 30);
+			filter: blur(2px);
+		}
+
+		// .decor__center
+
+		.decor__center {
+			top: 27%;
+			right: unset;
+			@include adaptiveValue("left", 0, -10);
+			@include adaptiveValue("width", 118, 70);
+		}
+
+		// .decor__bottom
+
+		.decor__bottom {
+			bottom: -13%;
+			left: unset;
+			right: 5%;
+			@include adaptiveValue("width", 180, 100);
+			opacity: 1;
+		}
+
+		// .decor__top
+
+		&__top {
+		}
+
+		// .decor__center
+
+		&__center {
+		}
+
+		// .decor__bottom
+
+		&__bottom {
+		}
+	}
+}
