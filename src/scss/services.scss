@@ -164,7 +164,7 @@
 			top: -10%;
 			left: 40%;
 			@include adaptiveValue("width", 52, 30);
-			opacity: 1;
+			opacity: 0.7;
 			transition: all 5s 1s cubic-bezier(0, 0.415, 0.34, 1.005);
 		}
 
