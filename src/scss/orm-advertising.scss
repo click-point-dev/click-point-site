@@ -1,0 +1,37 @@
+.orm-advertising {
+	.decor-services {
+		> * {
+			img {
+			}
+		}
+
+		.decor__top {
+			top: 0;
+			left: unset;
+			right: 0;
+			transform: scale(-1, 1) !important;
+		}
+
+		// .decor__center
+
+		.decor__center {
+			top: 80%;
+			@include adaptiveValue("right", -10, 0);
+		}
+
+		// .decor__bottom
+
+		.decor__bottom {
+			bottom: 40%;
+			opacity: 0.8;
+		}
+	}
+
+	.first-screen-services__content {
+		flex: 0 0 50%;
+
+		@media (max-width: $burgerMenu) {
+			flex: 0 0 100%;
+		}
+	}
+}
