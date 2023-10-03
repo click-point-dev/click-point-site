@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="ru">
+	@@include('html/_head.htm',{ "title":"О компании" }) @@include('html/_loader.htm',{})
+	<body>
+		<div class="wrapper" style="opacity: 0; pointer-events: none">
+			@@include('html/_header.htm',{})
+			<main class="page about-company" id="about-company" data-watch="navigator">
+				<div class="page__phone-button phone-button btn" data-appearing>
+					<div class="phone-button__body">
+						<div class="phone-button__phone">
+							<a href="tel:+7 (383) 298-98-98">+7 (383) 298-98-98</a>
+						</div>
+						<button class="phone-button__button _icon-phone"></button>
+					</div>
+				</div>
+				<section class="about-company__first-screen-about first-screen-about">
+					<div class="first-screen-about__background">
+						<img src="@img/about/stars-with-clouds.jfif" alt="безграничный космос со звездами" />
+					</div>
+					<div class="first-screen-about__container">
+						<div class="first-screen-about__body">
+							<div class="first-screen-about__content">
+								<h1 class="first-screen-about__title">о компании</h1>
+								<p class="first-screen-about__text _sub-title">
+									Digital-агентство ClickPoint входит в состав ГК «Реклама Онлайн» — одного из крупнейших рекламных
+									агентств полного цикла в России.
+								</p>
+								<div class="first-screen__scroll">
+									<img src="@img/vacancies/mouse.svg" alt="символ компьютерной мышки" />
+									<p>Скроль, чтобы посмотреть вакансии</p>
+								</div>
+							</div>
+						</div>
+						<div class="first-screen-about__images">
+							<div class="first-screen-about__main-image">
+								<img src="@img/about/astronaut.png" alt="астронавт на уступе горы" />
+							</div>
+							<div class="first-screen-about__decor"></div>
+						</div>
+					</div>
+				</section>
+			</main>
+			@@include('html/_footer.htm',{})
+		</div>
+		@@include('html/_callback-popup.htm',{}) @@include('html/_js.htm',{})
+	</body>
+</html>

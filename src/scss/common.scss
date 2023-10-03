@@ -1,6 +1,7 @@
 //====================отступы блоков на страницазх======================
 .page,
-.vacancies {
+.vacancies,
+.about-company {
 	&__first-screen,
 	&__advantages,
 	&__services,
@@ -8,7 +9,8 @@
 	&__clients,
 	&__main-form,
 	&__list,
-	&__response {
+	&__response,
+	&__first-screen-about {
 		@include adaptiveValue("margin-bottom", 144, 56);
 	}
 	&__about {
@@ -758,5 +760,17 @@ nav a,
 
 	&__text {
 		font-weight: 300;
+	}
+}
+
+//====================виджет scroll======================
+.first-screen__scroll {
+	display: flex;
+	max-width: 211px;
+	gap: 10px;
+	align-items: center;
+
+	@media (max-width: $burgerMenu) {
+		display: none;
 	}
 }

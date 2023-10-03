@@ -62,17 +62,6 @@
 
 		&__sub-title {
 		}
-
-		&__scroll {
-			display: flex;
-			max-width: 211px;
-			gap: 10px;
-			align-items: center;
-
-			@media (max-width: $burgerMenu) {
-				display: none;
-			}
-		}
 	}
 	.backgrount-stars {
 	}
