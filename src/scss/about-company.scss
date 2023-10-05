@@ -118,7 +118,7 @@
 
 		&__main-image {
 			position: absolute;
-			@include adaptiveValue("width", 1800, 1000);
+			@include adaptiveValue("width", 1730, 980);
 			right: -18%;
 			@include adaptiveValue("right", -370, -200);
 			bottom: 0;
