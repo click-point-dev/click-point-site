@@ -176,11 +176,24 @@
 				display: none;
 			}
 		}
+
+		.first-screen {
+			// .first-screen__scroll
+
+			&__scroll {
+				max-width: 273px;
+			}
+		}
 	}
 
 	//====================описание (второй экран)======================
 	// .about-company__button
 
+	.why-needed {
+		p {
+			font-weight: 300;
+		}
+	}
 	&__button {
 		display: flex;
 		justify-content: flex-end;
@@ -188,19 +201,6 @@
 
 		@media (max-width: 606px) {
 			justify-content: center;
-		}
-	}
-
-	.spollers-body {
-		// .spollers-body__action
-
-		&__action {
-		}
-	}
-	.btn {
-		// .btn_round
-
-		&_round {
 		}
 	}
 }
@@ -247,6 +247,9 @@
 
 			@media (max-width: $burgerMenu) {
 				flex: 0 0 100%;
+			}
+			p {
+				font-weight: 300;
 			}
 		}
 
@@ -331,6 +334,9 @@
 	}
 
 	.main-form {
+		p {
+			font-weight: 300;
+		}
 		// .main-form__container
 
 		&__container {
