@@ -3,180 +3,395 @@
 
 	&__first-screen-about {
 	}
-}
 
-.first-screen-about {
-	position: relative;
-	z-index: -11;
-	overflow: hidden;
-	background-color: #01154a;
-
-	&::before,
-	&::after {
-		content: "";
-		position: absolute;
-	}
-
-	&:before {
-		width: 50%;
-		height: 100%;
-		left: 0;
-		top: 0;
-		background-image: linear-gradient(90deg, rgba(1, 1, 53, 0.78) 10%, rgba(1, 1, 53, 0) 90%);
-	}
-
-	&::after {
-		width: 100%;
-		height: 40%;
-		left: 0;
-		bottom: 0;
-		background: linear-gradient(0deg, #010135 -13.43%, rgba(1, 1, 53, 0) 100%);
-	}
-
-	// .first-screen-about__background
-
-	&__background {
-		position: absolute;
-		z-index: -10;
-		width: 102%;
-		height: 100%;
-		bottom: 0;
-		left: 50%;
-		transform: translateX(-50%);
-		mix-blend-mode: screen;
-		opacity: 0.8;
-		// transform-origin: center bottom;
-		img {
-			width: 100%;
-			height: 100%;
-			object-fit: cover;
-			object-position: center bottom;
-		}
-	}
-
-	// .first-screen-about__container
-
-	&__container {
+	.first-screen-about {
 		position: relative;
-		height: max(100vh, 860px);
-		// display: flex;
-	}
+		overflow: hidden;
+		z-index: -11;
+		overflow: hidden;
+		background-color: #01154a;
 
-	// .first-screen-about__body
-
-	&__body {
-		display: flex;
-		align-items: center;
-		height: 100%;
-		@include adaptiveValue("padding-top", 285, 150);
-		@include adaptiveValue("padding-bottom", 180, 80);
-	}
-
-	// .first-screen-about__content
-
-	&__content {
-		position: relative;
-		z-index: 100;
-		flex: 0 0 45%;
-		height: 100%;
-		display: flex;
-		flex-direction: column;
-		justify-content: start;
-		color: white;
-
-		@media (max-width: $burgerMenu) {
-			flex: 0 0 80%;
-		}
-	}
-
-	// .first-screen-about__title
-
-	&__title {
-		@include adaptiveValue("margin-bottom", 24, 8);
-	}
-
-	// .first-screen-about__text
-
-	&__text {
-		text-wrap: unset;
-		flex: 1 1 auto;
-		margin-bottom: 0;
-	}
-
-	// .first-screen-about__images
-
-	&__images {
-		position: absolute;
-		inset: 0;
-	}
-
-	// .first-screen-about__main-image
-
-	&__main-image {
-		position: absolute;
-		@include adaptiveValue("width", 1800, 1000);
-		right: -18%;
-		@include adaptiveValue("right", -370, -200);
-		bottom: 0;
-		@include adaptiveValue("bottom", -30, -150);
-
-		// inset: 0;
-
-		img {
-			width: 100%;
-			// height: 110%;
-		}
-	}
-
-	// .first-screen-about__decor
-
-	&__decor {
-		position: absolute;
-		inset: 0;
-		mix-blend-mode: lighten;
-
-		> * {
-			aspect-ratio: 1;
+		&::before,
+		&::after {
+			content: "";
 			position: absolute;
 		}
 
-		img {
+		&:before {
+			width: 50%;
+			height: 100%;
+			left: 0;
+			top: 0;
+			background-image: linear-gradient(90deg, rgba(1, 1, 53, 0.78) 10%, rgba(1, 1, 53, 0) 90%);
+		}
+
+		&::after {
 			width: 100%;
+			height: 40%;
+			left: 0;
+			bottom: 0;
+			background: linear-gradient(0deg, #010135 -13.43%, rgba(1, 1, 53, 0) 100%);
+		}
+
+		// .first-screen-about__background
+
+		&__background {
+			position: absolute;
+			z-index: -10;
+			width: 102%;
+			height: 100%;
+			bottom: 0;
+			left: 50%;
+			transform: translateX(-50%);
+			mix-blend-mode: screen;
+			opacity: 0.8;
+			// transform-origin: center bottom;
+			img {
+				width: 100%;
+				height: 100%;
+				object-fit: cover;
+				object-position: center bottom;
+			}
+		}
+
+		// .first-screen-about__container
+
+		&__container {
+			position: relative;
+			height: max(100vh, 860px);
+			// display: flex;
+
+			@media (max-width: 767.98px) {
+				height: min(100vh, 640px);
+			}
+		}
+
+		// .first-screen-about__body
+
+		&__body {
+			display: flex;
+			align-items: center;
+			height: 100%;
+			@include adaptiveValue("padding-top", 285, 150);
+			@include adaptiveValue("padding-bottom", 180, 80);
+		}
+
+		// .first-screen-about__content
+
+		&__content {
+			position: relative;
+			z-index: 100;
+			flex: 0 0 45%;
+			height: 100%;
+			display: flex;
+			flex-direction: column;
+			justify-content: start;
+			color: white;
+
+			@media (max-width: $burgerMenu) {
+				flex: 0 0 80%;
+			}
+		}
+
+		// .first-screen-about__title
+
+		&__title {
+			@include adaptiveValue("margin-bottom", 24, 8);
+		}
+
+		// .first-screen-about__text
+
+		&__text {
+			text-wrap: unset;
+			flex: 1 1 auto;
+			margin-bottom: 0;
+		}
+
+		// .first-screen-about__images
+
+		&__images {
+			position: absolute;
+			inset: 0;
+		}
+
+		// .first-screen-about__main-image
+
+		&__main-image {
+			position: absolute;
+			@include adaptiveValue("width", 1800, 1000);
+			right: -18%;
+			@include adaptiveValue("right", -370, -200);
+			bottom: 0;
+			@include adaptiveValue("bottom", -100, -100);
+
+			// inset: 0;
+
+			img {
+				width: 100%;
+				// height: 110%;
+			}
+		}
+
+		// .first-screen-about__decor
+
+		&__decor {
+			position: absolute;
+			inset: 0;
+			mix-blend-mode: lighten;
+
+			> * {
+				aspect-ratio: 1;
+				position: absolute;
+			}
+
+			img {
+				width: 100%;
+			}
+		}
+
+		&__decor-1 {
+			@include adaptiveValue("width", 70, 35);
+			@include adaptiveValue("right", 50, 0);
+			@include adaptiveValue("bottom", 650, 500);
+			opacity: 0.9;
+		}
+
+		&__decor-2 {
+			@include adaptiveValue("width", 190, 100);
+			bottom: 12%;
+			left: 47%;
+			@include adaptiveValue("left", 800, 10);
+			transform: scale(-1);
+		}
+
+		&__decor-3 {
+			// width: 500px;
+			@include adaptiveValue("width", 500, 170);
+			right: -35%;
+			top: 27%;
+			transform: scale(1, -1);
+			filter: blur(2px) brightness(1.2);
+			opacity: 0.6;
+			@media (max-width: 470px) {
+				display: none;
+			}
 		}
 	}
 
-	&__decor-1 {
-		width: 70px;
-		@include adaptiveValue("width", 70, 35);
-		right: 10%;
-		@include adaptiveValue("bottom", 750, 500);
-		opacity: 0.9;
+	//====================описание (второй экран)======================
+	// .about-company__button
+
+	&__button {
+		display: flex;
+		justify-content: flex-end;
+		@include adaptiveValue("margin-top", 56, 24);
+
+		@media (max-width: 606px) {
+			justify-content: center;
+		}
 	}
 
-	&__decor-2 {
-		@include adaptiveValue("width", 190, 100);
-		bottom: 12%;
-		left: 47%;
-		@include adaptiveValue("left", 800, 10);
-		transform: scale(-1);
-	}
+	.spollers-body {
+		// .spollers-body__action
 
-	&__decor-3 {
-		// width: 500px;
-		@include adaptiveValue("width", 500, 170);
-		right: -35%;
-		top: 27%;
-		transform: scale(1, -1);
-		filter: blur(2px) brightness(1.2);
-		opacity: 0.6;
-		@media (max-width: 470px) {
-			display: none;
+		&__action {
+		}
+	}
+	.btn {
+		// .btn_round
+
+		&_round {
 		}
 	}
 }
-.first-screen {
-	// .first-screen__scroll
 
-	&__scroll {
+//====================how (третий экран)======================
+.about-company {
+	// .about-company__how
+
+	&__how {
+	}
+
+	.how {
+		// .how__background
+
+		&__background {
+			&:after {
+				display: none;
+			}
+		}
+
+		// .how__container
+
+		&__container {
+		}
+
+		// .how__body
+
+		&__body {
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			@include adaptiveValue("gap", 140, 20);
+			@include adaptiveValue("margin-bottom", 144, 56);
+
+			@media (max-width: $burgerMenu) {
+				flex-wrap: wrap;
+			}
+		}
+
+		// .how__content
+
+		&__content {
+			flex: 0 0 51%;
+
+			@media (max-width: $burgerMenu) {
+				flex: 0 0 100%;
+			}
+		}
+
+		// .how__title
+
+		&__title {
+		}
+
+		// .how__text
+
+		&__text {
+		}
+
+		// .how__image
+
+		&__image {
+			position: relative;
+			mix-blend-mode: screen;
+
+			@media (max-width: $burgerMenu) {
+				flex: 0 0 100%;
+				text-align: center;
+			}
+
+			img {
+				width: 100%;
+				max-width: 700px;
+			}
+
+			&:after {
+				content: "";
+				position: absolute;
+				inset: -50%;
+				background: url("@img/about/bg-gradient.png") center / contain no-repeat;
+				opacity: 0.4;
+			}
+		}
+	}
+
+	// .about-company__clients
+
+	&__clients {
+	}
+
+	.clients {
+		// .clients__content
+
+		&__content {
+		}
+
+		// .clients__slider
+
+		&__slider {
+			// .clients__slider_reverse
+
+			&_reverse {
+			}
+		}
+
+		// .clients__wrapper
+
+		&__wrapper {
+		}
+
+		// .clients__slide
+
+		&__slide {
+		}
+
+		// .clients__image
+
+		&__image {
+			filter: brightness(100);
+		}
+	}
+
+	// .about-company__main-form
+
+	&__main-form {
+		padding-block: 0;
+		margin-block: 0;
+	}
+
+	.main-form {
+		// .main-form__container
+
+		&__container {
+		}
+
+		// .main-form__content
+
+		&__content {
+			@include adaptiveValue("gap", 150, 15);
+		}
+
+		// .main-form__images
+		&__images {
+			position: relative;
+
+			&:after {
+				content: "";
+				position: absolute;
+				z-index: unset;
+				inset: -10%;
+				transform: translateX(80px);
+				background: url("@img/about/bg-gradient.png") center / contain no-repeat;
+				opacity: 0.4;
+			}
+		}
+
+		// .main-form__image
+
+		&__image {
+			z-index: unset;
+			mix-blend-mode: lighten;
+			// flex: 1 0 auto;
+
+			img {
+				@include adaptiveValue("padding-top", 50, 10);
+			}
+		}
+
+		// .main-form__body
+
+		&__body {
+		}
+
+		// .main-form__head
+
+		&__head {
+		}
+
+		// .main-form__title
+
+		&__title {
+		}
+
+		// .main-form__sub-title
+
+		&__sub-title {
+		}
+
+		// .main-form__form
+
+		&__form {
+		}
 	}
 }
