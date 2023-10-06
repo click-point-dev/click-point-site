@@ -1,13 +1,11 @@
 //====================первый экран======================
 
-// анимация декоративных элементов
 .page__first-screen {
 	.first-screen__decor {
 		position: absolute;
 		width: 100%;
 		height: 100%;
 		pointer-events: none;
-
 		.first-screen__decor_top,
 		.first-screen__decor_center,
 		.first-screen__decor_bottom {
@@ -21,130 +19,60 @@
 		}
 
 		.first-screen__decor_top {
-			width: 0;
-			right: -45%;
-			top: 45%;
-			opacity: 0;
-			filter: blur(0px);
+			@include adaptiveValue("width", 380, 110);
+			@include adaptiveValue("right", -200, 180);
+			@include adaptiveValue("top", -240, -60);
+			opacity: 0.5;
+			filter: blur(3px);
 
 			@media (max-width: calc(#{$maxWidth}px)) {
-				right: -45%;
+				// right: 0;
 			}
 
 			@media (max-width: $burgerMenu) {
-				right: -45%;
+				right: 70px;
 			}
 
 			@media (max-width: $mobile) {
-				filter: blur(0px);
+				filter: blur(4px);
 			}
 		}
 
 		.first-screen__decor_center {
-			width: 0;
-			right: -45%;
-			top: 45%;
-			filter: blur(0px);
-			opacity: 0;
+			@include adaptiveValue("width", 100, 60);
+			right: 35%;
+			top: 18%;
+			filter: blur(4px);
+			opacity: 0.5;
 
 			@media (max-width: $burgerMenu) {
-				width: 0;
-				right: -45%;
-				top: 45%;
-				filter: blur(0px);
+				@include adaptiveValue("left", 350, -10);
+				@include adaptiveValue("top", 120, 100);
+				filter: blur(3px);
 			}
 		}
 
 		.first-screen__decor_bottom {
-			width: 0;
-			right: -45%;
-			bottom: -15%;
-			opacity: 0;
-
+			@include adaptiveValue("width", 158, 70);
+			right: -8%;
+			bottom: 14%;
+			opacity: 1;
 			@media (max-width: 1600px) {
-				right: 0;
+				right: 1%;
 			}
 
 			@media (max-width: 709px) {
-				top: 0;
-				right: 0;
+				@include adaptiveValue("top", 540, 370, 709, 360, 1);
+				@include adaptiveValue("right", 250, 30);
 			}
 			@media (min-width: 710px) and (max-width: $burgerMenu) {
-				top: 0;
-				right: 0;
+				@include adaptiveValue("right", 280, 70);
+				@include adaptiveValue("top", 590, 450);
 			}
 		}
 	}
 }
 
-.loaded {
-	.page__first-screen {
-		.first-screen__decor {
-			.first-screen__decor_top,
-			.first-screen__decor_center,
-			.first-screen__decor_bottom {
-				transition: all 6s 1s cubic-bezier(0, 0.415, 0.34, 1.005);
-				img {
-				}
-			}
-
-			.first-screen__decor_top {
-				@include adaptiveValue("width", 380, 110);
-				@include adaptiveValue("right", -200, 80);
-				@include adaptiveValue("top", -240, -60);
-				opacity: 0.5;
-				filter: blur(6px);
-
-				@media (max-width: calc(#{$maxWidth}px)) {
-					right: 0;
-				}
-
-				@media (max-width: $burgerMenu) {
-					right: 70px;
-				}
-
-				@media (max-width: $mobile) {
-					filter: blur(4px);
-				}
-			}
-
-			.first-screen__decor_center {
-				@include adaptiveValue("width", 128, 75);
-				right: 33%;
-				top: 15%;
-				filter: blur(4px);
-				opacity: 0.5;
-
-				@media (max-width: $burgerMenu) {
-					@include adaptiveValue("left", 350, -10);
-					@include adaptiveValue("top", 120, 100);
-					filter: blur(3px);
-				}
-			}
-
-			.first-screen__decor_bottom {
-				@include adaptiveValue("width", 158, 85);
-				right: -8%;
-				bottom: 14%;
-				opacity: 1;
-				@media (max-width: 1600px) {
-					right: 1%;
-				}
-
-				@media (max-width: 709px) {
-					@include adaptiveValue("top", 540, 350, 709, 360, 1);
-					@include adaptiveValue("right", 250, 20);
-				}
-				@media (min-width: 710px) and (max-width: $burgerMenu) {
-					@include adaptiveValue("right", 280, 70);
-					@include adaptiveValue("top", 590, 450);
-				}
-			}
-		}
-	}
-}
-
-// анимация главного изображения
 .page__first-screen {
 	.first-screen__image {
 		position: relative;
@@ -157,25 +85,13 @@
 			width: 95%;
 			max-width: 470px;
 		}
-		img {
-			width: 100%;
-			transform: scale(1%);
-			opacity: 0;
-		}
 	}
-}
 
-.loaded {
-	.page__first-screen {
-		.first-screen__image {
-		}
-
-		img {
-			transform: scale(100%);
-			width: 100%;
-			opacity: 1;
-			transition: all 7s 1s cubic-bezier(0.14, 0.995, 0.465, 1);
-		}
+	img {
+		transform: scale(100%);
+		width: 100%;
+		opacity: 1;
+		transition: all 7s 1s cubic-bezier(0.14, 0.995, 0.465, 1);
 	}
 }
 
