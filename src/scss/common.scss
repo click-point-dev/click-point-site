@@ -523,6 +523,7 @@ nav a,
 	&__button {
 		@include adaptiveValue("font-size", 24, 16);
 		aspect-ratio: 1;
+		transform: translateY(2px);
 	}
 }
 
