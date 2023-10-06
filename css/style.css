@@ -174,11 +174,6 @@ h6 {
   font-size: inherit;
 }
 
-picture {
-  position: absolute;
-  inset: 0;
-}
-
 .lock body {
   overflow: hidden;
   -ms-touch-action: none;
