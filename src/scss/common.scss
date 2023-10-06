@@ -575,6 +575,7 @@ nav a,
 			}
 		}
 	}
+
 	&_l {
 		grid-column: span 2;
 
@@ -646,6 +647,37 @@ nav a,
 		&:hover &__image_big {
 			transform: translate3d(-70px, 0px, 0) scale(1.1);
 		}
+	}
+
+	.first-screen-services__decor {
+		transform: scale(0.9) translate(15px, 0);
+		will-change: transform;
+		transition: transform $tm ease;
+		opacity: 1 !important;
+
+		.decor__top {
+		}
+
+		.decor__bottom-1 {
+			@include adaptiveValue("width", 230, 150);
+			aspect-ratio: 1;
+			right: -26%;
+			bottom: -35%;
+			opacity: 1;
+			filter: brightness(0.8);
+		}
+
+		.decor__center-1 {
+			@include adaptiveValue("width", 140, 90);
+			aspect-ratio: 1;
+			left: 10%;
+			bottom: 30%;
+			opacity: 1;
+		}
+	}
+
+	&:hover .first-screen-services__decor {
+		transform: scale(0.8) translate(25px, -40px);
 	}
 }
 
