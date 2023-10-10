@@ -25,7 +25,7 @@
 			max-width: unset;
 			@include adaptiveValue("width", 1183, 490);
 			@include adaptiveValue("right", -270, -30);
-			@include adaptiveValue("bottom", -140, -100, $maxWidthContainer, 1024, 1);
+			@include adaptiveValue("bottom", -170, -100, $maxWidthContainer, 1024, 1);
 
 			@media (max-width: $burgerMenu) {
 				@include adaptiveValue("bottom", -150, -80, 1024, 360, 1);

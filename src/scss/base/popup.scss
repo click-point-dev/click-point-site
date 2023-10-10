@@ -9,7 +9,7 @@ body::after {
 	opacity: 0;
 	transition: opacity 0.8s ease 0s;
 	pointer-events: none;
-	z-index: 149;
+	z-index: 1499;
 }
 .popup-show body::after {
 	opacity: 1;
@@ -36,7 +36,7 @@ body::after {
 	}
 }
 .popup_show {
-	z-index: 150;
+	z-index: 1500;
 	visibility: visible;
 	overflow: auto;
 	pointer-events: auto;
