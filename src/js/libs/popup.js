@@ -42,7 +42,9 @@ class Popup {
 				beforeOpen: function () {},
 				afterOpen: function () {},
 				beforeClose: function () {},
-				afterClose: function () {},
+				afterClose: function (e) {
+					console.log(e);
+				},
 			},
 		};
 		this.youTubeCode;
@@ -133,7 +135,9 @@ class Popup {
 				}
 				// Закрытие на пустом месте (popup__wrapper) и кнопки закрытия (popup__close) для закрытия
 				const buttonClose = e.target.closest(`[${this.options.attributeCloseButton}]`);
-				if (buttonClose || (!e.target.closest(`.${this.options.classes.popupContent}`) && this.isOpen)) {
+				// тут отключил закрытие по клику вне попапа. так как срабатывало закрытие при клике на удалении файла
+				// удалил из условия проверку - || !e.target.closest(`.${this.options.classes.popupContent}`)
+				if (buttonClose && this.isOpen) {
 					e.preventDefault();
 					this.close();
 					return;

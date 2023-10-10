@@ -173,131 +173,70 @@ window.addEventListener('DOMContentLoaded', () => {
 
 	//!+ загрузка файлов в форму
 
-	const formFileInput = document.querySelector('#formFileInput');
-	const filesPlaceholder = document.querySelector('#formUploadedFiles');
-	let filesInputList;
+	function loadFilesToForm() {
+		const formFileInput = document.querySelector('#formFileInput');
+		const filesPlaceholder = document.querySelector('#formFilesPlaceholder');
 
-	let filesObserver = new MutationObserver(() => {
-		const removeButtons = document.querySelectorAll('#deleteFileButton');
+		if (!formFileInput || !filesPlaceholder) return;
 
-		Array.from(removeButtons).forEach((button) => removeFiles(button));
-	});
+		let filesInputList;
 
-	filesObserver.observe(filesPlaceholder, {
-		childList: true, // наблюдать за непосредственными детьми
-		subtree: false, // и более глубокими потомками
-		characterDataOldValue: false, // передавать старое значение в колбэк
-	});
+		let filesObserver = new MutationObserver(() => {
+			const removeFilesButtons = document.querySelectorAll('#deleteFileButton');
 
-	function removeFiles(item) {
-		item.addEventListener('click', function (e) {
-			filesInputList = filesInputList.filter((item) => item.name !== e.target.innerHTML);
-			renderFilesList(filesInputList, filesPlaceholder);
+			Array.from(removeFilesButtons).forEach((button) => removeFiles(button));
 		});
-	}
 
-	function renderFilesList(list, node) {
-		node.innerHTML = '';
+		filesObserver.observe(filesPlaceholder, {
+			childList: true, // наблюдать за непосредственными детьми
+			subtree: false, // и более глубокими потомками
+			characterDataOldValue: false, // передавать старое значение в колбэк
+		});
 
-		list.forEach((item) =>
-			node.insertAdjacentHTML(
-				'beforeend',
-				`	<div class="input-file__btn _text-bright">
+		function removeFiles(item) {
+			item.addEventListener('click', function (e) {
+				filesInputList = filesInputList.filter((item) => item.name !== e.target.innerHTML);
+				renderFilesList(filesInputList, filesPlaceholder);
+			});
+		}
+
+		function renderFilesList(list, node) {
+			node.innerHTML = '';
+
+			list.forEach((item) =>
+				node.insertAdjacentHTML(
+					'beforeend',
+					`	<div class="input-file__btn">
 						<span class="_icon-trash" id="deleteFileButton">${item.name}</span>
 					</div>
 				`
-			)
-		);
+				)
+			);
+		}
+
+		function loadFiles(input, filesPlaceholder) {
+			if (!input || !filesPlaceholder) return;
+
+			const files = input.files;
+
+			let reader = new FileReader();
+			reader.readAsDataURL(new Blob(files));
+
+			reader.onload = function () {
+				filesInputList = filesInputList ? [...filesInputList, ...Array.from(files)] : [...Array.from(files)];
+
+				renderFilesList(filesInputList, filesPlaceholder);
+			};
+
+			reader.onerror = function () {
+				alert('C загрузкой файла вохникли проблемы. Попробуйте еще раз');
+			};
+		}
+
+		formFileInput.addEventListener('change', () => {
+			loadFiles(formFileInput, filesPlaceholder);
+		});
 	}
 
-	function loadFiles(input, filesPlaceholder) {
-		if (!input || !filesPlaceholder) return;
-
-		const files = input.files;
-
-		let reader = new FileReader();
-		reader.readAsDataURL(new Blob(files));
-
-		reader.onload = function () {
-			filesInputList = filesInputList ? [...filesInputList, ...Array.from(files)] : [...Array.from(files)];
-
-			renderFilesList(filesInputList, filesPlaceholder);
-		};
-
-		reader.onerror = function () {
-			alert('C загрузкой файла вохникли проблемы. Попробуйте еще раз');
-		};
-	}
-
-	formFileInput.addEventListener('change', () => {
-		loadFiles(formFileInput, filesPlaceholder);
-	});
-
-	// const formFileInput = document.querySelectorAll('#formFileInput');
-	// const formUploadedFiles = document.querySelector('#formUploadedFiles');
-
-	// if (!formFileInput || !formUploadedFiles) return;
-
-	// console.log(formFileInput);
-	// console.log(formUploadedFiles);
-
-	// formFileInput.forEach((input) => {
-	// 	let files;
-
-	// 	input.addEventListener(
-	// 		'change',
-	// 		() => {
-	// 			files = files ? [...files, ...Array.from(input.files)] : [...Array.from(input.files)];
-
-	// 			formUploadedFiles.innerHTML = '';
-
-	// 			const renderFilesNames = function (arr) {
-	// 				arr.forEach((file) => {
-	// 					// console.log(file);
-	// 					const fileBlock = `
-	// 				<div class="input-file__btn _text-bright" >
-	// 					<span class="_icon-trash" id="deleteFile">${file.name}</span>
-
-	// 				</div>
-	// 				`;
-	// 					formUploadedFiles.insertAdjacentHTML('beforeend', fileBlock);
-
-	// 					// const deleteFileButtons = document.getElementById('deleteFile');
-
-	// 					formUploadedFiles.addEventListener(
-	// 						'click',
-	// 						(e) => {
-	// 							files.filter((file) => {
-	// 								console.log(e.target.innerHTML, file.name);
-	// 								return file.name !== e.target.innerHTML;
-	// 							});
-	// 							console.log(files);
-	// 							renderFilesNames();
-	// 						},
-	// 						false
-	// 					);
-	// 				});
-	// 			};
-
-	// 			renderFilesNames(files);
-
-	// 			// deleteFile.addEventListener('click', (e) => {
-	// 			// 	console.log(e.target);
-	// 			// 	files
-	// 			// 		.filter((file) => file.name !== e.target.innerHTML)
-	// 			// 		.forEach((file) => {
-	// 			// 			console.log(file);
-	// 			// 			const fileBlock = `
-	// 			// 		<div class="input-file__btn _text-bright" >
-	// 			// 			<span class="_icon-trash" id="deleteFile">${file.name}</span>
-
-	// 			// 		</div>
-	// 			// 	`;
-	// 			// 			formUploadedFiles.insertAdjacentHTML('beforeend', fileBlock);
-	// 			// 		});
-	// 			// });
-	// 		},
-	// 		false
-	// 	);
-	// });
+	loadFilesToForm();
 });

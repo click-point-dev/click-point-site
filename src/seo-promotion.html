@@ -255,12 +255,7 @@
 									<div class="form__row">
 										<div class="form__input-file input-file">
 											<div class="input-file__input">
-												<input
-													accept=".jpg, .png, .svg, .pdf, .jpeg"
-													type="file"
-													name="form[resume-vacancies]"
-													class="input"
-													multiple />
+												<input type="file" name="form-services[]" class="input" multiple id="formFileInput" />
 												<div class="input-file__btn"><span class="_icon-plus"></span></div>
 												<div class="input-file__description">
 													<p class="_text-s _text-bright">Прикрепить файл</p>
@@ -270,11 +265,7 @@
 										</div>
 									</div>
 									<div class="form__row">
-										<div class="input-file__files">
-											<div class="input-file__btn _text-bright"><span class="_icon-trash">file.pdf</span></div>
-											<div class="input-file__btn _text-bright"><span class="_icon-trash">file.pdf</span></div>
-											<div class="input-file__btn _text-bright"><span class="_icon-trash">file.pdf</span></div>
-										</div>
+										<div class="input-file__files _text-bright" id="formFilesPlaceholder"></div>
 									</div>
 									<div class="form__row">
 										<p class="_text-xs _text-bright">

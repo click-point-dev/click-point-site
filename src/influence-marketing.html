@@ -295,9 +295,9 @@
 						<div class="main-form__content">
 							<div class="main-form__body">
 								<div class="main-form__head">
-									<h2 class="main-form__title _text-bright">Готовы начать работу  над вашим проектом</h2>
+									<h2 class="main-form__title _text-bright">Готовы начать работу над вашим проектом</h2>
 									<p id="p" class="main-form__sub-title _text-bright">
-										Заполните короткую заявку и мы свяжемся с вами в ближайшее время
+										Заполните короткую заявку и мы свяжемсяс вами в ближайшее время
 									</p>
 								</div>
 
@@ -315,12 +315,7 @@
 									<div class="form__row">
 										<div class="form__input-file input-file">
 											<div class="input-file__input">
-												<input
-													accept=".jpg, .png, .svg, .pdf, .jpeg"
-													type="file"
-													name="form[resume-vacancies]"
-													class="input"
-													multiple />
+												<input type="file" name="form-services[]" class="input" multiple id="formFileInput" />
 												<div class="input-file__btn"><span class="_icon-plus"></span></div>
 												<div class="input-file__description">
 													<p class="_text-s _text-bright">Прикрепить файл</p>
@@ -330,11 +325,7 @@
 										</div>
 									</div>
 									<div class="form__row">
-										<div class="input-file__files">
-											<div class="input-file__btn _text-bright"><span class="_icon-trash">file.pdf</span></div>
-											<div class="input-file__btn _text-bright"><span class="_icon-trash">file.pdf</span></div>
-											<div class="input-file__btn _text-bright"><span class="_icon-trash">file.pdf</span></div>
-										</div>
+										<div class="input-file__files _text-bright" id="formFilesPlaceholder"></div>
 									</div>
 									<div class="form__row">
 										<p class="_text-xs _text-bright">
