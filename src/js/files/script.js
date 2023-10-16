@@ -93,7 +93,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
 	if (bgStarsMain) {
 		gsap.from(bgStarsMain, {
-			rotate: 180,
+			rotate: -180,
 			scale: 1.5,
 			ease: 'power4.out',
 			duration: 8,
@@ -114,6 +114,7 @@ window.addEventListener('DOMContentLoaded', () => {
 	//+ страница Главная - главное изображение
 
 	const mainImage = document.querySelector('.first-screen__image');
+	const mainLens = document.querySelector('.first-screen__image img:nth-child(2)');
 
 	if (mainImage) {
 		gsap.from(mainImage, {
@@ -128,6 +129,16 @@ window.addEventListener('DOMContentLoaded', () => {
 			duration: 8,
 			delay: 1,
 			ease: 'power4.out',
+		});
+	}
+
+	if (mainLens) {
+		gsap.from(mainLens, {
+			top: '52%',
+			left: '64%',
+			duration: 5,
+			delay: 1,
+			ease: 'power1.out',
 		});
 	}
 

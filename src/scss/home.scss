@@ -41,7 +41,7 @@
 		.first-screen__decor_center {
 			@include adaptiveValue("width", 100, 60);
 			right: 35%;
-			top: 18%;
+			top: 22%;
 			filter: blur(4px);
 			opacity: 0.5;
 
@@ -76,7 +76,7 @@
 .page__first-screen {
 	.first-screen__image {
 		position: relative;
-		z-index: 10;
+		z-index: 100;
 		flex: 1 1 770px;
 
 		@media (max-width: $burgerMenu) {
@@ -85,11 +85,23 @@
 			width: 95%;
 			max-width: 470px;
 		}
-		& > img {
+		& > img:first-child {
 			// transform: scale(100%);
+			// position: relative;
 			width: 100%;
 			opacity: 1;
 			// transition: all 7s 1s cubic-bezier(0.14, 0.995, 0.465, 1);
+		}
+
+		& > img:nth-child(2) {
+			position: absolute;
+			opacity: 0.7;
+			// z-index: 10;
+			background: url("@img/decor/lens.png") center / contain no-repeat;
+			width: 60px;
+			aspect-ratio: 5/4;
+			top: 1%;
+			left: 36%;
 		}
 	}
 }
@@ -275,6 +287,11 @@
 
 .how {
 	&__background {
+		img {
+			object-position: center;
+			opacity: 0.3;
+		}
+
 		&::before {
 			display: none;
 		}
@@ -383,6 +400,12 @@
 ///====================form-main======================
 
 .main-form {
+	&__background {
+		img {
+			object-position: center;
+			opacity: 0.3;
+		}
+	}
 	&__decor {
 		position: absolute;
 		pointer-events: none;
