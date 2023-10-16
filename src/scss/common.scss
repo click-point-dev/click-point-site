@@ -547,6 +547,136 @@ nav a,
 	@include adaptiveValue("padding-block", 40, 24);
 	@include adaptiveValue("border-radius", 20, 16);
 
+	//.card-services__decor_xl
+
+	&__decor_xl,
+	&__decor_l {
+		position: absolute;
+		inset: 0;
+
+		img {
+			position: absolute;
+			transition: transform $tm ease;
+		}
+
+		:nth-child(1) {
+			mix-blend-mode: screen;
+			@include adaptiveValue("width", 61, 17);
+			right: 10%;
+			top: 23%;
+			@include adaptiveValue("top", 150, 80, $maxWidthContainer, 1024, 1);
+			transform: scale(-1, 1) rotate(-10deg);
+
+			@media (any-hover: hover) {
+				.card-services:hover & {
+					transform: translate3d(10px, 10px, 0) scale(-0.9, 0.9) rotate(-10deg);
+				}
+			}
+		}
+
+		:nth-child(2) {
+			mix-blend-mode: lighten;
+			@include adaptiveValue("width", 120, 50);
+			@include adaptiveValue("top", 310, 147, $maxWidthContainer, 1024, 1);
+			@include adaptiveValue("right", 440, 197, $maxWidthContainer, 1024, 1);
+
+			@media (any-hover: hover) {
+				.card-services:hover & {
+					transform: translate3d(10px, 10px, 0) scale(0.9);
+				}
+			}
+		}
+
+		:nth-child(3) {
+			mix-blend-mode: screen;
+			opacity: 0.6;
+			@include adaptiveValue("width", 45, 22);
+			@include adaptiveValue("bottom", 50, 5);
+			@include adaptiveValue("right", 230, 80);
+			transform: scale(1, -1);
+
+			@media (any-hover: hover) {
+				.card-services:hover & {
+					transform: translate3d(0px, 10px, 0) scale(0.9, -0.9);
+				}
+			}
+		}
+
+		:nth-child(4) {
+			opacity: 0.9;
+			@include adaptiveValue("width", 219, 66);
+			@include adaptiveValue("bottom", -85, -30);
+			@include adaptiveValue("right", -50, -12);
+
+			@media (any-hover: hover) {
+				.card-services:hover & {
+					transform: translate3d(5px, -10px, 0) scale(1.07);
+				}
+			}
+		}
+
+		:nth-child(5) {
+			@include adaptiveValue("width", 132, 50);
+			@include adaptiveValue("right", 400, 177, $maxWidthContainer, 1024, 1);
+			@include adaptiveValue("bottom", 90, 0);
+			opacity: 0.9;
+			filter: blur(1px);
+
+			@media (any-hover: hover) {
+				.card-services:hover & {
+					transform: translate3d(-10px, -10px, 0) scale(1.1);
+				}
+			}
+		}
+	}
+
+	&__decor_l {
+		:nth-child(1) {
+			@include adaptiveValue("width", 37, 25);
+			top: unset;
+			@include adaptiveValue("bottom", 140, 110);
+			@include adaptiveValue("right", 230, 120);
+			transform: scale(-1, -1) rotate(-10deg);
+			opacity: 0.6;
+			filter: blur(1px);
+			@media (any-hover: hover) {
+				.card-services:hover & {
+					transform: translate3d(10px, 10px, 0) scale(-1, -1) rotate(-10deg);
+				}
+			}
+		}
+
+		:nth-child(2) {
+			@include adaptiveValue("width", 124, 65);
+			top: unset;
+			@include adaptiveValue("bottom", 0, 5, $maxWidthContainer, 1024, 1);
+			@include adaptiveValue("right", -40, -30, $maxWidthContainer, 1024, 1);
+			transform: scale(1, -1);
+
+			@media (any-hover: hover) {
+				.card-services:hover & {
+					transform: translate3d(10px, 10px, 0) scale(1, -1);
+				}
+			}
+		}
+
+		:nth-child(3) {
+			z-index: 5;
+			mix-blend-mode: lighten;
+			opacity: 1;
+			@include adaptiveValue("width", 60, 22);
+			bottom: 20px;
+			@include adaptiveValue("right", 320, 190);
+			transform: scale(1) rotate(-20deg);
+
+			@media (any-hover: hover) {
+				.card-services:hover & {
+					transform: translate3d(0px, 7px, 0) scale(0.9) rotate(-20deg);
+				}
+			}
+		}
+	}
+
 	&_color {
 		background-color: $primary1-disable-color;
 	}
@@ -558,6 +688,7 @@ nav a,
 	&_xl {
 		grid-row: span 2;
 		grid-column: span 2;
+		@include adaptiveValue("padding-inline", 48, 20);
 
 		@media (max-width: $burgerMenu) {
 			grid-row: span 1;
@@ -568,15 +699,19 @@ nav a,
 			grid-column: span 1;
 		}
 
+		.card-services__head {
+			max-width: 366px;
+		}
+
 		.card-services__image {
-			@include adaptiveValue("height", 340, 300);
-			@include adaptiveValue("right", 40, 10);
-			@include adaptiveValue("bottom", 45, 35);
+			@include adaptiveValue("height", 370, 300);
+			@include adaptiveValue("right", 50, 10);
+			@include adaptiveValue("bottom", 100, 35);
 
 			@media (max-width: $burgerMenu) {
 				@include adaptiveValue("height", 220, 180);
-				@include adaptiveValue("right", 40, 10);
-				@include adaptiveValue("bottom", 10, 0);
+				@include adaptiveValue("right", 40, 15);
+				@include adaptiveValue("bottom", 10, 10);
 			}
 		}
 	}
@@ -587,8 +722,13 @@ nav a,
 			grid-column: span 1;
 		}
 
+		.card-services__head {
+			max-width: 387px;
+		}
+
 		.card-services__image {
-			@include adaptiveValue("height", 240, 190);
+			@include adaptiveValue("height", 250, 165);
+			@include adaptiveValue("right", 60, 15);
 		}
 	}
 
@@ -596,6 +736,9 @@ nav a,
 		@include adaptiveValue("margin-bottom", 12, 16);
 		position: relative;
 		z-index: 10;
+		p {
+			text-wrap: unset;
+		}
 	}
 
 	&__title {
@@ -623,7 +766,7 @@ nav a,
 		position: absolute;
 		z-index: 1;
 		pointer-events: none;
-		width: 80%;
+		// width: 80%;
 		@include adaptiveValue("height", 150, 153);
 		right: 0;
 		bottom: 0;
@@ -644,12 +787,15 @@ nav a,
 		}
 	}
 
-	&:hover &__image {
-		transform: translate3d(-25px, 0px, 0) scale(1.1);
-	}
-	@media (max-width: 606px) {
-		&:hover &__image_big {
-			transform: translate3d(-70px, 0px, 0) scale(1.1);
+	@media (any-hover: hover) {
+		&:hover &__image {
+			transform: translate3d(-10px, -10px, 0) scale(1.1);
+		}
+
+		@media (max-width: 606px) {
+			&:hover &__image_big {
+				transform: translate3d(-70px, 0px, 0) scale(1.1);
+			}
 		}
 	}
 }
