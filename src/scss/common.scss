@@ -565,11 +565,11 @@ nav a,
 			right: 10%;
 			top: 23%;
 			@include adaptiveValue("top", 150, 80, $maxWidthContainer, 1024, 1);
-			transform: scale(-1, 1) rotate(-10deg);
+			transform: scale(-1, 1) rotate(-20deg);
 
 			@media (any-hover: hover) {
 				.card-services:hover & {
-					transform: translate3d(10px, 10px, 0) scale(-0.9, 0.9) rotate(-10deg);
+					transform: translate3d(10px, 10px, 0) scale(-0.9, 0.9) rotate(-20deg);
 				}
 			}
 		}
@@ -664,14 +664,14 @@ nav a,
 			z-index: 5;
 			mix-blend-mode: lighten;
 			opacity: 1;
-			@include adaptiveValue("width", 60, 22);
+			@include adaptiveValue("width", 40, 22);
 			bottom: 20px;
 			@include adaptiveValue("right", 320, 190);
 			transform: scale(1) rotate(-20deg);
 
 			@media (any-hover: hover) {
 				.card-services:hover & {
-					transform: translate3d(0px, 7px, 0) scale(0.9) rotate(-20deg);
+					transform: translate3d(7px, 4px, 0) scale(0.9) rotate(-20deg);
 				}
 			}
 		}
