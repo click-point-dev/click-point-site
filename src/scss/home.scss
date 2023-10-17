@@ -318,9 +318,16 @@
 	}
 
 	&__title {
+		max-width: 908px;
+		margin-inline: auto;
+		text-wrap: unset;
 	}
 
 	&__sub-title {
+		max-width: 679px;
+		margin-inline: auto;
+		font-weight: 300;
+		text-wrap: unset;
 	}
 
 	&__body {
