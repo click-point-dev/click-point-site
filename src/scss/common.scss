@@ -590,7 +590,7 @@ nav a,
 		:nth-child(3) {
 			mix-blend-mode: screen;
 			opacity: 0.6;
-			@include adaptiveValue("width", 45, 22);
+			@include adaptiveValue("width", 45, 18);
 			@include adaptiveValue("bottom", 50, 5);
 			@include adaptiveValue("right", 230, 80);
 			transform: scale(1, -1);
@@ -647,10 +647,10 @@ nav a,
 		}
 
 		:nth-child(2) {
-			@include adaptiveValue("width", 124, 65);
+			@include adaptiveValue("width", 124, 95);
 			top: unset;
-			@include adaptiveValue("bottom", 0, 5, $maxWidthContainer, 1024, 1);
-			@include adaptiveValue("right", -40, -30, $maxWidthContainer, 1024, 1);
+			@include adaptiveValue("bottom", 0, -10, $maxWidthContainer, 1024, 1);
+			@include adaptiveValue("right", -40, -45, $maxWidthContainer, 1024, 1);
 			transform: scale(1, -1);
 
 			@media (any-hover: hover) {
@@ -711,7 +711,7 @@ nav a,
 			@media (max-width: $burgerMenu) {
 				@include adaptiveValue("height", 220, 180);
 				@include adaptiveValue("right", 40, 15);
-				@include adaptiveValue("bottom", 10, 10);
+				@include adaptiveValue("bottom", 10, -10);
 			}
 		}
 	}
@@ -727,8 +727,8 @@ nav a,
 		}
 
 		.card-services__image {
-			@include adaptiveValue("height", 250, 165);
-			@include adaptiveValue("right", 60, 15);
+			@include adaptiveValue("height", 250, 155);
+			@include adaptiveValue("right", 60, 23);
 		}
 	}
 
@@ -757,9 +757,12 @@ nav a,
 			transition: all $tm ease;
 		}
 	}
-	&:hover &__button {
-		opacity: 1;
-		pointer-events: all !important;
+
+	@media (any-hover: hover) {
+		&:hover &__button {
+			opacity: 1;
+			pointer-events: all !important;
+		}
 	}
 
 	&__image {
@@ -769,21 +772,70 @@ nav a,
 		// width: 80%;
 		@include adaptiveValue("height", 150, 153);
 		right: 0;
-		bottom: 0;
+		bottom: -15px;
 		will-change: transform;
-		transition: all $tm ease;
-		transform: scale(1) translate3d(-7px, 18px, 0);
-
-		&_big {
-			width: 200%;
-			@include adaptiveValue("height", 220, 185);
-		}
+		transition: transform $tm ease;
+		transform: scale(1) translate3d(0px, 0px, 0);
 
 		img {
 			height: 100%;
 			width: 100%;
 			object-fit: contain;
 			object-position: right bottom;
+		}
+
+		&_target {
+			@include adaptiveValue("height", 169, 175);
+			@include adaptiveValue("right", -7, -15);
+			bottom: -40px;
+		}
+
+		&_media {
+			@include adaptiveValue("height", 190, 185);
+			@include adaptiveValue("bottom", -36, -30);
+			@include adaptiveValue("right", 20, 15);
+			transform: translate3d(0px, 0px, 0) scale(1) rotate(-8deg);
+		}
+
+		&_text {
+			@include adaptiveValue("height", 280, 220);
+			@include adaptiveValue("bottom", -65, -40);
+			@include adaptiveValue("right", 10, 10);
+		}
+
+		&_bloger {
+			@include adaptiveValue("height", 240, 215);
+			@include adaptiveValue("bottom", -35, -40);
+			@include adaptiveValue("right", 0, 20);
+		}
+
+		&_dev {
+			@include adaptiveValue("height", 180, 160);
+			@include adaptiveValue("bottom", -30, -30);
+			@include adaptiveValue("right", -30, -15);
+		}
+
+		&_design {
+			@include adaptiveValue("height", 190, 185);
+			@include adaptiveValue("right", 20, 10);
+		}
+
+		&_seo {
+			@include adaptiveValue("height", 180, 170);
+			@include adaptiveValue("bottom", -30, -30);
+			@include adaptiveValue("right", 20, 10);
+		}
+
+		&_copywrite {
+			@include adaptiveValue("height", 185, 165);
+			@include adaptiveValue("right", 20, 10);
+		}
+
+		&_rtb {
+			@include adaptiveValue("height", 190, 185);
+			@include adaptiveValue("bottom", -30, -30);
+			right: -5px;
+			transform: scale(1) translate3d(0px, 0px, 0) rotate(5deg);
 		}
 	}
 
@@ -792,10 +844,32 @@ nav a,
 			transform: translate3d(-10px, -10px, 0) scale(1.1);
 		}
 
-		@media (max-width: 606px) {
-			&:hover &__image_big {
-				transform: translate3d(-70px, 0px, 0) scale(1.1);
+		&:hover &__image_media {
+			transform: translate3d(-5px, -10px, 0) scale(1.1) rotate(-8deg);
+		}
+
+		&:hover &__image_text {
+			transform: translate3d(-5px, -17px, 0) scale(1.1);
+		}
+
+		&:hover &__image_bloger {
+			transform: translate3d(-3px, -10px, 0) scale(1.1);
+
+			@media (max-width: 606px) {
+				transform: translate3d(-40px, 0px, 0) scale(1.1);
 			}
+		}
+
+		&:hover &__image_design {
+			transform: translate3d(-5px, -17px, 0) scale(1.1);
+		}
+
+		&:hover &__image_copywrite {
+			transform: translate3d(5px, -10px, 0) scale(1.1);
+		}
+
+		&:hover &__image_rtb {
+			transform: translate3d(0px, -10px, 0) scale(1.1) rotate(5deg);
 		}
 	}
 }
