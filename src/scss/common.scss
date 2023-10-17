@@ -46,7 +46,7 @@
 		height: 110%;
 		object-fit: cover;
 		mix-blend-mode: screen;
-		object-position: center 130%;
+		object-position: center 140%;
 		opacity: 0.5;
 	}
 
@@ -542,7 +542,7 @@ nav a,
 	position: relative;
 	overflow: hidden;
 	@include adaptiveValue("min-height", 328, 248);
-	background-color: $primary1-disable;
+	background-color: $primary1-disable-1;
 	@include adaptiveValue("padding-inline", 24, 20);
 	@include adaptiveValue("padding-block", 40, 24);
 	@include adaptiveValue("border-radius", 20, 16);
