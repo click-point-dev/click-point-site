@@ -386,6 +386,7 @@ nav a,
 	aspect-ratio: 1;
 	background-color: $primary1;
 	border-radius: 500px;
+	overflow: hidden;
 
 	&:after {
 		content: "";
@@ -399,18 +400,38 @@ nav a,
 		background-repeat: no-repeat;
 		transform: rotate(180deg);
 		background-size: 100%;
+		background-position: center;
 		@media (hover: hover) and (pointer: fine) {
 			opacity: 0;
 		}
-		transition:
-			opacity $tm ease,
-			background-size $tm ease,
-			transform 3s ease;
+		// transition: opacity $tm ease;
+		// background-size $tm ease,
+		// transform 1s ease;
+	}
+	@media (any-hover: hover) and (pointer: fine) {
+		&:hover {
+			&:after {
+				// transform: rotate(0);
+				// background-size: 100%;
+				// opacity: 1;
+				animation: round-btn 1.5s ease-in-out forwards;
+			}
+		}
 	}
 
-	&:hover {
-		&:after {
+	@keyframes round-btn {
+		0% {
+			transform: rotate(150deg);
+			background-size: 100%;
+			opacity: 0.8;
+		}
+		40% {
 			transform: rotate(0);
+			background-size: 200%;
+			opacity: 1;
+		}
+		100% {
+			transform: rotate(230deg);
 			background-size: 100%;
 			opacity: 1;
 		}
