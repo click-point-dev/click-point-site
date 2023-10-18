@@ -180,23 +180,32 @@
 		align-items: start;
 		@include adaptiveValue("gap", 136, 0);
 
-		@media screen and (max-width: $mobile) {
-			flex-wrap: wrap;
+		@media (max-width: $mobile) {
+			flex-direction: column;
 			width: 100%;
 			max-width: 500px;
-			gap: 16px;
+			gap: 0;
 		}
 	}
 
 	&__title {
-		flex: 1 1 52%;
+		text-wrap: unset;
+		flex: 1 1 54%;
 	}
 
 	&__text {
-		flex: 1 1 48%;
+		flex: 1 1 44.8%;
+		@include adaptiveValue("margin-top", 29, 0, $maxWidthContainer, 767.98, 1);
+
 		p {
 			text-wrap: unset;
+			font-weight: 300;
 		}
+	}
+
+	&__link {
+		padding-inline: 0;
+		@include adaptiveValue("font-size", 16, 14);
 	}
 }
 
@@ -401,9 +410,6 @@
 
 	&__image {
 		width: 100%;
-		// max-height: 100%;
-		// object-fit: contain;
-		// object-position: center bottom;
 	}
 }
 
