@@ -160,8 +160,9 @@ h6,
 
 [class*="_text-xs"] {
 	font-size: rem(12);
+	font-weight: 300;
 	a {
-		color: $primary1;
+		color: #1890ff;
 	}
 
 	&:not(:last-child) {

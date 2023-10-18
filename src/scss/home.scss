@@ -502,9 +502,11 @@
 	}
 
 	&__title {
+		@include adaptiveValue("margin-bottom", 16, 10);
 	}
 
 	&__sub-title {
+		font-weight: 300;
 	}
 
 	&__form {
