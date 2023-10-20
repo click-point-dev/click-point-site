@@ -13,7 +13,7 @@ textarea {
 	@include adaptiveValue("padding-block", 20, 14);
 	@include adaptiveValue("padding-inline", 24, 16);
 	border-radius: 12px;
-	border: 2px solid;
+	border: 1px solid;
 	border-color: $gray4;
 	background-color: transparent;
 	transition: border-color $tm ease;
