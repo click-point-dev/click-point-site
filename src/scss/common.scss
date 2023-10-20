@@ -45,9 +45,9 @@
 		width: 110%;
 		height: 110%;
 		object-fit: cover;
-		mix-blend-mode: screen;
-		object-position: center 140%;
-		opacity: 0.5;
+		mix-blend-mode: lighten;
+		object-position: center 135%;
+		opacity: 0.9;
 	}
 
 	&::after,
