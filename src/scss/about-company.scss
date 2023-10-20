@@ -210,6 +210,7 @@
 	// .about-company__how
 
 	&__how {
+		@include adaptiveValue("margin-bottom", 64, 56);
 	}
 
 	.how {

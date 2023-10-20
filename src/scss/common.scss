@@ -9,7 +9,7 @@
 	&__clients,
 	// &__main-form,
 	&__list,
-	&__response,
+	// &__response,
 	&__first-screen-about {
 		@include adaptiveValue("margin-bottom", 144, 56);
 	}
@@ -89,7 +89,7 @@
 }
 //====================текст======================
 p {
-	text-wrap: balance;
+	// text-wrap: balance;
 
 	&:not(:last-child) {
 		@include adaptiveValue("margin-bottom", 26, 16);

@@ -491,7 +491,7 @@
 			width: 100%;
 		}
 
-		:last-child {
+		:nth-child(2) {
 			position: absolute;
 			aspect-ratio: 1;
 			width: 110px;
