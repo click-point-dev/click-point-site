@@ -2,8 +2,9 @@
 import { isMobile } from './functions.js';
 // Подключение списка активных модулей
 import { flsModules } from './modules.js';
-import gsap from 'gsap';
-import CustomEase from 'gsap/CustomEase.js';
+import { gsap } from 'gsap';
+// import CustomEase from 'gsap/CustomEase.js';
+import { ScrollTrigger } from 'gsap/ScrollTrigger.js';
 
 // добавление классов элементам при скроле на определенную величину
 window.addEventListener('DOMContentLoaded', () => {
@@ -178,6 +179,89 @@ window.addEventListener('DOMContentLoaded', () => {
 			scale: 0.5,
 			duration: 6,
 			delay: 1,
+			ease: 'power4.out',
+		});
+	}
+
+	//!+ главная форма
+	gsap.registerPlugin(ScrollTrigger);
+
+	const formBackground = document.querySelector('.main-form__background img');
+	if (formBackground) {
+		gsap.from(formBackground, {
+			scrollTrigger: {
+				trigger: '.main-form__background img',
+				toggleActions: 'restart none none none',
+			},
+			rotate: -270,
+			duration: 7,
+			delay: 0,
+			ease: 'power4.out',
+		});
+	}
+
+	const formDecorTop = document.querySelector('.main-form .decor__image:nth-child(1)');
+	if (formDecorTop) {
+		gsap.from(formDecorTop, {
+			scrollTrigger: {
+				trigger: '.main-form__image',
+				toggleActions: 'restart none none none',
+			},
+			x: '200',
+			y: '300',
+			scale: '0.2, 0',
+			duration: 4,
+			delay: 1,
+			filter: 'blur(1px)',
+			ease: 'power4.out',
+		});
+	}
+
+	const formDecorMiddle = document.querySelector('.main-form .decor__image:nth-child(3)');
+	if (formDecorMiddle) {
+		gsap.from(formDecorMiddle, {
+			scrollTrigger: {
+				trigger: '.main-form__image',
+				toggleActions: 'restart none none none',
+			},
+			x: '+=600',
+			y: '-50px',
+			scale: '0.2, 0',
+			duration: 5,
+			delay: 0,
+			filter: 'blur(10px)',
+			ease: 'power4.out',
+		});
+	}
+
+	const formDecorBottom = document.querySelector('.main-form .decor__image:nth-child(2)');
+	if (formDecorBottom) {
+		gsap.from(formDecorBottom, {
+			scrollTrigger: {
+				trigger: '.main-form__image',
+				toggleActions: 'restart none none none',
+			},
+			x: 50,
+			y: 150,
+			duration: 6,
+			delay: 1,
+			ease: 'power4.out',
+		});
+	}
+
+	const formLens = document.querySelector('.main-form__image :nth-child(2)');
+
+	if (formLens) {
+		gsap.from(formLens, {
+			scrollTrigger: {
+				trigger: '.main-form__image',
+				toggleActions: 'restart none none none',
+			},
+			x: '82%',
+			y: '170%',
+			rotate: 60,
+			duration: 5,
+			delay: 0.7,
 			ease: 'power4.out',
 		});
 	}

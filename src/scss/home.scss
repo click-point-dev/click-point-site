@@ -486,8 +486,17 @@
 		@media (max-width: $burgerMenu) {
 			flex: 0 1 auto;
 		}
+
 		img {
 			width: 100%;
+		}
+
+		:last-child {
+			position: absolute;
+			aspect-ratio: 1;
+			width: 110px;
+			left: 33%;
+			top: 1%;
 		}
 	}
 
