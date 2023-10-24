@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="ru">
+	@@include('html/_head.htm',{ "title":"Кейсы ClickPoint" }) @@include('html/_loader.htm',{})
+	<body>
+		<div class="wrapper" style="opacity: 0; pointer-events: none">
+			@@include('html/_header.htm',{})
+			<main class="page cases services" id="cases" data-watch="navigator">
+				<div class="page__phone-button phone-button btn" data-appearing>
+					<div class="phone-button__body">
+						<div class="phone-button__phone">
+							<a href="tel:+7 (383) 298-98-98">+7 (383) 298-98-98</a>
+						</div>
+						<button class="phone-button__button _icon-phone"></button>
+					</div>
+				</div>
+				<section class="cases__first-screen first-screen">
+					<div class="first-screen__background backgrount-stars">
+						<img src="@img/first-screen/stars-background_low-contrast.webp" alt="звездное небо" />
+					</div>
+					<div class="first-screen__container">
+						<div class="first-screen__content">
+							<h1 class="first-screen__title">кейсы</h1>
+							<ul class="first-screen__list">
+								<li class="first-screen__item">
+									<div class="first-screen__description-card description-card">
+										<div class="description-card__title">Свобода Тревэл</div>
+										<p class="description-card__description">
+											Разработка и реализация digital-стратегии для турагентства
+										</p>
+									</div>
+								</li>
+								<li class="first-screen__item">
+									<div class="first-screen__description-card description-card">
+										<div class="description-card__title">lorem+2</div>
+										<p class="description-card__description">
+											Разработка и реализация digital-стратегии для турагентства
+										</p>
+									</div>
+								</li>
+								<li class="first-screen__item">
+									<div class="first-screen__description-card description-card">
+										<div class="description-card__title">Свобода Тревэл</div>
+										<p class="description-card__description">
+											Разработка и реализация digital-стратегии для турагентства
+										</p>
+									</div>
+								</li>
+								<li class="first-screen__item">
+									<div class="first-screen__description-card description-card">
+										<div class="description-card__title">Свобода Тревэл</div>
+										<p class="description-card__description">
+											Разработка и реализация digital-стратегии для турагентства
+										</p>
+									</div>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</section>
+				<section
+					class="services__main-form main-form"
+					id="start-work"
+					data-watch="navigator"
+					data-watch-threshold="0.3">
+					<div class="main-form__background backgrount-stars">
+						<img src="@img/first-screen/stars-background_low-contrast.webp" alt="звездное небо" />
+					</div>
+					<div class="main-form__container">
+						<div class="main-form__content">
+							<div class="main-form__body">
+								<div class="main-form__head">
+									<h2 class="main-form__title _text-bright">Готовы начать работу над вашим проектом</h2>
+									<p id="p" class="main-form__sub-title _text-bright">
+										Заполните короткую заявку и мы свяжемся с вами в ближайшее время
+									</p>
+								</div>
+
+								<form class="main-form__form form form_light" action="#" method="post">
+									<div class="form__row">
+										<input class="input" type="text" placeholder="Имя" />
+									</div>
+									<div class="form__row">
+										<input class="input" type="tel" placeholder="Телефон" />
+										<input class="input" type="email" placeholder="E-mail" />
+									</div>
+									<div class="form__row">
+										<textarea name="" id="" rows="4" placeholder="Текст"></textarea>
+									</div>
+									<div class="form__row">
+										<div class="form__input-file input-file">
+											<div class="input-file__input">
+												<input type="file" name="form-services[]" class="input" multiple id="formFileInput" />
+												<div class="input-file__btn"><span class="_icon-plus"></span></div>
+												<div class="input-file__description">
+													<p class="_text-s _text-bright">Прикрепить файл</p>
+													<p class="_text-xs _text-bright">Максимальный размер файла 10 Мб</p>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="form__row">
+										<div class="input-file__files _text-bright" id="formFilesPlaceholder"></div>
+									</div>
+									<div class="form__row">
+										<p class="_text-xs _text-bright">
+											Нажимая на кнопку «Отправить», я принимаю условия
+											<a href="#">Политики конфиденциальности</a>
+											, и даю
+											<a href="#">согласие на обработку персональных данных</a>
+										</p>
+										<button href="#" class="form__button btn btn_light btn_xl">Отправить</button>
+									</div>
+								</form>
+							</div>
+						</div>
+						<div class="main-form__images">
+							<div class="main-form__image">
+								<img src="@img/services/glass-cube-1.png" alt="стеклянный куб" />
+							</div>
+						</div>
+					</div>
+				</section>
+			</main>
+			@@include('html/_footer.htm',{})
+		</div>
+		@@include('html/_callback-popup.htm',{}) @@include('html/_js.htm',{})
+	</body>
+</html>

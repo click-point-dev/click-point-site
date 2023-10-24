@@ -1,0 +1,20 @@
+.cases {
+	.first-screen__content {
+		@include adaptiveValue("padding-block", 152, 68);
+		// color: unset;
+	}
+
+	.backgrount-stars {
+		&::before,
+		&::after {
+			display: none;
+		}
+	}
+	.main-form {
+		.main-form__content {
+			&::before {
+				display: none;
+			}
+		}
+	}
+}
