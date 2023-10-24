@@ -79,7 +79,7 @@
 
 		.footer__list {
 			@media (max-width: 606px) {
-				max-height: 55px;
+				// max-height: 55px;
 			}
 		}
 	}
@@ -122,5 +122,46 @@
 	}
 
 	&__title {
+	}
+}
+
+.footer-index {
+	.footer__content {
+		@media (max-width: $burgerMenu) {
+			justify-content: space-between;
+		}
+
+		@media (max-width: 992px) {
+			justify-content: flex-start;
+		}
+	}
+
+	.footer__contacts {
+		@media (max-width: $burgerMenu) {
+			flex: unset;
+		}
+
+		@media (max-width: 992px) {
+			flex: 1 0 100%;
+		}
+	}
+
+	.contacts__item {
+		text-align-last: left;
+		@media (max-width: 606px) {
+		}
+
+		.contacts__link {
+			font-size: rem(20);
+			padding-inline: 0;
+		}
+
+		button {
+			@include adaptiveValue("margin-top", 12, 10);
+		}
+	}
+
+	.footer__list {
+		@include adaptiveValue("column-gap", 56, 10);
 	}
 }
