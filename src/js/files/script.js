@@ -94,11 +94,13 @@ window.addEventListener('DOMContentLoaded', () => {
 
 	if (bgStarsMain) {
 		gsap.from(bgStarsMain, {
+			x: 200,
+			y: -300,
 			rotate: -180,
-			scale: 1.5,
-			ease: 'power4.out',
+			scale: 2,
 			duration: 8,
 			delay: 1,
+			ease: 'power2.out',
 		});
 	}
 
@@ -150,13 +152,13 @@ window.addEventListener('DOMContentLoaded', () => {
 
 	if (mainDecorTop) {
 		gsap.from(mainDecorTop, {
-			x: '-=20vw',
-			y: '+=60vh',
-			scale: 0.5,
+			x: '-20vw',
+			y: '80vh',
+			scale: 0,
 			filter: 'blur(0px)',
 			duration: 7,
 			delay: 1,
-			ease: 'power4.out',
+			ease: 'power2.out',
 		});
 	}
 

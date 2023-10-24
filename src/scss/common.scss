@@ -13,6 +13,7 @@
 	&__first-screen-about {
 		@include adaptiveValue("margin-bottom", 144, 56);
 	}
+
 	&__about {
 		@include adaptiveValue("margin-bottom", 95, 30);
 	}
@@ -43,10 +44,10 @@
 
 	img {
 		width: 110%;
-		height: 110%;
+		height: 100%;
 		object-fit: cover;
 		mix-blend-mode: lighten;
-		object-position: center 135%;
+		object-position: center 103%;
 		opacity: 0.9;
 	}
 
@@ -768,6 +769,7 @@ nav a,
 		@include adaptiveValue("margin-bottom", 12, 16);
 		position: relative;
 		z-index: 10;
+		color: $primary1-hover;
 		p {
 			text-wrap: unset;
 		}
