@@ -1,33 +1,31 @@
-<head>
-	<title>@@title</title>
-	<meta charset="UTF-8" />
-	<meta name="format-detection" content="telephone=no" />
+<title>@@title</title>
+<meta charset="UTF-8" />
+<meta name="format-detection" content="telephone=no" />
 
-	<link rel="preload" as="image" href="@img/logo-2.svg" importance="high" />
+<link rel="preload" as="image" href="@img/logo-2.svg" importance="high" />
 
-	<script>
-		document.documentElement.classList.add('lock');
-		document.documentElement.classList.add('loading');
-		window.onload = function () {
-			const wrapper = document.querySelector('.wrapper');
+<script>
+	document.documentElement.classList.add('lock');
+	document.documentElement.classList.add('loading');
+	window.onload = function () {
+		const wrapper = document.querySelector('.wrapper');
 
-			window.setTimeout(function () {
-				document.body.classList.add('loader_hiding');
-				wrapper.style.pointerEvents = 'all';
-				wrapper.style.opacity = 1;
-			}, 700);
+		window.setTimeout(function () {
+			document.body.classList.add('loader_hiding');
+			wrapper.style.pointerEvents = 'all';
+			wrapper.style.opacity = 1;
+		}, 700);
 
-			window.setTimeout(function () {
-				document.documentElement.classList.remove('lock');
-				document.documentElement.classList.remove('loading');
-				document.querySelector('.loader').classList.add('isload');
-				document.body.classList.remove('loader_hiding');
-			}, 1800);
-		};
-	</script>
-	<!-- <style>body{opacity: 0;}</style> -->
-	<link rel="stylesheet" href="css/style.min.css" />
-	<link rel="icon" type="image/ico" href="favicon.ico" />
-	<!-- <meta name="robots" content="noindex, nofollow"> -->
-	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-</head>
+		window.setTimeout(function () {
+			document.documentElement.classList.remove('lock');
+			document.documentElement.classList.remove('loading');
+			document.querySelector('.loader').classList.add('isload');
+			document.body.classList.remove('loader_hiding');
+		}, 1800);
+	};
+</script>
+<!-- <style>body{opacity: 0;}</style> -->
+<link rel="stylesheet" href="css/style.min.css" />
+<link rel="icon" type="image/ico" href="favicon.ico" />
+<!-- <meta name="robots" content="noindex, nofollow"> -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />

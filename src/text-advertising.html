@@ -1,6 +1,12 @@
 <!doctype html>
 <html lang="ru">
-	@@include('html/_head.htm',{ "title":"Текстовая реклама" }) @@include('html/_loader.htm',{})
+	<head>
+		@@include('html/_head.htm',{ "title":"Текстовая реклама" })
+		<meta
+			name="description"
+			content="Помогаем достичь успеха и повысить видимость бренда. Статьи, Новости, Лонгриды, Спецпроекты, Фоторепортажи. Ваша реклама будет содержать качественный контент, который привлечет и удержит внимание аудитории." />
+	</head>
+	@@include('html/_loader.htm',{})
 	<body>
 		<div class="wrapper" style="opacity: 0; pointer-events: none">
 			@@include('html/_header-text-advertising.htm',{})

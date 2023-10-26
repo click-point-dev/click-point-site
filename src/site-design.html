@@ -1,6 +1,12 @@
 <!doctype html>
 <html lang="ru">
-	@@include('html/_head.htm',{ "title":"Дизайн сайта" }) @@include('html/_loader.htm',{})
+	<head>
+		@@include('html/_head.htm',{ "title":"Дизайн сайта" })
+		<meta
+			name="description"
+			content="Разрабатываем дизайн сайтов, фирменного стиля, айдентики и пр. по всей России. Сайт с привлекательным дизайном существенно влияет на потенциальных клиентов, способствует укреплению доверия к организации и приводит к увеличению объема продаж." />
+	</head>
+	@@include('html/_loader.htm',{})
 	<body>
 		<div class="wrapper" style="opacity: 0; pointer-events: none">
 			@@include('html/_header-site-design.htm',{})

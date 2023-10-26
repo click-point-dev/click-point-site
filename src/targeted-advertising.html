@@ -1,6 +1,12 @@
 <!doctype html>
 <html lang="ru">
-	@@include('html/_head.htm',{ "title":"Таргетированная реклама" }) @@include('html/_loader.htm',{})
+	<head>
+		@@include('html/_head.htm',{ "title":"Таргетированная реклама" })
+		<meta
+			name="description"
+			content="Привлечем больше клиентов из социальных сетей с помощью таргетированной рекламы! VK реклама, Telegram Ads, Telega.in, MyTarget. Гарантируем максимальный результат от рекламы!" />
+	</head>
+	@@include('html/_loader.htm',{})
 	<body>
 		<div class="wrapper" style="opacity: 0; pointer-events: none">
 			@@include('html/_header-target.htm',{})
