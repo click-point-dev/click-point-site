@@ -394,54 +394,183 @@ nav a,
 	border-radius: 500px;
 	overflow: hidden;
 
-	&:after {
+	a {
+		position: absolute;
+		z-index: 20;
+		inset: 0;
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+	}
+
+	& > div:after,
+	& > div:before,
+	& > div span {
 		content: "";
 		pointer-events: none;
 		position: absolute;
-		width: 100%;
-		height: 100%;
-		left: 0;
-		top: 0;
-		background-image: url("@img/button-bg-gradient.svg");
-		background-repeat: no-repeat;
-		transform: rotate(180deg);
-		background-size: 100%;
-		background-position: center;
-		@media (hover: hover) and (pointer: fine) {
-			opacity: 0;
-		}
-		// transition: opacity $tm ease;
-		// background-size $tm ease,
-		// transform 1s ease;
+		inset: 0;
+		// 	background-image: url("@img/button-bg-gradient.svg");
+		// 	background-repeat: no-repeat;
+		// 	transform: rotate(180deg);
+		// 	background-size: 100%;
+		// 	background-position: center;
+		// 	@media (hover: hover) and (pointer: fine) {
+		// 		opacity: 0;
+		// 	}
+		// 	// transition: opacity $tm ease;
+		// 	// background-size $tm ease,
+		// 	// transform 1s ease;
+		// }
+		// @media (any-hover: hover) and (pointer: fine) {
+		// 	&:hover {
+		// 		&:after {
+		// 			// transform: rotate(0);
+		// 			// background-size: 100%;
+		// 			// opacity: 1;
+		// 			animation: round-btn 1.5s ease-in-out forwards;
+		// 		}
+		// 	}
 	}
+
+	& > div:after {
+		z-index: 5;
+		background: radial-gradient(73.69% 73.69% at 50% 50%, #00d1ff 0%, rgba(0, 209, 255, 0.53) 48.23%, rgba(0, 209, 255, 0.37) 100%);
+		filter: blur(30px);
+		width: 215.695px;
+		height: 165.408px;
+		transform: rotate(33.438deg);
+		opacity: 0.8;
+		top: 30px;
+		left: 90px;
+	}
+
 	@media (any-hover: hover) and (pointer: fine) {
+		& > div {
+			opacity: 0;
+			transition: opacity $tm ease;
+		}
+
 		&:hover {
-			&:after {
-				// transform: rotate(0);
-				// background-size: 100%;
-				// opacity: 1;
-				animation: round-btn 1.5s ease-in-out forwards;
+			& > div {
+				opacity: 1;
+			}
+			& > div::after {
+				animation: round-btn-after 1.5s ease-in-out forwards;
+			}
+		}
+
+		@keyframes round-btn-after {
+			0% {
+			}
+
+			50% {
+				top: -60px;
+				left: 20px;
+				transform: rotate(-28deg);
+			}
+
+			100% {
+				top: 24%;
+				left: -46%;
+				transform: rotate(-90deg);
 			}
 		}
 	}
 
-	@keyframes round-btn {
-		0% {
-			transform: rotate(150deg);
-			background-size: 100%;
-			opacity: 0.8;
+	& > div:before {
+		z-index: 15;
+		width: 211.877px;
+		height: 202.491px;
+		top: 92px;
+		left: 90px;
+		transform: rotate(-58.556deg);
+		opacity: 0.7;
+		background: radial-gradient(73.69% 73.69% at 50% 50%, #ff09e6 0%, rgba(255, 9, 230, 0.55) 37.66%, rgba(255, 9, 230, 0.37) 100%);
+		filter: blur(30px);
+	}
+
+	@media (any-hover: hover) and (pointer: fine) {
+		&:hover {
+			& > div::before {
+				animation: round-btn-before 1.5s ease-in-out forwards;
+			}
 		}
-		40% {
-			transform: rotate(0);
-			background-size: 200%;
-			opacity: 1;
-		}
-		100% {
-			transform: rotate(230deg);
-			background-size: 100%;
-			opacity: 1;
+
+		@keyframes round-btn-before {
+			0% {
+			}
+
+			50% {
+				top: -15px;
+				left: 75px;
+				transform: rotate(-32deg);
+			}
+
+			100% {
+				top: -10px;
+				left: -50px;
+				transform: rotate(0);
+			}
 		}
 	}
+
+	> div span {
+		z-index: 10;
+		width: 264.971px;
+		height: 276.528px;
+		top: -150px;
+		left: -140px;
+		transform: rotate(145.204deg);
+		opacity: 0.65;
+		background: radial-gradient(73.69% 73.69% at 50% 50%, #00d1ff 0%, rgba(0, 209, 255, 0.53) 48.23%, rgba(0, 209, 255, 0.37) 100%);
+		filter: blur(30px);
+	}
+
+	@media (any-hover: hover) and (pointer: fine) {
+		&:hover {
+			& > div span {
+				animation: round-btn-span 1.5s ease-in-out forwards;
+			}
+		}
+
+		@keyframes round-btn-span {
+			0% {
+			}
+
+			50% {
+				top: 105px;
+				left: -140px;
+				transform: rotate(162deg);
+			}
+
+			100% {
+				width: 214.971px;
+				height: 316.528px;
+				top: -40px;
+				left: 140px;
+				transform: rotate(174deg);
+			}
+		}
+	}
+
+	// @keyframes round-btn {
+	// 	0% {
+	// 		transform: rotate(150deg);
+	// 		background-size: 100%;
+	// 		opacity: 0.8;
+	// 	}
+	// 	40% {
+	// 		transform: rotate(0);
+	// 		background-size: 200%;
+	// 		opacity: 1;
+	// 	}
+	// 	100% {
+	// 		transform: rotate(230deg);
+	// 		background-size: 100%;
+	// 		opacity: 1;
+	// 	}
+	// }
 }
 
 //====================виджеты======================
@@ -957,6 +1086,7 @@ nav a,
 			max-width: 196px;
 			margin-inline: auto;
 			text-align: center;
+			aspect-ratio: 1;
 			a {
 				width: 100%;
 			}
