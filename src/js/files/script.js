@@ -116,8 +116,8 @@ window.addEventListener('DOMContentLoaded', () => {
 
 	//+ страница Главная - главное изображение
 
-	const mainImage = document.querySelector('.first-screen__image');
-	const mainLens = document.querySelector('.first-screen__image img:nth-child(2)');
+	const mainImage = document.querySelector('.page .first-screen__image');
+	const mainLens = document.querySelector('.page .first-screen__image img:nth-child(2)');
 
 	if (mainImage) {
 		gsap.from(mainImage, {
