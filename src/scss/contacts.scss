@@ -39,12 +39,17 @@
 
 		&__content {
 			max-width: unset;
+
+			button {
+				min-width: 276px;
+			}
 		}
 
 		// .first-screen-services__title
 
 		&__title {
-			width: max-content;
+			// width: max-content;
+			@include adaptiveValue("font-size", 56, 24);
 			@include adaptiveValue("margin-bottom", 28, 22);
 
 			a {
