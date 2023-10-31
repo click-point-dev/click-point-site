@@ -28,7 +28,8 @@
 		&::after {
 			content: "\e900";
 			font-family: "icons";
-			@include adaptiveValue("font-size", 24, 17);
+			// @include adaptiveValue("font-size", 24, 17);
+			font-size: 0.7em;
 			position: absolute;
 			right: 10px;
 			@include adaptiveValue("top", 27, 19);

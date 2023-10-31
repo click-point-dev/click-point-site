@@ -12,6 +12,9 @@
 		}
 
 		&__background {
+			&:after {
+				@include adaptiveValue("background-position-y", 100, 300);
+			}
 		}
 
 		&__container {
@@ -23,12 +26,15 @@
 			pointer-events: none;
 			position: absolute;
 			max-width: unset;
-			@include adaptiveValue("width", 1183, 490);
-			@include adaptiveValue("right", -270, -30);
-			@include adaptiveValue("bottom", -170, -100, $maxWidthContainer, 1024, 1);
+			@include adaptiveValue("width", 1183, 566);
+			@include adaptiveValue("right", -370, -165);
+			@include adaptiveValue("bottom", -200, -100, $maxWidthContainer, 1024, 1);
+			rotate: 6deg;
+			mix-blend-mode: screen;
+			filter: contrast(1.1) saturate(1.1) brightness(1.4);
 
 			@media (max-width: $burgerMenu) {
-				@include adaptiveValue("bottom", -150, -80, 1024, 360, 1);
+				@include adaptiveValue("bottom", -280, -100, 1024, 360, 1);
 			}
 
 			img {
@@ -48,11 +54,21 @@
 
 		&__content {
 			max-width: 990px;
+			min-width: unset;
+
+			@media (max-width: $mobile) {
+				text-align: left;
+				max-width: unset;
+				width: unset;
+				.first-screen__title {
+					width: 90%;
+				}
+			}
 		}
 
 		&__title {
 			@include adaptiveValue("font-size", 56, 32);
-			@include adaptiveValue("margin-bottom", 56, 8);
+			@include adaptiveValue("margin-bottom", 32, 8);
 
 			a {
 				word-break: keep-all;
@@ -61,6 +77,11 @@
 		}
 
 		&__sub-title {
+			font-weight: 300;
+			@include adaptiveValue("margin-bottom", 56, 8);
+			@media (max-width: $burgerMenu) {
+				max-width: unset;
+			}
 		}
 	}
 	.backgrount-stars {
@@ -97,7 +118,7 @@
 .spollers-body {
 	&__row {
 		display: flex;
-		@include adaptiveValue("gap", 50, 32);
+		@include adaptiveValue("gap", 156, 32);
 
 		@include adaptiveValue("padding-block", 32, 28);
 		border-bottom: 1px solid $gray7;
@@ -126,15 +147,15 @@
 
 	&__title {
 		text-transform: none;
-		flex: 0 1 26%;
+		flex: 0 1 32.4%;
 	}
 
 	&__list {
-		flex: 1 1 52%;
+		flex: 1 1 66%;
 		ul {
 			li {
 				position: relative;
-				@include adaptiveValue("font-size", 18, 14);
+				@include adaptiveValue("font-size", 16, 14);
 				font-weight: 300;
 				padding-left: 20px;
 				&:not(:last-child) {
@@ -163,6 +184,9 @@
 		.btn_round {
 			height: 192px;
 			font-weight: 500;
+			a {
+				font-size: rem(14);
+			}
 		}
 		// align-self: flex-end;
 	}
