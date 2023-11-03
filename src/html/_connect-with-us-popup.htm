@@ -4,25 +4,59 @@
 			<button data-close type="button" class="popup__close"><span class="_icon-close"></span></button>
 			<div class="popup__body">
 				<div class="popup__head">
-					<h5 class="popup__title"> Связаться с нами</h5>
+					<h5 class="popup__title">Связаться с нами</h5>
 					<div class="popup__text">
 						Заполните заявку ниже, если хотите с нами поработать. Мы изучим ваше предложение и ответим в ближайшее
 						время.
 					</div>
 				</div>
 				<div class="popup__form form">
-					<form class="form" action="#" method="post">
+					<form
+						class="form"
+						action="#"
+						id="connect-with-us-popup-form"
+						method="post"
+						data-popup-message="#resume-popup-accept">
 						<div class="form__row">
-							<input class="input" type="text" placeholder="Имя" />
+							<input
+								class="input"
+								type="text"
+								name="name"
+								placeholder="Имя"
+								data-required
+								data-validate
+								data-error="Обязательное поле" />
 						</div>
 						<div class="form__row">
-							<input class="input" type="tel" placeholder="Телефон" />
+							<input
+								class="input"
+								type="tel"
+								name="phone"
+								placeholder="Телефон"
+								data-required
+								data-validate
+								data-error="Обязательное поле" />
 						</div>
 						<div class="form__row">
-							<input class="input" type="email" placeholder="Почта" />
+							<input
+								class="input"
+								type="email"
+								name="email"
+								placeholder="Почта"
+								data-required
+								data-validate
+								data-error="Обязательное поле" />
 						</div>
 						<div class="form__row">
-							<textarea name="" id="" rows="4" placeholder="Текст"></textarea>
+							<textarea
+								class="input"
+								name="message"
+								id=""
+								rows="4"
+								placeholder="Текст"
+								data-required
+								data-validate
+								data-error="Обязательное поле"></textarea>
 						</div>
 						<div class="form__row">
 							<div class="form__input-file input-file">
@@ -30,23 +64,20 @@
 									<input
 										accept=".jpg, .png, .svg, .pdf, .jpeg"
 										type="file"
-										name="form[resume-vacancies]"
+										name="files"
 										class="input"
+										id="formFileInput"
 										multiple />
 									<div class="input-file__btn"><span class="_icon-plus"></span></div>
 									<div class="input-file__description">
-										<p class="_text-s">Прикрепить резюме</p>
+										<p class="_text-s">Прикрепить файлы</p>
 										<p class="_text-xs">Максимальный размер файла 10 Мб</p>
 									</div>
 								</div>
 							</div>
 						</div>
 						<div class="form__row">
-							<div class="input-file__files">
-								<div class="input-file__btn"><span class="_icon-trash">file.pdf</span></div>
-								<div class="input-file__btn"><span class="_icon-trash">file.pdf</span></div>
-								<div class="input-file__btn"><span class="_icon-trash">file.pdf</span></div>
-							</div>
+							<div class="input-file__files" id="formFilesPlaceholder"></div>
 						</div>
 						<div class="form__row">
 							<p class="_text-xs">
@@ -55,7 +86,7 @@
 								, и даю
 								<a href="#">согласие на обработку персональных данных</a>
 							</p>
-							<button data-popup="#resume-popup-accept" href="#" class="form__button btn btn_xl">Отправить</button>
+							<button type="submit" class="form__button btn btn_xl">Отправить</button>
 						</div>
 					</form>
 				</div>

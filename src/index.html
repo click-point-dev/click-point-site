@@ -510,16 +510,52 @@
 									</p>
 								</div>
 
-								<form class="main-form__form form form_light" action="#" method="post">
+								<form
+									class="main-form__form form form_light"
+									id="main-form"
+									action="#"
+									data-popup-message="#popup-accept">
 									<div class="form__row">
-										<input class="input" type="text" placeholder="Имя" />
+										<input
+											class="input"
+											name="name"
+											type="text"
+											placeholder="Имя"
+											data-required
+											data-validate
+											data-error="Обязательное поле" />
 									</div>
 									<div class="form__row">
-										<input class="input" type="tel" placeholder="Телефон" />
-										<input class="input" type="email" placeholder="E-mail" />
+										<div class="form__column">
+											<input
+												class="input"
+												name="phone"
+												type="tel"
+												placeholder="Телефон"
+												data-required
+												data-validate
+												data-error="Обязательное поле" />
+										</div>
+										<div class="form__column">
+											<input
+												class="input"
+												name="email"
+												type="email"
+												placeholder="E-mail"
+												data-required="email"
+												data-validate
+												data-error="Неверный email" />
+										</div>
 									</div>
 									<div class="form__row">
-										<textarea name="" id="" rows="4" placeholder="Ваше сообщение"></textarea>
+										<textarea
+											class="input"
+											name="message"
+											rows="4"
+											placeholder="Ваше сообщение"
+											data-required
+											data-validate
+											data-error="Обязательное поле"></textarea>
 									</div>
 									<div class="form__row">
 										<p class="_text-xs _text-bright">
@@ -528,7 +564,7 @@
 											, и даю
 											<a href="#">согласие на обработку персональных данных</a>
 										</p>
-										<button href="#" class="form__button btn btn_light btn_xl">Отправить</button>
+										<button type="submit" class="form__button btn btn_light btn_xl">Отправить</button>
 									</div>
 								</form>
 							</div>

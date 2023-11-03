@@ -3,20 +3,41 @@
 		<div class="popup__content">
 			<button data-close type="button" class="popup__close"><span class="_icon-close"></span></button>
 			<div class="popup__body">
-				<h5 class="popup__title"> Отклик на вакансию</h5>
+				<h5 class="popup__title">Отклик на вакансию</h5>
 				<div class="popup__form form">
-					<form class="form" action="#" method="post">
+					<form class="form" id="resume-popup-form" action="#" method="post" data-popup-message="#resume-popup-accept">
 						<div class="form__row">
-							<input class="input" type="text" placeholder="Имя" />
+							<input
+								class="input"
+								type="text"
+								name="name"
+								placeholder="Имя"
+								data-required
+								data-validate
+								data-error="Обязательное поле" />
 						</div>
 						<div class="form__row">
-							<input class="input" type="tel" placeholder="Телефон" />
+							<input
+								class="input"
+								type="tel"
+								name="phone"
+								placeholder="Телефон"
+								data-required
+								data-validate
+								data-error="Обязательное поле" />
 						</div>
 						<div class="form__row">
-							<input class="input" type="email" placeholder="Почта" />
+							<input
+								class="input"
+								type="email"
+								name="email"
+								placeholder="Почта"
+								data-required
+								data-validate
+								data-error="Обязательное поле" />
 						</div>
 						<div class="form__row">
-							<select name="form[resume-vacancies]" data-class-modif="form" data-scroll>
+							<select name="vacancies" data-class-modif="form" data-scroll>
 								<option value="assistant-manager" selected>Ассистент менеджера</option>
 								<option value="web-developer">Веб-разработчик</option>
 								<option value="ux-designer">UX/UI-дизайнер (Веб-дизайнер)</option>
@@ -32,7 +53,7 @@
 						<div class="form__row">
 							<div class="form__input-file input-file">
 								<div class="input-file__input">
-									<input type="file" name="form-resume-file-input[]" class="input" multiple id="formFileInput" />
+									<input type="file" name="files" class="input" multiple id="formFileInput" />
 									<div class="input-file__btn"><span class="_icon-plus"></span></div>
 									<div class="input-file__description">
 										<p class="_text-s">Прикрепить резюме</p>
@@ -51,7 +72,7 @@
 								, и даю
 								<a href="#">согласие на обработку персональных данных</a>
 							</p>
-							<button data-popup="#resume-popup-accept" href="#" class="form__button btn btn_xl">Отправить</button>
+							<button type="submit" href="#" class="form__button btn btn_xl">Отправить</button>
 						</div>
 					</form>
 				</div>

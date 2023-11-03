@@ -18,15 +18,30 @@
 	}
 
 	&__column {
+		flex: 1 1 50%;
 	}
+
 	&__line {
 	}
+
 	&__input {
 	}
+
 	&__button {
 		min-width: 234px;
 	}
-	&__error {
+
+	._form-error {
+		position: relative;
+		.form__error {
+			pointer-events: none;
+			position: absolute;
+			inset: 0;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			color: $primary-error;
+		}
 	}
 }
 //</FORM>

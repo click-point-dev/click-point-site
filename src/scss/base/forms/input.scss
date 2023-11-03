@@ -39,6 +39,9 @@ textarea {
 	&__row {
 	}
 
+	&__column {
+	}
+
 	// .form__input-file
 
 	&__input-file {
@@ -159,7 +162,13 @@ textarea {
 .input {
 	&._form-focus {
 	}
+
 	&._form-error {
+		border-color: $primary-error !important;
+
+		&::placeholder {
+			color: transparent !important;
+		}
 	}
 }
 textarea.input {
