@@ -514,30 +514,17 @@
 									class="main-form__form form form_light"
 									id="main-form"
 									action="#"
-									data-popup-message="#popup-accept">
+									enctype="text/plain"
+									method="post">
 									<div class="form__row">
-										<input
-											class="input"
-											name="name"
-											type="text"
-											placeholder="Имя"
-											data-required
-											data-validate
-											data-error="Обязательное поле" />
+										<input class="input" name="name" id="name" type="text" placeholder="Имя" />
 									</div>
 									<div class="form__row">
 										<div class="form__column">
-											<input
-												class="input"
-												name="phone"
-												type="tel"
-												placeholder="Телефон"
-												data-required
-												data-validate
-												data-error="Обязательное поле" />
+											<input class="input" name="phone" id="phone" type="tel" placeholder="Телефон" />
 										</div>
 										<div class="form__column">
-											<input class="input" name="email" type="email" placeholder="E-mail" />
+											<input class="input" name="email" id="email" type="email" placeholder="E-mail" />
 										</div>
 									</div>
 									<div class="form__row">
@@ -550,7 +537,7 @@
 											, и даю
 											<a href="#">согласие на обработку персональных данных</a>
 										</p>
-										<button type="submit" class="form__button btn btn_light btn_xl">Отправить</button>
+										<button type="submit" class="form__button btn btn_light btn_xl" id="submit-btn">Отправить</button>
 									</div>
 								</form>
 							</div>

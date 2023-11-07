@@ -5,7 +5,7 @@ import { flsModules } from './modules.js';
 import { gsap } from 'gsap';
 // import CustomEase from 'gsap/CustomEase.js';
 import { ScrollTrigger } from 'gsap/ScrollTrigger.js';
-
+import JustValidate from 'just-validate';
 // добавление классов элементам при скроле на определенную величину
 window.addEventListener('DOMContentLoaded', () => {
 	const appearingElement = document.querySelector('[data-appearing]');
@@ -336,4 +336,122 @@ window.addEventListener('DOMContentLoaded', () => {
 	}
 
 	loadFilesToForm();
+
+	// валидация и отправка форм
+
+	const forms = document.forms;
+	if (!forms.length) return;
+
+	//enctype='multipart/form-data'
+
+	Array.from(forms).forEach((form) => {
+		const method = form.getAttribute('method');
+		const formId = form.getAttribute('id');
+
+		validateForm(form, formId, method);
+	});
+
+	function validateForm(form, formId, method = 'text/plain') {
+		const validate = new JustValidate(`#${formId}`, {
+			validateBeforeSubmitting: true,
+			// testingMode: true,
+		});
+
+		if (!validate) return;
+
+		if (form.elements.name) {
+			validate.addField('#name', [
+				{
+					rule: 'required',
+					errorMessage: 'Имя обязательно',
+				},
+				{
+					rule: 'customRegexp',
+					value: /[А-я]/gi,
+					errorMessage: 'Только кириллица',
+				},
+				{
+					rule: 'minLength',
+					value: 3,
+					errorMessage: 'Минимум 3 символа',
+				},
+				{
+					rule: 'maxLength',
+					value: 30,
+					errorMessage: 'Не более 30 символов',
+				},
+			]);
+		}
+
+		if (form.phone) {
+			validate.addField('#phone', [
+				{
+					rule: 'required',
+					errorMessage: 'Телефон обязателен',
+				},
+				{
+					rule: 'integer',
+					errorMessage: 'Только цифры без +7',
+				},
+				{
+					rule: 'minLength',
+					value: 10,
+					errorMessage: '10 цифр без +7',
+				},
+				{
+					rule: 'maxLength',
+					value: 10,
+					errorMessage: 'Что-то не то. Номер без +7',
+				},
+			]);
+		}
+
+		if (form['files[]']) {
+			validate.addField('#files', [
+				{
+					rule: 'files',
+					errorMessage: 'jpg, png, svg, pdf, jpeg не более 10 Мб',
+					value: {
+						files: {
+							maxSize: 10000000,
+							extensions: ['jpeg', 'jpg', 'png', 'pdf', 'svg'],
+						},
+					},
+				},
+			]);
+		}
+
+		validate.onSuccess((e) => {
+			const formData = new FormData(e.target);
+
+			formData.append('type', 'request');
+			formData.append('title', 'Заявка с сайта');
+
+			console.log('is Valid!!!');
+
+			async function sendFormData() {
+				const credentials = 'roman:JaKtmOM!ui#T';
+				const auth = { Authorization: `Basic ${credentials}` };
+
+				try {
+					const res = await fetch('https://api-ext.d.r-o.ru/327/request', {
+						method: method,
+						body: formData,
+						headers: auth,
+					});
+
+					if (!res.ok) throw new Error(e);
+
+					const data = await res.json();
+
+					flsModules.popup.open('#popup-accept');
+
+					console.log(data.message);
+				} catch (error) {
+					console.log(error);
+				}
+			}
+			sendFormData();
+		});
+	}
 });

@@ -163,7 +163,7 @@ textarea {
 	&._form-focus {
 	}
 
-	&._form-error {
+	&.just-validate-error-field {
 		border-color: $primary-error !important;
 
 		&::placeholder {

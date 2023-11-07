@@ -5,24 +5,12 @@
 			<div class="popup__body">
 				<h5 class="popup__title">Заказать звонок</h5>
 				<div class="popup__form form">
-					<form class="form" id="popup-form" action="#" method="post" data-popup-message="#popup-accept">
+					<form class="form" id="popup-form" action="#" method="post" enctype="text/plain">
 						<div class="form__row">
-							<input
-								class="input"
-								type="text"
-								placeholder="Имя"
-								data-required
-								data-validate
-								data-error="Обязательное поле" />
+							<input class="input" id="name" name="name" type="text" placeholder="Имя" />
 						</div>
 						<div class="form__row">
-							<input
-								class="input"
-								type="tel"
-								placeholder="Телефон"
-								data-required
-								data-validate
-								data-error="Обязательное поле" />
+							<input class="input" id="phone" name="phone" type="tel" placeholder="Телефон" />
 						</div>
 						<div class="form__row">
 							<p class="_text-xs">
@@ -31,7 +19,7 @@
 								, и даю
 								<a href="#">согласие на обработку персональных данных</a>
 							</p>
-							<button type="submit" class="form__button btn btn_xl">Отправить</button>
+							<button type="submit" class="form__button btn btn_xl" id="submit-btn">Отправить</button>
 						</div>
 					</form>
 				</div>
@@ -68,35 +56,21 @@
 					</div>
 				</div>
 				<div class="popup__form form">
-					<form class="form" action="#" id="tender-popup-form" method="post" data-popup-message="#tender-popup-accept">
+					<form class="form" action="#" id="tender-popup-form" method="post" enctype="multipart/form-data">
 						<div class="form__row">
-							<input
-								class="input"
-								type="text"
-								name="name"
-								placeholder="Имя"
-								data-required
-								data-validate
-								data-error="Обязательное поле" />
+							<input class="input" type="text" name="name" id="name" placeholder="Имя" />
 						</div>
 						<div class="form__row">
-							<input
-								class="input"
-								type="tel"
-								name="phone"
-								placeholder="Телефон"
-								data-required
-								data-validate
-								data-error="Обязательное поле" />
+							<input class="input" type="tel" name="phone" id="phone" placeholder="Телефон" />
 						</div>
 						<div class="form__row">
-							<input class="input" type="email" name="email" placeholder="Почта" />
+							<input class="input" id="email" type="email" name="email" placeholder="Почта" />
 						</div>
 						<div class="form__row">
 							<textarea
 								class="input"
 								name="message"
-								id=""
+								id="message"
 								rows="4"
 								placeholder="Ваше сообщение и ссылка на площадку"></textarea>
 						</div>
@@ -106,14 +80,14 @@
 									<input
 										accept=".jpg, .png, .svg, .pdf, .jpeg"
 										type="file"
-										name="files"
+										name="files[]"
 										class="input"
-										id="formFileInput"
+										id="files"
 										multiple />
 									<div class="input-file__btn"><span class="_icon-plus"></span></div>
 									<div class="input-file__description">
 										<p class="_text-s">Прикрепить файлы</p>
-										<p class="_text-xs">Максимальный размер файла 10 Мб</p>
+										<p class="_text-xs">Только jpg, png, svg, pdf, jpeg. Максимальный размер файла 10 Мб</p>
 									</div>
 								</div>
 							</div>

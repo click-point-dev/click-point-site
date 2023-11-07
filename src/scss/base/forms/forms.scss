@@ -31,16 +31,18 @@
 		min-width: 234px;
 	}
 
-	._form-error {
+	.form__row:has(.just-validate-error-label),
+	.form__row:has(.just-validate-error-label) .form__column {
 		position: relative;
-		.form__error {
+		.just-validate-error-label {
 			pointer-events: none;
 			position: absolute;
-			inset: 0;
-			display: flex;
-			justify-content: center;
-			align-items: center;
-			color: $primary-error;
+			width: 100%;
+			height: fit-content;
+			bottom: 0;
+			text-align: center;
+			color: $primary-error !important;
+			font-size: rem(14);
 		}
 	}
 }
