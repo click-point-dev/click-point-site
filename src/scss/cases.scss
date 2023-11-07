@@ -71,6 +71,10 @@
 		// .first-screen__description-card
 
 		&__description-card {
+			a {
+				pointer-events: none !important;
+				border-radius: 500px !important;
+			}
 		}
 	}
 	.backgrount-stars {
