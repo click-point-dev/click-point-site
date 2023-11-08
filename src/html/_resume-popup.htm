@@ -5,10 +5,11 @@
 			<div class="popup__body">
 				<h5 class="popup__title">Отклик на вакансию</h5>
 				<div class="popup__form form">
-					<form class="form" id="resume-popup-form" action="#" method="post" data-popup-message="#resume-popup-accept">
+					<form class="form" id="resume-popup-form" action="#" method="post">
 						<div class="form__row">
 							<input
 								class="input"
+								id="name"
 								type="text"
 								name="name"
 								placeholder="Имя"
@@ -20,6 +21,7 @@
 							<input
 								class="input"
 								type="tel"
+								id="phone"
 								name="phone"
 								placeholder="Телефон"
 								data-required
@@ -30,6 +32,7 @@
 							<input
 								class="input"
 								type="email"
+								id="email"
 								name="email"
 								placeholder="Почта"
 								data-required
@@ -53,7 +56,7 @@
 						<div class="form__row">
 							<div class="form__input-file input-file">
 								<div class="input-file__input">
-									<input type="file" name="files" class="input" multiple id="formFileInput" />
+									<input type="file" name="files[]" id="files" class="input" multiple id="formFileInput" />
 									<div class="input-file__btn"><span class="_icon-plus"></span></div>
 									<div class="input-file__description">
 										<p class="_text-s">Прикрепить резюме</p>

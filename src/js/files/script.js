@@ -337,7 +337,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
 	loadFilesToForm();
 
-	// валидация и отправка форм
+	//!+ валидация и отправка форм
 
 	const forms = document.forms;
 	if (!forms.length) return;
@@ -352,7 +352,7 @@ window.addEventListener('DOMContentLoaded', () => {
 	function sentValidateвForm(form, formId, method = 'get') {
 		const validate = new JustValidate(`#${formId}`, {
 			validateBeforeSubmitting: true,
-			testingMode: true,
+			// testingMode: true,
 		});
 
 		if (!validate) return;
@@ -421,13 +421,10 @@ window.addEventListener('DOMContentLoaded', () => {
 
 		validate.onSuccess((e) => {
 			const formData = new FormData(e.target);
-			// const credentials = btoa('roman:JaKtmOM!ui#T');
-
 			// formData.set('type', 'request');
 			// formData.set('title', 'Заявка с сайта');
 
 			// const headers = new Headers();
-
 			// headers.append('Authorization', `Basic ${credentials}`);
 			// headers.set('Referrer Policy', 'no-referrer-when-downgrade');
 			// headers.set('Content-Type', 'text/plain');
@@ -445,57 +442,17 @@ window.addEventListener('DOMContentLoaded', () => {
 					if (!res.ok) {
 						throw new Error(e);
 					}
-					if (res.ok) {
-						const data = await res.json();
-
-						flsModules.popup.open('#popup-accept');
-
-						console.log(data.message);
-					}
+					// const data = await res.json();
+					flsModules.popup.open('#popup-accept');
 				} catch (error) {
 					console.log(error);
 					flsModules.popup.open('#popup-reject');
 				} finally {
-					flsModules.popup.close('#popup');
+					// flsModules.popup.close('#popup');
 					form.reset();
 				}
 			}
 			sendFormData();
 		});
-
-		// console.log('is Valid!!!');
-
-		// async function sendFormData(e) {
-		// 	const formData = new FormData(e.target);
-		// 	const credentials = btoa('roman:JaKtmOM!ui#T');
-
-		// 	formData.append('type', 'request');
-		// 	formData.append('title', 'Заявка с сайта');
-
-		// 	const headers = new Headers();
-
-		// 	headers.append('Authorization', `Basic ${credentials}`);
-		// 	// headers.set('Referrer Policy', 'no-referrer-when-downgrade');
-		// 	// headers.set('Content-Type', 'text/plain');
-		// 	try {
-		// 		const res = await fetch('../request.php', {
-		// 			method: method,
-		// 			body: formData,
-		// 			headers: headers,
-		// 		});
-
-		// 		if (!res.ok) throw new Error(e);
-
-		// 		const data = await res.json();
-
-		// 		flsModules.popup.open('#popup-accept');
-
-		// 		console.log(data.message);
-		// 	} catch (error) {
-		// 		console.log(error);
-		// 	}
-		// }
-
-		// form.addEventListener('submit', (e) => sendFormData(e));
 	}
 });
