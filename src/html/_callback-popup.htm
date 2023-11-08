@@ -34,8 +34,23 @@
 			<button data-close type="button" class="popup__close"><span class="_icon-close"></span></button>
 			<div class="popup__body">
 				<div class="_icon-check"></div>
-				<h6 class="popup__title">Ваша заявка отправлена</h6>
+				<h6 class="popup__title">Мы видим ваше обращение</h6>
 				<p>Наш менеджер свяжется с вами в ближайшее время</p>
+				<button data-close class="btn" type="button">Закрыть</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- попап отказ в отправке -->
+<div id="popup-reject" aria-hidden="true" class="accept-popup popup">
+	<div class="popup__wrapper">
+		<div class="popup__content">
+			<button data-close type="button" class="popup__close"><span class="_icon-close"></span></button>
+			<div class="popup__body">
+				<div class="_icon-close" style="background-color: #ff8484"></div>
+				<h6 class="popup__title">Что-то пошло не так</h6>
+				<p>Какие-то проблемы при отправке. Попробуйте еще раз</p>
 				<button data-close class="btn" type="button">Закрыть</button>
 			</div>
 		</div>
@@ -69,7 +84,7 @@
 						<div class="form__row">
 							<textarea
 								class="input"
-								name="message"
+								name="comment"
 								id="message"
 								rows="4"
 								placeholder="Ваше сообщение и ссылка на площадку"></textarea>

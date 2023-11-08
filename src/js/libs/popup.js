@@ -8,10 +8,10 @@ import { isMobile, bodyLockStatus, bodyLock, bodyUnlock, bodyLockToggle, FLS } f
 import { flsModules } from '../files/modules.js';
 
 // Класс Popup
-class Popup {
+export default class Popup {
 	constructor(options) {
 		let config = {
-			logging: true,
+			logging: false,
 			init: true,
 			// Для кнопок
 			attributeOpenButton: 'data-popup', // Атрибут для кнопки, которая вызывает попап
@@ -42,9 +42,7 @@ class Popup {
 				beforeOpen: function () {},
 				afterOpen: function () {},
 				beforeClose: function () {},
-				afterClose: function (e) {
-					console.log(e);
-				},
+				afterClose: function (e) {},
 			},
 		};
 		this.youTubeCode;

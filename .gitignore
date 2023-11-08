@@ -5,6 +5,7 @@ phpmailer/
 version.json
 .gitignore
 undefined
+my-request.php
 # dist/
 **/*.zip
 **/*.rar

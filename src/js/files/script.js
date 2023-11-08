@@ -342,19 +342,17 @@ window.addEventListener('DOMContentLoaded', () => {
 	const forms = document.forms;
 	if (!forms.length) return;
 
-	//enctype='multipart/form-data'
-
 	Array.from(forms).forEach((form) => {
 		const method = form.getAttribute('method');
 		const formId = form.getAttribute('id');
 
-		validateForm(form, formId, method);
+		sentValidateвForm(form, formId, method);
 	});
 
-	function validateForm(form, formId, method = 'text/plain') {
+	function sentValidateвForm(form, formId, method = 'get') {
 		const validate = new JustValidate(`#${formId}`, {
 			validateBeforeSubmitting: true,
-			// testingMode: true,
+			testingMode: true,
 		});
 
 		if (!validate) return;
@@ -423,35 +421,81 @@ window.addEventListener('DOMContentLoaded', () => {
 
 		validate.onSuccess((e) => {
 			const formData = new FormData(e.target);
+			// const credentials = btoa('roman:JaKtmOM!ui#T');
 
-			formData.append('type', 'request');
-			formData.append('title', 'Заявка с сайта');
+			// formData.set('type', 'request');
+			// formData.set('title', 'Заявка с сайта');
 
-			console.log('is Valid!!!');
+			// const headers = new Headers();
+
+			// headers.append('Authorization', `Basic ${credentials}`);
+			// headers.set('Referrer Policy', 'no-referrer-when-downgrade');
+			// headers.set('Content-Type', 'text/plain');
+
+			// console.log('is Valid!!!');
 
 			async function sendFormData() {
-				const credentials = 'roman:JaKtmOM!ui#T';
-				const auth = { Authorization: `Basic ${credentials}` };
-
 				try {
-					const res = await fetch('https://api-ext.d.r-o.ru/327/request', {
+					const res = await fetch('../my-request.php', {
 						method: method,
 						body: formData,
-						headers: auth,
+						// headers: headers,
 					});
 
-					if (!res.ok) throw new Error(e);
+					if (!res.ok) {
+						throw new Error(e);
+					}
+					if (res.ok) {
+						const data = await res.json();
 
-					const data = await res.json();
+						flsModules.popup.open('popup-accept');
 
-					flsModules.popup.open('#popup-accept');
-
-					console.log(data.message);
+						console.log(data.message);
+					}
 				} catch (error) {
 					console.log(error);
+					flsModules.popup.open('popup-reject');
+				} finally {
+					// flsModules.popup.close('popup');
+					form.reset();
 				}
 			}
 			sendFormData();
 		});
+
+		// console.log('is Valid!!!');
+
+		// async function sendFormData(e) {
+		// 	const formData = new FormData(e.target);
+		// 	const credentials = btoa('roman:JaKtmOM!ui#T');
+
+		// 	formData.append('type', 'request');
+		// 	formData.append('title', 'Заявка с сайта');
+
+		// 	const headers = new Headers();
+
+		// 	headers.append('Authorization', `Basic ${credentials}`);
+		// 	// headers.set('Referrer Policy', 'no-referrer-when-downgrade');
+		// 	// headers.set('Content-Type', 'text/plain');
+		// 	try {
+		// 		const res = await fetch('../request.php', {
+		// 			method: method,
+		// 			body: formData,
+		// 			headers: headers,
+		// 		});
+
+		// 		if (!res.ok) throw new Error(e);
+
+		// 		const data = await res.json();
+
+		// 		flsModules.popup.open('#popup-accept');
+
+		// 		console.log(data.message);
+		// 	} catch (error) {
+		// 		console.log(error);
+		// 	}
+		// }
+
+		// form.addEventListener('submit', (e) => sendFormData(e));
 	}
 });
