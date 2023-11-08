@@ -448,15 +448,15 @@ window.addEventListener('DOMContentLoaded', () => {
 					if (res.ok) {
 						const data = await res.json();
 
-						flsModules.popup.open('popup-accept');
+						flsModules.popup.open('#popup-accept');
 
 						console.log(data.message);
 					}
 				} catch (error) {
 					console.log(error);
-					flsModules.popup.open('popup-reject');
+					flsModules.popup.open('#popup-reject');
 				} finally {
-					// flsModules.popup.close('popup');
+					flsModules.popup.close('#popup');
 					form.reset();
 				}
 			}
