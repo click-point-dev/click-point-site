@@ -35,7 +35,7 @@ export default class Popup {
 			bodyLock: true, // Блокировка скролла
 			hashSettings: {
 				location: false, // Хэш в адресной строке
-				goHash: false, // Переход по наличию в адресной строке
+				goHash: true, // Переход по наличию в адресной строке
 			},
 			on: {
 				// События
