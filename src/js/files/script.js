@@ -276,10 +276,6 @@ window.addEventListener('DOMContentLoaded', () => {
 	Array.from(forms).forEach((form) => {
 		const method = form.getAttribute('method');
 		const formId = form.getAttribute('id');
-		console.log(`🚀 ------------------------------------------🚀`);
-		console.log(`🚀 ~ file: script.js:279 ~ formId:`, formId);
-		console.log(`🚀 ------------------------------------------🚀`);
-
 		sentValidateвForm(form, formId, method);
 
 		loadFilesToForm(form);
