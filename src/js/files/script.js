@@ -425,6 +425,7 @@ window.addEventListener('DOMContentLoaded', () => {
 			const formData = new FormData(e.target);
 			// formData.set('type', 'request');
 			// formData.set('title', 'Заявка с сайта');
+			formData.append('file[]', e.target.files);
 
 			// const headers = new Headers();
 			// headers.append('Authorization', `Basic ${credentials}`);
