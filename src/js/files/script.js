@@ -355,7 +355,7 @@ window.addEventListener('DOMContentLoaded', () => {
 	function sentValidateвForm(form, formId, method = 'get') {
 		const validate = new JustValidate(`#${formId}`, {
 			validateBeforeSubmitting: true,
-			testingMode: true,
+			// testingMode: true,
 		});
 
 		if (!validate) return;
