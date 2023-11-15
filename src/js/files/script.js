@@ -7,12 +7,13 @@ import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger.js';
 import JustValidate from 'just-validate';
 // добавление классов элементам при скроле на определенную величину
+
 window.addEventListener('DOMContentLoaded', () => {
 	const appearingElement = document.querySelector('[data-appearing]');
 
-	if (!appearingElement) return;
-
 	window.addEventListener('scroll', () => {
+		if (!appearingElement) return;
+
 		if (window.scrollY > 800) {
 			appearingElement.classList.add('_appearing');
 		} else {
@@ -268,11 +269,27 @@ window.addEventListener('DOMContentLoaded', () => {
 		});
 	}
 
+	//!+ РАБОТА С ФОРМАМИ
+	const forms = document.forms;
+	if (!forms.length) return;
+
+	Array.from(forms).forEach((form) => {
+		const method = form.getAttribute('method');
+		const formId = form.getAttribute('id');
+		console.log(`🚀 ------------------------------------------🚀`);
+		console.log(`🚀 ~ file: script.js:279 ~ formId:`, formId);
+		console.log(`🚀 ------------------------------------------🚀`);
+
+		sentValidateвForm(form, formId, method);
+
+		loadFilesToForm(form);
+	});
+
 	//!+ загрузка файлов в форму
 
-	function loadFilesToForm() {
-		const formFileInput = document.querySelector('#formFileInput');
-		const filesPlaceholder = document.querySelector('#formFilesPlaceholder');
+	function loadFilesToForm(form) {
+		const formFileInput = form.querySelector('#filesInput');
+		const filesPlaceholder = form.querySelector('#formFilesPlaceholder');
 
 		if (!formFileInput || !filesPlaceholder) return;
 
@@ -320,7 +337,9 @@ window.addEventListener('DOMContentLoaded', () => {
 			reader.readAsDataURL(new Blob(files));
 
 			reader.onload = function () {
-				filesInputList = filesInputList ? [...filesInputList, ...Array.from(files)] : [...Array.from(files)];
+				if (Array.from(files).some((file) => file.size > 15000000)) return;
+
+				filesInputList = [...Array.from(files)];
 
 				renderFilesList(filesInputList, filesPlaceholder);
 			};
@@ -335,24 +354,12 @@ window.addEventListener('DOMContentLoaded', () => {
 		});
 	}
 
-	loadFilesToForm();
-
 	//!+ валидация и отправка форм
-
-	const forms = document.forms;
-	if (!forms.length) return;
-
-	Array.from(forms).forEach((form) => {
-		const method = form.getAttribute('method');
-		const formId = form.getAttribute('id');
-
-		sentValidateвForm(form, formId, method);
-	});
 
 	function sentValidateвForm(form, formId, method = 'get') {
 		const validate = new JustValidate(`#${formId}`, {
 			validateBeforeSubmitting: true,
-			// testingMode: true,
+			testingMode: true,
 		});
 
 		if (!validate) return;
@@ -405,14 +412,13 @@ window.addEventListener('DOMContentLoaded', () => {
 		}
 
 		if (form['files[]']) {
-			validate.addField('#files', [
+			validate.addField('#filesInput', [
 				{
 					rule: 'files',
-					errorMessage: 'jpg, png, svg, pdf, jpeg не более 10 Мб',
+					errorMessage: 'Файлы не более 15 Мб',
 					value: {
 						files: {
-							maxSize: 10000000,
-							extensions: ['jpeg', 'jpg', 'png', 'pdf', 'svg'],
+							maxSize: 15000000,
 						},
 					},
 				},
@@ -433,7 +439,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
 			async function sendFormData() {
 				try {
-					const res = await fetch('../my-request.php', {
+					const res = await fetch('../request.php', {
 						method: method,
 						body: formData,
 						// headers: headers,
