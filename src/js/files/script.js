@@ -407,7 +407,7 @@ window.addEventListener('DOMContentLoaded', () => {
 			]);
 		}
 
-		if (form['files[]']) {
+		if (form['file[]']) {
 			validate.addField('#filesInput', [
 				{
 					rule: 'files',
