@@ -271,15 +271,17 @@ window.addEventListener('DOMContentLoaded', () => {
 
 	//!+ РАБОТА С ФОРМАМИ
 	const forms = document.forms;
-	if (!forms.length) return;
 
-	Array.from(forms).forEach((form) => {
-		const method = form.getAttribute('method');
-		const formId = form.getAttribute('id');
-		sentValidateвForm(form, formId, method);
+	if (forms.length) {
+		console.log('количество форм на странице', forms.length);
+		Array.from(forms).forEach((form) => {
+			const method = form.getAttribute('method');
+			const formId = form.getAttribute('id');
+			sentValidateвForm(form, formId, method);
 
-		loadFilesToForm(form);
-	});
+			loadFilesToForm(form);
+		});
+	}
 
 	//!+ загрузка файлов в форму
 
@@ -355,7 +357,7 @@ window.addEventListener('DOMContentLoaded', () => {
 	function sentValidateвForm(form, formId, method = 'get') {
 		const validate = new JustValidate(`#${formId}`, {
 			validateBeforeSubmitting: true,
-			// testingMode: true,
+			testingMode: true,
 		});
 
 		if (!validate) return;
