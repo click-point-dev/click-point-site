@@ -1,5 +1,3 @@
-// Подключение функционала "Чертогов Фрилансера"
-import { isMobile } from './functions.js';
 // Подключение списка активных модулей
 import { flsModules } from './modules.js';
 import { gsap } from 'gsap';
@@ -274,95 +272,107 @@ window.addEventListener('DOMContentLoaded', () => {
 
 	if (forms.length) {
 		console.log('количество форм на странице', forms.length);
+
 		Array.from(forms).forEach((form) => {
-			const method = form.getAttribute('method');
+			// const sentMethod = form.getAttribute('method');
+			// const formId = form.getAttribute('id');
 			const formId = form.getAttribute('id');
-			sentValidateвForm(form, formId, method);
+			const filesInput = form['file[]'];
 
-			loadFilesToForm(form);
-		});
-	}
+			if (!formId) {
+				console.log(form, 'У формы отсутствует ID - валидация полей input невозможна');
+				return;
+			}
 
-	//!+ загрузка файлов в форму
-
-	function loadFilesToForm(form) {
-		const formFileInput = form.querySelector('#filesInput');
-		const filesPlaceholder = form.querySelector('#formFilesPlaceholder');
-
-		if (!formFileInput || !filesPlaceholder) return;
-
-		let filesInputList;
-
-		let filesObserver = new MutationObserver(() => {
-			const removeFilesButtons = document.querySelectorAll('#deleteFileButton');
-
-			Array.from(removeFilesButtons).forEach((button) => removeFiles(button));
-		});
-
-		filesObserver.observe(filesPlaceholder, {
-			childList: true, // наблюдать за непосредственными детьми
-			subtree: false, // и более глубокими потомками
-			characterDataOldValue: false, // передавать старое значение в колбэк
-		});
-
-		function removeFiles(item) {
-			item.addEventListener('click', function (e) {
-				filesInputList = filesInputList.filter((item) => item.name !== e.target.innerHTML);
-				renderFilesList(filesInputList, filesPlaceholder);
+			const validate = new JustValidate(`#${formId}`, {
+				validateBeforeSubmitting: true,
+				testingMode: true,
 			});
-		}
 
-		function renderFilesList(list, node) {
-			node.innerHTML = '';
+			validateForm(form, validate);
 
-			list.forEach((item) =>
-				node.insertAdjacentHTML(
-					'beforeend',
-					`	<div class="input-file__btn">
-						<span class="_icon-trash" id="deleteFileButton">${item.name}</span>
-					</div>
-				`
-				)
-			);
-		}
+			form.addEventListener('submit', () => submitForm(form));
 
-		function loadFiles(input, filesPlaceholder) {
-			if (!input || !filesPlaceholder) return;
-
-			const files = input.files;
-
-			let reader = new FileReader();
-			reader.readAsDataURL(new Blob(files));
-
-			reader.onload = function () {
-				if (Array.from(files).some((file) => file.size > 15000000)) return;
-
-				filesInputList = [...Array.from(files)];
-
-				renderFilesList(filesInputList, filesPlaceholder);
-			};
-
-			reader.onerror = function () {
-				alert('C загрузкой файла вохникли проблемы. Попробуйте еще раз');
-			};
-		}
-
-		formFileInput.addEventListener('change', () => {
-			loadFiles(formFileInput, filesPlaceholder);
+			if (filesInput) {
+				filesInput.addEventListener('change', (event) => renderFilesList(event, form, '#formFilesPlaceholder'));
+			}
+			// loadFilesToForm(form);
 		});
 	}
 
-	//!+ валидация и отправка форм
+	// //!+ загрузка файлов в форму
 
-	function sentValidateвForm(form, formId, method = 'get') {
-		const validate = new JustValidate(`#${formId}`, {
-			validateBeforeSubmitting: true,
-			testingMode: true,
-		});
+	// function loadFilesToForm(form) {
+	// 	const formFileInput = form.querySelector('#filesInput');
+	// 	const filesPlaceholder = form.querySelector('#formFilesPlaceholder');
 
-		if (!validate) return;
+	// 	if (!formFileInput || !filesPlaceholder) return;
 
-		if (form.elements.name) {
+	// 	let filesInputList;
+
+	// 	let filesObserver = new MutationObserver(() => {
+	// 		const removeFilesButtons = document.querySelectorAll('#deleteFileButton');
+
+	// 		Array.from(removeFilesButtons).forEach((button) => removeFiles(button));
+	// 	});
+
+	// 	filesObserver.observe(filesPlaceholder, {
+	// 		childList: true, // наблюдать за непосредственными детьми
+	// 		subtree: false, // и более глубокими потомками
+	// 		characterDataOldValue: false, // передавать старое значение в колбэк
+	// 	});
+
+	// 	function removeFiles(item) {
+	// 		item.addEventListener('click', function (e) {
+	// 			filesInputList = filesInputList.filter((item) => item.name !== e.target.innerHTML);
+	// 			renderFilesList(filesInputList, filesPlaceholder);
+	// 		});
+	// 	}
+
+	// 	function renderFilesList(list, node) {
+	// 		node.innerHTML = '';
+
+	// 		list.forEach((item) =>
+	// 			node.insertAdjacentHTML(
+	// 				'beforeend',
+	// 				`	<div class="input-file__btn">
+	// 					<span class="_icon-trash" id="deleteFileButton">${item.name}</span>
+	// 				</div>
+	// 			`
+	// 			)
+	// 		);
+	// 	}
+
+	// 	function loadFiles(input, filesPlaceholder) {
+	// 		if (!input || !filesPlaceholder) return;
+
+	// 		const files = input.files;
+
+	// 		let reader = new FileReader();
+	// 		reader.readAsDataURL(new Blob(files));
+
+	// 		reader.onload = function () {
+	// 			if (Array.from(files).some((file) => file.size > 15000000)) return;
+
+	// 			filesInputList = [...Array.from(files)];
+
+	// 			renderFilesList(filesInputList, filesPlaceholder);
+	// 		};
+
+	// 		reader.onerror = function () {
+	// 			alert('C загрузкой файла вохникли проблемы. Попробуйте еще раз');
+	// 		};
+	// 	}
+
+	// 	formFileInput.addEventListener('change', () => {
+	// 		loadFiles(formFileInput, filesPlaceholder);
+	// 	});
+	// }
+
+	//!+ валидация форм
+
+	function validateForm(form, validate) {
+		if (form.name) {
 			validate.addField('#name', [
 				{
 					rule: 'required',
@@ -420,44 +430,177 @@ window.addEventListener('DOMContentLoaded', () => {
 						},
 					},
 				},
+				{
+					rule: 'maxFilesCount',
+					value: 3,
+					errorMessage: 'Не более 3 файлов',
+				},
 			]);
 		}
-
-		validate.onSuccess((e) => {
-			const formData = new FormData(e.target);
-			// formData.set('type', 'request');
-			// formData.set('title', 'Заявка с сайта');
-			formData.append('file[]', e.target.files);
-
-			// const headers = new Headers();
-			// headers.append('Authorization', `Basic ${credentials}`);
-			// headers.set('Referrer Policy', 'no-referrer-when-downgrade');
-			// headers.set('Content-Type', 'text/plain');
-
-			// console.log('is Valid!!!');
-
-			async function sendFormData() {
-				try {
-					const res = await fetch('../request.php', {
-						method: method,
-						body: formData,
-						// headers: headers,
-					});
-
-					if (!res.ok) {
-						throw new Error(e);
-					}
-					// const data = await res.json();
-					flsModules.popup.open('#popup-accept');
-				} catch (error) {
-					console.log(error);
-					flsModules.popup.open('#popup-reject');
-				} finally {
-					// flsModules.popup.close('#popup');
-					form.reset();
-				}
-			}
-			sendFormData();
-		});
 	}
+
+	async function submitForm(form) {
+		const formData = new FormData(form);
+		const method = form.getAttribute('method');
+
+		try {
+			const res = await fetch('../request.php', {
+				method: method,
+				body: formData,
+			});
+
+			console.log(res);
+
+			if (res.status !== 200) {
+				throw new Error(`❌ Что-то не так. Код ответа ${res.status}`);
+			}
+
+			flsModules.popup.open('#popup-accept');
+		} catch (error) {
+			console.error(error);
+			flsModules.popup.open('#popup-reject');
+		} finally {
+			form.reset();
+		}
+	}
+
+	function renderFilesList(event, form, selector) {
+		const filesPlaceholder = form.querySelector(selector);
+		const files = Array.from(event.target.files);
+
+		filesPlaceholder.innerHTML = '';
+
+		if (files) {
+			files.forEach((file) => {
+				filesPlaceholder.insertAdjacentHTML(
+					'beforeend',
+					`	<div class="input-file__btn">
+							<span class="_icon-trash" id="deleteFileButton">${file.name}</span>
+						</div>
+					`
+				);
+			});
+			const buttons = form.querySelectorAll('#deleteFileButton');
+
+			filesPlaceholder.addEventListener('click', (event) => {
+				//TODO закончил тут. дальше надо фильтровать массив с файлами
+				console.log(event.target.innerHTML);
+			});
+		}
+
+		console.log(event.target.files);
+		console.log(filesPlaceholder);
+	}
+
+	// function validateForm(form, formId, method = 'get') {
+	// 	const validate = new JustValidate(`#${formId}`, {
+	// 		validateBeforeSubmitting: true,
+	// 		testingMode: true,
+	// 	});
+
+	// 	if (!validate) return;
+
+	// 	if (form.elements.name) {
+	// 		validate.addField('#name', [
+	// 			{
+	// 				rule: 'required',
+	// 				errorMessage: 'Имя обязательно',
+	// 			},
+	// 			{
+	// 				rule: 'customRegexp',
+	// 				value: /[А-я]/gi,
+	// 				errorMessage: 'Только кириллица',
+	// 			},
+	// 			{
+	// 				rule: 'minLength',
+	// 				value: 3,
+	// 				errorMessage: 'Минимум 3 символа',
+	// 			},
+	// 			{
+	// 				rule: 'maxLength',
+	// 				value: 30,
+	// 				errorMessage: 'Не более 30 символов',
+	// 			},
+	// 		]);
+	// 	}
+
+	// 	if (form.phone) {
+	// 		validate.addField('#phone', [
+	// 			{
+	// 				rule: 'required',
+	// 				errorMessage: 'Телефон обязателен',
+	// 			},
+	// 			{
+	// 				rule: 'integer',
+	// 				errorMessage: 'Только цифры без +7',
+	// 			},
+	// 			{
+	// 				rule: 'minLength',
+	// 				value: 10,
+	// 				errorMessage: '10 цифр без +7',
+	// 			},
+	// 			{
+	// 				rule: 'maxLength',
+	// 				value: 10,
+	// 				errorMessage: 'Что-то не то. Номер без +7',
+	// 			},
+	// 		]);
+	// 	}
+
+	// 	if (form['file[]']) {
+	// 		validate.addField('#filesInput', [
+	// 			{
+	// 				rule: 'files',
+	// 				errorMessage: 'Файлы не более 15 Мб',
+	// 				value: {
+	// 					files: {
+	// 						maxSize: 15000000,
+	// 					},
+	// 				},
+	// 			},
+	// 			{
+	// 				rule: 'maxFilesCount',
+	// 				value: 2,
+	// 				errorMessage: 'Не более 3 файлов',
+	//  			},
+	// 		]);
+	// 	}
+
+	// validate.onSuccess((e) => {
+	// 	const formData = new FormData(e.target);
+	// 	// formData.set('type', 'request');
+	// 	// formData.set('title', 'Заявка с сайта');
+	// 	formData.append('file[]', e.target.files);
+
+	// 	// const headers = new Headers();
+	// 	// headers.append('Authorization', `Basic ${credentials}`);
+	// 	// headers.set('Referrer Policy', 'no-referrer-when-downgrade');
+	// 	// headers.set('Content-Type', 'text/plain');
+
+	// 	// console.log('is Valid!!!');
+
+	// 	async function sendFormData() {
+	// 		try {
+	// 			const res = await fetch('../request.php', {
+	// 				method: method,
+	// 				body: formData,
+	// 				// headers: headers,
+	// 			});
+
+	// 			if (!res.ok) {
+	// 				throw new Error(e);
+	// 			}
+	// 			// const data = await res.json();
+	// 			flsModules.popup.open('#popup-accept');
+	// 		} catch (error) {
+	// 			console.log(error);
+	// 			flsModules.popup.open('#popup-reject');
+	// 		} finally {
+	// 			// flsModules.popup.close('#popup');
+	// 			form.reset();
+	// 		}
+	// 	}
+	// 	sendFormData();
+	// });
+	// }
 });
