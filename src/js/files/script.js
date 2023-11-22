@@ -4,8 +4,8 @@ import { gsap } from 'gsap';
 // import CustomEase from 'gsap/CustomEase.js';
 import { ScrollTrigger } from 'gsap/ScrollTrigger.js';
 import JustValidate from 'just-validate';
-// добавление классов элементам при скроле на определенную величину
 
+// добавление классов элементам при скроле на определенную величину
 window.addEventListener('DOMContentLoaded', () => {
 	const appearingElement = document.querySelector('[data-appearing]');
 
@@ -268,14 +268,20 @@ window.addEventListener('DOMContentLoaded', () => {
 	}
 
 	//!+ РАБОТА С ФОРМАМИ
+
 	const forms = document.forms;
 
 	if (forms.length) {
 		console.log('количество форм на странице', forms.length);
 
 		Array.from(forms).forEach((form) => {
-			// const sentMethod = form.getAttribute('method');
-			// const formId = form.getAttribute('id');
+			//+ маска телефона
+			const telInput = form.querySelector('input[type="tel"]');
+			const inputMask = new Inputmask('+7 (999)-999-99-99');
+			if (telInput) {
+				inputMask.mask(telInput);
+			}
+
 			const formId = form.getAttribute('id');
 			const filesInput = form['file[]'];
 			let filesList;
@@ -290,7 +296,7 @@ window.addEventListener('DOMContentLoaded', () => {
 				testingMode: true,
 			});
 
-			validateForm(form, validate);
+			validateForm(form, validate, telInput);
 
 			if (filesInput) {
 				filesInput.addEventListener('change', (event) => {
@@ -376,7 +382,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
 	//!+ валидация форм
 
-	function validateForm(form, validate) {
+	function validateForm(form, validate, telInput) {
 		if (form.name) {
 			validate.addField('#name', [
 				{
@@ -408,18 +414,16 @@ window.addEventListener('DOMContentLoaded', () => {
 					errorMessage: 'Телефон обязателен',
 				},
 				{
-					rule: 'integer',
-					errorMessage: 'Только цифры без +7',
-				},
-				{
-					rule: 'minLength',
-					value: 10,
-					errorMessage: '10 цифр без +7',
-				},
-				{
-					rule: 'maxLength',
-					value: 10,
-					errorMessage: 'Что-то не то. Номер без +7',
+					rule: 'function',
+					validator: function () {
+						let phone;
+						if (telInput.inputmask) {
+							phone = telInput.inputmask.unmaskedvalue();
+							// return phone.length === 10;
+						}
+						return Number(phone) && phone.length === 10 ? true : false;
+					},
+					errorMessage: 'Введите 10 цифр',
 				},
 			]);
 		}
