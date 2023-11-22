@@ -281,7 +281,7 @@ window.addEventListener('DOMContentLoaded', () => {
 	}
 
 	//!+ РАБОТА С ФОРМАМИ
-
+	//BUG не очищается filesList после отправки формы и не обновляется после удаления файла из списка
 	const forms = document.forms;
 
 	if (forms.length) {
@@ -313,15 +313,22 @@ window.addEventListener('DOMContentLoaded', () => {
 
 			if (filesInput) {
 				filesInput.addEventListener('change', (event) => {
-					filesList = renderFilesList(event, form, '#formFilesPlaceholder');
-					console.log('fileList:', filesList);
+					const filesPlaceholder = form.querySelector('#formFilesPlaceholder');
+					let files = Array.from(event.target.files);
+
+					filesList = renderFilesList(files, filesPlaceholder);
+					console.log('onInputChange--fileList:', filesList);
 				});
 			}
 
-			form.addEventListener('submit', (event) => {
-				event.preventDefault();
-				submitForm(form, filesList);
+			validate.onSuccess((event) => {
+				submitForm(event.target, filesList);
+				// renderFilesList(event, form, '#formFilesPlaceholder');
 			});
+
+			// form.addEventListener('submit', (event) => {
+			// 	event.preventDefault();
+			// });
 
 			// loadFilesToForm(form);
 		});
@@ -464,18 +471,15 @@ window.addEventListener('DOMContentLoaded', () => {
 		}
 	}
 
-	function renderFilesList(event, form, selector) {
-		const filesPlaceholder = form.querySelector(selector);
-		let files = Array.from(event.target.files);
-
-		filesPlaceholder.innerHTML = '';
+	function renderFilesList(files, placeholder) {
+		placeholder.innerHTML = '';
 
 		const isOverSize = files.some((file) => file.size > 15 * 1024 * 1024);
 
 		if (files && !isOverSize && files.length <= 3) {
 			function paintList() {
 				files.forEach((file) => {
-					filesPlaceholder.insertAdjacentHTML(
+					placeholder.insertAdjacentHTML(
 						'beforeend',
 						`	<div class="input-file__btn">
 						<span class="_icon-trash" id="deleteFileButton">${file.name}</span>
@@ -489,16 +493,13 @@ window.addEventListener('DOMContentLoaded', () => {
 
 			// const buttons = form.querySelectorAll('#deleteFileButton');
 
-			filesPlaceholder.addEventListener('click', (event) => {
+			placeholder.addEventListener('click', (event) => {
 				files = files.filter((file) => file.name !== event.target.innerHTML);
-				filesPlaceholder.innerHTML = '';
-				console.log(files, event.target.innerHTML);
+				console.log('afterDeleteFile--files:', files);
+				placeholder.innerHTML = '';
 				paintList();
 			});
 		}
-
-		console.log(event.target.files);
-		console.log(filesPlaceholder);
 
 		return files;
 	}
@@ -506,12 +507,21 @@ window.addEventListener('DOMContentLoaded', () => {
 	async function submitForm(form, filesList = []) {
 		const formData = new FormData(form);
 		const method = form.getAttribute('method');
+		const filesPlaceholder = form.querySelector('#formFilesPlaceholder');
 		const loader = form.nextElementSibling;
-		console.log(loader);
 
-		// formData.set('file[]', {});
+		for (const elem of formData.entries()) {
+			console.log('beforAppend', elem);
+		}
+
+		formData.delete('file[]');
+
 		if (filesList.length) {
 			filesList.forEach((file) => formData.append('file[]', file));
+		}
+
+		for (const elem of formData.entries()) {
+			console.log('afterAppend', elem);
 		}
 
 		try {
@@ -523,6 +533,7 @@ window.addEventListener('DOMContentLoaded', () => {
 			});
 
 			console.log(res);
+
 			if (res.status !== 200) {
 				throw new Error(`❌ Что-то не так. Код ответа ${res.status}`);
 			}
@@ -532,7 +543,9 @@ window.addEventListener('DOMContentLoaded', () => {
 			console.error(error);
 			flsModules.popup.open('#popup-reject');
 		} finally {
+			renderFilesList([], filesPlaceholder);
 			removeClass(loader, 'visible');
+
 			form.reset();
 		}
 	}
