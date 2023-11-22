@@ -306,7 +306,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
 			const validate = new JustValidate(`#${formId}`, {
 				validateBeforeSubmitting: true,
-				testingMode: true,
+				// testingMode: true,
 			});
 
 			validateForm(form, validate, telInput);
@@ -318,7 +318,10 @@ window.addEventListener('DOMContentLoaded', () => {
 				});
 			}
 
-			form.addEventListener('submit', () => submitForm(form, filesList));
+			form.addEventListener('submit', (event) => {
+				event.preventDefault();
+				submitForm(form, filesList);
+			});
 
 			// loadFilesToForm(form);
 		});
@@ -503,9 +506,10 @@ window.addEventListener('DOMContentLoaded', () => {
 	async function submitForm(form, filesList = []) {
 		const formData = new FormData(form);
 		const method = form.getAttribute('method');
-		const loader = form.nextSibling;
+		const loader = form.nextElementSibling;
+		console.log(loader);
 
-		// formData.set('file[]', []);
+		// formData.set('file[]', {});
 		if (filesList.length) {
 			filesList.forEach((file) => formData.append('file[]', file));
 		}
@@ -528,8 +532,8 @@ window.addEventListener('DOMContentLoaded', () => {
 			console.error(error);
 			flsModules.popup.open('#popup-reject');
 		} finally {
-			form.reset();
 			removeClass(loader, 'visible');
+			form.reset();
 		}
 	}
 
