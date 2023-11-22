@@ -1,6 +1,7 @@
 //<FORM>
 // Снипет (HTML):
 .form {
+	position: relative;
 	display: flex;
 	flex-direction: column;
 	@include adaptiveValue("gap", 20, 16);
@@ -43,6 +44,31 @@
 			text-align: center;
 			color: $primary-error !important;
 			font-size: rem(14);
+		}
+	}
+
+	&__loader {
+		position: absolute;
+		inset: 0;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		background-color: #ffffff77;
+		backdrop-filter: blur(3px);
+		margin: -10px;
+		pointer-events: none;
+		opacity: 0;
+		visibility: hidden;
+		transition: opacity $tm ease;
+		img {
+			width: 50px;
+		}
+
+		&.visible {
+			opacity: 1;
+			visibility: visible;
+			pointer-events: all;
+			transition: opacity $tm ease;
 		}
 	}
 }

@@ -5,8 +5,21 @@ import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger.js';
 import JustValidate from 'just-validate';
 
-// добавление классов элементам при скроле на определенную величину
 window.addEventListener('DOMContentLoaded', () => {
+	//+хэлеперы
+	function addClass(element, className) {
+		if (element) {
+			element.classList.add(className);
+		}
+	}
+
+	function removeClass(element, className) {
+		if (element) {
+			element.classList.remove(className);
+		}
+	}
+
+	// добавление классов элементам при скроле на определенную величину
 	const appearingElement = document.querySelector('[data-appearing]');
 
 	window.addEventListener('scroll', () => {
@@ -490,6 +503,7 @@ window.addEventListener('DOMContentLoaded', () => {
 	async function submitForm(form, filesList = []) {
 		const formData = new FormData(form);
 		const method = form.getAttribute('method');
+		const loader = form.nextSibling;
 
 		// formData.set('file[]', []);
 		if (filesList.length) {
@@ -497,6 +511,8 @@ window.addEventListener('DOMContentLoaded', () => {
 		}
 
 		try {
+			addClass(loader, 'visible');
+
 			const res = await fetch('../request.php', {
 				method: method,
 				body: formData,
@@ -513,6 +529,7 @@ window.addEventListener('DOMContentLoaded', () => {
 			flsModules.popup.open('#popup-reject');
 		} finally {
 			form.reset();
+			removeClass(loader, 'visible');
 		}
 	}
 
