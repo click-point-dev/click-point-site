@@ -281,12 +281,10 @@ window.addEventListener('DOMContentLoaded', () => {
 	}
 
 	//!+ РАБОТА С ФОРМАМИ
-	//BUG не очищается filesList после отправки формы и не обновляется после удаления файла из списка
+	//BUG не очищается filesList после отправки формы и не обновляется после удаления файла из списка. при нескольких файлах возвращает 413
 	const forms = document.forms;
 
 	if (forms.length) {
-		console.log('количество форм на странице', forms.length);
-
 		Array.from(forms).forEach((form) => {
 			//+ маска телефона
 			const telInput = form.querySelector('input[type="tel"]');
@@ -317,7 +315,6 @@ window.addEventListener('DOMContentLoaded', () => {
 					let files = Array.from(event.target.files);
 
 					filesList = renderFilesList(files, filesPlaceholder);
-					console.log('onInputChange--fileList:', filesList);
 				});
 			}
 
@@ -495,7 +492,6 @@ window.addEventListener('DOMContentLoaded', () => {
 
 			placeholder.addEventListener('click', (event) => {
 				files = files.filter((file) => file.name !== event.target.innerHTML);
-				console.log('afterDeleteFile--files:', files);
 				placeholder.innerHTML = '';
 				paintList();
 			});
@@ -510,18 +506,10 @@ window.addEventListener('DOMContentLoaded', () => {
 		const filesPlaceholder = form.querySelector('#formFilesPlaceholder');
 		const loader = form.nextElementSibling;
 
-		for (const elem of formData.entries()) {
-			console.log('beforAppend', elem);
-		}
-
 		formData.delete('file[]');
 
 		if (filesList.length) {
 			filesList.forEach((file) => formData.append('file[]', file));
-		}
-
-		for (const elem of formData.entries()) {
-			console.log('afterAppend', elem);
 		}
 
 		try {
@@ -543,9 +531,8 @@ window.addEventListener('DOMContentLoaded', () => {
 			console.error(error);
 			flsModules.popup.open('#popup-reject');
 		} finally {
-			renderFilesList([], filesPlaceholder);
+			if (filesPlaceholder) renderFilesList([], filesPlaceholder);
 			removeClass(loader, 'visible');
-
 			form.reset();
 		}
 	}
