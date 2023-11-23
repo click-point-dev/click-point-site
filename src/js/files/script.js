@@ -520,7 +520,7 @@ window.addEventListener('DOMContentLoaded', () => {
 				body: formData,
 			});
 
-			console.log(res);
+			// console.log(res);
 
 			if (res.status !== 200) {
 				throw new Error(`❌ Что-то не так. Код ответа ${res.status}`);
