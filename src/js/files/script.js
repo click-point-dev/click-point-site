@@ -508,6 +508,16 @@ window.addEventListener('DOMContentLoaded', () => {
 			filesList.forEach((file) => formData.append('file[]', file));
 		}
 
+		if (form.vacancies && !form.comment) {
+			const vacancy = form.vacancies.value;
+			formData.set('comment', `Отклик на вакансию: ${vacancy}`);
+			console.log(`Отклик на вакансию: ${vacancy}`);
+		}
+
+		for (const item of formData.entries()) {
+			console.log(item);
+		}
+
 		try {
 			addClass(loader, 'visible');
 
