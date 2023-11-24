@@ -281,7 +281,6 @@ window.addEventListener('DOMContentLoaded', () => {
 	}
 
 	//!+ РАБОТА С ФОРМАМИ
-	//BUG не очищается filesList после отправки формы и не обновляется после удаления файла из списка. при нескольких файлах возвращает 413
 	const forms = document.forms;
 
 	if (forms.length) {
@@ -314,20 +313,25 @@ window.addEventListener('DOMContentLoaded', () => {
 					const filesPlaceholder = form.querySelector('#formFilesPlaceholder');
 					let files = Array.from(event.target.files);
 
-					filesList = renderFilesList(files, filesPlaceholder);
+					function handleOnClick(event) {
+						filesList = filesList.filter((file) => file.name !== event.target.innerHTML);
+						filesPlaceholder.innerHTML = '';
+						paintList(filesList, filesPlaceholder);
+						// console.log('onClick--', filesList);
+						if (filesList.length === 0) filesPlaceholder.removeEventListener('click', handleOnClick);
+					}
+
+					filesList = mountFilesList(files, filesPlaceholder);
+
+					filesPlaceholder.addEventListener('click', handleOnClick);
+					// console.log('onChange--', filesList);
 				});
 			}
 
 			validate.onSuccess((event) => {
+				// console.log(filesList);
 				submitForm(event.target, filesList);
-				// renderFilesList(event, form, '#formFilesPlaceholder');
 			});
-
-			// form.addEventListener('submit', (event) => {
-			// 	event.preventDefault();
-			// });
-
-			// loadFilesToForm(form);
 		});
 	}
 
@@ -468,36 +472,28 @@ window.addEventListener('DOMContentLoaded', () => {
 		}
 	}
 
-	function renderFilesList(files, placeholder) {
+	function mountFilesList(files, placeholder) {
 		placeholder.innerHTML = '';
 
 		const isOverSize = files.some((file) => file.size > 15 * 1024 * 1024);
 
 		if (files && !isOverSize && files.length <= 3) {
-			function paintList() {
-				files.forEach((file) => {
-					placeholder.insertAdjacentHTML(
-						'beforeend',
-						`	<div class="input-file__btn">
-						<span class="_icon-trash" id="deleteFileButton">${file.name}</span>
-						</div>
-						`
-					);
-				});
-			}
-
-			paintList();
-
-			// const buttons = form.querySelectorAll('#deleteFileButton');
-
-			placeholder.addEventListener('click', (event) => {
-				files = files.filter((file) => file.name !== event.target.innerHTML);
-				placeholder.innerHTML = '';
-				paintList();
-			});
+			paintList(files, placeholder);
 		}
 
 		return files;
+	}
+
+	function paintList(files, placeholder) {
+		files.forEach((file) => {
+			placeholder.insertAdjacentHTML(
+				'beforeend',
+				`	<div class="input-file__btn">
+				<span class="_icon-trash" id="deleteFileButton">${file.name}</span>
+				</div>
+				`
+			);
+		});
 	}
 
 	async function submitForm(form, filesList = []) {
@@ -531,7 +527,7 @@ window.addEventListener('DOMContentLoaded', () => {
 			console.error(error);
 			flsModules.popup.open('#popup-reject');
 		} finally {
-			if (filesPlaceholder) renderFilesList([], filesPlaceholder);
+			if (filesPlaceholder) mountFilesList([], filesPlaceholder);
 			removeClass(loader, 'visible');
 			form.reset();
 		}
