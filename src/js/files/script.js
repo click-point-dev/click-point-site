@@ -415,7 +415,7 @@ window.addEventListener('DOMContentLoaded', () => {
 				},
 				{
 					rule: 'customRegexp',
-					value: /[А-я]/gi,
+					value: /^[-А-Яа-яЁё ]*$/,
 					errorMessage: 'Только кириллица',
 				},
 				{
