@@ -357,9 +357,11 @@
 		flex-wrap: wrap;
 		justify-content: center;
 		gap: 20px;
-
+		scrollbar-width: none;
 		&::-webkit-scrollbar {
 			width: 0;
+			height: 0;
+			display: none;
 		}
 
 		@media (max-width: $burgerMenu) {

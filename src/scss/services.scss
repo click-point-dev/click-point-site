@@ -355,7 +355,10 @@
 		width: 100%;
 		@media (max-width: $burgerMenu) {
 			overflow-x: scroll;
+			scrollbar-width: none;
 			&::-webkit-scrollbar {
+				display: none;
+				height: 0;
 				display: none;
 			}
 		}
@@ -581,8 +584,11 @@
 		display: flex;
 		overflow-x: scroll !important;
 		@include adaptiveValue("gap", 20, 12);
+		scrollbar-width: none;
 		&::-webkit-scrollbar {
 			width: 0;
+			height: 0;
+			display: none;
 		}
 	}
 
