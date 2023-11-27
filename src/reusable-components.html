@@ -1,0 +1,303 @@
+<!doctype html>
+<html lang="ru">
+	<head>
+		@@include('html/_head.htm',{ "title":"Компоненты" })
+	</head>
+	@@include('html/_loader.htm',{})
+	<body>
+		<div class="wrapper" style="opacity: 0; pointer-events: none">
+			@@include('html/_header.htm',{})
+			<main class="page components">
+				<div class="components__container">
+					<div class="components__head">
+						<h1>
+							Переиспользуемые
+							<br />
+							компоненты
+						</h1>
+					</div>
+					<div class="components__body">
+						<div class="components__component">
+							<div class="component">
+								<div class="component__head">
+									<h3>
+										▶ Text under H3
+										<span>.text-under-h1</span>
+									</h3>
+								</div>
+								<div class="component__content">
+									<div class="text-under-h1">
+										<h1>Some Title</h1>
+										<p class="text">
+											Lorem, ipsum dolor sit amet consectetur adipisicing elit. Labore quaerat nemo officiis delectus.
+											Quaerat molestias porro suscipit, eveniet minus cupiditate nesciunt consequuntur dignissimos
+											neque, excepturi maxime vitae ab officiis possimus.
+										</p>
+									</div>
+								</div>
+							</div>
+							<div class="component">
+								<div class="component__head">
+									<h3>
+										▶ Page row
+										<span>.page-row</span>
+									</h3>
+								</div>
+								<div class="component__content">
+									<div class="page-row">
+										<div class="page-row__left">
+											<h1>Some content or title</h1>
+										</div>
+										<div class="page-row__right">
+											<p class="text">
+												Lorem, ipsum dolor sit amet consectetur adipisicing elit. Labore quaerat nemo officiis delectus.
+												Quaerat molestias porro suscipit, eveniet minus cupiditate nesciunt consequuntur dignissimos
+												neque, excepturi maxime vitae ab officiis possimus.
+											</p>
+											<h6>
+												Lorem, ipsum dolor sit amet consectetur adipisicing elit. Labore quaerat nemo officiis delectus.
+												Quaerat molestias porro suscipit, eveniet minus cupiditate nesciunt consequuntur dignissimos
+												neque, excepturi maxime vitae ab officiis possimus.
+											</h6>
+											<p class="text">
+												Lorem, ipsum dolor sit amet consectetur adipisicing elit. Labore quaerat nemo officiis delectus.
+												Quaerat molestias porro suscipit, eveniet minus cupiditate nesciunt consequuntur dignissimos
+												neque, excepturi maxime vitae ab officiis possimus.
+											</p>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="component">
+								<div class="component__head">
+									<h3>
+										▶ List of page rows
+										<span>.page-rows-list</span>
+									</h3>
+								</div>
+								<div class="component__content">
+									<div class="page-rows-list">
+										<div class="page-row">
+											<div class="page-row__left">
+												<h2>Some content or title</h2>
+											</div>
+											<div class="page-row__right">
+												<p class="text">
+													Lorem, ipsum dolor sit amet consectetur adipisicing elit. Labore quaerat nemo officiis
+													delectus. Quaerat molestias porro suscipit, eveniet minus cupiditate nesciunt consequuntur
+													dignissimos neque, excepturi maxime vitae ab officiis possimus.
+												</p>
+											</div>
+										</div>
+										<div class="page-row">
+											<div class="page-row__left">
+												<h2>Some content or title</h2>
+											</div>
+											<div class="page-row__right">
+												<p class="text">
+													Lorem, ipsum dolor sit amet consectetur adipisicing elit. Labore quaerat nemo officiis
+													delectus. Quaerat molestias porro suscipit, eveniet minus cupiditate nesciunt consequuntur
+													dignissimos neque, excepturi maxime vitae ab officiis possimus.
+												</p>
+											</div>
+										</div>
+										<div class="page-row">
+											<div class="page-row__left">
+												<h2>Some content or title</h2>
+											</div>
+											<div class="page-row__right">
+												<p class="text">
+													Lorem, ipsum dolor sit amet consectetur adipisicing elit. Labore quaerat nemo officiis
+													delectus. Quaerat molestias porro suscipit, eveniet minus cupiditate nesciunt consequuntur
+													dignissimos neque, excepturi maxime vitae ab officiis possimus.
+												</p>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="component">
+								<div class="component__head">
+									<h3>
+										▶ Numeric list
+										<span>.num-list</span>
+									</h3>
+								</div>
+								<div class="component__content">
+									<ul class="num-list">
+										<li class="num-list__item">Lorem ipsum dolor sit</li>
+										<li class="num-list__item">Lorem ipsum dolor sit</li>
+										<li class="num-list__item">Lorem ipsum dolor sit</li>
+										<li class="num-list__item">Lorem ipsum dolor sit</li>
+										<li class="num-list__item">Lorem ipsum dolor sit</li>
+										<li class="num-list__item">Lorem ipsum dolor sit</li>
+										<li class="num-list__item">Lorem ipsum dolor sit</li>
+										<li class="num-list__item">Lorem ipsum dolor sit</li>
+										<li class="num-list__item">Lorem ipsum dolor sit</li>
+										<li class="num-list__item">Lorem ipsum dolor sit</li>
+										<li class="num-list__item">Lorem ipsum dolor sit</li>
+									</ul>
+								</div>
+							</div>
+							<div class="component">
+								<div class="component__head">
+									<h3>
+										▶Horizontal card
+										<span>.horizontal-card</span>
+									</h3>
+								</div>
+								<div class="component__content">
+									<div class="horizontal-card">
+										<div class="horizontal-card__icon">
+											<img src="@img/cases/icons/seo.svg" alt="иконка лупы на фоне диаграммы" />
+										</div>
+										<p class="text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempora, dignissimos.</p>
+									</div>
+								</div>
+							</div>
+							<div class="component">
+								<div class="component__head">
+									<h3>
+										▶Horizontal card Widget
+										<span>.horizontal-card-widget</span>
+									</h3>
+								</div>
+								<div class="component__content">
+									<div class="horizontal-card-widget">
+										<div class="horizontal-card">
+											<div class="horizontal-card__icon">
+												<img src="@img/cases/icons/seo.svg" alt="иконка лупы на фоне диаграммы" />
+											</div>
+											<p class="text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempora, dignissimos.</p>
+										</div>
+										<div class="horizontal-card">
+											<div class="horizontal-card__icon">
+												<img src="@img/cases/icons/performance-management.svg" alt="иконка шестеренки" />
+											</div>
+											<p class="text">Lorem ipsum dolor sit.</p>
+										</div>
+										<div class="horizontal-card">
+											<div class="horizontal-card__icon">
+												<img src="@img/cases/icons/performance-indicator.svg" alt="иконка шестеренки и диаграммы" />
+											</div>
+											<p class="text">Lorem ipsum dolor sit amet consectetur, adipisicing elit.</p>
+										</div>
+										<div class="horizontal-card">
+											<div class="horizontal-card__icon">
+												<img src="@img/cases/icons/advice.svg" alt="иконка сообщения" />
+											</div>
+											<p class="text">
+												Lorem ipsum dolor sit amet consectetur adipisicing elit. Blanditiis deserunt doloremque quod.
+											</p>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="component">
+								<div class="component__head">
+									<h3>
+										▶Parametr
+										<span>.parametr</span>
+									</h3>
+								</div>
+								<div class="component__content">
+									<div class="parametr">
+										<p class="h2">
+											60 530
+											<span>₽</span>
+										</p>
+										<p class="text">потрачено за месяц</p>
+									</div>
+								</div>
+							</div>
+							<div class="component">
+								<div class="component__head">
+									<h3>
+										▶Parametr widget
+										<span>.parametr-widget</span>
+									</h3>
+								</div>
+								<div class="component__content">
+									<div class="parametr-widget">
+										<div class="parametr">
+											<p class="h2">
+												60 530
+												<span>₽</span>
+											</p>
+											<p class="text">потрачено за месяц</p>
+										</div>
+										<div class="parametr">
+											<p class="h2">213</p>
+											<p class="text">количество лидов</p>
+										</div>
+										<div class="parametr">
+											<p class="h2">
+												284
+												<span>₽</span>
+											</p>
+											<p class="text">цена лида</p>
+										</div>
+										<div class="parametr">
+											<p class="h2">
+												7 140 000
+												<span>₽</span>
+											</p>
+											<p class="text">общая сумма</p>
+										</div>
+										<div class="parametr">
+											<p class="h2">20%</p>
+											<p class="text">конверсия в продажу</p>
+										</div>
+										<div class="parametr">
+											<p class="h2">
+												1 441
+												<span>₽</span>
+											</p>
+											<p class="text">цена продажи</p>
+										</div>
+										<div class="parametr">
+											<p class="h2">11 695% 🔥</p>
+											<p class="text">ROI</p>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="component">
+								<div class="component__head">
+									<h3>
+										▶Callout
+										<span>.callout</span>
+									</h3>
+								</div>
+								<div class="component__content">
+									<div class="callout">
+										<p class="text">
+											Снизили цену лида в 3 раза (на 67% (с 860
+											<span>₽</span>
+											)) по сравнению с результатами предыдущей кампании
+										</p>
+									</div>
+								</div>
+							</div>
+							<div class="component">
+								<div class="component__head">
+									<h3>
+										▶Screenshots
+										<span>.screenshot</span>
+									</h3>
+								</div>
+								<div class="component__content">
+									<div class="screenshot">
+										<img src="@img/cases/svoboda-travel/screenshot-1.png" alt="скриншот отзыва" />
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</main>
+			@@include('html/_footer-index.htm',{})
+		</div>
+		@@include('html/_callback-popup.htm',{}) @@include('html/_js.htm',{})
+	</body>
+</html>
