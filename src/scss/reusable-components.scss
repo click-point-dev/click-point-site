@@ -180,6 +180,7 @@
 
 		span {
 			font-family: sans-serif;
+			font-size: 0.9em;
 		}
 	}
 
@@ -189,16 +190,23 @@
 }
 
 .parametr-widget {
-	display: flex;
-	justify-content: start;
-	flex-wrap: wrap;
-	@include adaptiveValue("row-gap", 40, 20);
-	@include adaptiveValue("column-gap", 25, 15);
+	// display: flex;
+	// justify-content: start;
+	// flex-wrap: wrap;
+	// @include adaptiveValue("row-gap", 40, 20);
+	// @include adaptiveValue("column-gap", 25, 15);
+	// .parametr {
+	// 	flex: 1 1 30%;
+	// 	@media (max-width: $mobile) {
+	// 		flex: 1 1 45%;
+	// 	}
+	// }
+
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+
 	.parametr {
-		flex: 1 1 30%;
-		@media (max-width: $mobile) {
-			flex: 1 1 45%;
-		}
+		width: max-content;
 	}
 }
 
@@ -221,5 +229,62 @@
 	img {
 		width: 100%;
 		object-fit: contain;
+	}
+}
+
+div:has(> .table) {
+	display: inline-block;
+	border: 1px solid $gray6;
+	border-radius: 12px;
+	overflow: hidden;
+}
+.table {
+	text-align: left;
+	border-collapse: collapse;
+
+	tr td:first-child {
+		font-weight: 500;
+	}
+
+	th {
+		font-weight: 500;
+		color: $gray3;
+		font-size: rem(10);
+		text-transform: uppercase;
+	}
+
+	tbody,
+	thead {
+		tr {
+			td,
+			th {
+				&:not(:first-child) {
+					text-align: right;
+				}
+			}
+		}
+	}
+
+	//убираю внешние границы у ячеек
+	td,
+	th {
+		padding: 12px 16px;
+		border: 1px solid $gray6;
+		&:first-child {
+			border-left: none;
+		}
+		&:last-child {
+			border-right: none;
+		}
+	}
+
+	th {
+		border-top: none;
+	}
+
+	tr:last-child {
+		td {
+			border-bottom: none;
+		}
 	}
 }
