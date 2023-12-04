@@ -1,14 +1,25 @@
-// Подключение функционала "Чертогов Фрилансера"
-import { isMobile } from './functions.js';
 // Подключение списка активных модулей
 import { flsModules } from './modules.js';
 import { gsap } from 'gsap';
 // import CustomEase from 'gsap/CustomEase.js';
 import { ScrollTrigger } from 'gsap/ScrollTrigger.js';
 import JustValidate from 'just-validate';
-// добавление классов элементам при скроле на определенную величину
 
 window.addEventListener('DOMContentLoaded', () => {
+	//+хэлеперы
+	function addClass(element, className) {
+		if (element) {
+			element.classList.add(className);
+		}
+	}
+
+	function removeClass(element, className) {
+		if (element) {
+			element.classList.remove(className);
+		}
+	}
+
+	// добавление классов элементам при скроле на определенную величину
 	const appearingElement = document.querySelector('[data-appearing]');
 
 	window.addEventListener('scroll', () => {
@@ -21,7 +32,7 @@ window.addEventListener('DOMContentLoaded', () => {
 		}
 	});
 
-	//!+ gsap анимации
+	//!+ GSAP АНИМАЦИИ
 
 	//++ страница О компании - главный экран
 
@@ -269,100 +280,216 @@ window.addEventListener('DOMContentLoaded', () => {
 		});
 	}
 
+	//++ page-404
+
+	gsap.set('svg', { visibility: 'visible' });
+	gsap.to('#headStripe', {
+		y: 0.5,
+		rotation: 1,
+		yoyo: true,
+		repeat: -1,
+		ease: 'sine.inOut',
+		duration: 1,
+	});
+	gsap.to('#spaceman', {
+		y: 0.5,
+		rotation: 1,
+		yoyo: true,
+		repeat: -1,
+		ease: 'sine.inOut',
+		duration: 1,
+	});
+	gsap.to('#craterSmall', {
+		x: -3,
+		yoyo: true,
+		repeat: -1,
+		duration: 1,
+		ease: 'sine.inOut',
+	});
+	gsap.to('#craterBig', {
+		x: 3,
+		yoyo: true,
+		repeat: -1,
+		duration: 1,
+		ease: 'sine.inOut',
+	});
+	gsap.to('#planet', {
+		rotation: -2,
+		yoyo: true,
+		repeat: -1,
+		duration: 1,
+		ease: 'sine.inOut',
+		transformOrigin: '50% 50%',
+	});
+
+	gsap.to('#starsBig g', {
+		rotation: 'random(-30,30)',
+		transformOrigin: '50% 50%',
+		yoyo: true,
+		repeat: -1,
+		ease: 'sine.inOut',
+	});
+	gsap.fromTo(
+		'#starsSmall g',
+		{ scale: 0, transformOrigin: '50% 50%' },
+		{ scale: 1, transformOrigin: '50% 50%', yoyo: true, repeat: -1, stagger: 0.1 }
+	);
+	gsap.to('#circlesSmall circle', {
+		y: -4,
+		yoyo: true,
+		duration: 1,
+		ease: 'sine.inOut',
+		repeat: -1,
+	});
+	gsap.to('#circlesBig circle', {
+		y: -2,
+		yoyo: true,
+		duration: 1,
+		ease: 'sine.inOut',
+		repeat: -1,
+	});
+
+	gsap.set('#glassShine', { x: -68 });
+
+	gsap.to('#glassShine', {
+		x: 80,
+		duration: 2,
+		rotation: -30,
+		ease: 'expo.inOut',
+		transformOrigin: '50% 50%',
+		repeat: -1,
+		repeatDelay: 8,
+		delay: 2,
+	});
+
 	//!+ РАБОТА С ФОРМАМИ
 	const forms = document.forms;
 
 	if (forms.length) {
-		console.log('количество форм на странице', forms.length);
 		Array.from(forms).forEach((form) => {
-			const method = form.getAttribute('method');
+			//+ маска телефона
+			const telInput = form.querySelector('input[type="tel"]');
+			const inputMask = new Inputmask('+7 (999)-999-99-99');
+			if (telInput) {
+				inputMask.mask(telInput);
+			}
+
 			const formId = form.getAttribute('id');
-			sentValidateвForm(form, formId, method);
+			const filesInput = form['file[]'];
+			let filesList;
 
-			loadFilesToForm(form);
-		});
-	}
+			if (!formId) {
+				console.log(form, 'У формы отсутствует ID - валидация полей input невозможна');
+				return;
+			}
 
-	//!+ загрузка файлов в форму
-
-	function loadFilesToForm(form) {
-		const formFileInput = form.querySelector('#filesInput');
-		const filesPlaceholder = form.querySelector('#formFilesPlaceholder');
-
-		if (!formFileInput || !filesPlaceholder) return;
-
-		let filesInputList;
-
-		let filesObserver = new MutationObserver(() => {
-			const removeFilesButtons = document.querySelectorAll('#deleteFileButton');
-
-			Array.from(removeFilesButtons).forEach((button) => removeFiles(button));
-		});
-
-		filesObserver.observe(filesPlaceholder, {
-			childList: true, // наблюдать за непосредственными детьми
-			subtree: false, // и более глубокими потомками
-			characterDataOldValue: false, // передавать старое значение в колбэк
-		});
-
-		function removeFiles(item) {
-			item.addEventListener('click', function (e) {
-				filesInputList = filesInputList.filter((item) => item.name !== e.target.innerHTML);
-				renderFilesList(filesInputList, filesPlaceholder);
+			const validate = new JustValidate(`#${formId}`, {
+				validateBeforeSubmitting: true,
+				// testingMode: true,
 			});
-		}
 
-		function renderFilesList(list, node) {
-			node.innerHTML = '';
+			validateForm(form, validate, telInput);
 
-			list.forEach((item) =>
-				node.insertAdjacentHTML(
-					'beforeend',
-					`	<div class="input-file__btn">
-						<span class="_icon-trash" id="deleteFileButton">${item.name}</span>
-					</div>
-				`
-				)
-			);
-		}
+			if (filesInput) {
+				filesInput.addEventListener('change', (event) => {
+					const filesPlaceholder = form.querySelector('#formFilesPlaceholder');
+					let files = Array.from(event.target.files);
 
-		function loadFiles(input, filesPlaceholder) {
-			if (!input || !filesPlaceholder) return;
+					function handleOnClick(event) {
+						filesList = filesList.filter((file) => file.name !== event.target.innerHTML);
+						filesPlaceholder.innerHTML = '';
+						paintList(filesList, filesPlaceholder);
+						// console.log('onClick--', filesList);
+						if (filesList.length === 0) filesPlaceholder.removeEventListener('click', handleOnClick);
+					}
 
-			const files = input.files;
+					filesList = mountFilesList(files, filesPlaceholder);
 
-			let reader = new FileReader();
-			reader.readAsDataURL(new Blob(files));
+					filesPlaceholder.addEventListener('click', handleOnClick);
+					// console.log('onChange--', filesList);
+				});
+			}
 
-			reader.onload = function () {
-				if (Array.from(files).some((file) => file.size > 15000000)) return;
-
-				filesInputList = [...Array.from(files)];
-
-				renderFilesList(filesInputList, filesPlaceholder);
-			};
-
-			reader.onerror = function () {
-				alert('C загрузкой файла вохникли проблемы. Попробуйте еще раз');
-			};
-		}
-
-		formFileInput.addEventListener('change', () => {
-			loadFiles(formFileInput, filesPlaceholder);
+			validate.onSuccess((event) => {
+				// console.log(filesList);
+				submitForm(event.target, filesList);
+			});
 		});
 	}
 
-	//!+ валидация и отправка форм
+	// //!+ загрузка файлов в форму
 
-	function sentValidateвForm(form, formId, method = 'get') {
-		const validate = new JustValidate(`#${formId}`, {
-			validateBeforeSubmitting: true,
-			testingMode: true,
-		});
+	// function loadFilesToForm(form) {
+	// 	const formFileInput = form.querySelector('#filesInput');
+	// 	const filesPlaceholder = form.querySelector('#formFilesPlaceholder');
 
-		if (!validate) return;
+	// 	if (!formFileInput || !filesPlaceholder) return;
 
-		if (form.elements.name) {
+	// 	let filesInputList;
+
+	// 	let filesObserver = new MutationObserver(() => {
+	// 		const removeFilesButtons = document.querySelectorAll('#deleteFileButton');
+
+	// 		Array.from(removeFilesButtons).forEach((button) => removeFiles(button));
+	// 	});
+
+	// 	filesObserver.observe(filesPlaceholder, {
+	// 		childList: true, // наблюдать за непосредственными детьми
+	// 		subtree: false, // и более глубокими потомками
+	// 		characterDataOldValue: false, // передавать старое значение в колбэк
+	// 	});
+
+	// 	function removeFiles(item) {
+	// 		item.addEventListener('click', function (e) {
+	// 			filesInputList = filesInputList.filter((item) => item.name !== e.target.innerHTML);
+	// 			renderFilesList(filesInputList, filesPlaceholder);
+	// 		});
+	// 	}
+
+	// 	function renderFilesList(list, node) {
+	// 		node.innerHTML = '';
+
+	// 		list.forEach((item) =>
+	// 			node.insertAdjacentHTML(
+	// 				'beforeend',
+	// 				`	<div class="input-file__btn">
+	// 					<span class="_icon-trash" id="deleteFileButton">${item.name}</span>
+	// 				</div>
+	// 			`
+	// 			)
+	// 		);
+	// 	}
+
+	// 	function loadFiles(input, filesPlaceholder) {
+	// 		if (!input || !filesPlaceholder) return;
+
+	// 		const files = input.files;
+
+	// 		let reader = new FileReader();
+	// 		reader.readAsDataURL(new Blob(files));
+
+	// 		reader.onload = function () {
+	// 			if (Array.from(files).some((file) => file.size > 15000000)) return;
+
+	// 			filesInputList = [...Array.from(files)];
+
+	// 			renderFilesList(filesInputList, filesPlaceholder);
+	// 		};
+
+	// 		reader.onerror = function () {
+	// 			alert('C загрузкой файла вохникли проблемы. Попробуйте еще раз');
+	// 		};
+	// 	}
+
+	// 	formFileInput.addEventListener('change', () => {
+	// 		loadFiles(formFileInput, filesPlaceholder);
+	// 	});
+	// }
+
+	//!+ валидация форм
+
+	function validateForm(form, validate, telInput) {
+		if (form.name) {
 			validate.addField('#name', [
 				{
 					rule: 'required',
@@ -370,7 +497,7 @@ window.addEventListener('DOMContentLoaded', () => {
 				},
 				{
 					rule: 'customRegexp',
-					value: /[А-я]/gi,
+					value: /^[-А-Яа-яЁё ]*$/,
 					errorMessage: 'Только кириллица',
 				},
 				{
@@ -393,18 +520,16 @@ window.addEventListener('DOMContentLoaded', () => {
 					errorMessage: 'Телефон обязателен',
 				},
 				{
-					rule: 'integer',
-					errorMessage: 'Только цифры без +7',
-				},
-				{
-					rule: 'minLength',
-					value: 10,
-					errorMessage: '10 цифр без +7',
-				},
-				{
-					rule: 'maxLength',
-					value: 10,
-					errorMessage: 'Что-то не то. Номер без +7',
+					rule: 'function',
+					validator: function () {
+						let phone;
+						if (telInput.inputmask) {
+							phone = telInput.inputmask.unmaskedvalue();
+							// return phone.length === 10;
+						}
+						return Number(phone) && phone.length === 10 ? true : false;
+					},
+					errorMessage: 'Введите 10 цифр',
 				},
 			]);
 		}
@@ -420,44 +545,195 @@ window.addEventListener('DOMContentLoaded', () => {
 						},
 					},
 				},
+				{
+					rule: 'maxFilesCount',
+					value: 3,
+					errorMessage: 'Не более 3 файлов',
+				},
 			]);
 		}
+	}
 
-		validate.onSuccess((e) => {
-			const formData = new FormData(e.target);
-			// formData.set('type', 'request');
-			// formData.set('title', 'Заявка с сайта');
-			formData.append('file[]', e.target.files);
+	function mountFilesList(files, placeholder) {
+		placeholder.innerHTML = '';
 
-			// const headers = new Headers();
-			// headers.append('Authorization', `Basic ${credentials}`);
-			// headers.set('Referrer Policy', 'no-referrer-when-downgrade');
-			// headers.set('Content-Type', 'text/plain');
+		const isOverSize = files.some((file) => file.size > 15 * 1024 * 1024);
 
-			// console.log('is Valid!!!');
+		if (files && !isOverSize && files.length <= 3) {
+			paintList(files, placeholder);
+		}
 
-			async function sendFormData() {
-				try {
-					const res = await fetch('../request.php', {
-						method: method,
-						body: formData,
-						// headers: headers,
-					});
+		return files;
+	}
 
-					if (!res.ok) {
-						throw new Error(e);
-					}
-					// const data = await res.json();
-					flsModules.popup.open('#popup-accept');
-				} catch (error) {
-					console.log(error);
-					flsModules.popup.open('#popup-reject');
-				} finally {
-					// flsModules.popup.close('#popup');
-					form.reset();
-				}
-			}
-			sendFormData();
+	function paintList(files, placeholder) {
+		files.forEach((file) => {
+			placeholder.insertAdjacentHTML(
+				'beforeend',
+				`	<div class="input-file__btn">
+				<span class="_icon-trash" id="deleteFileButton">${file.name}</span>
+				</div>
+				`
+			);
 		});
 	}
+
+	async function submitForm(form, filesList = []) {
+		const formData = new FormData(form);
+		const method = form.getAttribute('method');
+		const filesPlaceholder = form.querySelector('#formFilesPlaceholder');
+		const loader = form.nextElementSibling;
+
+		formData.delete('file[]');
+
+		if (filesList.length) {
+			filesList.forEach((file) => formData.append('file[]', file));
+		}
+
+		if (form.vacancies && !form.comment) {
+			const vacancy = form.vacancies.value;
+			formData.set('comment', `Отклик на вакансию: ${vacancy}`);
+			console.log(`Отклик на вакансию: ${vacancy}`);
+		}
+
+		for (const item of formData.entries()) {
+			console.log(item);
+		}
+
+		try {
+			addClass(loader, 'visible');
+
+			const res = await fetch('../request.php', {
+				method: method,
+				body: formData,
+			});
+
+			// console.log(res);
+
+			if (res.status !== 200) {
+				throw new Error(`❌ Что-то не так. Код ответа ${res.status}`);
+			}
+
+			flsModules.popup.open('#popup-accept');
+		} catch (error) {
+			console.error(error);
+			flsModules.popup.open('#popup-reject');
+		} finally {
+			if (filesPlaceholder) mountFilesList([], filesPlaceholder);
+			removeClass(loader, 'visible');
+			form.reset();
+		}
+	}
+
+	// function validateForm(form, formId, method = 'get') {
+	// 	const validate = new JustValidate(`#${formId}`, {
+	// 		validateBeforeSubmitting: true,
+	// 		testingMode: true,
+	// 	});
+
+	// 	if (!validate) return;
+
+	// 	if (form.elements.name) {
+	// 		validate.addField('#name', [
+	// 			{
+	// 				rule: 'required',
+	// 				errorMessage: 'Имя обязательно',
+	// 			},
+	// 			{
+	// 				rule: 'customRegexp',
+	// 				value: /[А-я]/gi,
+	// 				errorMessage: 'Только кириллица',
+	// 			},
+	// 			{
+	// 				rule: 'minLength',
+	// 				value: 3,
+	// 				errorMessage: 'Минимум 3 символа',
+	// 			},
+	// 			{
+	// 				rule: 'maxLength',
+	// 				value: 30,
+	// 				errorMessage: 'Не более 30 символов',
+	// 			},
+	// 		]);
+	// 	}
+
+	// 	if (form.phone) {
+	// 		validate.addField('#phone', [
+	// 			{
+	// 				rule: 'required',
+	// 				errorMessage: 'Телефон обязателен',
+	// 			},
+	// 			{
+	// 				rule: 'integer',
+	// 				errorMessage: 'Только цифры без +7',
+	// 			},
+	// 			{
+	// 				rule: 'minLength',
+	// 				value: 10,
+	// 				errorMessage: '10 цифр без +7',
+	// 			},
+	// 			{
+	// 				rule: 'maxLength',
+	// 				value: 10,
+	// 				errorMessage: 'Что-то не то. Номер без +7',
+	// 			},
+	// 		]);
+	// 	}
+
+	// 	if (form['file[]']) {
+	// 		validate.addField('#filesInput', [
+	// 			{
+	// 				rule: 'files',
+	// 				errorMessage: 'Файлы не более 15 Мб',
+	// 				value: {
+	// 					files: {
+	// 						maxSize: 15000000,
+	// 					},
+	// 				},
+	// 			},
+	// 			{
+	// 				rule: 'maxFilesCount',
+	// 				value: 2,
+	// 				errorMessage: 'Не более 3 файлов',
+	//  			},
+	// 		]);
+	// 	}
+
+	// validate.onSuccess((e) => {
+	// 	const formData = new FormData(e.target);
+	// 	// formData.set('type', 'request');
+	// 	// formData.set('title', 'Заявка с сайта');
+	// 	formData.append('file[]', e.target.files);
+
+	// 	// const headers = new Headers();
+	// 	// headers.append('Authorization', `Basic ${credentials}`);
+	// 	// headers.set('Referrer Policy', 'no-referrer-when-downgrade');
+	// 	// headers.set('Content-Type', 'text/plain');
+
+	// 	// console.log('is Valid!!!');
+
+	// 	async function sendFormData() {
+	// 		try {
+	// 			const res = await fetch('../request.php', {
+	// 				method: method,
+	// 				body: formData,
+	// 				// headers: headers,
+	// 			});
+
+	// 			if (!res.ok) {
+	// 				throw new Error(e);
+	// 			}
+	// 			// const data = await res.json();
+	// 			flsModules.popup.open('#popup-accept');
+	// 		} catch (error) {
+	// 			console.log(error);
+	// 			flsModules.popup.open('#popup-reject');
+	// 		} finally {
+	// 			// flsModules.popup.close('#popup');
+	// 			form.reset();
+	// 		}
+	// 	}
+	// 	sendFormData();
+	// });
+	// }
 });

@@ -23,6 +23,9 @@
 							<button type="submit" class="form__button btn btn_xl" id="submit-btn">Отправить</button>
 						</div>
 					</form>
+					<div class="form__loader">
+						<img src="@img/SvgSpinnersBlocksScale.svg" alt="" />
+					</div>
 				</div>
 			</div>
 		</div>
@@ -45,7 +48,7 @@
 </div>
 
 <!-- попап отказ в отправке заявки-->
-<div id="popup-reject" aria-hidden="true" class="accept-popup popup">
+<div id="popup-reject" aria-hidden="true" class="reject-popup popup">
 	<div class="popup__wrapper">
 		<div class="popup__content">
 			<button data-close type="button" class="popup__close"><span class="_icon-close"></span></button>
@@ -94,13 +97,7 @@
 						<div class="form__row">
 							<div class="form__input-file input-file">
 								<div class="input-file__input">
-									<input
-										accept=".jpg, .png, .svg, .pdf, .jpeg"
-										type="file"
-										name="file[]"
-										class="input"
-										id="filesInput"
-										multiple />
+									<input type="file" name="file[]" class="input" id="filesInput" multiple />
 									<div class="input-file__btn"><span class="_icon-plus"></span></div>
 									<div class="input-file__description">
 										<p class="_text-s">Прикрепить файлы</p>
@@ -122,6 +119,9 @@
 							<button type="submit" class="form__button btn btn_xl">Отправить</button>
 						</div>
 					</form>
+					<div class="form__loader">
+						<img src="@img/SvgSpinnersBlocksScale.svg" alt="" />
+					</div>
 				</div>
 			</div>
 		</div>
@@ -163,13 +163,7 @@
 						<div class="form__row">
 							<div class="form__input-file input-file">
 								<div class="input-file__input">
-									<input
-										accept=".jpg, .png, .svg, .pdf, .jpeg"
-										type="file"
-										name="file[]"
-										class="input"
-										id="filesInput"
-										multiple />
+									<input type="file" name="file[]" class="input" id="filesInput" multiple />
 									<div class="input-file__btn"><span class="_icon-plus"></span></div>
 									<div class="input-file__description">
 										<p class="_text-s">Прикрепить файлы</p>
@@ -191,6 +185,9 @@
 							<button type="submit" class="form__button btn btn_xl">Отправить</button>
 						</div>
 					</form>
+					<div class="form__loader">
+						<img src="@img/SvgSpinnersBlocksScale.svg" alt="" />
+					</div>
 				</div>
 			</div>
 		</div>
