@@ -66,7 +66,8 @@
 			}
 		}
 		.menu-open &,
-		._header-scroll & {
+		._header-scroll &,
+		.light-bg & {
 			svg #contrast path {
 				fill: $mainColor;
 			}
@@ -209,6 +210,7 @@
 		@include adaptiveValue("height", 30, 16);
 		cursor: pointer;
 		z-index: 5;
+
 		span,
 		&::before,
 		&::after {
@@ -221,7 +223,8 @@
 			border-radius: 100px;
 			transition: all $tm ease 0s;
 
-			._header-scroll & {
+			._header-scroll &,
+			.light-bg & {
 				background-color: $mainColor;
 			}
 		}

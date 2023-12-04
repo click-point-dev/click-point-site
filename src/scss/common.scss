@@ -186,6 +186,10 @@ h6,
 	color: white;
 }
 
+[class*="_text-center"] {
+	text-align: center;
+}
+
 [class~="_sub-title"] {
 	@include adaptiveValue("font-size", 20, 16);
 	// @include adaptiveValue("line-height", 160%, 150%);
@@ -243,6 +247,10 @@ nav a,
 [class*="__link"] {
 	color: $primary1;
 	font-size: rem(16);
+}
+
+.light-bg a {
+	color: $mainColor;
 }
 
 //====================кнопки======================
@@ -1224,4 +1232,9 @@ nav a,
 			border-radius: 100px;
 		}
 	}
+}
+
+picture {
+	display: block;
+	width: 100%;
 }

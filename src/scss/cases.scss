@@ -18,12 +18,6 @@
 		}
 	}
 
-	.cases {
-		// .cases__first-screen
-
-		&__first-screen {
-		}
-	}
 	.first-screen {
 		// .first-screen__background
 
@@ -76,7 +70,128 @@
 				border-radius: 500px !important;
 			}
 		}
+
+		&__description-card.ready-to-use {
+			a {
+				pointer-events: all !important;
+				border-radius: 500px !important;
+			}
+		}
 	}
-	.backgrount-stars {
+
+	// целевая страница кейсов
+	&__section {
+		@include adaptiveValue("margin-bottom", 104, 56);
+	}
+
+	&__head {
+		@include adaptiveValue("padding-top", 252, 110);
+		@include adaptiveValue("margin-bottom", 80, 24);
+	}
+
+	&__image {
+		@include adaptiveValue("height", 802, 240);
+		img {
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+		}
+	}
+
+	.strategy,
+	.seo-results {
+		@include adaptiveValue("padding-block", 104, 56);
+
+		& .backgrount-stars {
+			img {
+				opacity: 0.4;
+				mix-blend-mode: screen;
+			}
+		}
+
+		// .strategy__container
+
+		&__container {
+		}
+
+		&__content {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			@include adaptiveValue("gap", 242, 36, 1372, 1024, 1);
+
+			@media (max-width: $burgerMenu) {
+				flex-direction: column;
+			}
+
+			.parametr-widget {
+				grid-template-columns: repeat(2, 1fr);
+				@include adaptiveValue("row-gap", 56, 24);
+				@include adaptiveValue("column-gap", 100, 46, 1372, 1024, 1);
+
+				.parametr {
+					span {
+						font-size: 0.6em;
+
+						&:first-child {
+							color: $primary1;
+						}
+					}
+				}
+			}
+		}
+
+		.seo-result__image {
+			// flex: 0 0 100%;
+			img {
+				width: 100%;
+				object-fit: contain;
+			}
+		}
+
+		// .strategy__title
+
+		&__title {
+			@include adaptiveValue("margin-bottom", 56, 24);
+		}
+
+		// .strategy__scheme
+
+		&__scheme {
+			width: 85.5%;
+			margin-inline: auto;
+			@media (max-width: 992px) and (min-width: $mobile) {
+				width: 75%;
+			}
+			img {
+				width: 100%;
+				object-fit: contain;
+			}
+		}
+	}
+
+	.site-dev {
+		overflow: hidden;
+		// .site-dev__image
+
+		&__image {
+			display: flex;
+			justify-content: center;
+			img {
+				width: 100%;
+				@media (max-width: $mobile) {
+					width: 135%;
+				}
+			}
+		}
+
+		p {
+			margin-top: 0 !important;
+		}
+	}
+	.page-row__right {
+		& > *:not(:last-child) {
+			@include adaptiveValue("margin-bottom", 40, 28);
+		}
 	}
 }
