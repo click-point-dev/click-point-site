@@ -157,7 +157,8 @@ h6,
 
 [class*="_text-s"] {
 	@include adaptiveValue("font-size", 14, 13);
-	@include adaptiveValue("line-height", 143%, 139%);
+	// @include adaptiveValue("line-height", 1.43, 1.39);
+	line-height: 143%;
 	font-weight: 300;
 }
 
@@ -222,6 +223,11 @@ nav a,
 	text-transform: uppercase;
 	color: white;
 	cursor: pointer;
+
+	.light-bg & {
+		color: $mainColor;
+	}
+
 	&:before {
 		content: "";
 		position: absolute;
@@ -233,6 +239,10 @@ nav a,
 		transform: translate3d(-120%, 0, 0);
 		transition: transform $tm ease;
 		will-change: transform;
+
+		.light-bg & {
+			background-color: $mainColor;
+		}
 	}
 	&:hover:before,
 	&._navigator-active:before {
@@ -247,10 +257,6 @@ nav a,
 [class*="__link"] {
 	color: $primary1;
 	font-size: rem(16);
-}
-
-.light-bg a {
-	color: $mainColor;
 }
 
 //====================кнопки======================
