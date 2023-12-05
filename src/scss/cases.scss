@@ -243,7 +243,9 @@
 
 	.main-form__content {
 		flex-direction: unset;
-		padding-bottom: 50px;
+		@media (max-width: 1024px) {
+			padding-bottom: 50px;
+		}
 	}
 
 	.form-image {
