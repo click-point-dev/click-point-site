@@ -204,9 +204,10 @@
 		&__table {
 		}
 	}
+
 	.parametr-widget {
 		@include adaptiveValue("row-gap", 38, 20);
-		@include adaptiveValue("column-gap", 25, 25);
+		column-gap: 25px;
 		max-width: 100%;
 	}
 
