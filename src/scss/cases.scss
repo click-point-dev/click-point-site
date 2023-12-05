@@ -79,7 +79,8 @@
 		}
 	}
 
-	// целевая страница кейсов
+	//THIS целевая страница кейсов
+
 	&__section {
 		@include adaptiveValue("margin-bottom", 104, 56);
 	}
@@ -172,26 +173,60 @@
 
 	.site-dev {
 		overflow: hidden;
-		// .site-dev__image
-
-		&__image {
-			display: flex;
-			justify-content: center;
-			img {
-				width: 100%;
-				@media (max-width: $mobile) {
-					width: 135%;
-				}
-			}
-		}
 
 		> .page-row:not(:first-child) p {
 			margin-top: 0 !important;
 		}
 	}
+
 	.page-row__right {
-		& > *:not(:last-child) {
+		> :not(:last-child) {
 			@include adaptiveValue("margin-bottom", 40, 28);
 		}
+		h6 {
+			margin-bottom: rem(24) !important;
+
+			@media (max-width: $mobile) {
+				margin-bottom: rem(16) !important;
+			}
+		}
+	}
+
+	.promo-result {
+		// .promo-result__container
+
+		&__container {
+		}
+
+		// .promo-result__table
+
+		&__table {
+		}
+	}
+	.parametr-widget {
+		@include adaptiveValue("row-gap", 38, 20);
+		@include adaptiveValue("column-gap", 25, 15);
+	}
+
+	.smm {
+		&__horizontal-cards {
+			> :not(:last-child) {
+				@include adaptiveValue("margin-bottom", 28, 24);
+			}
+		}
+
+		h6 {
+			span {
+				display: block;
+			}
+			b {
+				color: $primary1;
+				font-weight: inherit;
+			}
+		}
+	}
+
+	.page-row:has(~ .section-image) {
+		@include adaptiveValue("margin-bottom", 28, 24);
 	}
 }
