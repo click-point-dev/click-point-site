@@ -130,6 +130,8 @@
 		font-weight: 500;
 		line-height: 133%; /* 133.333% */
 		border-bottom: 1px solid $gray6;
+		display: flex;
+		gap: 12px;
 
 		&:first-child {
 			padding-top: 0;
@@ -138,7 +140,7 @@
 		&:before {
 			counter-increment: num-list-counter;
 			content: counter(num-list-counter);
-			padding-right: 12px;
+
 			font-weight: 400;
 			color: $primary1;
 		}
@@ -174,8 +176,14 @@
 	flex-wrap: wrap;
 	@include adaptiveValue("row-gap", 48, 20);
 	@include adaptiveValue("column-gap", 32, 15);
+
 	.horizontal-card {
 		flex: 1 0 45%;
+
+		@media (max-width: $mobile) {
+			flex: 1 0 100%;
+			align-items: center;
+		}
 	}
 }
 .parametr {
@@ -251,7 +259,6 @@
 	padding: 16px;
 	border-radius: 16px;
 	border: 1px solid $gray6;
-	max-width: 914px;
 	img {
 		width: 100%;
 		object-fit: contain;
@@ -281,20 +288,27 @@
 	}
 }
 
-div:has(> .table) {
-	display: inline-block;
-	border: 1px solid $gray6;
-	border-radius: 12px;
-	overflow: hidden;
+div:has(> .promo-result__table) {
 	overflow-x: scroll !important;
-	scrollbar-width: none;
+	scrollbar-width: 0;
 	&::-webkit-scrollbar {
 		width: 0;
 		height: 0;
 		display: none;
 	}
 }
+
+div:has(> .table) {
+	cursor: pointer;
+	width: max(100%, 792px);
+	// display: inline-block;
+	border: 1px solid $gray6;
+	border-radius: 12px;
+	overflow: hidden;
+}
+
 .table {
+	width: 100%;
 	text-align: left;
 	border-collapse: collapse;
 

@@ -180,6 +180,7 @@
 	}
 
 	.page-row__right {
+		// overflow: hidden;
 		> :not(:last-child) {
 			@include adaptiveValue("margin-bottom", 40, 28);
 		}
@@ -206,6 +207,7 @@
 	.parametr-widget {
 		@include adaptiveValue("row-gap", 38, 20);
 		@include adaptiveValue("column-gap", 25, 15);
+		max-width: 100%;
 	}
 
 	.smm {
@@ -214,19 +216,63 @@
 				@include adaptiveValue("margin-bottom", 28, 24);
 			}
 		}
-
-		h6 {
-			span {
-				display: block;
-			}
-			b {
-				color: $primary1;
-				font-weight: inherit;
-			}
-		}
 	}
 
 	.page-row:has(~ .section-image) {
 		@include adaptiveValue("margin-bottom", 28, 24);
+	}
+
+	.page-row:has(~ .screenshots-row) {
+		@include adaptiveValue("margin-bottom", 40, 24);
+	}
+
+	h6,
+	h2 {
+		span {
+			display: block;
+		}
+		b {
+			color: $primary1;
+			font-weight: inherit;
+		}
+	}
+
+	.main-form__container {
+		min-height: unset;
+	}
+
+	.main-form__content {
+		flex-direction: unset;
+		padding-bottom: 50px;
+	}
+
+	.form-image {
+		picture {
+			display: inline-block;
+			height: 100%;
+		}
+
+		mix-blend-mode: screen;
+		@include adaptiveValue("height", 600, 324, 1024, 360, 1);
+
+		img {
+			width: 100%;
+		}
+
+		@media (min-width: 1025px) {
+			position: absolute;
+			height: 100%;
+			width: 70.68%;
+			right: 0;
+			top: 0;
+
+			img {
+				height: 100%;
+				object-fit: cover;
+				object-position: -700px;
+				@include adaptiveValue("object-position", -310, -700, 1920, 1024, 1);
+				transform: scale(-1, 1);
+			}
+		}
 	}
 }
