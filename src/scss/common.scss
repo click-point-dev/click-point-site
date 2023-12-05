@@ -1239,7 +1239,7 @@ nav a,
 			text-align: center;
 			position: relative;
 			z-index: 1;
-			@include adaptiveValue("padding-inline", 25, 25);
+			padding: 25px;
 			aspect-ratio: 1;
 			background-color: $primary1-hover;
 			border-radius: 100px;

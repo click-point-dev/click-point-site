@@ -106,7 +106,7 @@
 		& .backgrount-stars {
 			img {
 				opacity: 0.4;
-				mix-blend-mode: screen;
+				mix-blend-mode: lighten;
 			}
 		}
 
@@ -180,7 +180,7 @@
 	}
 
 	.page-row__right {
-		// overflow: hidden;
+		overflow: hidden;
 		> :not(:last-child) {
 			@include adaptiveValue("margin-bottom", 40, 28);
 		}
@@ -206,7 +206,7 @@
 	}
 	.parametr-widget {
 		@include adaptiveValue("row-gap", 38, 20);
-		@include adaptiveValue("column-gap", 25, 15);
+		@include adaptiveValue("column-gap", 25, 25);
 		max-width: 100%;
 	}
 

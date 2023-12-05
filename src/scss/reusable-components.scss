@@ -236,8 +236,8 @@
 	// }
 
 	display: grid;
-	grid-template-columns: repeat(auto-fit, minmax(auto, 180px));
-	justify-content: space-between;
+	grid-template-columns: repeat(auto-fit, minmax(auto, 210px));
+	// justify-content: space-between;
 
 	.parametr {
 		width: max-content;
