@@ -10,7 +10,7 @@
 Если мы хотим добавить модуль
 следует его расскоментировать
 */
-// import Inputmask from 'inputmask';
+import Inputmask from 'inputmask';
 // Включить/выключить FLS (Full Logging System) (в работе)
 window['FLS'] = true;
 
