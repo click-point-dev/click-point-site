@@ -151,8 +151,9 @@ window.addEventListener('DOMContentLoaded', () => {
 		gsap.from(mainLens, {
 			top: '52%',
 			left: '64%',
-			duration: 5,
-			delay: 1,
+			rotate: -90,
+			duration: 4,
+			delay: 2,
 			ease: 'power1.out',
 		});
 	}
@@ -273,7 +274,7 @@ window.addEventListener('DOMContentLoaded', () => {
 			},
 			x: '82%',
 			y: '170%',
-			rotate: 60,
+			rotate: 90,
 			duration: 5,
 			delay: 0.7,
 			ease: 'power4.out',

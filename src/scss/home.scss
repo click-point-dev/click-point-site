@@ -104,12 +104,10 @@
 		& > img:nth-child(2) {
 			position: absolute;
 			opacity: 0.8;
-			// z-index: 10;
-			background: url("@img/decor/lens.png") center / contain no-repeat;
-			width: 70px;
+			width: 90px;
 			aspect-ratio: 5/4;
 			top: 1%;
-			left: 33%;
+			left: 31%;
 		}
 	}
 }
