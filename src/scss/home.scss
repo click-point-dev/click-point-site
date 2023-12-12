@@ -317,12 +317,13 @@
 		}
 
 		&::after {
-			background-image: url("@img/how/bg-gradient-1.svg");
+			background-image: url("@img/backgrounds/bg-gradient-1.svg");
 			background-position: left center;
 			background-size: contain;
-			@include adaptiveValue("background-position-y", 0, 100);
-			@include adaptiveValue("background-position-x", -150, 0);
-			opacity: 0.5;
+			rotate: 90deg;
+			@include adaptiveValue("background-position-y", 200, 100);
+			@include adaptiveValue("background-position-x", 450, 0);
+			opacity: 0.2;
 		}
 	}
 

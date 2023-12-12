@@ -66,7 +66,7 @@
 	}
 
 	&::before {
-		background-image: url("@img/how/bg-gradient.svg");
+		background-image: url("@img/backgrounds/bg-gradient.svg");
 		background-repeat: no-repeat;
 		@include adaptiveValue("background-size", 970, 600);
 		@include adaptiveValue("background-position-y", -510, -200);
@@ -76,13 +76,13 @@
 	}
 
 	&::after {
-		background-image: url("@img/bg-gradient_bottom.svg");
+		background-image: url("@img/backgrounds/bg-gradient-1.svg");
 		background-repeat: no-repeat;
 		@include adaptiveValue("background-size", 1700, 500);
 		@include adaptiveValue("background-position-y", 200, 300);
-		@include adaptiveValue("background-position-x", 650, 0);
+		@include adaptiveValue("background-position-x", 850, 0);
 		filter: blur(70px);
-		opacity: 0.3;
+		opacity: 0.21;
 	}
 }
 
@@ -425,27 +425,6 @@ nav a,
 		pointer-events: none;
 		position: absolute;
 		inset: 0;
-		// 	background-image: url("@img/button-bg-gradient.svg");
-		// 	background-repeat: no-repeat;
-		// 	transform: rotate(180deg);
-		// 	background-size: 100%;
-		// 	background-position: center;
-		// 	@media (hover: hover) and (pointer: fine) {
-		// 		opacity: 0;
-		// 	}
-		// 	// transition: opacity $tm ease;
-		// 	// background-size $tm ease,
-		// 	// transform 1s ease;
-		// }
-		// @media (any-hover: hover) and (pointer: fine) {
-		// 	&:hover {
-		// 		&:after {
-		// 			// transform: rotate(0);
-		// 			// background-size: 100%;
-		// 			// opacity: 1;
-		// 			animation: round-btn 1.5s ease-in-out forwards;
-		// 		}
-		// 	}
 	}
 
 	& > div:after {
