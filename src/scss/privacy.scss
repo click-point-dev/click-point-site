@@ -1,0 +1,28 @@
+.privacy {
+	&__section {
+		@include adaptiveValue("padding-block", 228, 110);
+		text-wrap: balance;
+
+		a {
+			color: $primary1;
+		}
+	}
+
+	&__head {
+		@include adaptiveValue("margin-bottom", 24, 16);
+		h1 {
+			@media (min-width: $mobile) {
+				text-align: center;
+			}
+		}
+	}
+
+	&__body {
+		max-width: 900px;
+		margin-inline: auto;
+	}
+
+	&__item {
+		@include adaptiveValue("margin-bottom", 40, 24);
+	}
+}
