@@ -20,4 +20,5 @@ Allow: /cases
 Allow: /cases-svoboda-travel
 Disallow: /404
 Disallow: /privacy
+Sitemap: /sitemap
 Host: click-point.ru
