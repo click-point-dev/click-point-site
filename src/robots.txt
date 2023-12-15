@@ -1,24 +1,17 @@
-User-agent: *
-Allow: /index
-Allow: /about-company
-Allow: /vacancies
-Allow: /contacts
-Allow: /contextual-advertising
-Allow: /copywriting
-Allow: /display-advertising
-Allow: /influence-marketing
-Allow: /orm-advertising
-Allow: /programmatic-advertising
-Allow: /reusable-components
-Allow: /seo-promotion
-Allow: /site-design
-Allow: /social-media
-Allow: /targeted-advertising
-Allow: /text-advertising
-Allow: /website-production
-Allow: /cases
-Allow: /cases-svoboda-travel
+#All
+User-Agent: *
+Allow: /
 Disallow: /404
 Disallow: /privacy
-Sitemap: /sitemap
+#Yandex
+User-agent: Yandex
+Allow: /
+Disallow: /404
+Disallow: /privacy
+#Google
+User-agent: Googlebot
+Allow: /
+Disallow: /404
+Disallow: /privacy
+Sitemap: https://click-point.ru/sitemap.xml
 Host: click-point.ru
