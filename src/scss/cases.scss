@@ -22,6 +22,9 @@
 		// .first-screen__background
 
 		&__background {
+			img {
+				opacity: 0.6;
+			}
 		}
 
 		// .first-screen__container
@@ -83,6 +86,7 @@
 
 	&__section {
 		@include adaptiveValue("margin-bottom", 104, 56);
+		position: relative;
 	}
 
 	&__head {
