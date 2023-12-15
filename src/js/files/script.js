@@ -586,7 +586,7 @@ window.addEventListener('DOMContentLoaded', () => {
 		const formData = new FormData(form);
 		const method = form.getAttribute('method');
 		const filesPlaceholder = form.querySelector('#formFilesPlaceholder');
-		const loader = form.nextElementSibling;
+		const loader = form.querySelector('.form__loader');
 
 		formData.delete('file[]');
 
