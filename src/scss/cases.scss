@@ -211,7 +211,7 @@
 
 	.parametr-widget {
 		@include adaptiveValue("row-gap", 38, 20);
-		column-gap: 25px;
+		column-gap: 45px;
 		max-width: 100%;
 	}
 
