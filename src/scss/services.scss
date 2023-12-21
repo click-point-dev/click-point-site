@@ -63,8 +63,8 @@
 .profit__title,
 .stages__title {
 	flex: 0 1 50%;
-	// overflow-wrap: break-word;
 	text-wrap: balance;
+	hyphens: auto;
 	@media screen and (max-width: $mobile) {
 		flex: 0 0 100%;
 	}
@@ -592,9 +592,7 @@
 		}
 	}
 
-	// .companion-services__card
-
-	&__card {
+	.card-services {
 		flex: 1 0 30%;
 		min-width: 288px;
 	}
