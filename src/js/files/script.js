@@ -371,6 +371,14 @@ window.addEventListener('DOMContentLoaded', () => {
 
 	if (forms.length) {
 		Array.from(forms).forEach((form) => {
+			//+ обработка input name=fn
+			const fn = form.querySelector('input[required]');
+			if (fn) {
+				setTimeout(function () {
+					if (fn.hasAttribute('required')) fn.removeAttribute('required');
+				}, 1500);
+			}
+
 			//+ маска телефона
 			const telInput = form.querySelector('input[type="tel"]');
 			const inputMask = new Inputmask('+7 (999)-999-99-99');
