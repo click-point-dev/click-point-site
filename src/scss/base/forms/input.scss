@@ -37,6 +37,11 @@ textarea {
 	}
 }
 
+input.input.fn {
+	display: none;
+	pointer-events: none;
+}
+
 .form {
 	// .form__row
 
