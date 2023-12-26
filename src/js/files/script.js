@@ -608,9 +608,9 @@ window.addEventListener('DOMContentLoaded', () => {
 			console.log(`Отклик на вакансию: ${vacancy}`);
 		}
 
-		for (const item of formData.entries()) {
-			console.log(item);
-		}
+		// for (const item of formData.entries()) {
+		// 	console.log(item);
+		// }
 
 		try {
 			addClass(loader, 'visible');
