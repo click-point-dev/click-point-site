@@ -376,6 +376,7 @@
 	// .page-navigation__item
 
 	&__item {
+		white-space: nowrap;
 		flex: 1 0 20%;
 		a {
 			color: $mainColor;
