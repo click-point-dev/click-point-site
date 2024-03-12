@@ -53,7 +53,7 @@ window.addEventListener('DOMContentLoaded', () => {
 				duration: 2,
 				delay: 1,
 			},
-			'<'
+			'<',
 		);
 	}
 
@@ -335,7 +335,7 @@ window.addEventListener('DOMContentLoaded', () => {
 		gsap.fromTo(
 			'#starsSmall g',
 			{ scale: 0, transformOrigin: '50% 50%' },
-			{ scale: 1, transformOrigin: '50% 50%', yoyo: true, repeat: -1, stagger: 0.1 }
+			{ scale: 1, transformOrigin: '50% 50%', yoyo: true, repeat: -1, stagger: 0.1 },
 		);
 		gsap.to('#circlesSmall circle', {
 			y: -4,
@@ -585,7 +585,7 @@ window.addEventListener('DOMContentLoaded', () => {
 				`	<div class="input-file__btn">
 				<span class="_icon-trash" id="deleteFileButton">${file.name}</span>
 				</div>
-				`
+				`,
 			);
 		});
 	}
