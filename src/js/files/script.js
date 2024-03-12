@@ -509,8 +509,8 @@ window.addEventListener('DOMContentLoaded', () => {
 				},
 				{
 					rule: 'customRegexp',
-					value: /^[-А-Яа-яЁё ]*$/,
-					errorMessage: 'Только кириллица',
+					value: /^[-А-Яа-яЁё A-Za-z]*$/,
+					errorMessage: 'Только буквы, тире, пробел',
 				},
 				{
 					rule: 'minLength',
