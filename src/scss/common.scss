@@ -707,7 +707,8 @@ nav a,
 	//.card-services__decor_xl
 
 	&__decor_xl,
-	&__decor_l {
+	&__decor_l,
+	&__decor {
 		position: absolute;
 		inset: 0;
 
@@ -824,6 +825,53 @@ nav a,
 			@include adaptiveValue("width", 40, 22);
 			bottom: 20px;
 			@include adaptiveValue("right", 320, 190);
+			transform: scale(1) rotate(-20deg);
+
+			@media (any-hover: hover) {
+				.card-services:hover & {
+					transform: translate3d(7px, 4px, 0) scale(0.9) rotate(-20deg);
+				}
+			}
+		}
+	}
+
+	&__decor {
+		:nth-child(1) {
+			@include adaptiveValue("width", 37, 25);
+			top: unset;
+			@include adaptiveValue("bottom", 130, 110);
+			@include adaptiveValue("right", 110, 120);
+			transform: scale(-1, -1) rotate(-10deg);
+			opacity: 0.6;
+			filter: blur(1px);
+			@media (any-hover: hover) {
+				.card-services:hover & {
+					transform: translate3d(10px, 10px, 0) scale(-1, -1) rotate(-10deg);
+				}
+			}
+		}
+
+		:nth-child(2) {
+			@include adaptiveValue("width", 124, 95);
+			top: unset;
+			@include adaptiveValue("bottom", -15, -20, $maxWidthContainer, 1024, 1);
+			@include adaptiveValue("right", -40, -35, $maxWidthContainer, 1024, 1);
+			transform: scale(1, -1);
+
+			@media (any-hover: hover) {
+				.card-services:hover & {
+					transform: translate3d(10px, 10px, 0) scale(1, -1);
+				}
+			}
+		}
+
+		:nth-child(3) {
+			z-index: 5;
+			mix-blend-mode: lighten;
+			opacity: 1;
+			@include adaptiveValue("width", 40, 22);
+			bottom: 25px;
+			@include adaptiveValue("right", 220, 190);
 			transform: scale(1) rotate(-20deg);
 
 			@media (any-hover: hover) {
@@ -995,6 +1043,12 @@ nav a,
 			@include adaptiveValue("bottom", -30, -30);
 			right: -5px;
 			transform: scale(1) translate3d(0px, 0px, 0) rotate(5deg);
+		}
+
+		&_orm {
+			@include adaptiveValue("height", 185, 165);
+			@include adaptiveValue("right", 20, 10);
+			@include adaptiveValue("bottom", 5, 7);
 		}
 	}
 
