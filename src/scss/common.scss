@@ -19,6 +19,19 @@
 	}
 }
 
+.mb-144 {
+	@include adaptiveValue("margin-bottom", 144, 56);
+}
+.mb-104 {
+	@include adaptiveValue("margin-bottom", 104, 56);
+}
+.mb-56 {
+	@include adaptiveValue("margin-bottom", 56, 24);
+}
+.pt-56 {
+	@include adaptiveValue("padding-top", 56, 0);
+}
+
 //====================фоны блоков======================
 .page,
 .vacancies,
