@@ -1,10 +1,12 @@
 <!doctype html>
 <html lang="ru">
+
 	<head>
 		@@include('html/_head.htm',{ "title":"Дизайн-система. Начало" })
 		<meta name="robots" content="noindex, nofollow" />
 	</head>
 	@@include('html/_loader.htm',{})
+
 	<body>
 		<noscript>
 			<div><img src="https://mc.yandex.ru/watch/93720984" style="position: absolute; left: -9999px" alt="" /></div>
@@ -45,10 +47,46 @@
 									<h3>
 										▶ Page row
 										<span>.page-row</span>
+										<span>.page-row__left</span>
+										<span>.page-row__right</span>
 									</h3>
 								</div>
 								<div class="component__content">
 									<div class="page-row">
+										<div class="page-row__left">
+											<h1>Some content or title</h1>
+										</div>
+										<div class="page-row__right">
+											<p class="text">
+												Lorem, ipsum dolor sit amet consectetur adipisicing elit. Labore quaerat nemo officiis delectus.
+												Quaerat molestias porro suscipit, eveniet minus cupiditate nesciunt consequuntur dignissimos
+												neque, excepturi maxime vitae ab officiis possimus.
+											</p>
+											<h6>
+												Lorem, ipsum dolor sit amet consectetur adipisicing elit. Labore quaerat nemo officiis delectus.
+												Quaerat molestias porro suscipit, eveniet minus cupiditate nesciunt consequuntur dignissimos
+												neque, excepturi maxime vitae ab officiis possimus.
+											</h6>
+											<p class="text">
+												Lorem, ipsum dolor sit amet consectetur adipisicing elit. Labore quaerat nemo officiis delectus.
+												Quaerat molestias porro suscipit, eveniet minus cupiditate nesciunt consequuntur dignissimos
+												neque, excepturi maxime vitae ab officiis possimus.
+											</p>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="component">
+								<div class="component__head">
+									<h3>
+										▶ Page row with two equal columns
+										<span>.page-row page-equal-row</span>
+										<span>.page-row__left</span>
+										<span>.page-row__right</span>
+									</h3>
+								</div>
+								<div class="component__content">
+									<div class="page-row page-equal-row">
 										<div class="page-row__left">
 											<h1>Some content or title</h1>
 										</div>
@@ -123,23 +161,59 @@
 							<div class="component">
 								<div class="component__head">
 									<h3>
-										▶ Numeric list
-										<span>.num-list</span>
+										▶ List with items
+										<span>.list</span>
+										<span>.list__item</span>
 									</h3>
 								</div>
 								<div class="component__content">
-									<ul class="num-list">
-										<li class="num-list__item">Lorem ipsum dolor sit</li>
-										<li class="num-list__item">Lorem ipsum dolor sit</li>
-										<li class="num-list__item">Lorem ipsum dolor sit</li>
-										<li class="num-list__item">Lorem ipsum dolor sit</li>
-										<li class="num-list__item">Lorem ipsum dolor sit</li>
-										<li class="num-list__item">Lorem ipsum dolor sit</li>
-										<li class="num-list__item">Lorem ipsum dolor sit</li>
-										<li class="num-list__item">Lorem ipsum dolor sit</li>
-										<li class="num-list__item">Lorem ipsum dolor sit</li>
-										<li class="num-list__item">Lorem ipsum dolor sit</li>
-										<li class="num-list__item">Lorem ipsum dolor sit</li>
+									<ul class="list">
+										<li class="list__item">Lorem ipsum dolor sit</li>
+										<li class="list__item">Lorem ipsum dolor sit. Lorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi sit maxime, sed cupiditate officia tempora voluptatem magnam esse nam repellendus temporibus consequatur, voluptatibus blanditiis architecto rem dolorem! Id, temporibus eos.</li>
+										<li class="list__item">Lorem ipsum dolor sit.</li>
+										<li class="list__item">Lorem ipsum dolor sit. Lorem ipsum dolor sit amet.</li>
+										<li class="list__item">Lorem ipsum dolor sit</li>
+									</ul>
+								</div>
+							</div>
+							<div class="component">
+								<div class="component__head">
+									<h3>
+										▶ Numeric list
+										<span>.num-list</span>
+										<span>.num-list__item</span>
+									</h3>
+								</div>
+								<div class="component__content">
+									<ul class="list num-list">
+										<li class="list__item num-list__item">Lorem ipsum dolor sit</li>
+										<li class="list__item num-list__item">Lorem ipsum dolor sit</li>
+										<li class="list__item num-list__item">Lorem ipsum dolor sit</li>
+										<li class="list__item num-list__item">Lorem ipsum dolor sit</li>
+										<li class="list__item num-list__item">Lorem ipsum dolor sit</li>
+										<li class="list__item num-list__item">Lorem ipsum dolor sit</li>
+										<li class="list__item num-list__item">Lorem ipsum dolor sit</li>
+										<li class="list__item num-list__item">Lorem ipsum dolor sit</li>
+										<li class="list__item num-list__item">Lorem ipsum dolor sit</li>
+										<li class="list__item num-list__item">Lorem ipsum dolor sit</li>
+										<li class="list__item num-list__item">Lorem ipsum dolor sit</li>
+									</ul>
+								</div>
+							</div>
+							<div class="component">
+								<div class="component__head">
+									<h3>
+										▶ List with links items
+										<span>.links-list</span>
+										<span>.links-list__item</span>
+									</h3>
+								</div>
+								<div class="component__content">
+									<ul class="list links-list">
+										<li class="list__item links-list__item">Lorem ipsum dolor sit Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ratione, voluptatum. Cupiditate doloremque, provident totam repudiandae deserunt ducimus, quaerat facilis aliquam omnis aliquid doloribus ab ipsam sit nesciunt exercitationem quo magnam!</li>
+										<li class="list__item links-list__item">Lorem ipsum dolor sit</li>
+										<li class="list__item links-list__item">Lorem ipsum dolor sit</li>
+										<li class="list__item links-list__item">Lorem ipsum dolor sit</li>
 									</ul>
 								</div>
 							</div>
@@ -338,10 +412,7 @@
 								</div>
 								<div class="component__content">
 									<div class="section-image">
-										<img
-											src="@img/cases/svoboda-travel/macbookpro-iphone13.webp"
-											alt="Macbook и Iphone"
-											loading="lazy" />
+										<img src="@img/cases/svoboda-travel/macbookpro-iphone13.webp" alt="Macbook и Iphone" loading="lazy" />
 									</div>
 								</div>
 							</div>
