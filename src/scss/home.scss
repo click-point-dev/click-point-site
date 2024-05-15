@@ -371,6 +371,9 @@
 		@media (max-width: $mobileSmall) {
 			overflow-x: scroll;
 			flex-wrap: nowrap;
+			&:not(:last-child) {
+				margin-bottom: 20px;
+			}
 		}
 	}
 
