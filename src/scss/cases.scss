@@ -284,3 +284,10 @@
 		}
 	}
 }
+
+.cases-samokat {
+	.section-image {
+		@include adaptiveValue("border-radius", 20, 16);
+		overflow: hidden;
+	}
+}
