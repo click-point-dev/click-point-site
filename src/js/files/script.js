@@ -4,6 +4,7 @@ import { gsap } from 'gsap';
 // import CustomEase from 'gsap/CustomEase.js';
 import { ScrollTrigger } from 'gsap/ScrollTrigger.js';
 import JustValidate from 'just-validate';
+import { getVacancyTitle } from '../libs/getVacancyTitle.js';
 
 window.addEventListener('DOMContentLoaded', () => {
 	//+хэлеперы
@@ -595,6 +596,7 @@ window.addEventListener('DOMContentLoaded', () => {
 		const method = form.getAttribute('method');
 		const filesPlaceholder = form.querySelector('#formFilesPlaceholder');
 		const loader = form.querySelector('.form__loader');
+		const { isVacancy, vacancyTitle } = getVacancyTitle(form);
 
 		formData.delete('file[]');
 
@@ -602,15 +604,17 @@ window.addEventListener('DOMContentLoaded', () => {
 			filesList.forEach((file) => formData.append('file[]', file));
 		}
 
-		if (form.vacancies && !form.comment) {
-			const vacancy = form.vacancies.value;
-			formData.set('comment', `Отклик на вакансию: ${vacancy}`);
-			console.log(`Отклик на вакансию: ${vacancy}`);
-		}
+		if (isVacancy) formData.set('type', 'vacancy');
+		formData.set(
+			'title',
+			`${isVacancy ? `Отклик на вакансию: ${vacancyTitle}` : `Заявка с сайта ${window.location.hostname}`}`,
+		);
 
 		// for (const item of formData.entries()) {
 		// 	console.log(item);
 		// }
+
+		console.log(isVacancy, vacancyTitle, formData.get('title'), formData.get('type'));
 
 		try {
 			addClass(loader, 'visible');
@@ -748,4 +752,11 @@ window.addEventListener('DOMContentLoaded', () => {
 	// 	sendFormData();
 	// });
 	// }
+
+	//+ show full-width-menu-list
+
+	const showItem = document.querySelector('.full-screen-menu-list');
+	if (showItem) {
+		console.log(showItem);
+	}
 });
