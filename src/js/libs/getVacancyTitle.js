@@ -4,7 +4,5 @@ export function getVacancyTitle(form) {
 		vacancyTitle: form['vacancies']?.value || null,
 	};
 
-	console.log(data);
-
 	return data;
 }

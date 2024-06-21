@@ -614,7 +614,7 @@ window.addEventListener('DOMContentLoaded', () => {
 		// 	console.log(item);
 		// }
 
-		console.log(isVacancy, vacancyTitle, formData.get('title'), formData.get('type'));
+		// console.log(isVacancy, vacancyTitle, formData.get('title'), formData.get('type'));
 
 		try {
 			addClass(loader, 'visible');
