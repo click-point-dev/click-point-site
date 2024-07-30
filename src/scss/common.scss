@@ -238,7 +238,7 @@ h6,
 //THIS ссылки======================
 
 nav a,
-[class*="__link"] {
+[class$="__link"] {
 	position: relative;
 	overflow: hidden;
 	display: inline-flex;
@@ -283,9 +283,13 @@ nav a,
 	}
 }
 
-[class*="__link"] {
+[class$="__link"] {
 	color: $primary1;
 	font-size: rem(16);
+}
+
+.text__links {
+	color: $primary1;
 }
 
 //THIS кнопки======================
