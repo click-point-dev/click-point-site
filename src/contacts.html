@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="ru">
+<html lang="ru" itemscope itemtype="http://schema.org/Organization">
 
 	<head>
 		@@include('html/_head.htm',{ "title":"Контакты ClickPoint" })
@@ -11,6 +11,7 @@
 		<meta property="og:title" content="Контакты ClickPoint" />
 		<meta property="og:description" content="Реклама в интернете от ClickPoint: гарантия результата, оперативные сроки, никаких скрытых платежей. Индивидуальный подход." />
 		<meta property="og:image" content="@img/logo-ClickPoint_with_bg.png" />
+		<meta itemprop="name" content="ClickPoint" />
 	</head>
 	@@include('html/_loader.htm',{})
 
@@ -22,26 +23,27 @@
 			@@include('html/_header.htm',{})
 			<main class="contacts" id="contacts" data-watch="navigator">
 
-				<section class="contacts__first-screen first-screen">
+				<div class="contacts__first-screen first-screen">
 					<div class="first-screen__background backgrount-stars">
 						<img data-prlx-mouse data-prlx-dxr data-prlx-dyr data-prlx-a="15" data-prlx-cx="800" data-prlx-cy="800" src="@img/backgrounds/stars-background_low-contrast.webp" alt="звездное небо" />
 					</div>
 					<div class="first-screen__container">
+						<!--noindex-->
 						<div class="first-screen__image" data-prlx-mouse data-prlx-a="5" data-prlx-cx="800" data-prlx-cy="1000">
-							<img src="@img/contacts/contacts-mane-image.webp" alt="красивая аморфная абстракция" />
+							<img src="img/contacts/contacts-mane-image.webp" alt="красивая аморфная абстракция" />
 						</div>
-
+						<!--/noindex-->
 						<div class="first-screen__body">
 							<div class="first-screen__content">
 								<h1 class="first-screen__title">
-									<a href="mailto:info@click-point.ru">info@click-point.ru</a>
-									<a href="tel:+73832989898">+7 (383) 298-98-98</a>
+									<a href="mailto:info@click-point.ru" itemprop='email'>info@click-point.ru</a>
+									<a href="tel:+73832989898" itemprop='telephone'>+7 (383) 298-98-98</a>
 								</h1>
 								<a href="https://go.2gis.com/v5953" class="about__link" target="_blank">
 									найти нас на карте
 									<span class="_icon-arrow btn"></span>
 								</a>
-								<p class="first-screen__text">
+								<p class="first-screen__text" itemprop='description'>
 									Свяжитесь с нами удобным для вас способом и мы ответим на все ваши вопросы так быстро, как только
 									сможем. Отвечаем в будние дни. В выходные – набираемся сил для новых свершений.
 								</p>
@@ -51,7 +53,7 @@
 							</div>
 						</div>
 					</div>
-				</section>
+				</div>
 			</main>
 			@@include('html/_footer.htm',{})
 		</div>
