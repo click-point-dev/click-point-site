@@ -46,6 +46,21 @@
 		.page-navigation__body {
 			display: none;
 		}
+
+		&_right {
+			justify-content: flex-end;
+			align-items: baseline;
+			@include adaptiveValue("gap", 30, 20);
+			text-transform: none;
+			font-weight: 400;
+			margin-top: -15px;
+
+			.header__city {
+				display: inline-flex;
+				align-items: flex-start;
+				gap: 10px;
+			}
+		}
 	}
 
 	&__logo {
@@ -125,7 +140,9 @@
 
 	&__contacts {
 		width: 100%;
-		display: flex;
+		// display: flex;
+		white-space: nowrap;
+		@include adaptiveValue("font-size", 32, 14);
 
 		a {
 			justify-content: end;

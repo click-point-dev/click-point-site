@@ -755,8 +755,88 @@ window.addEventListener('DOMContentLoaded', () => {
 
 	//+ show full-width-menu-list
 
-	const showItem = document.querySelector('.full-screen-menu-list');
-	if (showItem) {
-		console.log(showItem);
+	// const showItem = document.querySelector('.full-screen-menu-list');
+	// if (showItem) {
+	// 	console.log(showItem);
+	// }
+
+	//+ display the user city
+
+	let isCityAvailable = false;
+	let contactsElement;
+	const isPhoneSize = window.matchMedia('(max-width: 1024px)').matches;
+
+	function insertCityElement(targetSelector, content, position) {
+		const targetElement = document.querySelector(targetSelector);
+		if (!targetElement) return;
+
+		const insertingElement = isPhoneSize
+			? `
+					<div class="header__city"><span class='_icon-home3'></span>${content}</div>
+				`
+			: `
+		<div class="header__row header__row_right h3 _text-bright">
+				<div class="header__city"><span class='_icon-home3'></span>${content}</div>
+				<div class="header__phone"><a href='tel:+73832989898'>+7 (383) 298 98 98</a></div>
+		</div>`;
+
+		if (window.scrollY < 400 || isPhoneSize) {
+			targetElement.insertAdjacentHTML(position, insertingElement);
+			isCityAvailable = true;
+			contactsElement = document.querySelector('.header__city').closest('.header__row');
+		}
+
+		window.addEventListener('scroll', () => {
+			if (window.scrollY < 400 && !isCityAvailable) {
+				targetElement.insertAdjacentHTML(position, insertingElement);
+				isCityAvailable = true;
+				contactsElement = document.querySelector('.header__city').closest('.header__row');
+			} else if (window.scrollY >= 400 && isCityAvailable && !isPhoneSize) {
+				targetElement.removeChild(contactsElement);
+				isCityAvailable = false;
+			}
+		});
 	}
+
+	async function getCity(cordinates) {
+		try {
+			if (!cordinates) return;
+
+			const res = await fetch(
+				`https://api.opencagedata.com/geocode/v1/json?q=${cordinates.latitude}+${cordinates.longitude}&key=3efa922e2277413499c0bc024b90a886`,
+			);
+			if (!res.ok) throw new Error('Can not get the city');
+
+			const data = await res.json();
+			const city = data.results[0].components.city;
+			return city;
+		} catch (error) {
+			console.log(error);
+		}
+	}
+
+	const options = { enableHighAccuracy: true, timeout: 5000, maximumAge: 1000 * 60 };
+
+	const targetElement = !isPhoneSize ? '.header__container' : '.menu__contacts';
+	const position = isPhoneSize ? 'afterBegin' : 'beforeend';
+
+	navigator.geolocation.getCurrentPosition(
+		({ coords }) => {
+			getCity(coords)
+				.then((city) =>
+					city
+						? insertCityElement(targetElement, city, position)
+						: insertCityElement(targetElement, 'Москва', position),
+				)
+				.catch((error) => {
+					insertCityElement(targetElement, 'Москва', position);
+					console.log(error);
+				});
+		},
+		(error) => {
+			insertCityElement(targetElement, 'Москва', position);
+			console.log(error);
+		},
+		options,
+	);
 });
