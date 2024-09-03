@@ -809,34 +809,61 @@ window.addEventListener('DOMContentLoaded', () => {
 
 			const data = await res.json();
 			const city = data.results[0].components.city;
+			console.log(city);
 			return city;
 		} catch (error) {
 			console.log(error);
 		}
 	}
 
-	const options = { enableHighAccuracy: true, timeout: 5000, maximumAge: 1000 * 60 };
+	// const options = { enableHighAccuracy: false, timeout: 0, maximumAge: 0 };
 
 	const targetElement = !isPhoneSize ? '.header__container' : '.menu__contacts';
 	const position = isPhoneSize ? 'afterBegin' : 'beforeend';
 
-	navigator.geolocation.getCurrentPosition(
-		({ coords }) => {
-			getCity(coords)
-				.then((city) =>
-					city
-						? insertCityElement(targetElement, city, position)
-						: insertCityElement(targetElement, 'Москва', position),
-				)
-				.catch((error) => {
-					insertCityElement(targetElement, 'Москва', position);
-					console.log(error);
-				});
-		},
-		(error) => {
-			insertCityElement(targetElement, 'Москва', position);
-			console.log(error);
-		},
-		options,
-	);
+	ymaps.ready(function () {
+		const geolocation = ymaps.geolocation;
+		geolocation
+			.get({
+				provider: '213.110.97.151',
+				mapStateAutoApply: true,
+			})
+			.then(function (result) {
+				const city = result.geoObjects
+					.get(0)
+					.properties.get(
+						'metaDataProperty.GeocoderMetaData.AddressDetails.Country.AdministrativeArea.SubAdministrativeArea.Locality.LocalityName',
+					)
+					.split(' ')
+					.at(-1);
+
+				console.log(city);
+				city ? insertCityElement(targetElement, city, position) : insertCityElement(targetElement, 'Москва', position);
+			})
+			.catch((error) => {
+				insertCityElement(targetElement, 'Москва', position);
+				console.log(error);
+			});
+	});
+
+	// navigator.geolocation.getCurrentPosition(
+	// 	({ coords }) => {
+	// 		getCity(coords)
+	// 			.then((city) => {
+	// 				console.log(city);
+	// 				city
+	// 					? insertCityElement(targetElement, city, position)
+	// 					: insertCityElement(targetElement, 'Москва', position);
+	// 			})
+	// 			.catch((error) => {
+	// 				insertCityElement(targetElement, 'Москва', position);
+	// 				console.log(error);
+	// 			});
+	// 	},
+	// 	(error) => {
+	// 		insertCityElement(targetElement, 'Москва', position);
+	// 		console.log(error);
+	// 	},
+	// 	// options,
+	// );
 });
