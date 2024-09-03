@@ -14820,6 +14820,13 @@
                 return this;
             }
         }
+        function getVacancyTitle(form) {
+            const data = {
+                isVacancy: form["vacancies"] ? true : false,
+                vacancyTitle: form["vacancies"]?.value || null
+            };
+            return data;
+        }
         window.addEventListener("DOMContentLoaded", (() => {
             function addClass(element, className) {
                 if (element) element.classList.add(className);
@@ -15226,13 +15233,11 @@
                 const method = form.getAttribute("method");
                 const filesPlaceholder = form.querySelector("#formFilesPlaceholder");
                 const loader = form.querySelector(".form__loader");
+                const {isVacancy, vacancyTitle} = getVacancyTitle(form);
                 formData.delete("file[]");
                 if (filesList.length) filesList.forEach((file => formData.append("file[]", file)));
-                if (form.vacancies && !form.comment) {
-                    const vacancy = form.vacancies.value;
-                    formData.set("comment", `Отклик на вакансию: ${vacancy}`);
-                    console.log(`Отклик на вакансию: ${vacancy}`);
-                }
+                if (isVacancy) formData.set("type", "vacancy");
+                formData.set("title", `${isVacancy ? `Отклик на вакансию: ${vacancyTitle}` : `Заявка с сайта ${window.location.hostname}`}`);
                 try {
                     addClass(loader, "visible");
                     const res = await fetch("../request.php", {
@@ -15250,6 +15255,57 @@
                     form.reset();
                 }
             }
+            let isCityAvailable = false;
+            let contactsElement;
+            const isPhoneSize = window.matchMedia("(max-width: 1024px)").matches;
+            function insertCityElement(targetSelector, content, position) {
+                const targetElement = document.querySelector(targetSelector);
+                if (!targetElement) return;
+                const insertingElement = isPhoneSize ? `\n\t\t\t\t\t<div class="header__city"><span class='_icon-home3'></span>${content}</div>\n\t\t\t\t` : `\n\t\t<div class="header__row header__row_right h3 _text-bright">\n\t\t\t\t<div class="header__city"><span class='_icon-home3'></span>${content}</div>\n\t\t\t\t<div class="header__phone"><a href='tel:+73832989898'>+7 (383) 298 98 98</a></div>\n\t\t</div>`;
+                if (window.scrollY < 400 || isPhoneSize) {
+                    targetElement.insertAdjacentHTML(position, insertingElement);
+                    isCityAvailable = true;
+                    contactsElement = document.querySelector(".header__city").closest(".header__row");
+                }
+                window.addEventListener("scroll", (() => {
+                    if (window.scrollY < 400 && !isCityAvailable) {
+                        targetElement.insertAdjacentHTML(position, insertingElement);
+                        isCityAvailable = true;
+                        contactsElement = document.querySelector(".header__city").closest(".header__row");
+                    } else if (window.scrollY >= 400 && isCityAvailable && !isPhoneSize) {
+                        targetElement.removeChild(contactsElement);
+                        isCityAvailable = false;
+                    }
+                }));
+            }
+            async function getCity(cordinates) {
+                try {
+                    if (!cordinates) return;
+                    const res = await fetch(`https://api.opencagedata.com/geocode/v1/json?q=${cordinates.latitude}+${cordinates.longitude}&key=3efa922e2277413499c0bc024b90a886`);
+                    if (!res.ok) throw new Error("Can not get the city");
+                    const data = await res.json();
+                    const city = data.results[0].components.city;
+                    return city;
+                } catch (error) {
+                    console.log(error);
+                }
+            }
+            const options = {
+                enableHighAccuracy: true,
+                timeout: 5e3,
+                maximumAge: 1e3 * 60
+            };
+            const targetElement = !isPhoneSize ? ".header__container" : ".menu__contacts";
+            const position = isPhoneSize ? "afterBegin" : "beforeend";
+            navigator.geolocation.getCurrentPosition((({coords}) => {
+                getCity(coords).then((city => city ? insertCityElement(targetElement, city, position) : insertCityElement(targetElement, "Москва", position))).catch((error => {
+                    insertCityElement(targetElement, "Москва", position);
+                    console.log(error);
+                }));
+            }), (error => {
+                insertCityElement(targetElement, "Москва", position);
+                console.log(error);
+            }), options);
         }));
         window["FLS"] = true;
         addLoadedClass();
