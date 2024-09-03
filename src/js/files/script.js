@@ -798,25 +798,46 @@ window.addEventListener('DOMContentLoaded', () => {
 		});
 	}
 
-	async function getCity(cordinates) {
-		try {
-			if (!cordinates) return;
+	// async function getCity(cordinates) {
+	// 	try {
+	// 		if (!cordinates) return;
 
-			const res = await fetch(
-				`https://api.opencagedata.com/geocode/v1/json?q=${cordinates.latitude}+${cordinates.longitude}&key=3efa922e2277413499c0bc024b90a886`,
-			);
-			if (!res.ok) throw new Error('Can not get the city');
+	// 		const res = await fetch(
+	// 			`https://api.opencagedata.com/geocode/v1/json?q=${cordinates.latitude}+${cordinates.longitude}&key=3efa922e2277413499c0bc024b90a886`,
+	// 		);
+	// 		if (!res.ok) throw new Error('Can not get the city');
 
-			const data = await res.json();
-			const city = data.results[0].components.city;
-			console.log(city);
-			return city;
-		} catch (error) {
-			console.log(error);
-		}
-	}
+	// 		const data = await res.json();
+	// 		const city = data.results[0].components.city;
+	// 		console.log(city);
+	// 		return city;
+	// 	} catch (error) {
+	// 		console.log(error);
+	// 	}
+	// }
 
-	// const options = { enableHighAccuracy: false, timeout: 0, maximumAge: 0 };
+	// const options = { enableHighAccuracy: true, timeout: 8000, maximumAge: 1000 * 60 * 60 };
+
+	// navigator.geolocation.getCurrentPosition(
+	// 	({ coords }) => {
+	// 		getCity(coords)
+	// 			.then((city) => {
+	// 				console.log(city);
+	// 				city
+	// 					? insertCityElement(targetElement, city, position)
+	// 					: insertCityElement(targetElement, 'Москва', position);
+	// 			})
+	// 			.catch((error) => {
+	// 				insertCityElement(targetElement, 'Москва', position);
+	// 				console.log(error);
+	// 			});
+	// 	},
+	// 	(error) => {
+	// 		insertCityElement(targetElement, 'Москва', position);
+	// 		console.log(error);
+	// 	},
+	// 	// options,
+	// );
 
 	const targetElement = !isPhoneSize ? '.header__container' : '.menu__contacts';
 	const position = isPhoneSize ? 'afterBegin' : 'beforeend';
@@ -845,25 +866,4 @@ window.addEventListener('DOMContentLoaded', () => {
 				console.log(error);
 			});
 	});
-
-	// navigator.geolocation.getCurrentPosition(
-	// 	({ coords }) => {
-	// 		getCity(coords)
-	// 			.then((city) => {
-	// 				console.log(city);
-	// 				city
-	// 					? insertCityElement(targetElement, city, position)
-	// 					: insertCityElement(targetElement, 'Москва', position);
-	// 			})
-	// 			.catch((error) => {
-	// 				insertCityElement(targetElement, 'Москва', position);
-	// 				console.log(error);
-	// 			});
-	// 	},
-	// 	(error) => {
-	// 		insertCityElement(targetElement, 'Москва', position);
-	// 		console.log(error);
-	// 	},
-	// 	// options,
-	// );
 });
