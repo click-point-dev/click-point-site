@@ -50,15 +50,17 @@
 		&_right {
 			justify-content: flex-end;
 			align-items: baseline;
-			@include adaptiveValue("gap", 30, 20);
+			@include adaptiveValue("gap", 25, 15);
 			text-transform: none;
 			font-weight: 400;
-			margin-top: -15px;
 
 			.header__city {
 				display: inline-flex;
 				align-items: flex-start;
-				gap: 10px;
+				gap: 5px;
+				[class*="_icon"] {
+					transform: translateY(0px);
+				}
 			}
 		}
 	}

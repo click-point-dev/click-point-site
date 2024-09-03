@@ -775,9 +775,9 @@ window.addEventListener('DOMContentLoaded', () => {
 					<div class="header__city"><span class='_icon-home3'></span>${content}</div>
 				`
 			: `
-		<div class="header__row header__row_right h3 _text-bright">
+		<div class="header__row header__row_right _text-bright">
 				<div class="header__city"><span class='_icon-home3'></span>${content}</div>
-				<div class="header__phone"><a href='tel:+73832989898'>+7 (383) 298 98 98</a></div>
+				<div class="header__phone h3"><a href='tel:+73832989898'>+7 (383) 298 98 98</a></div>
 		</div>`;
 
 		if (window.scrollY < 400 || isPhoneSize) {
