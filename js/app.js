@@ -15261,7 +15261,7 @@
             function insertCityElement(targetSelector, content, position) {
                 const targetElement = document.querySelector(targetSelector);
                 if (!targetElement) return;
-                const insertingElement = isPhoneSize ? `\n\t\t\t\t\t<div class="header__city"><span class='_icon-home3'></span>${content}</div>\n\t\t\t\t` : `\n\t\t<div class="header__row header__row_right h3 _text-bright">\n\t\t\t\t<div class="header__city"><span class='_icon-home3'></span>${content}</div>\n\t\t\t\t<div class="header__phone"><a href='tel:+73832989898'>+7 (383) 298 98 98</a></div>\n\t\t</div>`;
+                const insertingElement = isPhoneSize ? `\n\t\t\t\t\t<div class="header__city"><span class='_icon-home3'></span>${content}</div>\n\t\t\t\t` : `\n\t\t<div class="header__row header__row_right _text-bright">\n\t\t\t\t<div class="header__city"><span class='_icon-home3'></span>${content}</div>\n\t\t\t\t<div class="header__phone h3"><a href='tel:+73832989898'>+7 (383) 298 98 98</a></div>\n\t\t</div>`;
                 if (window.scrollY < 400 || isPhoneSize) {
                     targetElement.insertAdjacentHTML(position, insertingElement);
                     isCityAvailable = true;
@@ -15278,34 +15278,22 @@
                     }
                 }));
             }
-            async function getCity(cordinates) {
-                try {
-                    if (!cordinates) return;
-                    const res = await fetch(`https://api.opencagedata.com/geocode/v1/json?q=${cordinates.latitude}+${cordinates.longitude}&key=3efa922e2277413499c0bc024b90a886`);
-                    if (!res.ok) throw new Error("Can not get the city");
-                    const data = await res.json();
-                    const city = data.results[0].components.city;
-                    return city;
-                } catch (error) {
-                    console.log(error);
-                }
-            }
-            const options = {
-                enableHighAccuracy: true,
-                timeout: 5e3,
-                maximumAge: 1e3 * 60
-            };
             const targetElement = !isPhoneSize ? ".header__container" : ".menu__contacts";
             const position = isPhoneSize ? "afterBegin" : "beforeend";
-            navigator.geolocation.getCurrentPosition((({coords}) => {
-                getCity(coords).then((city => city ? insertCityElement(targetElement, city, position) : insertCityElement(targetElement, "Москва", position))).catch((error => {
+            ymaps.ready((function() {
+                const geolocation = ymaps.geolocation;
+                geolocation.get({
+                    provider: "213.110.97.151",
+                    mapStateAutoApply: true
+                }).then((function(result) {
+                    const city = result.geoObjects.get(0).properties.get("metaDataProperty.GeocoderMetaData.AddressDetails.Country.AdministrativeArea.SubAdministrativeArea.Locality.LocalityName").split(" ").at(-1);
+                    console.log(city);
+                    city ? insertCityElement(targetElement, city, position) : insertCityElement(targetElement, "Москва", position);
+                })).catch((error => {
                     insertCityElement(targetElement, "Москва", position);
                     console.log(error);
                 }));
-            }), (error => {
-                insertCityElement(targetElement, "Москва", position);
-                console.log(error);
-            }), options);
+            }));
         }));
         window["FLS"] = true;
         addLoadedClass();

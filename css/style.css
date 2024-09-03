@@ -3492,16 +3492,15 @@ nav a span[class*=_icon],
           align-items: baseline;
   text-transform: none;
   font-weight: 400;
-  margin-top: -15px;
 }
-@supports (gap: clamp( 1.25rem , 1.0353053435rem  +  0.9541984733vw , 1.875rem )) {
+@supports (gap: clamp( 0.9375rem , 0.7228053435rem  +  0.9541984733vw , 1.5625rem )) {
   .header__row_right {
-    gap: clamp( 1.25rem , 1.0353053435rem  +  0.9541984733vw , 1.875rem );
+    gap: clamp( 0.9375rem , 0.7228053435rem  +  0.9541984733vw , 1.5625rem );
   }
 }
-@supports not (gap: clamp( 1.25rem , 1.0353053435rem  +  0.9541984733vw , 1.875rem )) {
+@supports not (gap: clamp( 0.9375rem , 0.7228053435rem  +  0.9541984733vw , 1.5625rem )) {
   .header__row_right {
-    gap: calc(1.25rem + 0.625 * (100vw - 22.5rem) / 65.5);
+    gap: calc(0.9375rem + 0.625 * (100vw - 22.5rem) / 65.5);
   }
 }
 .header__row_right .header__city {
@@ -3511,7 +3510,12 @@ nav a span[class*=_icon],
   -webkit-box-align: start;
       -ms-flex-align: start;
           align-items: flex-start;
-  gap: 10px;
+  gap: 5px;
+}
+.header__row_right .header__city [class*=_icon] {
+  -webkit-transform: translateY(0px);
+      -ms-transform: translateY(0px);
+          transform: translateY(0px);
 }
 .header__logo {
   margin-right: 20px;
