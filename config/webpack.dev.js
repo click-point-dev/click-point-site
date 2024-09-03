@@ -52,7 +52,7 @@ const config = {
 		compress: true,
 		port: 'auto',
 		hot: true,
-		host: 'local-ip', // localhost
+		host: 'localhost', // localhost
 
 		// Расскоментировать на слабом ПК
 		// (в режиме разработчика, папка с результаттом будет создаваться на диске)
