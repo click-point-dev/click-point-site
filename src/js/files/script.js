@@ -6,6 +6,9 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger.js';
 import JustValidate from 'just-validate';
 import { getVacancyTitle } from '../libs/getVacancyTitle.js';
 
+//global
+const isPhoneSize = window.matchMedia('(max-width: 1024px)').matches;
+
 window.addEventListener('DOMContentLoaded', () => {
 	//+хэлеперы
 	function addClass(element, className) {
@@ -33,7 +36,7 @@ window.addEventListener('DOMContentLoaded', () => {
 		}
 	});
 
-	//!+ GSAP АНИМАЦИИ
+	//+ GSAP АНИМАЦИИ
 
 	//++ страница О компании - главный экран
 
@@ -58,7 +61,7 @@ window.addEventListener('DOMContentLoaded', () => {
 		);
 	}
 
-	//+ о компании - звездный фон
+	//++ о компании - звездный фон
 
 	const aboutBgStars = document.querySelector('.first-screen-about__background');
 
@@ -72,7 +75,7 @@ window.addEventListener('DOMContentLoaded', () => {
 		});
 	}
 
-	//+ О компании - декор
+	//++ О компании - декор
 
 	const aboutDecor1 = document.querySelector('.first-screen-about__decor-1');
 	const aboutDecor2 = document.querySelector('.first-screen-about__decor-2');
@@ -127,7 +130,7 @@ window.addEventListener('DOMContentLoaded', () => {
 		});
 	}
 
-	//+ страница Главная - главное изображение
+	//++ страница Главная - главное изображение
 
 	const mainImage = document.querySelector('.page .first-screen__image');
 	const mainLens = document.querySelector('.page .first-screen__image img:nth-child(2)');
@@ -159,7 +162,7 @@ window.addEventListener('DOMContentLoaded', () => {
 		});
 	}
 
-	//+ страница Главная - декор
+	//++ страница Главная - декор
 	const mainDecorTop = document.querySelector('.first-screen__decor_top');
 	const mainDecorCenter = document.querySelector('.first-screen__decor_center');
 	const mainDecorBottom = document.querySelector('.first-screen__decor_bottom');
@@ -199,7 +202,7 @@ window.addEventListener('DOMContentLoaded', () => {
 		});
 	}
 
-	//!+ главная форма
+	//++ главная форма
 	gsap.registerPlugin(ScrollTrigger);
 
 	const formBackground = document.querySelector('.main-form__background img');
@@ -367,12 +370,12 @@ window.addEventListener('DOMContentLoaded', () => {
 		});
 	}
 
-	//!+ РАБОТА С ФОРМАМИ
+	//+ РАБОТА С ФОРМАМИ
 	const forms = document.forms;
 
 	if (forms.length) {
 		Array.from(forms).forEach((form) => {
-			//+ обработка input name=fn
+			//++ обработка input name=fn
 			const fn = form.querySelector('input[required]');
 			if (fn) {
 				setTimeout(function () {
@@ -380,7 +383,7 @@ window.addEventListener('DOMContentLoaded', () => {
 				}, 1500);
 			}
 
-			//+ маска телефона
+			//++ маска телефона
 			const telInput = form.querySelector('input[type="tel"]');
 			const inputMask = new Inputmask('+7 (999)-999-99-99');
 			if (telInput) {
@@ -430,7 +433,7 @@ window.addEventListener('DOMContentLoaded', () => {
 		});
 	}
 
-	// //!+ загрузка файлов в форму
+	//++ загрузка файлов в форму
 
 	// function loadFilesToForm(form) {
 	// 	const formFileInput = form.querySelector('#filesInput');
@@ -499,7 +502,7 @@ window.addEventListener('DOMContentLoaded', () => {
 	// 	});
 	// }
 
-	//!+ валидация форм
+	//++ валидация форм
 
 	function validateForm(form, validate, telInput) {
 		if (form.name) {
@@ -641,118 +644,6 @@ window.addEventListener('DOMContentLoaded', () => {
 		}
 	}
 
-	// function validateForm(form, formId, method = 'get') {
-	// 	const validate = new JustValidate(`#${formId}`, {
-	// 		validateBeforeSubmitting: true,
-	// 		testingMode: true,
-	// 	});
-
-	// 	if (!validate) return;
-
-	// 	if (form.elements.name) {
-	// 		validate.addField('#name', [
-	// 			{
-	// 				rule: 'required',
-	// 				errorMessage: 'Имя обязательно',
-	// 			},
-	// 			{
-	// 				rule: 'customRegexp',
-	// 				value: /[А-я]/gi,
-	// 				errorMessage: 'Только кириллица',
-	// 			},
-	// 			{
-	// 				rule: 'minLength',
-	// 				value: 3,
-	// 				errorMessage: 'Минимум 3 символа',
-	// 			},
-	// 			{
-	// 				rule: 'maxLength',
-	// 				value: 30,
-	// 				errorMessage: 'Не более 30 символов',
-	// 			},
-	// 		]);
-	// 	}
-
-	// 	if (form.phone) {
-	// 		validate.addField('#phone', [
-	// 			{
-	// 				rule: 'required',
-	// 				errorMessage: 'Телефон обязателен',
-	// 			},
-	// 			{
-	// 				rule: 'integer',
-	// 				errorMessage: 'Только цифры без +7',
-	// 			},
-	// 			{
-	// 				rule: 'minLength',
-	// 				value: 10,
-	// 				errorMessage: '10 цифр без +7',
-	// 			},
-	// 			{
-	// 				rule: 'maxLength',
-	// 				value: 10,
-	// 				errorMessage: 'Что-то не то. Номер без +7',
-	// 			},
-	// 		]);
-	// 	}
-
-	// 	if (form['file[]']) {
-	// 		validate.addField('#filesInput', [
-	// 			{
-	// 				rule: 'files',
-	// 				errorMessage: 'Файлы не более 15 Мб',
-	// 				value: {
-	// 					files: {
-	// 						maxSize: 15000000,
-	// 					},
-	// 				},
-	// 			},
-	// 			{
-	// 				rule: 'maxFilesCount',
-	// 				value: 2,
-	// 				errorMessage: 'Не более 3 файлов',
-	//  			},
-	// 		]);
-	// 	}
-
-	// validate.onSuccess((e) => {
-	// 	const formData = new FormData(e.target);
-	// 	// formData.set('type', 'request');
-	// 	// formData.set('title', 'Заявка с сайта');
-	// 	formData.append('file[]', e.target.files);
-
-	// 	// const headers = new Headers();
-	// 	// headers.append('Authorization', `Basic ${credentials}`);
-	// 	// headers.set('Referrer Policy', 'no-referrer-when-downgrade');
-	// 	// headers.set('Content-Type', 'text/plain');
-
-	// 	// console.log('is Valid!!!');
-
-	// 	async function sendFormData() {
-	// 		try {
-	// 			const res = await fetch('../request.php', {
-	// 				method: method,
-	// 				body: formData,
-	// 				// headers: headers,
-	// 			});
-
-	// 			if (!res.ok) {
-	// 				throw new Error(e);
-	// 			}
-	// 			// const data = await res.json();
-	// 			flsModules.popup.open('#popup-accept');
-	// 		} catch (error) {
-	// 			console.log(error);
-	// 			flsModules.popup.open('#popup-reject');
-	// 		} finally {
-	// 			// flsModules.popup.close('#popup');
-	// 			form.reset();
-	// 		}
-	// 	}
-	// 	sendFormData();
-	// });
-	// }
-
 	//+ show full-width-menu-list
 
 	// const showItem = document.querySelector('.full-screen-menu-list');
@@ -762,11 +653,9 @@ window.addEventListener('DOMContentLoaded', () => {
 
 	//+ display the user city
 
-	let isCityAvailable = false;
-	let contactsElement;
-	const isPhoneSize = window.matchMedia('(max-width: 1024px)').matches;
-
 	function insertCityElement(targetSelector, content, position) {
+		let contactsElement;
+		let isCityAvailable = false;
 		const targetElement = document.querySelector(targetSelector);
 		if (!targetElement) return;
 
@@ -791,79 +680,85 @@ window.addEventListener('DOMContentLoaded', () => {
 				targetElement.insertAdjacentHTML(position, insertingElement);
 				isCityAvailable = true;
 				contactsElement = document.querySelector('.header__city').closest('.header__row');
-			} else if (window.scrollY >= 400 && isCityAvailable && !isPhoneSize) {
+			}
+			if (window.scrollY >= 400 && isCityAvailable && !isPhoneSize) {
 				targetElement.removeChild(contactsElement);
 				isCityAvailable = false;
 			}
 		});
 	}
 
-	// async function getCity(cordinates) {
-	// 	try {
-	// 		if (!cordinates) return;
-
-	// 		const res = await fetch(
-	// 			`https://api.opencagedata.com/geocode/v1/json?q=${cordinates.latitude}+${cordinates.longitude}&key=3efa922e2277413499c0bc024b90a886`,
-	// 		);
-	// 		if (!res.ok) throw new Error('Can not get the city');
-
-	// 		const data = await res.json();
-	// 		const city = data.results[0].components.city;
-	// 		console.log(city);
-	// 		return city;
-	// 	} catch (error) {
-	// 		console.log(error);
-	// 	}
-	// }
-
-	// const options = { enableHighAccuracy: true, timeout: 8000, maximumAge: 1000 * 60 * 60 };
-
-	// navigator.geolocation.getCurrentPosition(
-	// 	({ coords }) => {
-	// 		getCity(coords)
-	// 			.then((city) => {
-	// 				console.log(city);
-	// 				city
-	// 					? insertCityElement(targetElement, city, position)
-	// 					: insertCityElement(targetElement, 'Москва', position);
-	// 			})
-	// 			.catch((error) => {
-	// 				insertCityElement(targetElement, 'Москва', position);
-	// 				console.log(error);
-	// 			});
-	// 	},
-	// 	(error) => {
-	// 		insertCityElement(targetElement, 'Москва', position);
-	// 		console.log(error);
-	// 	},
-	// 	// options,
-	// );
-
-	const targetElement = !isPhoneSize ? '.header__container' : '.menu__contacts';
+	const targetElement = isPhoneSize ? '.menu__contacts' : '.header__container';
 	const position = isPhoneSize ? 'afterBegin' : 'beforeend';
 
-	ymaps.ready(function () {
-		const geolocation = ymaps.geolocation;
-		geolocation
-			.get({
-				provider: '213.110.97.151',
-				mapStateAutoApply: true,
-			})
-			.then(function (result) {
-				const city = result.geoObjects
-					.get(0)
-					.properties.get(
-						'metaDataProperty.GeocoderMetaData.AddressDetails.Country.AdministrativeArea.SubAdministrativeArea.Locality.LocalityName',
-					)
-					.split(' ')
-					.at(-1);
+	// ymaps.ready(function () {
+	// 	const geolocation = ymaps.geolocation;
+	// 	geolocation
+	// 		.get({
+	// 			provider: '213.110.97.151',
+	// 			mapStateAutoApply: true,
+	// 		})
+	// 		.then(function (result) {
+	// 			const city = result.geoObjects
+	// 				.get(0)
+	// 				.properties.get(
+	// 					'metaDataProperty.GeocoderMetaData.AddressDetails.Country.AdministrativeArea.SubAdministrativeArea.Locality.LocalityName',
+	// 				);
 
-				console.log(city);
-				city ? insertCityElement(targetElement, city, position) : insertCityElement(targetElement, 'Москва', position);
-			})
-			.catch((error) => {
-				insertCityElement(targetElement, 'Москва', position);
-				console.log(error);
+	// 			console.log(city);
+	// 			city ? insertCityElement(targetElement, city, position) : insertCityElement(targetElement, 'Москва', position);
+	// 		})
+	// 		.catch((error) => {
+	// 			insertCityElement(targetElement, 'Москва', position);
+	// 			console.log(error);
+	// 		});
+	// });
+
+	main();
+	async function main() {
+		try {
+			await ymaps3.ready;
+
+			const dataCoords = await ymaps3.geolocation.getPosition();
+			console.log(dataCoords);
+			if (!dataCoords) throw new Error("⛔ can't get coordinates");
+
+			const dataGeoPosition = await ymaps3.search({
+				text: dataCoords.coords,
 			});
-	});
+			console.log(dataGeoPosition);
+			const city = dataGeoPosition[0].properties.description || 'Москва';
+			insertCityElement(targetElement, city, position);
+			if (!dataGeoPosition) throw new Error("⛔there is coordinates, but can't get city. Set by default 'Москва'");
+		} catch (error) {
+			insertCityElement(targetElement, 'Москва', position);
+			console.log(error);
+		}
+
+		// city.then((data) => {
+		// 	const city = ymaps3.search({
+		// 		text: data.coords,
+		// 	});
+
+		// 	city.then((result) => {
+		// 		console.log(result);
+
+		// 		const city = result[0].properties.description || 'Москва';
+		// 		console.log(city);
+		// 		insertCityElement(targetElement, city, position);
+		// 	});
+		// });
+
+		// console.log(ymaps3);
+
+		// Initialize the map
+		// map = new YMap(
+		// 	// Pass the link to the HTMLElement of the container
+		// 	document.getElementById('app'),
+		// 	// Pass the map initialization parameters
+		// 	{ location: LOCATION, showScaleInCopyrights: true },
+		// 	// Add a map scheme layer
+		// 	[new YMapDefaultSchemeLayer({})],
+		// );
+	}
 });
