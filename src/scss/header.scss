@@ -49,7 +49,7 @@
 
 		&_right {
 			justify-content: flex-end;
-			align-items: baseline;
+			align-items: flex-end;
 			@include adaptiveValue("gap", 25, 15);
 			text-transform: none;
 			font-weight: 400;
