@@ -3759,14 +3759,12 @@
             if (document.querySelector(".icon-menu")) document.addEventListener("click", (function(e) {
                 if (bodyLockStatus && e.target.closest(".icon-menu")) {
                     bodyLockToggle();
-                    console.log("перключение из бургера");
                     document.documentElement.classList.toggle("menu-open");
                 }
             }));
         }
         function menuClose() {
             bodyUnlock();
-            console.log("разблокировано из бургера");
             document.documentElement.classList.remove("menu-open");
         }
         function functions_FLS(message) {
@@ -8180,6 +8178,7 @@
             addWindowScrollEvent = true;
             const header = document.querySelector("header.header");
             const headerShow = header.hasAttribute("data-scroll-show");
+            const isStickyMainHeader = header.hasAttribute("data-scroll");
             const headerShowTimer = header.dataset.scrollShow ? header.dataset.scrollShow : 500;
             const startPoint = header.dataset.scroll ? header.dataset.scroll : 1;
             let scrollDirection = 0;
@@ -8187,7 +8186,7 @@
             document.addEventListener("windowScroll", (function(e) {
                 const scrollTop = window.scrollY;
                 clearTimeout(timer);
-                if (scrollTop >= startPoint) {
+                if (scrollTop >= startPoint && isStickyMainHeader) {
                     !header.classList.contains("_header-scroll") ? header.classList.add("_header-scroll") : null;
                     if (headerShow) {
                         if (scrollTop > scrollDirection) header.classList.contains("_header-show") ? header.classList.remove("_header-show") : null; else !header.classList.contains("_header-show") ? header.classList.add("_header-show") : null;
@@ -14827,6 +14826,7 @@
             };
             return data;
         }
+        const isPhoneSize = window.matchMedia("(max-width: 1024px)").matches;
         window.addEventListener("DOMContentLoaded", (() => {
             function addClass(element, className) {
                 if (element) element.classList.add(className);
@@ -14834,13 +14834,41 @@
             function removeClass(element, className) {
                 if (element) element.classList.remove(className);
             }
-            const appearingElement = document.querySelector("[data-appearing]");
-            window.addEventListener("scroll", (() => {
-                if (!appearingElement) return;
-                if (window.scrollY > 800) appearingElement.classList.add("_appearing"); else appearingElement.classList.remove("_appearing");
-            }));
-            //!+ GSAP АНИМАЦИИ
-                        const aboutMainImage = document.querySelector(".first-screen-about__main-image");
+            addClassOnScroll();
+            function addClassOnScroll() {
+                const appearingElement = Array.from(document.querySelectorAll("[data-appearing]"));
+                if (!appearingElement.length) return;
+                appearingElement.forEach((elem => {
+                    const appearingValue = elem.dataset.appearing || 800;
+                    if (+appearingValue === 0) {
+                        elem.classList.add("_appearing");
+                        const position = elem.dataset.position || "fixed";
+                        const left = elem.dataset.left;
+                        const right = elem.dataset.right;
+                        const top = elem.dataset.top;
+                        const bottom = elem.dataset.bottom;
+                        elem.style.position = position;
+                        left ? elem.style.left = left + "px" : null;
+                        right ? elem.style.right = right + "px" : null;
+                        top ? elem.style.top = top + "px" : null;
+                        bottom ? elem.style.bottom = bottom + "px" : null;
+                        elem.style.top = top;
+                    }
+                    window.addEventListener("scroll", (() => {
+                        if (!elem) return;
+                        if (window.scrollY >= +appearingValue) elem.classList.add("_appearing"); else elem.classList.remove("_appearing");
+                    }));
+                }));
+            }
+            removeElemOnScreenSize();
+            function removeElemOnScreenSize() {
+                const screenSizeElement = Array.from(document.querySelectorAll("[data-screenWidth]"));
+                if (!screenSizeElement.length) return;
+                screenSizeElement.forEach((item => {
+                    item.style.visibility = !isPhoneSize ? "hidden" : "unset";
+                }));
+            }
+            const aboutMainImage = document.querySelector(".first-screen-about__main-image");
             if (aboutMainImage) {
                 gsapWithCSS.from(aboutMainImage, {
                     y: "110%",
@@ -14982,8 +15010,7 @@
                 delay: 1,
                 ease: "power4.out"
             });
-            //!+ главная форма
-                        gsapWithCSS.registerPlugin(ScrollTrigger_ScrollTrigger);
+            gsapWithCSS.registerPlugin(ScrollTrigger_ScrollTrigger);
             const formBackground = document.querySelector(".main-form__background img");
             if (formBackground) gsapWithCSS.from(formBackground, {
                 scrollTrigger: {
@@ -15136,8 +15163,7 @@
                     delay: 2
                 });
             }
-            //!+ РАБОТА С ФОРМАМИ
-                        const forms = document.forms;
+            const forms = document.forms;
             if (forms.length) Array.from(forms).forEach((form => {
                 const fn = form.querySelector("input[required]");
                 if (fn) setTimeout((function() {
@@ -15173,8 +15199,7 @@
                     submitForm(event.target, filesList);
                 }));
             }));
-            //!+ валидация форм
-                        function validateForm(form, validate, telInput) {
+            function validateForm(form, validate, telInput) {
                 if (form.name) validate.addField("#name", [ {
                     rule: "required",
                     errorMessage: "Имя обязательно"
@@ -15255,10 +15280,11 @@
                     form.reset();
                 }
             }
-            let isCityAvailable = false;
-            let contactsElement;
-            const isPhoneSize = window.matchMedia("(max-width: 1024px)").matches;
+            const inaccessiblePages = [ "advertising-department" ];
+            const isAvaliableURI = !inaccessiblePages.some((href => location.href.includes(href)));
             function insertCityElement(targetSelector, content, position) {
+                let contactsElement;
+                let isCityAvailable = false;
                 const targetElement = document.querySelector(targetSelector);
                 if (!targetElement) return;
                 const insertingElement = isPhoneSize ? `\n\t\t\t\t\t<div class="header__city"><span class='_icon-home3'></span>${content}</div>\n\t\t\t\t` : `\n\t\t<div class="header__row header__row_right _text-bright">\n\t\t\t\t<div class="header__city"><span class='_icon-home3'></span>${content}</div>\n\t\t\t\t<div class="header__phone h3"><a href='tel:+73832989898'>+7 (383) 298 98 98</a></div>\n\t\t</div>`;
@@ -15272,28 +15298,33 @@
                         targetElement.insertAdjacentHTML(position, insertingElement);
                         isCityAvailable = true;
                         contactsElement = document.querySelector(".header__city").closest(".header__row");
-                    } else if (window.scrollY >= 400 && isCityAvailable && !isPhoneSize) {
+                    }
+                    if (window.scrollY >= 400 && isCityAvailable && !isPhoneSize) {
                         targetElement.removeChild(contactsElement);
                         isCityAvailable = false;
                     }
                 }));
             }
-            const targetElement = !isPhoneSize ? ".header__container" : ".menu__contacts";
+            const targetElement = isPhoneSize ? ".menu__contacts" : ".header__container";
             const position = isPhoneSize ? "afterBegin" : "beforeend";
-            ymaps.ready((function() {
-                const geolocation = ymaps.geolocation;
-                geolocation.get({
-                    provider: "213.110.97.151",
-                    mapStateAutoApply: true
-                }).then((function(result) {
-                    const city = result.geoObjects.get(0).properties.get("metaDataProperty.GeocoderMetaData.AddressDetails.Country.AdministrativeArea.SubAdministrativeArea.Locality.LocalityName").split(" ").at(-1);
-                    console.log(city);
-                    city ? insertCityElement(targetElement, city, position) : insertCityElement(targetElement, "Москва", position);
-                })).catch((error => {
+            provideUserCity();
+            async function provideUserCity() {
+                if (!isAvaliableURI) return;
+                try {
+                    await ymaps3.ready;
+                    const dataCoords = await ymaps3.geolocation.getPosition();
+                    if (!dataCoords) throw new Error("⛔ can't get coordinates");
+                    const dataGeoPosition = await ymaps3.search({
+                        text: dataCoords.coords
+                    });
+                    const city = dataGeoPosition[0].properties.description || "Москва";
+                    insertCityElement(targetElement, city, position);
+                    if (!dataGeoPosition) throw new Error("⛔there is coordinates, but can't get city. Set by default 'Москва'");
+                } catch (error) {
                     insertCityElement(targetElement, "Москва", position);
                     console.log(error);
-                }));
-            }));
+                }
+            }
         }));
         window["FLS"] = true;
         addLoadedClass();
