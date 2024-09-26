@@ -23,18 +23,56 @@ window.addEventListener('DOMContentLoaded', () => {
 		}
 	}
 
-	// добавление классов элементам при скроле на определенную величину
-	const appearingElement = document.querySelector('[data-appearing]');
+	//+ добавление классов элементам при скроле на определенную величину
 
-	window.addEventListener('scroll', () => {
-		if (!appearingElement) return;
+	addClassOnScroll();
+	function addClassOnScroll() {
+		const appearingElement = Array.from(document.querySelectorAll('[data-appearing]'));
+		if (!appearingElement.length) return;
 
-		if (window.scrollY > 800) {
-			appearingElement.classList.add('_appearing');
-		} else {
-			appearingElement.classList.remove('_appearing');
-		}
-	});
+		appearingElement.forEach((elem) => {
+			const appearingValue = elem.dataset.appearing || 800;
+
+			if (+appearingValue === 0) {
+				elem.classList.add('_appearing');
+				const position = elem.dataset.position || 'fixed';
+				const left = elem.dataset.left;
+				const right = elem.dataset.right;
+				const top = elem.dataset.top;
+				const bottom = elem.dataset.bottom;
+
+				elem.style.position = position;
+				left ? (elem.style.left = left + 'px') : null;
+				right ? (elem.style.right = right + 'px') : null;
+				top ? (elem.style.top = top + 'px') : null;
+				bottom ? (elem.style.bottom = bottom + 'px') : null;
+				elem.style.top = top;
+			}
+
+			window.addEventListener('scroll', () => {
+				if (!elem) return;
+
+				if (window.scrollY >= +appearingValue) {
+					elem.classList.add('_appearing');
+				} else {
+					elem.classList.remove('_appearing');
+				}
+			});
+		});
+	}
+
+	//+ удаление элементов на пк / мобилке
+
+	removeElemOnScreenSize();
+	function removeElemOnScreenSize() {
+		const screenSizeElement = Array.from(document.querySelectorAll('[data-screenWidth]'));
+
+		if (!screenSizeElement.length) return;
+
+		screenSizeElement.forEach((item) => {
+			item.style.visibility = !isPhoneSize ? 'hidden' : 'unset';
+		});
+	}
 
 	//+ GSAP АНИМАЦИИ
 
@@ -195,7 +233,7 @@ window.addEventListener('DOMContentLoaded', () => {
 		gsap.from(mainDecorBottom, {
 			x: '-=150',
 			y: '45vh',
-			scale: 0.5,
+			scale: 3,
 			duration: 6,
 			delay: 1,
 			ease: 'power4.out',
@@ -653,6 +691,10 @@ window.addEventListener('DOMContentLoaded', () => {
 
 	//+ display the user city
 
+	const inaccessiblePages = ['advertising-department'];
+
+	const isAvaliableURI = !inaccessiblePages.some((href) => location.href.includes(href));
+
 	function insertCityElement(targetSelector, content, position) {
 		let contactsElement;
 		let isCityAvailable = false;
@@ -714,19 +756,20 @@ window.addEventListener('DOMContentLoaded', () => {
 	// 		});
 	// });
 
-	main();
-	async function main() {
+	provideUserCity();
+	async function provideUserCity() {
+		if (!isAvaliableURI) return;
 		try {
 			await ymaps3.ready;
 
 			const dataCoords = await ymaps3.geolocation.getPosition();
-			console.log(dataCoords);
+			// console.log(dataCoords);
 			if (!dataCoords) throw new Error("⛔ can't get coordinates");
 
 			const dataGeoPosition = await ymaps3.search({
 				text: dataCoords.coords,
 			});
-			console.log(dataGeoPosition);
+			// console.log(dataGeoPosition);
 			const city = dataGeoPosition[0].properties.description || 'Москва';
 			insertCityElement(targetElement, city, position);
 			if (!dataGeoPosition) throw new Error("⛔there is coordinates, but can't get city. Set by default 'Москва'");
