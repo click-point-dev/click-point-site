@@ -7642,18 +7642,19 @@
             });
         }
         function initSliders() {
-            if (document.querySelector(".clients__slider")) new core(".clients__slider", {
+            if (document.querySelector(".clients__slider--main")) new core(".clients__slider--main", {
                 modules: [ Autoplay ],
                 autoplay: {
                     delay: 0,
-                    disableOnInteraction: false
+                    disableOnInteraction: false,
+                    pauseOnMouseEnter: false
                 },
                 loop: true,
                 breakpoints: {
                     340: {
                         slidesPerView: 3,
                         spaceBetween: 55,
-                        speed: 5e3
+                        speed: 15e3
                     },
                     450: {
                         slidesPerView: 6,
@@ -7671,7 +7672,7 @@
                         speed: 4e3
                     },
                     1280: {
-                        slidesPerView: 10,
+                        slidesPerView: 9,
                         spaceBetween: 70,
                         speed: 4e3
                     },
@@ -14827,13 +14828,17 @@
             return data;
         }
         const isPhoneSize = window.matchMedia("(max-width: 1024px)").matches;
+        let USER_CITY = localStorage.getItem("_userCity") || null;
+        setTimeout((() => {
+            if (USER_CITY && localStorage.getItem("_userCity")) localStorage.removeItem("_userCity");
+        }), 1e3 * 2);
+        function script_addClass(element, className) {
+            if (element) element.classList.add(className);
+        }
+        function script_removeClass(element, className) {
+            if (element) element.classList.remove(className);
+        }
         window.addEventListener("DOMContentLoaded", (() => {
-            function addClass(element, className) {
-                if (element) element.classList.add(className);
-            }
-            function removeClass(element, className) {
-                if (element) element.classList.remove(className);
-            }
             addClassOnScroll();
             function addClassOnScroll() {
                 const appearingElement = Array.from(document.querySelectorAll("[data-appearing]"));
@@ -15005,7 +15010,7 @@
             if (mainDecorBottom) gsapWithCSS.from(mainDecorBottom, {
                 x: "-=150",
                 y: "45vh",
-                scale: .5,
+                scale: 3,
                 duration: 6,
                 delay: 1,
                 ease: "power4.out"
@@ -15264,7 +15269,7 @@
                 if (isVacancy) formData.set("type", "vacancy");
                 formData.set("title", `${isVacancy ? `Отклик на вакансию: ${vacancyTitle}` : `Заявка с сайта ${window.location.hostname}`}`);
                 try {
-                    addClass(loader, "visible");
+                    script_addClass(loader, "visible");
                     const res = await fetch("../request.php", {
                         method,
                         body: formData
@@ -15276,18 +15281,96 @@
                     modules_flsModules.popup.open("#popup-reject");
                 } finally {
                     if (filesPlaceholder) mountFilesList([], filesPlaceholder);
-                    removeClass(loader, "visible");
+                    script_removeClass(loader, "visible");
                     form.reset();
                 }
             }
-            const inaccessiblePages = [ "advertising-department" ];
+            const inaccessiblePages = [ "advertising-department", "cases" ];
             const isAvaliableURI = !inaccessiblePages.some((href => location.href.includes(href)));
+            const clientsCityData = {
+                chelyabinsk: {
+                    imageCount: 15,
+                    map: [ "Челябинск", "Челябинская область" ]
+                },
+                default: {
+                    imageCount: 39,
+                    map: [ "", "" ]
+                },
+                ekaterinburg: {
+                    imageCount: 19,
+                    map: [ "Екатеринбург", "Свердловская область" ]
+                },
+                kazan: {
+                    imageCount: 18,
+                    map: [ "Казань", "Казанская область", "Республика Татарстан (Татарстан)" ]
+                },
+                krasnodar: {
+                    imageCount: 16,
+                    map: [ "Краснодар", "Краснодарский край" ]
+                },
+                krasnoyarsk: {
+                    imageCount: 19,
+                    map: [ "Красноярск", "Красноярский край" ]
+                },
+                moskva: {
+                    imageCount: 21,
+                    map: [ "Москва", "Московская область" ]
+                },
+                nizhniinovgorod: {
+                    imageCount: 18,
+                    map: [ "Нижний Новгород", "Нижегородская область" ]
+                },
+                novosibirsk: {
+                    imageCount: 9,
+                    map: [ "Новосибирск", "Новосибирская область" ]
+                },
+                omsk: {
+                    imageCount: 14,
+                    map: [ "Омск", "Омская область" ]
+                },
+                rostovnadonu: {
+                    imageCount: 17,
+                    map: [ "Ростов-на-Дону", "Ростовская область" ]
+                },
+                samara: {
+                    imageCount: 15,
+                    map: [ "Самара", "Самарская область", "городской округ Самара" ]
+                },
+                sanktpeterburg: {
+                    imageCount: 14,
+                    map: [ "Санкт-Петербург", "Ленинградская область" ]
+                },
+                ufa: {
+                    imageCount: 16,
+                    map: [ "Уфа", "Республика Башкортостан" ]
+                }
+            };
+            const targetElement = isPhoneSize ? ".menu__contacts" : ".header__container";
+            const insertPosition = isPhoneSize ? "afterBegin" : "beforeend";
+            const defaultUserCity = "Москва";
+            displayUserCityContent();
+            async function displayUserCityContent() {
+                try {
+                    if (USER_CITY) insertCityElement(targetElement, USER_CITY, insertPosition);
+                    if (!USER_CITY) {
+                        USER_CITY = await provideUserCity();
+                        localStorage.setItem("_userCity", USER_CITY);
+                        insertCityElement(targetElement, USER_CITY, insertPosition);
+                    }
+                    displayClientsWithGeoCoding(USER_CITY);
+                    return USER_CITY;
+                } catch (error) {
+                    console.error(error);
+                    insertCityElement(targetElement, defaultUserCity, insertPosition);
+                }
+            }
             function insertCityElement(targetSelector, content, position) {
+                if (!isAvaliableURI) return;
                 let contactsElement;
                 let isCityAvailable = false;
                 const targetElement = document.querySelector(targetSelector);
                 if (!targetElement) return;
-                const insertingElement = isPhoneSize ? `\n\t\t\t\t\t<div class="header__city"><span class='_icon-home3'></span>${content}</div>\n\t\t\t\t` : `\n\t\t<div class="header__row header__row_right _text-bright">\n\t\t\t\t<div class="header__city"><span class='_icon-home3'></span>${content}</div>\n\t\t\t\t<div class="header__phone h3"><a href='tel:+73832989898'>+7 (383) 298 98 98</a></div>\n\t\t</div>`;
+                const insertingElement = isPhoneSize ? `\n\t\t\t\t\t<div class="header__city"><span class='_icon-home3'></span>${content}</div>\n\t\t\t\t` : `\n\t\t\t\t\t<div class="header__row header__row_right _text-bright">\n\t\t\t\t\t\t\t<div class="header__city"><span class='_icon-home3'></span>${content}</div>\n\t\t\t\t\t\t\t<div class="header__phone h3"><a href='tel:+73832989898'>+7 (383) 298 98 98</a></div>\n\t\t\t\t\t</div>`;
                 if (window.scrollY < 400 || isPhoneSize) {
                     targetElement.insertAdjacentHTML(position, insertingElement);
                     isCityAvailable = true;
@@ -15305,24 +15388,59 @@
                     }
                 }));
             }
-            const targetElement = isPhoneSize ? ".menu__contacts" : ".header__container";
-            const position = isPhoneSize ? "afterBegin" : "beforeend";
-            provideUserCity();
             async function provideUserCity() {
-                if (!isAvaliableURI) return;
                 try {
                     await ymaps3.ready;
                     const dataCoords = await ymaps3.geolocation.getPosition();
-                    if (!dataCoords) throw new Error("⛔ can't get coordinates");
+                    if (!dataCoords) throw new Error("⛔ can't get coordinates. Set by default 'Москва");
                     const dataGeoPosition = await ymaps3.search({
                         text: dataCoords.coords
                     });
-                    const city = dataGeoPosition[0].properties.description || "Москва";
-                    insertCityElement(targetElement, city, position);
+                    const city = dataGeoPosition[0].properties.description.split(", ").at(-1);
                     if (!dataGeoPosition) throw new Error("⛔there is coordinates, but can't get city. Set by default 'Москва'");
+                    return city;
                 } catch (error) {
-                    insertCityElement(targetElement, "Москва", position);
-                    console.log(error);
+                    console.error(error);
+                    return "Москва";
+                }
+            }
+            function displayClientsWithGeoCoding(user_city) {
+                if (isAvaliableURI) return;
+                console.log("displayClientsWithGeoCoding start with city: ", user_city);
+                const isBigCity = Object.entries(clientsCityData).some((([_, {map}]) => {
+                    const normalizeMap = map.map((item => item.toLowerCase().trim()));
+                    return normalizeMap.indexOf(USER_CITY.toLowerCase().trim()) >= 0;
+                })) || false;
+                const clientsBlock = document.querySelector(".clients__content--ad-department");
+                if (!clientsBlock) return;
+                clientsBlock.insertAdjacentHTML("beforeend", `<div class="clients__slider swiper clients__slider--ad-department">\n\t\t\t\t<div class="clients__wrapper swiper-wrapper"></div>\n\t\t\t</div>`);
+                const clientsSlider = clientsBlock.querySelector(".clients__slider--ad-department");
+                function toFormClientsSlides(city, imageCount) {
+                    let clientSlideBlock = "";
+                    for (let i = 0; i < imageCount; i++) clientSlideBlock += `<div class="clients__slide swiper-slide">\n\t\t\t\t<img class="clients__image" src="img/clients/${city}/client-${i + 1}.png" alt="логотип компании клиента"/>\n\t\t\t\t</div>`;
+                    return clientSlideBlock;
+                }
+                if (isBigCity) Object.entries(clientsCityData).forEach((([city, {imageCount, map}]) => {
+                    const normalizeMap = map.map((item => item.toLowerCase().trim()));
+                    if (normalizeMap.indexOf(user_city.toLowerCase().trim()) >= 0) for (let i = 0; i < imageCount; i++) clientsSlider.querySelector(".clients__wrapper").insertAdjacentHTML("beforeend", toFormClientsSlides(city, imageCount));
+                })); else for (let i = 0; i < clientsCityData.default.imageCount; i++) clientsSlider.querySelector(".clients__wrapper").insertAdjacentHTML("beforeend", toFormClientsSlides("default", clientsCityData.default.imageCount));
+                const clientSliderRevers = clientsSlider.cloneNode(true);
+                clientSliderRevers.setAttribute("dir", "RTL");
+                clientsSlider.after(clientSliderRevers);
+                initSlidersWithGeoTarget();
+                function initSlidersWithGeoTarget() {
+                    if (clientsBlock.querySelector(".clients__slider--ad-department")) new core(".clients__slider--ad-department", {
+                        modules: [ Autoplay ],
+                        speed: 6e3,
+                        spaceBetween: 60,
+                        slidesPerView: "auto",
+                        autoplay: {
+                            delay: 0,
+                            disableOnInteraction: false,
+                            pauseOnMouseEnter: false
+                        },
+                        loop: true
+                    });
                 }
             }
         }));
