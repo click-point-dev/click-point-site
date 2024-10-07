@@ -106,7 +106,7 @@ export let _slideUp = (target, duration = 500, showmore = 0) => {
 					detail: {
 						target: target,
 					},
-				})
+				}),
 			);
 		}, duration);
 	}
@@ -143,7 +143,7 @@ export let _slideDown = (target, duration = 500, showmore = 0) => {
 					detail: {
 						target: target,
 					},
-				})
+				}),
 			);
 		}, duration);
 	}
@@ -449,7 +449,7 @@ export function menuInit() {
 		document.addEventListener('click', function (e) {
 			if (bodyLockStatus && e.target.closest('.icon-menu')) {
 				bodyLockToggle();
-				console.log('перключение из бургера');
+				// console.log('перключение из бургера');
 				document.documentElement.classList.toggle('menu-open');
 			}
 		});
@@ -457,12 +457,10 @@ export function menuInit() {
 }
 export function menuOpen() {
 	bodyLock();
-	console.log('заблокировано из бургера');
 	document.documentElement.classList.add('menu-open');
 }
 export function menuClose() {
 	bodyUnlock();
-	console.log('разблокировано из бургера');
 	document.documentElement.classList.remove('menu-open');
 }
 // Модуль "показать еще" =======================================================================================================================================================================================================================
@@ -513,10 +511,10 @@ export function showMore() {
 			let showMoreContent = showMoreBlock.querySelectorAll('[data-showmore-content]');
 			let showMoreButton = showMoreBlock.querySelectorAll('[data-showmore-button]');
 			showMoreContent = Array.from(showMoreContent).filter(
-				(item) => item.closest('[data-showmore]') === showMoreBlock
+				(item) => item.closest('[data-showmore]') === showMoreBlock,
 			)[0];
 			showMoreButton = Array.from(showMoreButton).filter(
-				(item) => item.closest('[data-showmore]') === showMoreBlock
+				(item) => item.closest('[data-showmore]') === showMoreBlock,
 			)[0];
 			const hiddenHeight = getHeight(showMoreBlock, showMoreContent);
 			if (matchMedia.matches || !matchMedia) {
