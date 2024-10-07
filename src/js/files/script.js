@@ -1,30 +1,44 @@
-// Подключение списка активных модулей
 import { flsModules } from './modules.js';
 import { gsap } from 'gsap';
-// import CustomEase from 'gsap/CustomEase.js';
 import { ScrollTrigger } from 'gsap/ScrollTrigger.js';
 import JustValidate from 'just-validate';
 import { getVacancyTitle } from '../libs/getVacancyTitle.js';
+import Swiper, { Autoplay } from 'swiper';
+import '../../scss/base/swiper.scss';
 
-//global
+//+ GLOBAL
 const isPhoneSize = window.matchMedia('(max-width: 1024px)').matches;
 
+//++ determining the user's city
+let USER_CITY = localStorage.getItem('_userCity') || null;
+// reset userCity hash
+setTimeout(
+	() => {
+		if (USER_CITY && localStorage.getItem('_userCity')) {
+			localStorage.removeItem('_userCity');
+			// console.log('_userCity cleared');
+		}
+	},
+	1000 * 60 * 60,
+);
+
+//+ ХЭЛЕПЕРЫ
+function addClass(element, className) {
+	if (element) {
+		element.classList.add(className);
+	}
+}
+
+function removeClass(element, className) {
+	if (element) {
+		element.classList.remove(className);
+	}
+}
+
+///==========================================
+
 window.addEventListener('DOMContentLoaded', () => {
-	//+хэлеперы
-	function addClass(element, className) {
-		if (element) {
-			element.classList.add(className);
-		}
-	}
-
-	function removeClass(element, className) {
-		if (element) {
-			element.classList.remove(className);
-		}
-	}
-
-	//+ добавление классов элементам при скроле на определенную величину
-
+	//+ ДОБАВЛЕНИЕ КЛАССОВ ЭЛЕМЕНТАМ ПРИ СКРОЛЕ НА ОПРЕДЕЛЕННУЮ ВЕЛИЧИНУ
 	addClassOnScroll();
 	function addClassOnScroll() {
 		const appearingElement = Array.from(document.querySelectorAll('[data-appearing]'));
@@ -49,6 +63,7 @@ window.addEventListener('DOMContentLoaded', () => {
 				elem.style.top = top;
 			}
 
+			//todo: remove eventListener after deleting element
 			window.addEventListener('scroll', () => {
 				if (!elem) return;
 
@@ -61,7 +76,8 @@ window.addEventListener('DOMContentLoaded', () => {
 		});
 	}
 
-	//+ удаление элементов на пк / мобилке
+	//+ УДАЛЕНИЕ ЭЛЕМЕНТОВ НА ПК / МОБИЛКЕ
+	//todo: refactor function with screen width argument
 
 	removeElemOnScreenSize();
 	function removeElemOnScreenSize() {
@@ -682,20 +698,58 @@ window.addEventListener('DOMContentLoaded', () => {
 		}
 	}
 
-	//+ show full-width-menu-list
+	//+ SHOW FULL-WIDTH-MENU-LIST
 
 	// const showItem = document.querySelector('.full-screen-menu-list');
 	// if (showItem) {
 	// 	console.log(showItem);
 	// }
 
-	//+ display the user city
-
-	const inaccessiblePages = ['advertising-department'];
-
+	//+ DISPLAY THE USER CITY CONTENT
+	const inaccessiblePages = ['advertising-department', 'cases'];
 	const isAvaliableURI = !inaccessiblePages.some((href) => location.href.includes(href));
 
+	const clientsCityData = {
+		chelyabinsk: { imageCount: 15, map: ['Челябинск', 'Челябинская область'] },
+		default: { imageCount: 39, map: ['', ''] },
+		ekaterinburg: { imageCount: 19, map: ['Екатеринбург', 'Свердловская область'] },
+		kazan: { imageCount: 18, map: ['Казань', 'Казанская область', 'Республика Татарстан (Татарстан)'] },
+		krasnodar: { imageCount: 16, map: ['Краснодар', 'Краснодарский край'] },
+		krasnoyarsk: { imageCount: 19, map: ['Красноярск', 'Красноярский край'] },
+		moskva: { imageCount: 21, map: ['Москва', 'Московская область'] },
+		nizhniinovgorod: { imageCount: 18, map: ['Нижний Новгород', 'Нижегородская область'] },
+		novosibirsk: { imageCount: 9, map: ['Новосибирск', 'Новосибирская область'] },
+		omsk: { imageCount: 14, map: ['Омск', 'Омская область'] },
+		rostovnadonu: { imageCount: 17, map: ['Ростов-на-Дону', 'Ростовская область'] },
+		samara: { imageCount: 15, map: ['Самара', 'Самарская область', 'городской округ Самара'] },
+		sanktpeterburg: { imageCount: 14, map: ['Санкт-Петербург', 'Ленинградская область'] },
+		ufa: { imageCount: 16, map: ['Уфа', 'Республика Башкортостан'] },
+	};
+
+	const targetElement = isPhoneSize ? '.menu__contacts' : '.header__container';
+	const insertPosition = isPhoneSize ? 'afterBegin' : 'beforeend';
+	const defaultUserCity = 'Москва';
+
+	displayUserCityContent();
+	async function displayUserCityContent() {
+		try {
+			if (USER_CITY) insertCityElement(targetElement, USER_CITY, insertPosition);
+			if (!USER_CITY) {
+				USER_CITY = await provideUserCity();
+				localStorage.setItem('_userCity', USER_CITY);
+				insertCityElement(targetElement, USER_CITY, insertPosition);
+			}
+			displayClientsWithGeoCoding(USER_CITY);
+			return USER_CITY;
+		} catch (error) {
+			console.error(error);
+			insertCityElement(targetElement, defaultUserCity, insertPosition);
+		}
+	}
+
 	function insertCityElement(targetSelector, content, position) {
+		if (!isAvaliableURI) return;
+
 		let contactsElement;
 		let isCityAvailable = false;
 		const targetElement = document.querySelector(targetSelector);
@@ -706,10 +760,10 @@ window.addEventListener('DOMContentLoaded', () => {
 					<div class="header__city"><span class='_icon-home3'></span>${content}</div>
 				`
 			: `
-		<div class="header__row header__row_right _text-bright">
-				<div class="header__city"><span class='_icon-home3'></span>${content}</div>
-				<div class="header__phone h3"><a href='tel:+73832989898'>+7 (383) 298 98 98</a></div>
-		</div>`;
+					<div class="header__row header__row_right _text-bright">
+							<div class="header__city"><span class='_icon-home3'></span>${content}</div>
+							<div class="header__phone h3"><a href='tel:+73832989898'>+7 (383) 298 98 98</a></div>
+					</div>`;
 
 		if (window.scrollY < 400 || isPhoneSize) {
 			targetElement.insertAdjacentHTML(position, insertingElement);
@@ -730,35 +784,7 @@ window.addEventListener('DOMContentLoaded', () => {
 		});
 	}
 
-	const targetElement = isPhoneSize ? '.menu__contacts' : '.header__container';
-	const position = isPhoneSize ? 'afterBegin' : 'beforeend';
-
-	// ymaps.ready(function () {
-	// 	const geolocation = ymaps.geolocation;
-	// 	geolocation
-	// 		.get({
-	// 			provider: '213.110.97.151',
-	// 			mapStateAutoApply: true,
-	// 		})
-	// 		.then(function (result) {
-	// 			const city = result.geoObjects
-	// 				.get(0)
-	// 				.properties.get(
-	// 					'metaDataProperty.GeocoderMetaData.AddressDetails.Country.AdministrativeArea.SubAdministrativeArea.Locality.LocalityName',
-	// 				);
-
-	// 			console.log(city);
-	// 			city ? insertCityElement(targetElement, city, position) : insertCityElement(targetElement, 'Москва', position);
-	// 		})
-	// 		.catch((error) => {
-	// 			insertCityElement(targetElement, 'Москва', position);
-	// 			console.log(error);
-	// 		});
-	// });
-
-	provideUserCity();
 	async function provideUserCity() {
-		if (!isAvaliableURI) return;
 		try {
 			await ymaps3.ready;
 
@@ -768,40 +794,93 @@ window.addEventListener('DOMContentLoaded', () => {
 
 			const dataGeoPosition = await ymaps3.search({
 				text: dataCoords.coords,
+				language: 'en',
 			});
-			// console.log(dataGeoPosition);
-			const city = dataGeoPosition[0].properties.description || 'Москва';
-			insertCityElement(targetElement, city, position);
+			// console.log('call api', dataGeoPosition);
+			const city = dataGeoPosition[0].properties.description.split(', ').at(-1);
+
 			if (!dataGeoPosition) throw new Error("⛔there is coordinates, but can't get city. Set by default 'Москва'");
+			return city;
 		} catch (error) {
-			insertCityElement(targetElement, 'Москва', position);
-			console.log(error);
+			console.error(error);
+		}
+	}
+
+	//++ insert clients on advertising department page
+
+	function displayClientsWithGeoCoding(user_city) {
+		if (isAvaliableURI) return;
+		// console.log('displayClientsWithGeoCoding start with city: ', user_city);
+
+		const isBigCity =
+			Object.entries(clientsCityData).some(([_, { map }]) => {
+				const normalizeMap = map.map((item) => item.toLowerCase().trim());
+				return normalizeMap.indexOf(USER_CITY.toLowerCase().trim()) >= 0;
+			}) || false;
+		// console.log(isBigCity);
+
+		const clientsBlock = document.querySelector('.clients__content--ad-department');
+		if (!clientsBlock) return;
+
+		clientsBlock.insertAdjacentHTML(
+			'beforeend',
+			`<div class="clients__slider swiper clients__slider--ad-department">
+				<div class="clients__wrapper swiper-wrapper"></div>
+			</div>`,
+		);
+		const clientsSlider = clientsBlock.querySelector('.clients__slider--ad-department');
+
+		function toFormClientsSlides(city, imageCount) {
+			let clientSlideBlock = '';
+			for (let i = 0; i < imageCount; i++) {
+				clientSlideBlock += `<div class="clients__slide swiper-slide">
+				<img class="clients__image" src="img/clients/${city}/client-${i + 1}.png" alt="логотип компании клиента"/>
+				</div>`;
+			}
+			return clientSlideBlock;
+		}
+		// console.log(Object.entries(clientsData));
+
+		if (isBigCity) {
+			Object.entries(clientsCityData).forEach(([city, { imageCount, map }]) => {
+				const normalizeMap = map.map((item) => item.toLowerCase().trim());
+
+				if (normalizeMap.indexOf(user_city.toLowerCase().trim()) >= 0) {
+					for (let i = 0; i < imageCount; i++) {
+						clientsSlider
+							.querySelector('.clients__wrapper')
+							.insertAdjacentHTML('beforeend', toFormClientsSlides(city, imageCount));
+					}
+				}
+			});
+		} else {
+			for (let i = 0; i < clientsCityData.default.imageCount; i++) {
+				clientsSlider
+					.querySelector('.clients__wrapper')
+					.insertAdjacentHTML('beforeend', toFormClientsSlides('default', clientsCityData.default.imageCount));
+			}
 		}
 
-		// city.then((data) => {
-		// 	const city = ymaps3.search({
-		// 		text: data.coords,
-		// 	});
+		const clientSliderRevers = clientsSlider.cloneNode(true);
+		clientSliderRevers.setAttribute('dir', 'RTL');
+		clientsSlider.after(clientSliderRevers);
 
-		// 	city.then((result) => {
-		// 		console.log(result);
-
-		// 		const city = result[0].properties.description || 'Москва';
-		// 		console.log(city);
-		// 		insertCityElement(targetElement, city, position);
-		// 	});
-		// });
-
-		// console.log(ymaps3);
-
-		// Initialize the map
-		// map = new YMap(
-		// 	// Pass the link to the HTMLElement of the container
-		// 	document.getElementById('app'),
-		// 	// Pass the map initialization parameters
-		// 	{ location: LOCATION, showScaleInCopyrights: true },
-		// 	// Add a map scheme layer
-		// 	[new YMapDefaultSchemeLayer({})],
-		// );
+		initSlidersWithGeoTarget();
+		function initSlidersWithGeoTarget() {
+			if (clientsBlock.querySelector('.clients__slider--ad-department')) {
+				new Swiper('.clients__slider--ad-department', {
+					modules: [Autoplay],
+					speed: 6000,
+					spaceBetween: 60,
+					slidesPerView: 'auto',
+					autoplay: {
+						delay: 0,
+						disableOnInteraction: false,
+						pauseOnMouseEnter: false,
+					},
+					loop: true,
+				});
+			}
+		}
 	}
 });
