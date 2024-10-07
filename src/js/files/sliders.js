@@ -27,13 +27,13 @@ import '../../scss/base/swiper.scss';
 
 // Инициализация слайдеров
 function initSliders() {
-	if (document.querySelector('.clients__slider')) {
-		new Swiper('.clients__slider', {
+	if (document.querySelector('.clients__slider--main')) {
+		new Swiper('.clients__slider--main', {
 			modules: [Autoplay],
 			autoplay: {
 				delay: 0,
 				disableOnInteraction: false,
-				// pauseOnMouseEnter: false,
+				pauseOnMouseEnter: false,
 			},
 			// speed: 4000,
 			loop: true,
@@ -42,7 +42,7 @@ function initSliders() {
 				340: {
 					slidesPerView: 3,
 					spaceBetween: 55,
-					speed: 5000,
+					speed: 15000,
 					// autoplay: false,
 					// freeMode: {
 					// 	enabled: true,
@@ -78,7 +78,7 @@ function initSliders() {
 					// },
 				},
 				1280: {
-					slidesPerView: 10,
+					slidesPerView: 9,
 					spaceBetween: 70,
 					speed: 4000,
 					// freeMode: {
