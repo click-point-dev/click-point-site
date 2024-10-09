@@ -12,15 +12,12 @@ const isPhoneSize = window.matchMedia('(max-width: 1024px)').matches;
 //++ determining the user's city
 let USER_CITY = localStorage.getItem('_userCity') || null;
 // reset userCity hash
-setTimeout(
-	() => {
-		if (USER_CITY && localStorage.getItem('_userCity')) {
-			localStorage.removeItem('_userCity');
-			// console.log('_userCity cleared');
-		}
-	},
-	1000 * 60 * 60,
-);
+setTimeout(() => {
+	if (USER_CITY && localStorage.getItem('_userCity')) {
+		localStorage.removeItem('_userCity');
+		// console.log('_userCity cleared');
+	}
+}, 1000 * 2);
 
 //+ ХЭЛЕПЕРЫ
 function addClass(element, className) {
@@ -706,25 +703,8 @@ window.addEventListener('DOMContentLoaded', () => {
 	// }
 
 	//+ DISPLAY THE USER CITY CONTENT
-	const inaccessiblePages = ['advertising-department', 'cases'];
+	const inaccessiblePages = ['department', 'cases'];
 	const isAvaliableURI = !inaccessiblePages.some((href) => location.href.includes(href));
-
-	const clientsCityData = {
-		chelyabinsk: { imageCount: 15, map: ['Челябинск', 'Челябинская область'] },
-		default: { imageCount: 39, map: ['', ''] },
-		ekaterinburg: { imageCount: 19, map: ['Екатеринбург', 'Свердловская область'] },
-		kazan: { imageCount: 18, map: ['Казань', 'Казанская область', 'Республика Татарстан (Татарстан)'] },
-		krasnodar: { imageCount: 16, map: ['Краснодар', 'Краснодарский край'] },
-		krasnoyarsk: { imageCount: 19, map: ['Красноярск', 'Красноярский край'] },
-		moskva: { imageCount: 21, map: ['Москва', 'Московская область'] },
-		nizhniinovgorod: { imageCount: 18, map: ['Нижний Новгород', 'Нижегородская область'] },
-		novosibirsk: { imageCount: 9, map: ['Новосибирск', 'Новосибирская область'] },
-		omsk: { imageCount: 14, map: ['Омск', 'Омская область'] },
-		rostovnadonu: { imageCount: 17, map: ['Ростов-на-Дону', 'Ростовская область'] },
-		samara: { imageCount: 15, map: ['Самара', 'Самарская область', 'городской округ Самара'] },
-		sanktpeterburg: { imageCount: 14, map: ['Санкт-Петербург', 'Ленинградская область'] },
-		ufa: { imageCount: 16, map: ['Уфа', 'Республика Башкортостан'] },
-	};
 
 	const targetElement = isPhoneSize ? '.menu__contacts' : '.header__container';
 	const insertPosition = isPhoneSize ? 'afterBegin' : 'beforeend';
@@ -739,8 +719,6 @@ window.addEventListener('DOMContentLoaded', () => {
 				localStorage.setItem('_userCity', USER_CITY);
 				insertCityElement(targetElement, USER_CITY, insertPosition);
 			}
-			displayClientsWithGeoCoding(USER_CITY);
-			return USER_CITY;
 		} catch (error) {
 			console.error(error);
 			insertCityElement(targetElement, defaultUserCity, insertPosition);
@@ -790,97 +768,114 @@ window.addEventListener('DOMContentLoaded', () => {
 
 			const dataCoords = await ymaps3.geolocation.getPosition();
 			// console.log(dataCoords);
-			if (!dataCoords) throw new Error("⛔ can't get coordinates");
+			if (!dataCoords) throw new Error("⛔ can't get coordinates. Set by default 'Москва");
 
 			const dataGeoPosition = await ymaps3.search({
 				text: dataCoords.coords,
-				language: 'en',
 			});
-			// console.log('call api', dataGeoPosition);
 			const city = dataGeoPosition[0].properties.description.split(', ').at(-1);
 
 			if (!dataGeoPosition) throw new Error("⛔there is coordinates, but can't get city. Set by default 'Москва'");
+			// console.log('call api', dataGeoPosition);
 			return city;
 		} catch (error) {
 			console.error(error);
+			return 'Москва';
 		}
 	}
 
-	//++ insert clients on advertising department page
+	//++ insert clients on advertising department page (заепался делать никому ненужную хрень - делаем разными страницами)
 
-	function displayClientsWithGeoCoding(user_city) {
-		if (isAvaliableURI) return;
-		// console.log('displayClientsWithGeoCoding start with city: ', user_city);
+	// const clientsCityData = {
+	// 	chelyabinsk: { imageCount: 15, map: ['Челябинск', 'Челябинская область'] },
+	// 	default: { imageCount: 39, map: ['', ''] },
+	// 	ekaterinburg: { imageCount: 19, map: ['Екатеринбург', 'Свердловская область'] },
+	// 	kazan: { imageCount: 18, map: ['Казань', 'Казанская область', 'Республика Татарстан (Татарстан)'] },
+	// 	krasnodar: { imageCount: 16, map: ['Краснодар', 'Краснодарский край'] },
+	// 	krasnoyarsk: { imageCount: 19, map: ['Красноярск', 'Красноярский край'] },
+	// 	moskva: { imageCount: 21, map: ['Москва', 'Московская область'] },
+	// 	nizhniinovgorod: { imageCount: 18, map: ['Нижний Новгород', 'Нижегородская область'] },
+	// 	novosibirsk: { imageCount: 9, map: ['Новосибирск', 'Новосибирская область'] },
+	// 	omsk: { imageCount: 14, map: ['Омск', 'Омская область'] },
+	// 	rostovnadonu: { imageCount: 17, map: ['Ростов-на-Дону', 'Ростовская область'] },
+	// 	samara: { imageCount: 15, map: ['Самара', 'Самарская область', 'городской округ Самара'] },
+	// 	sanktpeterburg: { imageCount: 14, map: ['Санкт-Петербург', 'Ленинградская область'] },
+	// 	ufa: { imageCount: 16, map: ['Уфа', 'Республика Башкортостан'] },
+	// };
 
-		const isBigCity =
-			Object.entries(clientsCityData).some(([_, { map }]) => {
-				const normalizeMap = map.map((item) => item.toLowerCase().trim());
-				return normalizeMap.indexOf(USER_CITY.toLowerCase().trim()) >= 0;
-			}) || false;
-		// console.log(isBigCity);
+	// function displayClientsWithGeoCoding(user_city) {
+	// 	if (isAvaliableURI) return;
+	// 	console.log('displayClientsWithGeoCoding start with city: ', user_city);
 
-		const clientsBlock = document.querySelector('.clients__content--ad-department');
-		if (!clientsBlock) return;
+	// 	const isBigCity =
+	// 		Object.entries(clientsCityData).some(([_, { map }]) => {
+	// 			const normalizeMap = map.map((item) => item.toLowerCase().trim());
+	// 			return normalizeMap.indexOf(USER_CITY.toLowerCase().trim()) >= 0;
+	// 		}) || false;
+	// 	// console.log(isBigCity);
 
-		clientsBlock.insertAdjacentHTML(
-			'beforeend',
-			`<div class="clients__slider swiper clients__slider--ad-department">
-				<div class="clients__wrapper swiper-wrapper"></div>
-			</div>`,
-		);
-		const clientsSlider = clientsBlock.querySelector('.clients__slider--ad-department');
+	// 	const clientsBlock = document.querySelector('.clients__content--ad-department');
+	// 	if (!clientsBlock) return;
 
-		function toFormClientsSlides(city, imageCount) {
-			let clientSlideBlock = '';
-			for (let i = 0; i < imageCount; i++) {
-				clientSlideBlock += `<div class="clients__slide swiper-slide">
-				<img class="clients__image" src="img/clients/${city}/client-${i + 1}.png" alt="логотип компании клиента"/>
-				</div>`;
-			}
-			return clientSlideBlock;
-		}
-		// console.log(Object.entries(clientsData));
+	// 	clientsBlock.insertAdjacentHTML(
+	// 		'beforeend',
+	// 		`<div class="clients__slider swiper clients__slider--ad-department">
+	// 			<div class="clients__wrapper swiper-wrapper"></div>
+	// 		</div>`,
+	// 	);
+	// 	const clientsSlider = clientsBlock.querySelector('.clients__slider--ad-department');
 
-		if (isBigCity) {
-			Object.entries(clientsCityData).forEach(([city, { imageCount, map }]) => {
-				const normalizeMap = map.map((item) => item.toLowerCase().trim());
+	// 	function toFormClientsSlides(city, imageCount) {
+	// 		let clientSlideBlock = '';
+	// 		for (let i = 0; i < imageCount; i++) {
+	// 			clientSlideBlock += `<div class="clients__slide swiper-slide">
+	// 			<img class="clients__image" src="img/clients/${city}/client-${i + 1}.png" alt="логотип компании клиента"/>
+	// 			</div>`;
+	// 		}
+	// 		return clientSlideBlock;
+	// 	}
+	// 	// console.log(Object.entries(clientsData));
 
-				if (normalizeMap.indexOf(user_city.toLowerCase().trim()) >= 0) {
-					for (let i = 0; i < imageCount; i++) {
-						clientsSlider
-							.querySelector('.clients__wrapper')
-							.insertAdjacentHTML('beforeend', toFormClientsSlides(city, imageCount));
-					}
-				}
-			});
-		} else {
-			for (let i = 0; i < clientsCityData.default.imageCount; i++) {
-				clientsSlider
-					.querySelector('.clients__wrapper')
-					.insertAdjacentHTML('beforeend', toFormClientsSlides('default', clientsCityData.default.imageCount));
-			}
-		}
+	// 	if (isBigCity) {
+	// 		Object.entries(clientsCityData).forEach(([city, { imageCount, map }]) => {
+	// 			const normalizeMap = map.map((item) => item.toLowerCase().trim());
 
-		const clientSliderRevers = clientsSlider.cloneNode(true);
-		clientSliderRevers.setAttribute('dir', 'RTL');
-		clientsSlider.after(clientSliderRevers);
+	// 			if (normalizeMap.indexOf(user_city.toLowerCase().trim()) >= 0) {
+	// 				for (let i = 0; i < imageCount; i++) {
+	// 					clientsSlider
+	// 						.querySelector('.clients__wrapper')
+	// 						.insertAdjacentHTML('beforeend', toFormClientsSlides(city, imageCount));
+	// 				}
+	// 			}
+	// 		});
+	// 	} else {
+	// 		for (let i = 0; i < clientsCityData.default.imageCount; i++) {
+	// 			clientsSlider
+	// 				.querySelector('.clients__wrapper')
+	// 				.insertAdjacentHTML('beforeend', toFormClientsSlides('default', clientsCityData.default.imageCount));
+	// 		}
+	// 	}
 
-		initSlidersWithGeoTarget();
-		function initSlidersWithGeoTarget() {
-			if (clientsBlock.querySelector('.clients__slider--ad-department')) {
-				new Swiper('.clients__slider--ad-department', {
-					modules: [Autoplay],
-					speed: 6000,
-					spaceBetween: 60,
-					slidesPerView: 'auto',
-					autoplay: {
-						delay: 0,
-						disableOnInteraction: false,
-						pauseOnMouseEnter: false,
-					},
-					loop: true,
-				});
-			}
-		}
-	}
+	// 	const clientSliderRevers = clientsSlider.cloneNode(true);
+	// 	clientSliderRevers.setAttribute('dir', 'RTL');
+	// 	clientsSlider.after(clientSliderRevers);
+
+	// 	initSlidersWithGeoTarget();
+	// 	function initSlidersWithGeoTarget() {
+	// 		if (clientsBlock.querySelector('.clients__slider--ad-department')) {
+	// 			new Swiper('.clients__slider--ad-department', {
+	// 				modules: [Autoplay],
+	// 				speed: 6000,
+	// 				spaceBetween: 60,
+	// 				slidesPerView: 'auto',
+	// 				autoplay: {
+	// 					delay: 0,
+	// 					disableOnInteraction: false,
+	// 					pauseOnMouseEnter: false,
+	// 				},
+	// 				loop: true,
+	// 			});
+	// 		}
+	// 	}
+	// }
 });

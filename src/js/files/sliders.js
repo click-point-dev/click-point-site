@@ -26,6 +26,24 @@ import '../../scss/base/swiper.scss';
 // import 'swiper/css';
 
 // Инициализация слайдеров
+
+function initSlidersWithGeoTarget() {
+	if (document.querySelector('.clients__slider--ad-department')) {
+		new Swiper('.clients__slider--ad-department', {
+			modules: [Autoplay],
+			speed: 6000,
+			spaceBetween: 60,
+			slidesPerView: 'auto',
+			autoplay: {
+				delay: 0,
+				disableOnInteraction: false,
+				pauseOnMouseEnter: false,
+			},
+			loop: true,
+		});
+	}
+}
+
 function initSliders() {
 	if (document.querySelector('.clients__slider--main')) {
 		new Swiper('.clients__slider--main', {
@@ -132,6 +150,7 @@ function initSlidersScroll() {
 window.addEventListener('load', function (e) {
 	// Запуск инициализации слайдеров
 	initSliders();
+	initSlidersWithGeoTarget();
 	// Запуск инициализации скролла на базе слайдера (по классу swiper_scroll)
 	//initSlidersScroll();
 });
