@@ -17,7 +17,7 @@ setTimeout(() => {
 		localStorage.removeItem('_userCity');
 		// console.log('_userCity cleared');
 	}
-}, 1000 * 2);
+}, 1000 * 3600);
 
 //+ ХЭЛЕПЕРЫ
 function addClass(element, className) {
