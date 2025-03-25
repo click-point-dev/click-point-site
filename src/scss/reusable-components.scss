@@ -438,7 +438,8 @@
 			}
 		}
 
-		//+ прячу круглую кнопку Читать
+		//++ прячу круглую кнопку Читать
+
 		@container (max-width: 500px) {
 			& {
 				display: none;
@@ -631,6 +632,39 @@ div:has(> .table) {
 	tr:last-child {
 		td {
 			border-bottom: none;
+		}
+	}
+}
+
+.full-screen-menu-list {
+	position: fixed;
+	max-width: 100%;
+	height: 100vh;
+	top: 0;
+	left: 0;
+	z-index: 1500;
+	overflow-y: scroll;
+	background: white;
+	translate: 0 -150%;
+	transition: translate 0.5s ease;
+
+	&::-webkit-scrollbar {
+		width: 0;
+		display: none;
+	}
+
+	&__content {
+		margin: 18px;
+		// max-width: 100%;
+	}
+}
+
+.callout-for-full-screen-menu-list {
+	margin-bottom: rem(50);
+	cursor: pointer;
+	&:hover {
+		& + .full-screen-menu-list {
+			translate: 0 0;
 		}
 	}
 }
