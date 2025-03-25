@@ -5,10 +5,11 @@ phpmailer/
 version.json
 .gitignore
 undefined
-my-request.php
 # dist/
 **/*.zip
 **/*.rar
 Source/
 pixel-Yandex.txt
 don't-publish.html
+**/*.php
+build
