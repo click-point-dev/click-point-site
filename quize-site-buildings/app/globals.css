@@ -1,8 +1,23 @@
 @import "tailwindcss";
 
+@custom-variant dark (&:where(.dark, .dark *));
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: white;
+  --foreground: var(--color-zinc-800);
+  --mainColor: var(--color-zinc-900);
+  --mainColorRevers: white;
+  --primary1: #0100ff;
+  --primary1-hover: #000071;
+  --primary2: #ff09ff;
+  --primary2-hover: #930093;
+  --primary-error: #ff8484;
+}
+:root.dark {
+  --background: var(--color-zinc-800);
+  --foreground: white;
+  --mainColor: white;
+  --mainColorRevers: var(--color-zinc-900);
 }
 
 @theme inline {
@@ -10,17 +25,59 @@
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+  --font-muller: var(--font-muller);
+  --color-mainColor: var(--mainColor);
+  --color-mainColorRevers: var(--mainColorRevers);
+  --color-primary1: var(--primary1);
+  --color-primary1-hover: var(--primary1-hover);
+  --color-primary2: var(--primary2);
+  --color-primary2-hover: var(--primary2-hover);
+  --color-primary-error: var(--primary-error);
+
+  --color-primary1-disable: #f0f0ff;
+  --color-primary1-disable-1: #e3ebff;
+  --color-primary1-disable-color: #eff2f6;
+  --color-primary1-disable-text: #d8d8f3;
+  --color-primary-bg: #1f1f61;
+  --color-add2: #000055;
+  --color-add3: #01008e;
+  --color-add4: #0100aa;
+  --color-add7: #4c4ca8;
+  --color-add8: #a1a1f0;
+  --color-add9: #1890ff;
+  --color-primary2-disable: #ffe4ff;
+  --color-primary2-disable-text: #d7add7;
+
+  --color-gray3: #828282;
+  --color-gray4: #bdbdbd;
+  --color-gray5: #e0e0e0;
+  --color-gray6: #d6d7db;
+  --color-gray7: #eaebed;
 }
 
-@media (prefers-color-scheme: dark) {
+/* @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: var(--color-zinc-900);
+    --foreground: white;
   }
-}
+} */
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+body.gradient {
+  background: radial-gradient(
+      at 47.966219997892225% 59.17791208933168%,
+      hsla(195, 8.16326530612245%, 19.215686274509807%, 1) 0%,
+      hsla(195, 8.16326530612245%, 19.215686274509807%, 0) 100%
+    ),
+    radial-gradient(at 47.64933301345313% 82.3942086004094%, hsla(0, 6.25%, 18.823529411764707%, 1) 0%, hsla(0, 6.25%, 18.823529411764707%, 0) 100%),
+    radial-gradient(
+      at 95.4924348957064% 30.991218769813667%,
+      hsla(135.00000000000003, 5.454545454545454%, 43.13725490196079%, 1) 0%,
+      hsla(135.00000000000003, 5.454545454545454%, 43.13725490196079%, 0) 100%
+    ),
+    radial-gradient(
+      at 33.063428122547755% 63.915493762477546%,
+      hsla(195.99999999999997, 8.021390374331544%, 36.66666666666667%, 1) 0%,
+      hsla(195.99999999999997, 8.021390374331544%, 36.66666666666667%, 0) 100%
+    ),
+    radial-gradient(at 15.148471558648247% 8.345630190076857%, hsla(195, 8.16326530612245%, 19.215686274509807%, 1) 0%, hsla(195, 8.16326530612245%, 19.215686274509807%, 0) 100%);
 }

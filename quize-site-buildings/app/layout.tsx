@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import { Geist, Geist_Mono } from 'next/font/google';
+import localFont from 'next/font/local';
 import './globals.css';
 
 const geistSans = Geist({
@@ -10,6 +11,28 @@ const geistSans = Geist({
 const geistMono = Geist_Mono({
 	variable: '--font-geist-mono',
 	subsets: ['latin'],
+});
+
+const muller = localFont({
+	src: [
+		{
+			path: 'fonts/MullerRegular.woff2',
+			weight: '400',
+			style: 'normal',
+		},
+		{
+			path: 'fonts/MullerLight.woff2',
+			weight: '300',
+			style: 'normal',
+		},
+		{
+			path: 'fonts/MullerMedium.woff2',
+			weight: '500',
+			style: 'normal',
+		},
+	],
+	display: 'swap',
+	variable: '--font-muller',
 });
 
 export const metadata: Metadata = {
@@ -23,9 +46,9 @@ export default function RootLayout({
 	children: React.ReactNode;
 }>) {
 	return (
-		<html lang='ru'>
+		<html lang='ru' className=''>
 			<body
-				className={`${geistSans.variable} ${geistMono.variable} antialiased flex flex-col gap-5 min-h-[100dvh] container mx-auto p-4`}>
+				className={`${geistSans.variable} ${geistMono.variable} ${muller.variable} gradient container mx-auto flex min-h-[100dvh] flex-col gap-5 p-4 font-muller font-normal text-mainColor antialiased *:rounded-3xl *:border *:border-mainColor/20 *:bg-mainColorRevers/60 *:px-4 *:dark:bg-mainColorRevers/40`}>
 				{children}
 			</body>
 		</html>
