@@ -2,6 +2,8 @@ import type { Metadata } from 'next';
 import { Geist, Geist_Mono } from 'next/font/google';
 import localFont from 'next/font/local';
 import './globals.css';
+import { AntdRegistry } from '@ant-design/nextjs-registry';
+import '@ant-design/v5-patch-for-react-19';
 
 const geistSans = Geist({
 	variable: '--font-geist-sans',
@@ -48,8 +50,8 @@ export default function RootLayout({
 	return (
 		<html lang='ru' className='dark'>
 			<body
-				className={`${geistSans.variable} ${geistMono.variable} ${muller.variable} gradient container mx-auto flex min-h-[100dvh] flex-col gap-5 p-4 font-muller font-normal text-mainColor antialiased *:rounded-3xl *:border *:border-mainColor/20 *:bg-mainColorRevers/60 *:px-4 *:dark:bg-mainColorRevers/40`}>
-				{children}
+				className={`${geistSans.variable} ${geistMono.variable} ${muller.variable} gradient font-muller text-mainColor *:border-mainColor/20 *:bg-mainColorRevers/60 *:dark:bg-mainColorRevers/40 container mx-auto flex min-h-[100dvh] flex-col gap-5 p-4 font-normal antialiased *:rounded-3xl *:border *:px-4`}>
+				<AntdRegistry>{children}</AntdRegistry>
 			</body>
 		</html>
 	);
