@@ -1,11 +1,11 @@
-import LinkPlane from "shared/LinkPlane/LinkPlane";
-import Footer from "widgets/Footer/Footer";
+import LinkPlane from 'shared/LinkPlane/LinkPlane';
+import Footer from 'widgets/Footer/Footer';
 
 export default function Home() {
 	return (
 		<>
 			<header className='py-6'>Header</header>
-			<main className='grid grow place-items-center rounded-3xl border border-mainColor/20 bg-mainColorRevers/60 dark:bg-mainColorRevers/40'>
+			<main className='border-mainColor/20 bg-mainColorRevers/60 dark:bg-mainColorRevers/40 grid grow place-items-center rounded-3xl border'>
 				<div className='flex flex-wrap items-center justify-center gap-10'>
 					<div className='max-w-[clamp(100px,30%,170px)]'>
 						<svg
@@ -84,13 +84,62 @@ export default function Home() {
 						</svg>
 					</div>
 
-					<h1 className='text-center text-3xl md:text-4xl lg:text-5xl md:[width>1400px]:text-9xl'>
+					<h1 className='md:[width>1400px]:text-9xl text-center text-3xl md:text-4xl lg:text-5xl'>
 						Бриф на&nbsp;создание сайта
 					</h1>
 				</div>
 			</main>
 			<Footer>
-				<ul><li><LinkPlane href="#">some text</LinkPlane></li></ul>
+				<ul className='grid-template gap-y-2.5'>
+					<li>
+						<LinkPlane href='#'>some text</LinkPlane>
+					</li>
+					<li>
+						<LinkPlane href='#'>Lorem, ipsum.</LinkPlane>
+					</li>
+					<li>
+						<LinkPlane href='#'>Lorem, ipsum dolor.</LinkPlane>
+					</li>
+					<li>
+						<LinkPlane href='#'>ipsum dolor.</LinkPlane>
+					</li>
+					<li>
+						<LinkPlane href='#'>sum dolor.</LinkPlane>
+					</li>
+					<li>
+						<LinkPlane href='#'>Lorem, ipsum dolor.</LinkPlane>
+					</li>
+					<li>
+						<LinkPlane href='#'>Lorem, ip.</LinkPlane>
+					</li>
+					<li>
+						<LinkPlane href='#'>Lorem, ipdolor.</LinkPlane>
+					</li>
+					<li>
+						<LinkPlane href='#'>Lorem, ip dolor.</LinkPlane>
+					</li>
+					<li>
+						<LinkPlane href='#'>Lorem, ipsum dolor.</LinkPlane>
+					</li>
+					<li>
+						<LinkPlane href='#'>ipsum dolor.</LinkPlane>
+					</li>
+					<li>
+						<LinkPlane href='#'>m, ipsum dolor.</LinkPlane>
+					</li>
+					<li>
+						<LinkPlane href='#'>dolor.</LinkPlane>
+					</li>
+					<li>
+						<LinkPlane href='#'>ipsum dolor.</LinkPlane>
+					</li>
+					<li>
+						<LinkPlane href='#'>m, ipsum dolor.</LinkPlane>
+					</li>
+					<li>
+						<LinkPlane href='#'>dolor.</LinkPlane>
+					</li>
+				</ul>
 			</Footer>
 		</>
 	);

@@ -46,7 +46,7 @@ export default function RootLayout({
 	children: React.ReactNode;
 }>) {
 	return (
-		<html lang='ru' className=''>
+		<html lang='ru' className='dark'>
 			<body
 				className={`${geistSans.variable} ${geistMono.variable} ${muller.variable} gradient container mx-auto flex min-h-[100dvh] flex-col gap-5 p-4 font-muller font-normal text-mainColor antialiased *:rounded-3xl *:border *:border-mainColor/20 *:bg-mainColorRevers/60 *:px-4 *:dark:bg-mainColorRevers/40`}>
 				{children}
