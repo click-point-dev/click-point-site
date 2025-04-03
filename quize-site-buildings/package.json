@@ -8,7 +8,11 @@
 		"start": "next start",
 		"lint": "next lint"
 	},
+	"browserslist": [
+		"cover 99.5%"
+	],
 	"dependencies": {
+		"antd": "^5.24.6",
 		"next": "15.2.4",
 		"react": "^19.0.0",
 		"react-dom": "^19.0.0"
@@ -22,6 +26,7 @@
 		"eslint": "^9",
 		"eslint-config-next": "15.2.4",
 		"eslint-config-prettier": "^10.1.1",
+		"postcss-import": "16.1.0",
 		"prettier": "3.5.3",
 		"prettier-plugin-tailwindcss": "0.6.11",
 		"tailwindcss": "^4",
