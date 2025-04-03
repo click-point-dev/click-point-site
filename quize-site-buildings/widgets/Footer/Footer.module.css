@@ -1,1 +1,18 @@
-.footer {}
+.footer {
+}
+
+/* .grid-template {
+	display: flex;
+	flex-wrap: wrap;
+	max-height: clamp(220px, auto, 100%);
+	& > * {
+		flex: 1 0 30%;
+	}
+} */
+.grid-template {
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	justify-content: center;
+	& > * {
+	}
+}
