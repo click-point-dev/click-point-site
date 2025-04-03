@@ -1,4 +1,8 @@
 @import "tailwindcss";
+@import "../shared";
+@import "../widgets";
+@import "../entities";
+@import "../features";
 
 @custom-variant dark (&:where(.dark, .dark *));
 
@@ -62,7 +66,7 @@
   }
 } */
 
-body.gradient {
+*.gradient {
   background: radial-gradient(
       at 47.966219997892225% 59.17791208933168%,
       hsla(195, 8.16326530612245%, 19.215686274509807%, 1) 0%,
