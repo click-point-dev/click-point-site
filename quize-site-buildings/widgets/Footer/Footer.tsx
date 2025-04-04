@@ -2,6 +2,14 @@
 
 import { ReactNode } from 'react';
 
-export default function Footer({ children }: { children: ReactNode }) {
-	return <footer className='pt-14 pb-6 md:pt-16'>{children}</footer>;
+export default function Footer({
+	children,
+	className,
+}: {
+	children: ReactNode;
+	className?: string;
+}) {
+	return (
+		<footer className={`${className} pb-6 pt-14 md:pt-16`}>{children}</footer>
+	);
 }

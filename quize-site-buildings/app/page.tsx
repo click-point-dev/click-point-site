@@ -1,4 +1,4 @@
-import LinkPlane from 'shared/LinkPlane/LinkPlane';
+import LinkPlain from 'shared/LinkPlain/LinkPlain';
 import Footer from 'widgets/Footer/Footer';
 import '@ant-design/v5-patch-for-react-19';
 import ToggleTheme from 'features/ToggleTheme/ToggleTheme';
@@ -6,12 +6,12 @@ import ToggleTheme from 'features/ToggleTheme/ToggleTheme';
 export default function Home() {
 	return (
 		<>
-			<header className='flex items-center justify-between py-6'>
+			<header className='border-1 flex items-center py-6'>
 				<div>Header</div>
 				{/* //FIX инлайн стили antd мешают tailwind */}
-				<ToggleTheme />
+				<ToggleTheme className='ml-auto!' />
 			</header>
-			<main className='border-mainColor/20 bg-mainColorRevers/60 dark:bg-mainColorRevers/40 grid grow place-items-center rounded-3xl border'>
+			<main className='border-1 grid grow place-items-center rounded-3xl'>
 				<div className='flex flex-wrap items-center justify-center gap-10'>
 					<div className='max-w-[clamp(100px,30%,170px)]'>
 						<svg
@@ -90,60 +90,60 @@ export default function Home() {
 						</svg>
 					</div>
 
-					<h1 className='md:[width>1400px]:text-9xl text-center text-3xl md:text-4xl lg:text-5xl'>
+					<h1 className='md:[width>1400px]:text-9xl text-center text-3xl font-bold md:text-4xl lg:text-5xl'>
 						Бриф на&nbsp;создание сайта
 					</h1>
 				</div>
 			</main>
-			<Footer>
+			<Footer className='border-1'>
 				<ul className='grid-template gap-y-2.5'>
 					<li>
-						<LinkPlane href='#'>some text</LinkPlane>
+						<LinkPlain href='#'>some text</LinkPlain>
 					</li>
 					<li>
-						<LinkPlane href='#'>Lorem, ipsum.</LinkPlane>
+						<LinkPlain href='#'>Lorem, ipsum.</LinkPlain>
 					</li>
 					<li>
-						<LinkPlane href='#'>Lorem, ipsum dolor.</LinkPlane>
+						<LinkPlain href='#'>Lorem, ipsum dolor.</LinkPlain>
 					</li>
 					<li>
-						<LinkPlane href='#'>ipsum dolor.</LinkPlane>
+						<LinkPlain href='#'>ipsum dolor.</LinkPlain>
 					</li>
 					<li>
-						<LinkPlane href='#'>sum dolor.</LinkPlane>
+						<LinkPlain href='#'>sum dolor.</LinkPlain>
 					</li>
 					<li>
-						<LinkPlane href='#'>Lorem, ipsum dolor.</LinkPlane>
+						<LinkPlain href='#'>Lorem, ipsum dolor.</LinkPlain>
 					</li>
 					<li>
-						<LinkPlane href='#'>Lorem, ip.</LinkPlane>
+						<LinkPlain href='#'>Lorem, ip.</LinkPlain>
 					</li>
 					<li>
-						<LinkPlane href='#'>Lorem, ipdolor.</LinkPlane>
+						<LinkPlain href='#'>Lorem, ipdolor.</LinkPlain>
 					</li>
 					<li>
-						<LinkPlane href='#'>Lorem, ip dolor.</LinkPlane>
+						<LinkPlain href='#'>Lorem, ip dolor.</LinkPlain>
 					</li>
 					<li>
-						<LinkPlane href='#'>Lorem, ipsum dolor.</LinkPlane>
+						<LinkPlain href='#'>Lorem, ipsum dolor.</LinkPlain>
 					</li>
 					<li>
-						<LinkPlane href='#'>ipsum dolor.</LinkPlane>
+						<LinkPlain href='#'>ipsum dolor.</LinkPlain>
 					</li>
 					<li>
-						<LinkPlane href='#'>m, ipsum dolor.</LinkPlane>
+						<LinkPlain href='#'>m, ipsum dolor.</LinkPlain>
 					</li>
 					<li>
-						<LinkPlane href='#'>dolor.</LinkPlane>
+						<LinkPlain href='#'>dolor.</LinkPlain>
 					</li>
 					<li>
-						<LinkPlane href='#'>ipsum dolor.</LinkPlane>
+						<LinkPlain href='#'>ipsum dolor.</LinkPlain>
 					</li>
 					<li>
-						<LinkPlane href='#'>m, ipsum dolor.</LinkPlane>
+						<LinkPlain href='#'>m, ipsum dolor.</LinkPlain>
 					</li>
 					<li>
-						<LinkPlane href='#'>dolor.</LinkPlane>
+						<LinkPlain href='#'>dolor.</LinkPlain>
 					</li>
 				</ul>
 			</Footer>
