@@ -1,1 +1,6 @@
-.toggleTheme {}
+.toggleTheme {
+	/* background: var(--primary1) !important; */
+}
+.toggleTheme[aria-checked="true"] {
+	background: var(--primary2) !important;
+}

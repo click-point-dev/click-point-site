@@ -4,6 +4,7 @@ import localFont from 'next/font/local';
 import './globals.css';
 import { AntdRegistry } from '@ant-design/nextjs-registry';
 import '@ant-design/v5-patch-for-react-19';
+import { ThemeProvider } from 'features/ToggleTheme';
 
 const geistSans = Geist({
 	variable: '--font-geist-sans',
@@ -48,11 +49,13 @@ export default function RootLayout({
 	children: React.ReactNode;
 }>) {
 	return (
-		<html lang='ru' className='dark'>
-			<body
-				className={`${geistSans.variable} ${geistMono.variable} ${muller.variable} gradient font-muller text-mainColor *:border-mainColor/20 *:bg-mainColorRevers/60 *:dark:bg-mainColorRevers/40 container mx-auto flex min-h-[100dvh] flex-col gap-5 p-4 font-normal antialiased *:rounded-3xl *:border *:px-4`}>
-				<AntdRegistry>{children}</AntdRegistry>
-			</body>
-		</html>
+		<ThemeProvider>
+			<html lang='ru'>
+				<body
+					className={`${geistSans.variable} ${geistMono.variable} ${muller.variable} gradient font-muller text-mainColor *:border-mainColor/20 *:bg-mainColorRevers/60 *:dark:bg-mainColorRevers/40 container mx-auto flex min-h-[100dvh] flex-col gap-5 p-4 font-normal antialiased *:rounded-3xl *:border *:px-4`}>
+					<AntdRegistry>{children}</AntdRegistry>
+				</body>
+			</html>
+		</ThemeProvider>
 	);
 }
