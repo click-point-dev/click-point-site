@@ -1,7 +1,7 @@
-import { Switch } from 'antd';
 import LinkPlane from 'shared/LinkPlane/LinkPlane';
 import Footer from 'widgets/Footer/Footer';
 import '@ant-design/v5-patch-for-react-19';
+import ToggleTheme from 'features/ToggleTheme/ToggleTheme';
 
 export default function Home() {
 	return (
@@ -9,7 +9,7 @@ export default function Home() {
 			<header className='flex items-center justify-between py-6'>
 				<div>Header</div>
 				{/* //FIX инлайн стили antd мешают tailwind */}
-				<Switch defaultChecked className='ml-auto' />
+				<ToggleTheme />
 			</header>
 			<main className='border-mainColor/20 bg-mainColorRevers/60 dark:bg-mainColorRevers/40 grid grow place-items-center rounded-3xl border'>
 				<div className='flex flex-wrap items-center justify-center gap-10'>
