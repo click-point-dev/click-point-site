@@ -7,10 +7,11 @@ import { useEffect, useRef } from 'react';
 
 export default function ToggleTheme({ className }: { className?: string }) {
 	const { isDark, handleToggleTheme } = useThemeContext();
-	const html = useRef<HTMLElement>(document.documentElement);
+	const html = useRef<HTMLElement | null>(null);
 	// const [userTheme, setUserTheme] = useState(theme);
 
 	useEffect(() => {
+		html.current = document.documentElement;
 		html.current?.classList.toggle('dark', isDark);
 		html.current?.classList.toggle('light', !isDark);
 	}, [isDark]);

@@ -22,6 +22,7 @@
   --foreground: white;
   --mainColor: white;
   --mainColorRevers: var(--color-zinc-900);
+  --primary1: #0100ff;
   --primary2: #ff09ff;
 }
 
