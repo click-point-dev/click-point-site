@@ -12,8 +12,8 @@
   --mainColor: var(--color-zinc-900);
   --mainColorRevers: white;
   --primary1: #0100ff;
-  --primary1-hover: #000071;
   --primary2: #ff09ff;
+  --primary1-hover: #000071;
   --primary2-hover: #930093;
   --primary-error: #ff8484;
 }
@@ -22,6 +22,7 @@
   --foreground: white;
   --mainColor: white;
   --mainColorRevers: var(--color-zinc-900);
+  --primary2: #ff09ff;
 }
 
 @theme inline {
@@ -33,8 +34,8 @@
   --color-mainColor: var(--mainColor);
   --color-mainColorRevers: var(--mainColorRevers);
   --color-primary1: var(--primary1);
-  --color-primary1-hover: var(--primary1-hover);
   --color-primary2: var(--primary2);
+  --color-primary1-hover: var(--primary1-hover);
   --color-primary2-hover: var(--primary2-hover);
   --color-primary-error: var(--primary-error);
 
