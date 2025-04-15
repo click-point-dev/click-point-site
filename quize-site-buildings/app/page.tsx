@@ -6,12 +6,12 @@ import ToggleTheme from 'features/ToggleTheme/ToggleTheme';
 export default function Home() {
 	return (
 		<>
-			<header className='border-1 flex items-center py-6'>
+			<header className='flex items-center border py-6'>
 				<div>Header</div>
 				{/* //FIX инлайн стили antd мешают tailwind */}
 				<ToggleTheme className='ml-auto!' />
 			</header>
-			<main className='border-1 grid grow place-items-center rounded-3xl'>
+			<main className='grid grow place-items-center rounded-3xl border'>
 				<div className='flex flex-wrap items-center justify-center gap-10'>
 					<div className='max-w-[clamp(100px,30%,170px)]'>
 						<svg
@@ -95,7 +95,7 @@ export default function Home() {
 					</h1>
 				</div>
 			</main>
-			<Footer className='border-1'>
+			<Footer className='border'>
 				<ul className='grid-template gap-y-2.5'>
 					<li>
 						<LinkPlain href='#'>some text</LinkPlain>

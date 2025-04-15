@@ -52,7 +52,7 @@ export default function RootLayout({
 		<ThemeProvider>
 			<html lang='ru'>
 				<body
-					className={`${geistSans.variable} ${geistMono.variable} ${muller.variable} gradient font-muller text-mainColor *:border-mainColor/20 *:bg-mainColorRevers/60 *:dark:bg-mainColorRevers/40 container mx-auto flex min-h-[100dvh] flex-col gap-5 p-4 font-normal antialiased *:rounded-3xl *:border *:px-4`}>
+					className={`${geistSans.variable} ${geistMono.variable} ${muller.variable} gradient font-muller text-mainColor *:border-mainColor/40 *:bg-mainColorRevers/60 *:dark:bg-mainColorRevers/40 container mx-auto flex min-h-[100dvh] flex-col gap-5 p-4 font-normal antialiased *:rounded-3xl *:px-4`}>
 					<AntdRegistry>{children}</AntdRegistry>
 				</body>
 			</html>

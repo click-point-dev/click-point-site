@@ -6,7 +6,7 @@
 
 @custom-variant dark (&:where(.dark, .dark *));
 
-:root {
+:root.light {
   --background: white;
   --foreground: var(--color-zinc-800);
   --mainColor: var(--color-zinc-900);
@@ -25,11 +25,11 @@
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
   --font-muller: var(--font-muller);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
   --color-mainColor: var(--mainColor);
   --color-mainColorRevers: var(--mainColorRevers);
   --color-primary1: var(--primary1);

@@ -1,5 +1,3 @@
-// import styles from './Footer.module.css'
-
 import { ReactNode } from 'react';
 
 export default function Footer({
