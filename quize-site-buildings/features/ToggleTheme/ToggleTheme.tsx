@@ -1,25 +1,19 @@
 'use client';
 import styles from './ToggleTheme.module.css';
-//fix get htmlElement with ref
-
 import { Switch } from 'antd';
 import { MoonOutlined, SunOutlined } from '@ant-design/icons';
-import { useThemeProvider } from './themeProvider';
-import { useEffect, useState } from 'react';
+import { useThemeContext } from './themeProvider';
+import { useEffect, useRef } from 'react';
 
 export default function ToggleTheme({ className }: { className?: string }) {
-	const { theme: currentTheme } = useThemeProvider();
-
-	const [theme, setTheme] = useState(currentTheme);
-
-	function handleToggleTheme() {
-		setTheme(() => (theme === 'dark' ? 'light' : 'dark'));
-	}
+	const { isDark, handleToggleTheme } = useThemeContext();
+	const html = useRef<HTMLElement>(document.documentElement);
+	// const [userTheme, setUserTheme] = useState(theme);
 
 	useEffect(() => {
-		const html = document.parentElement;
-		html?.classList.toggle(theme, !theme);
-	}, [theme, setTheme]);
+		html.current?.classList.toggle('dark', isDark);
+		html.current?.classList.toggle('light', !isDark);
+	}, [isDark]);
 
 	return (
 		<Switch

@@ -1,4 +1,4 @@
 export interface ThemeType {
-	theme: string;
-	// setTheme: () => void;
+	isDark: boolean;
+	handleToggleTheme: VoidFunction;
 }
