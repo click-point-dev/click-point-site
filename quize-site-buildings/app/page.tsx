@@ -2,12 +2,19 @@ import LinkPlain from 'shared/LinkPlain/LinkPlain';
 import Footer from 'widgets/Footer/Footer';
 import '@ant-design/v5-patch-for-react-19';
 import ToggleTheme from 'features/ToggleTheme/ToggleTheme';
+import LinkNav from 'shared/LinkNav/LinkNav';
 
 export default function Home() {
 	return (
 		<>
 			<header className='flex items-center border py-6'>
-				<div>Header</div>
+				<div>
+					<LinkNav
+						href='/'
+						className='hover:text-primary1 dark:hover:text-primary2 relative transition'>
+						Услуги
+					</LinkNav>
+				</div>
 				{/* //FIX инлайн стили antd мешают tailwind */}
 				<ToggleTheme className='ml-auto!' />
 			</header>
