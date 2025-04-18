@@ -6,7 +6,7 @@
 
 @custom-variant dark (&:where(.dark, .dark *));
 
-:root.light {
+:root {
   --background: white;
   --foreground: var(--color-zinc-800);
   --mainColor: var(--color-zinc-900);
@@ -14,6 +14,7 @@
   --primary1: #0100ff;
   --primary2: #ff09ff;
   --primary1-hover: #000071;
+  --primary1-hover-revers: white;
   --primary2-hover: #930093;
   --primary-error: #ff8484;
 }
@@ -24,12 +25,17 @@
   --mainColorRevers: var(--color-zinc-900);
   --primary1: #0100ff;
   --primary2: #ff09ff;
+  --primary1-hover: white;
+  --primary1-hover-revers: var(--primary1);
+  --primary2-hover: #930093;
+  --primary-error: #ff8484;
 }
 
 @theme inline {
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
   --font-muller: var(--font-muller);
+
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-mainColor: var(--mainColor);
@@ -38,6 +44,7 @@
   --color-primary2: var(--primary2);
   --color-primary1-hover: var(--primary1-hover);
   --color-primary2-hover: var(--primary2-hover);
+  --color-primary1-hover-revers: var(--primary1-hover-revers);
   --color-primary-error: var(--primary-error);
 
   --color-primary1-disable: #f0f0ff;
@@ -86,4 +93,8 @@
       hsla(195.99999999999997, 8.021390374331544%, 36.66666666666667%, 0) 100%
     ),
     radial-gradient(at 15.148471558648247% 8.345630190076857%, hsla(195, 8.16326530612245%, 19.215686274509807%, 1) 0%, hsla(195, 8.16326530612245%, 19.215686274509807%, 0) 100%);
+}
+
+button[disabled] {
+  @apply disabled:grayscale disabled:opacity-20 disabled:cursor-none disabled:pointer-events-none;
 }
