@@ -5,6 +5,8 @@ import './globals.css';
 import { AntdRegistry } from '@ant-design/nextjs-registry';
 import '@ant-design/v5-patch-for-react-19';
 import { ThemeProvider } from 'features/ToggleTheme';
+import { ConfigProvider } from 'antd';
+// import styles from './globals'
 
 const geistSans = Geist({
 	variable: '--font-geist-sans',
@@ -50,12 +52,23 @@ export default function RootLayout({
 }>) {
 	return (
 		<ThemeProvider>
-			<html lang='ru'>
-				<body
-					className={`${geistSans.variable} ${geistMono.variable} ${muller.variable} gradient font-muller text-mainColor *:border-mainColor/40 *:bg-mainColorRevers/60 *:dark:bg-mainColorRevers/40 container mx-auto flex min-h-[100dvh] flex-col gap-5 p-4 font-normal antialiased *:rounded-3xl *:px-4`}>
-					<AntdRegistry>{children}</AntdRegistry>
-				</body>
-			</html>
+			<ConfigProvider
+				theme={{
+					token: {
+						colorPrimary: '#0100ff',
+						colorInfo: '#0100ff',
+						colorError: '#ff8484',
+						colorSuccess: '#55ff00',
+						colorLink: '#0100ff',
+					},
+				}}>
+				<html lang='ru'>
+					<body
+						className={`${geistSans.variable} ${geistMono.variable} ${muller.variable} gradient font-muller text-mainColor *:border-mainColor/40 *:bg-mainColorRevers/60 *:dark:bg-mainColorRevers/40 container mx-auto flex min-h-[100dvh] flex-col gap-5 p-4 font-normal antialiased *:rounded-3xl *:px-4`}>
+						<AntdRegistry>{children}</AntdRegistry>
+					</body>
+				</html>
+			</ConfigProvider>
 		</ThemeProvider>
 	);
 }
