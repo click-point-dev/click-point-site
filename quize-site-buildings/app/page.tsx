@@ -192,12 +192,10 @@ export default function Home() {
 			</header>
 			<main className='grid grow place-items-center rounded-3xl border'>
 				<div className='flex w-full flex-col flex-wrap items-center justify-center gap-10 py-10'>
-					<h1 className='md:[width>1400px]:text-9xl text-center text-3xl font-bold md:text-4xl lg:text-5xl'>
-						Бриф на&nbsp;создание сайта
-					</h1>
+					<h1 className='h1'>Бриф на&nbsp;создание сайта</h1>
 					<div className='grid w-full grid-cols-4 justify-between gap-x-2.5 gap-y-16'>
 						<div className='flex flex-col items-start gap-3'>
-							<h2 className='text-2xl'>Primary buttons</h2>
+							<h4 className='h4'>Primary buttons</h4>
 							<Button title='disabled l-64' disabled />
 							<Button size='l-56' title='Primary l-56' />
 							<Button size='m-48' title='Primary m-48' />
@@ -205,7 +203,7 @@ export default function Home() {
 							<Button size='s-32' title='Primary s-32' />
 						</div>
 						<div className='flex flex-col items-start gap-3'>
-							<h2 className='text-2xl'>Secondary buttons</h2>
+							<h4 className='h4'>Secondary buttons</h4>
 							<Button type='secondary' title='disabled l-64' disabled />
 							<Button
 								type='secondary'
@@ -229,7 +227,7 @@ export default function Home() {
 							/>
 						</div>
 						<div className='flex flex-col items-start gap-3'>
-							<h2 className='text-2xl'>Secondary-2 buttons</h2>
+							<h4 className='h4'>Secondary-2 buttons</h4>
 							<Button type='secondary2' title='disabled l-64' disabled />
 							<Button
 								type='secondary2'
@@ -253,7 +251,7 @@ export default function Home() {
 							/>
 						</div>
 						<div className='flex flex-col items-start gap-3'>
-							<h2 className='text-2xl'>Secondary-3 buttons</h2>
+							<h4 className='h4'>Secondary-3 buttons</h4>
 							<Button type='secondary3' title='disabled l-64' disabled />
 							<Button
 								type='secondary3'
@@ -277,7 +275,7 @@ export default function Home() {
 							/>
 						</div>
 						<div className='flex flex-col items-start gap-3'>
-							<h2 className='text-2xl'>Ghost buttons</h2>
+							<h4 className='h4'>Ghost buttons</h4>
 							<Button type='ghost' size='m-16' title='ghost l-56' />
 							<Button type='ghost' size='s-14' title='ghost m-48' />
 							<Button type='ghost' size='s-10' title='ghost s-40' />
