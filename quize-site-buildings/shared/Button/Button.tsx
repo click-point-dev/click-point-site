@@ -1,7 +1,9 @@
 // import styles from './Button.module.css'
 
+import { FC, ReactElement } from 'react';
+
 // import tw from 'twin.macro';
-import { TypesButton } from './TypesButton';
+// import { TypesButton } from './TypesButton';
 
 // let classes = /*tw*/ ` bg-red-500`;
 const tw = (s: TemplateStringsArray) => s[0];
@@ -26,19 +28,27 @@ const styles = {
 	},
 };
 
-export function Button({
+export interface TypesButton {
+	title?: string;
+	type?: 'primary' | 'secondary' | 'secondary2' | 'secondary3' | 'ghost';
+	size?: 'l-64' | 'l-56' | 'm-48' | 's-40' | 's-32' | 'm-16' | 's-14' | 's-10';
+	icon?: ReactElement;
+	disabled?: boolean;
+}
+
+export const Button: FC<TypesButton> = ({
 	title = 'Заказать услугу',
 	type = 'primary',
 	size = 'l-64',
 	disabled = false,
-}: TypesButton) {
+}) => {
 	return (
 		<div className='flex justify-center'>
 			<button
 				disabled={disabled}
-				className={`cursor-pointer rounded-full leading-none transition duration-300 ${styles.type[type]} ${styles.size[size]} active:scale-[98%]`}>
+				className={`cursor-pointer text-nowrap rounded-full leading-none transition duration-300 ${styles.type[type]} ${styles.size[size]} active:scale-[98%]`}>
 				{title}
 			</button>
 		</div>
 	);
-}
+};
