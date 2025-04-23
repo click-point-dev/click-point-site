@@ -104,11 +104,11 @@ button[disabled] {
 } */
 
 .h1 {
-  @media (min-width: 360px) and (max-width: 1440px) {
-    font-size: calc(14px + (18 - 14) * ((100vw - 360px) / (1440 - 360))) !important;
-  }
+  font-size: clamp(14px, calc(14px + (18 - 14) * ((100vw - 360px) / (1440 - 360))), 18px);
+  @apply font-bold leading-[156%];
 }
 
 .h4 {
-  @apply md:text-2xl xl:text-4xl text-xl font-bold leading-[156%];
+  font-size: clamp(16px, calc(16px + (38 - 16) * ((100vw - 360px) / (1440 - 360))), 38px);
+  @apply font-bold leading-[156%];
 }
